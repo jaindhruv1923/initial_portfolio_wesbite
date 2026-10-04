@@ -511,33 +511,51 @@ Instructions:
     // 2. Escape HTML
     processed = escapeHtml(processed);
 
-    // 3. Headers: ### Title -> <h4 class="cb-heading">Title</h4>
+    // 3. Tables: | col1 | col2 |
+    processed = processed.replace(/((?:\|.+?\|\r?\n)+)/g, (match) => {
+      const lines = match.trim().split(/\r?\n/).map(l => l.trim()).filter(l => l);
+      if (lines.length < 2) return match;
+      let html = '<div class="cb-table-wrap"><table class="cb-table">';
+      lines.forEach((line, index) => {
+        if (line.includes("---")) return;
+        const cells = line.split("|").filter((c, i, arr) => i > 0 && i < arr.length - 1);
+        const tag = index === 0 ? "th" : "td";
+        html += "<tr>" + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join("") + "</tr>";
+      });
+      html += "</table></div>";
+      return html;
+    });
+
+    // 4. Headers: ### Title -> <h4 class="cb-heading">Title</h4>
     processed = processed.replace(/^### (.*$)/gim, '<h4 class="cb-heading">$1</h4>');
     processed = processed.replace(/^## (.*$)/gim, '<h4 class="cb-heading">$1</h4>');
 
-    // 4. Bold: **text** -> <strong>text</strong>
+    // 5. Bold: **text** -> <strong>text</strong>
     processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-    // 5. Italic: *text* -> <em>text</em>
+    // 6. Italic: *text* -> <em>text</em>
     processed = processed.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
-    // 6. Inline code: `code` -> <code class="cb-inline-code">code</code>
+    // 7. Inline code: `code` -> <code class="cb-inline-code">code</code>
     processed = processed.replace(/`([^`]+)`/g, '<code class="cb-inline-code">$1</code>');
 
-    // 7. Links: [text](url) -> <a href="url" target="_blank" class="cb-link">text ↗</a>
+    // 8. Links: [text](url) -> <a href="url" target="_blank" class="cb-link">text ↗</a>
     processed = processed.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="cb-link">$1 ↗</a>');
 
-    // 8. Bullet lists: - item -> <li>item</li>
+    // 9. Bullet lists: - item -> <li>item</li>
     processed = processed.replace(/^\s*[-*]\s+(.*)$/gim, '<li>$1</li>');
     processed = processed.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
     processed = processed.replace(/<\/ul>\s*<ul>/g, ''); // merge adjacent <ul>
 
-    // 9. Paragraphs and linebreaks
+    // 10. Paragraphs and linebreaks
     processed = processed.replace(/\n\n+/g, '</p><p>');
     processed = '<p>' + processed + '</p>';
     processed = processed.replace(/<p>\s*<\/p>/g, '');
+    // Clean up invalid paragraphs around block elements
+    processed = processed.replace(/<p>\s*(<h[1-6]|<ul|<div)/gi, '$1');
+    processed = processed.replace(/(<\/h[1-6]>|<\/ul>|<\/div>)\s*<\/p>/gi, '$1');
 
-    // 10. Re-inject Code Blocks
+    // 11. Re-inject Code Blocks
     codeBlocks.forEach((cb, idx) => {
       const token = `__CODE_BLOCK_${idx}__`;
       const htmlBlock = `
@@ -730,7 +748,7 @@ You can ask me **anything in the world**:
       container.innerHTML = `
 <!-- FLOATING GOOGLE GEMINI AI ASSISTANT -->
 <button id="chatbot-toggle" aria-label="Ask Dhruv's Gemini AI Assistant">
-  <svg viewBox="0 0 24 24" fill="none">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
     <defs>
       <linearGradient id="geminiSparkleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#4285F4"/>
@@ -741,7 +759,8 @@ You can ask me **anything in the world**:
     </defs>
     <path fill="url(#geminiSparkleGrad)" d="M12 1.5C12 7.298 7.298 12 1.5 12C7.298 12 12 16.702 12 22.5C12 16.702 16.702 12 22.5 12C16.702 12 12 7.298 12 1.5Z"/>
   </svg>
-  <span class="cb-toggle-badge">AI</span>
+  <span class="cb-toggle-label">Gemini AI</span>
+  <span class="cb-toggle-badge">Universal</span>
 </button>
 
 <div id="chatbot-panel" role="dialog" aria-label="Gemini AI Assistant">
@@ -801,7 +820,7 @@ You can ask me **anything in the world**:
 
   <div class="cb-input-wrap">
     <div class="cb-search-pill">
-      <svg class="cb-sparkle-icon" viewBox="0 0 24 24" fill="none">
+      <svg class="cb-sparkle-icon" viewBox="0 0 24 24" width="18" height="18" fill="none">
         <path fill="url(#geminiSparkleGrad)" d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
       </svg>
       <input id="cb-input" type="text" placeholder="Ask anything in the world or about Dhruv's work..." autocomplete="off" />
@@ -824,7 +843,7 @@ You can ask me **anything in the world**:
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function initChatbot() {
     ensureChatbotMarkup();
 
     const toggle = document.getElementById("chatbot-toggle");
@@ -857,7 +876,7 @@ You can ask me **anything in the world**:
       } else {
         if (engineTier) {
           engineTier.textContent = "Live Free";
-          engineTier.style.color = "#79c0ff";
+          engineTier.style.color = "#2563EB";
         }
         if (keyFeedback) keyFeedback.textContent = "";
       }
@@ -891,6 +910,13 @@ What would you like to explore today?`;
     if (closeBtn && panel) {
       closeBtn.addEventListener("click", () => panel.classList.remove("open"));
     }
+
+    // Escape Key Closes Panel
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && panel && panel.classList.contains("open")) {
+        panel.classList.remove("open");
+      }
+    });
 
     // Clear Chat
     if (clearChatBtn) {
@@ -926,7 +952,7 @@ What would you like to explore today?`;
           localStorage.removeItem("gemini_api_key");
           if (keyFeedback) {
             keyFeedback.textContent = "Cleared (World Engine Active)";
-            keyFeedback.style.color = "#79c0ff";
+            keyFeedback.style.color = "#2563EB";
           }
         }
         updateKeyStatusUI();
@@ -971,5 +997,11 @@ What would you like to explore today?`;
         processUserQuery(q);
       });
     });
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initChatbot);
+  } else {
+    initChatbot();
+  }
 })();
