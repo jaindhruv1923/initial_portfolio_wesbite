@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Naukri Saaf — Labor Market Forensic Intelligence &amp; Ghost-Job Detection · Dhruv Jain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<div id="loader"><div class="mark">◆ LOADING CASE STUDY</div></div>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0%;z-index:100;"></div>
+<div id="cursor-glow"></div>
+
+<!-- BLUEPRINT CANVAS GRID (Visual Texture & Depth) -->
+<div class="blueprint-grid-canvas" aria-hidden="true"></div>
+
+<!-- INTERACTIVE BACKGROUND MOUSE PARTICLE CONSTELLATION WEB -->
+<canvas id="interactive-particle-web" aria-hidden="true"></canvas>
+
+<!-- FIXED TELEMETRY RAILS & FIBER-OPTIC DATA PACKET STREAMS -->
+<!-- Left Rail: CAD Ruler & Live Section Scroll-Spy -->
+<aside class="telemetry-rail telemetry-rail-left" aria-label="Section Navigation and Telemetry">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-cad-ruler" aria-hidden="true">
+    <span class="cad-tick">0000</span>
+    <span class="cad-tick">0600</span>
+    <span class="cad-tick">1200</span>
+    <span class="cad-tick">1800</span>
+    <span class="cad-tick">2400</span>
+    <span class="cad-tick">3000</span>
+    <span class="cad-tick">3600</span>
+    <span class="cad-tick">4200</span>
+  </div>
+  <div class="rail-header-tag" title="Flagship Case Study">
+    <span class="rail-pulse-dot"></span>
+    <span class="rail-mono-text">ACTIVE</span>
+  </div>
+  <nav class="rail-section-nav" aria-label="Quick Navigation">
+    <a href="index.html#projects" class="rail-nav-item active" title="Back to All Projects">
+      <span class="rail-nav-num">←</span>
+      <span class="rail-nav-label">Projects</span>
+    </a>
+    <a href="index.html#sql-lab" class="rail-nav-item" title="Live SQL Workbench">
+      <span class="rail-nav-num">02</span>
+      <span class="rail-nav-label">SQL Lab</span>
+    </a>
+    <a href="index.html#contact" class="rail-nav-item" title="Contact Dhruv">
+      <span class="rail-nav-num">08</span>
+      <span class="rail-nav-label">Contact</span>
+    </a>
+  </nav>
+  <div class="rail-footer-tag" title="Gurugram Development HQ Coordinates">
+    <span class="rail-coord-text">28.45°N</span>
+  </div>
+</aside>
+
+<!-- Right Rail: Fast-Action Dock, Socials & Back-To-Top -->
+<aside class="telemetry-rail telemetry-rail-right" aria-label="Executive Quick Actions and Socials">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-vertical-brand">
+    <span class="brand-monogram">DJ // 2025</span>
+    <span class="brand-sub">ANALYTICS</span>
+  </div>
+  <div class="rail-action-cluster">
+    <button type="button" class="rail-action-btn" onclick="copyEmail(event)" title="1-Click Copy Dhruv's Email" aria-label="Copy Email">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </button>
+    <button type="button" class="rail-action-btn" onclick="copyRecruiterBrief()" title="1-Click Copy ATS Candidate Summary" aria-label="Copy Recruiter Brief">
+      <span style="font-size:12px;">⚡</span>
+    </button>
+    <a href="https://github.com/dhruvjain2805" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="GitHub Profile" aria-label="GitHub">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/dhruvjain2805" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="LinkedIn Profile" aria-label="LinkedIn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.81a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+    </a>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="rail-action-btn" title="Download ATS Verified Resume (PDF)" aria-label="Resume PDF">
+      <span style="font-size:11px;font-weight:800;font-family:var(--font-mono);color:var(--accent);">CV↓</span>
+    </a>
+  </div>
+  <button type="button" class="rail-scroll-top-btn" id="railScrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" aria-label="Scroll to top">
+    ↑
+  </button>
+</aside>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand"><span class="dot">◆</span> Dhruv Jain</a>
+    <div class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="kavach.html">KAVACH</a>
+      <a href="archon.html">Archon Copilot</a>
+      <a href="profitara.html">Profitara</a>
+      <a href="grilli.html">Grilli</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="nav-cta">Resume (1-Page) ↓</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap cs-hero-grid">
+    <div>
+      <a href="index.html#projects" class="cs-back">← Back to projects</a>
+      <div class="eyebrow">Labor Market Forensic Intelligence &amp; Analytics</div>
+      <h1>Naukri Saaf: Eradicating phantom job postings &amp; quantifying ₹8.74 Cr in candidate economic waste.</h1>
+      <p class="lede">A full-stack labor market forensic intelligence platform: 15-tab Streamlit audit suite, sub-15ms FastAPI microservice, zero-leakage 5-Fold GroupKFold ML, Snorkel weak supervision, and client-side Chrome Extension — turning 2,851 scraped requisitions into measurable hiring market policy and candidate protection.</p>
+
+      <div class="cs-meta-row">
+        <div class="cs-meta"><div class="k">Role</div><div class="v">Solo Build — Lead Data &amp; Business Analyst (Scraping, SQL Mart, MLOps, Chrome Ext)</div></div>
+        <div class="cs-meta"><div class="k">Tech Stack</div><div class="v">Python · FastAPI · Streamlit · Snorkel · LightGBM · MySQL · Chrome MV3 · Power BI</div></div>
+        <div class="cs-meta"><div class="k">Audited Data</div><div class="v">2,851 live job requisitions across LinkedIn, Indeed &amp; Glassdoor</div></div>
+      </div>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="https://project-naukri-saaf-job-listings-analysis.streamlit.app/" target="_blank" class="btn btn-primary">Live Dashboard ↗</a>
+        <a href="https://github.com/jaindhruv1923/Project-Naukri-Saaf-Job-Listings-Analysis" target="_blank" class="btn btn-ghost">View Repo ↗</a>
+        <a href="dashboards/Naukrisaaf_FinalDashboard.pbix" download class="btn btn-ghost">Power BI (.pbix) ↓</a>
+      </div>
+    </div>
+
+    <!-- Animated Hero Flow Panel -->
+    <aside class="flow-panel reveal">
+      <div class="flow-title">⚡ Forensic &amp; Policy Pipeline</div>
+      <div class="flow-chain">
+        <div class="flow-node">
+          <div class="flow-dot">01</div>
+          <div class="flow-body">
+            <div class="t">The Labor Market Drain</div>
+            <div class="d">179,261 wasted applications and ₹8.74 Cr candidate economic deadweight loss.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">02</div>
+          <div class="flow-body">
+            <div class="t">Multi-Portal Scraping</div>
+            <div class="d">Apify crawlers collecting 3,000 listings across LinkedIn, Indeed &amp; Glassdoor into 32 SQL staging views.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">03</div>
+          <div class="flow-body">
+            <div class="t">Snorkel Weak Supervision</div>
+            <div class="d">14 programmatic labeling functions resolving the absence of ground truth (κ = 0.589).</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">04</div>
+          <div class="flow-body">
+            <div class="t">Zero-Leakage 5-Fold GroupKFold</div>
+            <div class="d">Grouped strictly by 890 employer IDs with Platt calibration (Brier score 0.0167).</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">05</div>
+          <div class="flow-body">
+            <div class="t">Real-Time Browser &amp; API Triage</div>
+            <div class="d">Sub-15ms FastAPI microservice and zero-network Chrome Extension scoring live DOMs.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-thumb">
+        <img src="screenshots/naukri-saaf/01_macro_risk_overview.png" alt="Naukri Saaf Executive Macro Risk Overview Screen" />
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- Flagship Dashboard Gallery -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Dashboard &amp; Intelligence Gallery</div>
+    <h2>Core Platform Interfaces</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/01_macro_risk_overview.png" alt="Executive Macro Risk Overview (2,851 audited listings, ₹8.74 Cr economic loss)" />
+        <div class="cap">Executive Macro Risk Overview tracking 2,851 audited listings, 428 phantom postings, and ₹8.74 Cr candidate economic waste.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/04_forensic_scanner_live.png" alt="Live Requisition Forensic Scanner with Platt-calibrated gauge and TreeSHAP waterfall" />
+        <div class="cap">Real-time requisition forensic scanner with Platt-calibrated risk gauge, ATS prober, and local TreeSHAP drivers.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/02_economic_waste_calculator.png" alt="Candidate Economic Waste &amp; Opportunity Cost Calculator" />
+        <div class="cap">Candidate economic waste calculator quantifying 179,261 wasted applications and 134,446 lost candidate preparation hours.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/05_ats_system_prober.png" alt="Automated Corporate ATS Verification and System-of-Record Explorer" />
+        <div class="cap">Automated corporate ATS prober querying Greenhouse, Lever, and Workday to verify genuine active headcount.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/06_phishing_threat_auditor.png" alt="Recruiter Domain &amp; Phishing Threat Security Auditor" />
+        <div class="cap">Recruiter domain and phishing auditor catching upfront registration fee scams and typosquatted domains.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/03_lifecycle_survival_decay.png" alt="Requisition Lifecycle Survival Decay &amp; Kaplan-Meier Curves" />
+        <div class="cap">Kaplan-Meier survival curves revealing ghost postings lingering for 128 days (42.6× longer than genuine listings).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dedicated Business Analyst Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Business Analysis &amp; Labor Market Economics</div>
+    <h2>The BA Deliverables: Quantifying ₹8.74 Cr Deadweight Loss &amp; Asymmetric Policy Gates</h2>
+    <p>In online labor markets, phantom jobs are not merely an annoyance—they are a systemic market friction creating deadweight economic loss. As Lead Business Analyst on Naukri Saaf, the problem was framed through formal economic impact modeling, asymmetric misclassification penalties, cross-portal vulnerability profiling, and recruiter de-risking playbooks.</p>
+
+    <!-- BA KPI Strip -->
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="num">₹8.74 Cr</div>
+        <div class="label">Candidate Economic Waste Audited (₹873.9 Lakhs)</div>
+      </div>
+      <div class="kpi">
+        <div class="num">179,261</div>
+        <div class="label">Phantom Applications Submitted to Dormant Roles</div>
+      </div>
+      <div class="kpi">
+        <div class="num">5 : 1</div>
+        <div class="label">Asymmetric Cost Ratio: C(FP) = 5 × C(FN)</div>
+      </div>
+      <div class="kpi">
+        <div class="num">42.2%</div>
+        <div class="label">Peak Ghost Requisition Rate (Glassdoor)</div>
+      </div>
+    </div>
+
+    <!-- BA Finding 1: Macroeconomic Waste & Opportunity Cost -->
+    <div style="margin-top:40px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">1. Macroeconomic Labor Waste: Quantifying the Candidate Deadweight Loss</h3>
+      <p style="margin-bottom:20px;">A forensic audit across 2,851 modeled job requisitions identified <strong>428 phantom listings (15.0% ghost rate)</strong>. With an average of 418.8 applications received per listing before closure, job seekers submitted an estimated <strong>179,261 wasted job applications</strong> for roles that had zero budgeted intention of hiring.</p>
+
+      <div class="gallery-item" style="margin-bottom:24px;">
+        <img src="screenshots/naukri-saaf/02_economic_waste_calculator.png" alt="Interactive Candidate Economic Waste and Opportunity Cost Calculator" />
+        <div class="cap">Candidate economic waste calculator quantifying 179,261 wasted applications and 134,446 lost candidate preparation hours.</div>
+      </div>
+
+      <!-- Multi-Stakeholder Impact Matrix Table -->
+      <div style="overflow-x:auto;margin-bottom:24px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Stakeholder Persona</th>
+              <th>Operational Pain Point</th>
+              <th>Economic / Friction Cost</th>
+              <th>Naukri Saaf Policy Remediation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Job Seekers &amp; Candidates</strong></td>
+              <td>Tailoring resumes, screening tests, and cover letters for closed or inactive roles.</td>
+              <td><span class="matrix-badge" style="color:#EF4444;background:rgba(239,68,68,0.1);">134,446 lost hours (₹8.74 Cr)</span></td>
+              <td>Real-time Chrome Extension warnings and direct corporate ATS verification.</td>
+            </tr>
+            <tr>
+              <td><strong>Corporate Talent Acquisition</strong></td>
+              <td>Inboxes flooded with stale resumes; inflated time-to-fill and negative employer brand.</td>
+              <td>High recruitment agency fees, poor candidate NPS</td>
+              <td>Automated requisition retirement guidelines and What-If counterfactual check.</td>
+            </tr>
+            <tr>
+              <td><strong>University Placement Cells</strong></td>
+              <td>Graduating cohorts wasting priority campus application slots on evergreen posts.</td>
+              <td>Distorted placement conversion rates</td>
+              <td>Safe-harbor alternative job recommendations and employer transparency index.</td>
+            </tr>
+            <tr>
+              <td><strong>Labor Compliance &amp; Portals</strong></td>
+              <td>Reputational damage, SEO spam penalties, and potential regulatory liability.</td>
+              <td>User churn toward verified boutique job boards</td>
+              <td>Cross-portal syndication graph and recruiter domain threat auditing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="limits-box" style="margin-top:20px;">
+        <h4 style="color:#0284C7;">BA Economic Waste Equation:</h4>
+        <p>$$\text{Deadweight Loss} = N_{\text{ghost}} \times \text{Avg Apps} \times t_{\text{prep}} \times \text{Wage}_{\text{opp}} = 428 \times 418.8 \times 0.75\,\text{hrs} \times ₹650/\text{hr} = \mathbf{₹8,73,92,738}$$</p>
+        <p style="margin-top:8px;">Every single phantom requisition allowed to linger online costs the labor market an average of <strong>₹2,04,188 in aggregate candidate deadweight loss</strong>.</p>
+      </div>
+    </div>
+
+    <!-- BA Finding 2: Asymmetric Cost Matrix & Decision Tuning -->
+    <div style="margin-top:48px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">2. Asymmetric Misclassification Cost Matrix (\(C_{FP} = 5 \times C_{FN}\))</h3>
+      <p style="margin-bottom:20px;">Standard ML models optimize for symmetric accuracy at a naive 0.50 threshold. In recruitment risk governance, the real-world business penalties of misclassification are fundamentally asymmetric:</p>
+
+      <div class="cs-two-col" style="margin-bottom:24px;">
+        <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:20px;">
+          <h4 style="color:#EF4444;margin-bottom:8px;">False Positive (High Penalty, Cost = 5):</h4>
+          <p style="font-size:0.9rem;line-height:1.6;">The system falsely flags an active, legitimate job as a ghost. A qualified candidate decides not to apply, permanently forfeiting a real employment opportunity and potential career milestone. <strong>Estimated Career Impact: &gt;₹50,000.</strong></p>
+        </div>
+        <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:20px;">
+          <h4 style="color:#F59E0B;margin-bottom:8px;">False Negative (Low Penalty, Cost = 1):</h4>
+          <p style="font-size:0.9rem;line-height:1.6;">The system fails to catch a ghost job. The candidate spends 45 minutes tailoring their resume and submitting an application to a dormant role. <strong>Estimated Wasted Time Cost: ~₹500.</strong></p>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:18px 24px;font-family:var(--font-mono);font-size:0.9rem;margin-bottom:24px;color:var(--text-primary);">
+        $$\text{Optimal Classification Cutoff: } \tau^* = \frac{C_{FP}}{C_{FP} + C_{FN}} = \frac{5}{5 + 1} \approx 0.65$$
+      </div>
+
+      <p style="margin-bottom:20px;">By shifting the decision threshold from 0.50 to <strong>\(\tau^* = 0.65\)</strong>, the platform reduced costly false rejections by <strong>78%</strong> while maintaining an <strong>84.6% recall</strong> on verified phantom listings—ensuring that candidates are warned when danger is high without discouraging them from real opportunities.</p>
+    </div>
+
+    <!-- BA Finding 3: Cross-Portal Vulnerability Audit -->
+    <div style="margin-top:48px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">3. Cross-Portal Vulnerability &amp; Salary Opacity Audit</h3>
+      <p style="margin-bottom:20px;">Evaluating requisitions across multiple commercial job boards revealed stark structural disparities in platform governance and posting hygiene:</p>
+
+      <div style="overflow-x:auto;margin-bottom:24px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Job Portal</th>
+              <th>Audited Postings</th>
+              <th>Ghost Listing Rate</th>
+              <th>Salary Opacity %</th>
+              <th>Avg Days Live</th>
+              <th>Primary Platform Vulnerability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Glassdoor</strong></td>
+              <td>1,000</td>
+              <td><span class="matrix-badge" style="color:#EF4444;background:rgba(239,68,68,0.1);">42.2% Ghost</span></td>
+              <td>78.1% Hidden</td>
+              <td>54.2 days</td>
+              <td>High third-party scraper syndication; unverified agency reposts</td>
+            </tr>
+            <tr>
+              <td><strong>LinkedIn</strong></td>
+              <td>1,000</td>
+              <td><span class="matrix-badge" style="color:#F59E0B;background:rgba(245,158,11,0.1);">18.4% Ghost</span></td>
+              <td>45.3% Hidden</td>
+              <td>28.6 days</td>
+              <td>Sponsored repost velocity; recruiter evergreen talent pooling</td>
+            </tr>
+            <tr>
+              <td><strong>Indeed</strong></td>
+              <td>851</td>
+              <td><span class="matrix-badge" style="color:#10B981;background:rgba(16,185,129,0.1);">1.8% Ghost</span></td>
+              <td>12.4% Hidden</td>
+              <td>14.1 days</td>
+              <td>Strict employer verification; direct corporate ATS webhook syncing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="gallery-item" style="margin-bottom:24px;">
+        <img src="screenshots/naukri-saaf/a8.png" alt="Cross-Portal Vulnerability and Salary Opacity Matrix" />
+        <div class="cap">Cross-portal vulnerability audit uncovering 42.2% ghost listing prevalence and 78% salary opacity on Glassdoor.</div>
+      </div>
+    </div>
+
+    <!-- BA Finding 4: What-If Counterfactual Remediation & Tactical Playbook -->
+    <div style="margin-top:48px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">4. What-If Counterfactual Remediation &amp; Candidate Defense Playbook</h3>
+      <p style="margin-bottom:20px;">To move from passive diagnostic detection to active resolution, Naukri Saaf built two bidirectional operational engines: a <strong>What-If Counterfactual Simulator</strong> for enterprise HR teams and a <strong>Tactical Recruiter Screening Playbook</strong> for job applicants.</p>
+
+      <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;margin-bottom:24px;">
+        <div class="gallery-item">
+          <img src="screenshots/naukri-saaf/07_counterfactual_simulator.png" alt="What-If Counterfactual Simulator for HR Requisitions" />
+          <div class="cap">What-If counterfactual simulator providing actionable HR steps to de-risk requisitions from 95% down to 15% risk.</div>
+        </div>
+        <div class="gallery-item">
+          <img src="screenshots/naukri-saaf/08_tactical_screening_playbook.png" alt="Tactical Recruiter Screening Playbook and Direct Outreach Template" />
+          <div class="cap">Tactical screening playbook generating calibrated recruiter verification questions and direct LinkedIn outreach templates.</div>
+        </div>
+      </div>
+
+      <div class="limits-box" style="margin-top:20px;">
+        <h4 style="color:#0284C7;">BA Tactical Recruiter Screening Protocol:</h4>
+        <p>Before investing hours in take-home assessments, candidates can deploy these 5 calibrated verification inquiries directly to hiring contacts:</p>
+        <ol style="margin-left:20px;margin-top:8px;line-height:1.7;color:var(--text-secondary);">
+          <li><strong>Budget Authorization:</strong> <em>"Is this requisition an immediate budgeted backfill or an evergreen pipeline for future quarters?"</em></li>
+          <li><strong>ATS System-of-Record:</strong> <em>"Can you share the internal corporate ATS Requisition ID to confirm active corporate headcount?"</em></li>
+          <li><strong>Hiring Timeline:</strong> <em>"What is the projected target start date and when will initial interviews conclude?"</em></li>
+          <li><strong>Pipeline Stage:</strong> <em>"Are any candidates currently in final-round stakeholder interviews for this specific opening?"</em></li>
+          <li><strong>Salary Transparency:</strong> <em>"Is the compensation band fixed for this level or dependent on candidate negotiation history?"</em></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Machine Learning Suite with Zero-Leakage Benchmarks -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Machine Learning Suite</div>
+    <h2>Zero-Leakage 5-Fold GroupKFold &amp; Platt Calibration</h2>
+    <p>In job listings analytics, standard random cross-validation allows models to memorize company-specific hiring styles across train and test folds. Naukri Saaf enforced strict <strong>5-Fold GroupKFold cross-validation grouped by 890 unique employer IDs</strong>, combined with weak supervision consensus (Snorkel) and Platt probability scaling.</p>
+
+    <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;margin-bottom:28px;">
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/09_mlops_leaderboard.png" alt="MLOps Benchmark Leaderboard and Platt Calibration Curve" />
+        <div class="cap">MLOps benchmark leaderboard and Platt probability calibration curve achieving an optimal Brier score of 0.0167.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/10_employer_risk_radar.png" alt="Employer Risk Radar &amp; Serial Reposter Leaderboard" />
+        <div class="cap">Employer risk radar profiling serial reposters and benchmarking hiring transparency across enterprise employers.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/16_psi_drift_alert.png" alt="Population Stability Index (PSI) Data Drift Telemetry Alert" />
+        <div class="cap">Automated MLOps drift telemetry triggering red alert when Population Stability Index exceeds the 0.25 retraining threshold.</div>
+      </div>
+    </div>
+
+    <div class="cs-two-col">
+      <div>
+        <p><strong style="color:var(--text-primary)">Snorkel Weak Supervision</strong> — 14 heuristic labeling functions programmatically generated probabilistic proxy ground truth with Fleiss' Kappa agreement of <strong>κ = 0.589</strong>, overcoming the zero-ground-truth paradox.</p>
+        <p><strong style="color:var(--text-primary)">5-Fold GroupKFold Cross-Validation</strong> — All 2,851 postings were partitioned across 890 corporate employer entities with 0% data leakage between train and evaluation folds.</p>
+      </div>
+      <div>
+        <p><strong style="color:var(--text-primary)">Platt Sigmoid Calibration</strong> — Calibrated raw ensemble margins into true posterior probabilities, compressing the Brier Score down from 0.084 to <strong>0.0167</strong>.</p>
+        <p><strong style="color:var(--text-primary)">Automated Drift Telemetry (PSI)</strong> — Monitored input feature distributions continuously; drift triggers a production retraining alert when <strong>PSI &gt; 0.25</strong>.</p>
+      </div>
+    </div>
+
+    <div class="tech-tags" style="margin-top:20px;">
+      <span class="chip">Snorkel Generative Model</span>
+      <span class="chip">LightGBM Classifier</span>
+      <span class="chip">5-Fold GroupKFold</span>
+      <span class="chip">Platt Scaling (Brier 0.0167)</span>
+      <span class="chip">TreeSHAP Explainability</span>
+      <span class="chip">Population Stability Index (PSI)</span>
+    </div>
+  </div>
+</section>
+
+<!-- Deep Forensic Tooling Suite -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Forensic Intelligence &amp; Candidate Defense</div>
+    <h2>Deep Forensic Tooling: Syndication Networks, NLP Fluff &amp; Safe Search</h2>
+    <p>Beyond isolated risk scores, Naukri Saaf provides forensic deep dives into corporate recruitment behavior, exposing cross-portal repost syndicates, JD buzzword vagueness, and verified safe alternative openings.</p>
+
+    <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;margin-bottom:28px;">
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/11_syndication_graph.png" alt="Bipartite Job Syndication Network Graph" />
+        <div class="cap">Bipartite recruitment syndication graph exposing multi-portal job cloning across third-party staffing agencies.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/12_nlp_vagueness_matrix.png" alt="NLP Lexical Vagueness and Buzzword Matrix" />
+        <div class="cap">NLP forensic matrix contrasting concrete tech stack densities against boilerplate buzzwords and generic filler.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/a15.png" alt="Ghost-Safe Alternative Job Opening Recommender" />
+        <div class="cap">Safe-harbor recommender surfacing verified active job openings matching candidate title and geographic criteria.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/14_data_explorer_table.png" alt="Searchable Enterprise Data Explorer Table" />
+        <div class="cap">Full-text searchable data explorer with multi-parameter filtering across all 2,851 audited requisitions.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/15_forensic_dossier_export.png" alt="Executive Forensic Dossier Markdown Exporter" />
+        <div class="cap">One-click executive dossier generator exporting audit-ready Markdown and CSV compliance reports.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Engineering Rigor & Terminal Verifications -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Engineering Rigor &amp; Automated Verification</div>
+    <h2>Terminal Telemetry: Pytest Contracts, Semantic Vectors &amp; 100% API Pass</h2>
+    <p>Every engineering pipeline in Naukri Saaf is covered by automated integration test contracts, semantic embedding clustering, and autonomous verification agents executing against live endpoints.</p>
+
+    <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;margin-bottom:28px;">
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/a1.png" alt="Pytest 21/21 passed terminal output and Pandera schema validation" />
+        <div class="cap">Pytest validation suite executing 21 integration tests in 3.39s with 100% Pandera schema contract assertions.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/a4.png" alt="64-dimensional semantic embedding and cross-company plagiarism terminal log" />
+        <div class="cap">64-dimensional semantic embedding engine auditing cross-company job description plagiarism and duplication.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/a5.png" alt="Autonomous verification agent terminal run on 180 gold benchmarks across 11 endpoints" />
+        <div class="cap">Autonomous verification agent running 180 gold benchmarks across all 11 FastAPI endpoints with 100% success.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/13_fastapi_swagger_docs.png" alt="FastAPI Swagger Interactive OpenAPI 3.1 Documentation" />
+        <div class="cap">FastAPI Swagger interactive OpenAPI documentation exposing 11 microservice endpoints with sub-15ms response SLA.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Client-Side Chrome Extension -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Client-Side Chrome Extension</div>
+    <h2>Manifest V3 Side Panel: Instant DOM Scoring with Zero Network Calls</h2>
+    <p>The Chrome extension runs completely client-side in the user's browser, inspecting the live job requisition DOM directly on LinkedIn, Indeed, Glassdoor, and Naukri. With 0 byte egress, candidate data and uploaded resumes never leave the local machine.</p>
+
+    <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;margin-bottom:28px;">
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/01_indeed_live_inspection.png" alt="Manifest V3 Chrome Extension scoring live postings directly on job portals" />
+        <div class="cap">Manifest V3 Chrome Extension scoring live postings directly in the browser DOM with zero network latency.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/naukri-saaf/02_resume_fit_match.png" alt="Zero-Knowledge Resume Fit Matcher using client-side TF-IDF" />
+        <div class="cap">Client-side TF-IDF resume matcher computing skill alignment without sending candidate documents to external servers.</div>
+      </div>
+    </div>
+
+    <div class="tech-tags">
+      <span class="chip">Manifest V3 Side Panel</span>
+      <span class="chip">Zero-Egress Security</span>
+      <span class="chip">Local TF-IDF Fit Matching</span>
+      <span class="chip">DOM Signal Extraction</span>
+      <span class="chip">chrome.storage.local</span>
+    </div>
+  </div>
+</section>
+
+<!-- Animated Interactive Architecture Section -->
+<section class="cs-section" id="architecture">
+  <div class="wrap">
+    <div class="eyebrow">Interactive System Architecture</div>
+    <h2>From Multi-Portal Ingestion to Live Browser Scoring: Animated Pipeline</h2>
+    <p>Trace the live forensic lifecycle below. Click any stage or run the simulation to inspect engineering logic, data validation schemas, mathematical formulations, and code deliverables.</p>
+
+    <!-- Interactive Architecture Flowchart Component -->
+    <div class="interactive-flowchart" id="naukri-flowchart">
+      <!-- Controls -->
+      <div class="flow-controls">
+        <div class="flow-stepper-info">
+          <span class="flow-badge">Active Stage: <strong class="flow-current-label">Stage 01: Multi-Portal Scraping &amp; Unification</strong></span>
+          <span class="flow-status-pill"><span class="flow-pulse-dot"></span> <span class="flow-status-text">Interactive Mode (Ready)</span></span>
+        </div>
+        <div class="flow-actions">
+          <button class="flow-sim-btn" type="button">▶ Run Pipeline Simulation</button>
+          <button class="flow-step-btn prev" type="button" aria-label="Previous Stage">←</button>
+          <button class="flow-step-btn next" type="button" aria-label="Next Stage">→</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Track Nodes -->
+      <div class="flow-track-wrapper">
+        <div class="flow-track">
+          <button class="flow-node-btn active" type="button" data-log="[INGESTION] Crawling Apify actors across LinkedIn, Indeed, Glassdoor... Normalized 2,851 job postings into MySQL staging.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">01</span>
+              <span class="flow-node-badge">2,851 Jobs</span>
+            </div>
+            <div class="flow-node-title">Multi-Portal Ingestion</div>
+            <div class="flow-node-desc">Apify scrapers &amp; 32-query SQL schema unification</div>
+            <div class="flow-node-footer">
+              <span>SQL Staging</span>
+              <span>3 Portals</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[LABELING] Running Snorkel Generative Model across 14 programmatic labeling functions... Generated probabilistic proxy labels (κ=0.589).">
+            <div class="flow-node-head">
+              <span class="flow-node-num">02</span>
+              <span class="flow-node-badge">κ = 0.589</span>
+            </div>
+            <div class="flow-node-title">Snorkel Weak Supervision</div>
+            <div class="flow-node-desc">14 heuristic labeling functions &amp; generative consensus</div>
+            <div class="flow-node-footer">
+              <span>Generative AI</span>
+              <span>Zero Ground Truth</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[FEATURES] Engineering posting velocity vectors &amp; structuring 5-Fold GroupKFold by employer ID to eliminate leakage.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">03</span>
+              <span class="flow-node-badge">5-Fold Grouped</span>
+            </div>
+            <div class="flow-node-title">Feature Eng &amp; GroupKFold</div>
+            <div class="flow-node-desc">Lifespan, repost velocity, salary ratio &amp; leakage guard</div>
+            <div class="flow-node-footer">
+              <span>Zero Leakage</span>
+              <span>890 Employers</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[MODEL CORE] Training LightGBM / Gradient Boosting classifier with Platt calibration... TreeSHAP local attributions extracted.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">04</span>
+              <span class="flow-node-badge">Brier 0.0167</span>
+            </div>
+            <div class="flow-node-title">Calibrated ML &amp; TreeSHAP</div>
+            <div class="flow-node-desc">Platt scaling &amp; per-feature local explainability</div>
+            <div class="flow-node-footer">
+              <span>TreeSHAP</span>
+              <span>Calibrated</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[SERVING] Dispatching sub-15ms FastAPI microservice &amp; syncing Manifest V3 Chrome Extension sidepanel on live job boards.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">05</span>
+              <span class="flow-node-badge">&lt;15ms Latency</span>
+            </div>
+            <div class="flow-node-title">FastAPI &amp; Chrome Extension</div>
+            <div class="flow-node-desc">Manifest V3 live sidepanel + 15-tab Streamlit suite</div>
+            <div class="flow-node-footer">
+              <span>Manifest V3</span>
+              <span>15 Workbenches</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Inspector Panels -->
+      <div class="flow-inspector">
+        <!-- Stage 01 Detail -->
+        <div class="flow-stage-content" style="display:block;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 01: Multi-Portal Scraping &amp; 32-Query SQL Staging</div>
+              <div class="flow-inspector-subtitle">Normalizing noisy listings from LinkedIn, Indeed, and Glassdoor into an audit-ready relational schema.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">100% Normalized</span>
+              <span class="flow-meta-tag">2,851 Modeled Listings</span>
+              <span class="flow-meta-tag">3 Major Job Portals</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Extracts raw job requisitions across multiple portals, normalizing varying salary string syntaxes, date formats, and duplicate company identifiers into a unified MySQL database.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Apify distributed scrapers, MySQL 8.0 with 32 staging transformations, Pandera schema contract assertions, regex salary parser.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>01_Datasets_Raw_Scrapes/</code><br/><code>02_SQL/</code><br/><code>src/monitoring/data_validation.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>3,000 Scraped &rarr; 2,851 Clean Rows</strong> (149 incomplete listings purged with full audit trail).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 02 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 02: Snorkel Generative Weak Supervision Engine</div>
+              <div class="flow-inspector-subtitle">Synthesizing programmatic labeling consensus in the complete absence of ground-truth job legitimacy labels.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">κ = 0.589 Agreement</span>
+              <span class="flow-meta-tag">14 Labeling Functions</span>
+              <span class="flow-meta-tag">Zero Human Label Bias</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Solves the cold-start label dilemma: no job board publishes which postings are phantoms. Programmatic heuristics assign probabilistic proxy labels without subjective bias.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Snorkel Generative LabelModel, covariance matrix solver, 14 labeling functions tracking repost velocity, listing age &gt; 90 days, zero salary, and high vagueness.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>src/labeling/evaluate_labels.py</code><br/><code>src/labeling/labeling_functions.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Fleiss' Kappa κ = 0.589</strong> indicating substantial inter-rule agreement across all 2,851 rows.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 03 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 03: Feature Engineering &amp; 5-Fold GroupKFold Guard</div>
+              <div class="flow-inspector-subtitle">Eliminating employer-level data leakage across 890 unique corporate entities.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Zero Employer Leakage</span>
+              <span class="flow-meta-tag">5-Fold GroupKFold</span>
+              <span class="flow-meta-tag">Temporal Lag Features</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Prevents machine learning models from memorizing specific company hiring quirks by ensuring that all postings from a single employer remain strictly inside either train or test folds.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Scikit-learn <code>GroupKFold(n_splits=5)</code>, TF-IDF lexical vagueness matrices, listing lifespan calculation, repost frequency index.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>src/features/nlp_pipeline.py</code><br/><code>src/analytics/listing_age_analysis.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>890 Disjoint Employer Groups</strong> audited with 0% overlap between train and validation splits.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 04 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 04: Calibrated Classifier &amp; TreeSHAP Feature Attributions</div>
+              <div class="flow-inspector-subtitle">Extracting mathematical feature attributions so no job flag ships without an audit-traceable reason.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Brier Score = 0.0167</span>
+              <span class="flow-meta-tag">Platt Scaled</span>
+              <span class="flow-meta-tag">TreeSHAP Local Drivers</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Calibrates raw model margins into true posterior risk probabilities (0%–100%) and decomposes each prediction into individual SHAP contribution scores.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">LightGBM / Gradient Boosting, Platt scaling via <code>CalibratedClassifierCV(method='sigmoid')</code>, TreeSHAP waterfall explainer.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>src/models/train_pipeline.py</code><br/><code>src/models/evaluate_models.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Top Drivers</strong>: <code>days_live</code> (+0.34 SHAP) and <code>repost_velocity</code> (+0.28 SHAP) outrank pure text tokens.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 05 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 05: Sub-15ms FastAPI &amp; Manifest V3 Chrome Extension</div>
+              <div class="flow-inspector-subtitle">Delivering instant forensic intelligence directly into candidate browser sidepanels on live portals.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">&lt;15ms Response Time</span>
+              <span class="flow-meta-tag">Manifest V3 Extension</span>
+              <span class="flow-meta-tag">15 Streamlit Workbenches</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Provides job seekers with instant fit score verification, ghost risk gauges, and recruiter phishing audits directly alongside active job applications.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">FastAPI asynchronous REST microservice, Chrome Manifest V3 sidepanel with DOM scraping, Streamlit 15-tab suite, Power BI desktop report.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>src/api/main.py</code><br/><code>06_Chrome_Extension/sidepanel.html</code><br/><code>dashboards/Naukrisaaf_FinalDashboard.pbix</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>14.2ms Average Latency</strong> on <code>/predict</code> API endpoint across 100 concurrent test requests.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Console Ticker -->
+      <div class="flow-console" style="margin-top:16px;">
+        <span class="flow-console-prompt">&gt; telemetry:</span>
+        <span class="flow-console-text">[READY] Pipeline initialized. Click any stage or press 'Run Pipeline Simulation'.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Power BI Dashboard Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Power BI Dashboard</div>
+    <h2>Executive Summary Version (.pbix)</h2>
+    <div class="dash-embed">
+      <div class="dash-head">
+        <div class="t">Naukri Saaf — Labor Market Risk &amp; Ghost Job Detection (Power BI)</div>
+        <a class="download-btn" href="dashboards/Naukrisaaf_FinalDashboard.pbix" download>Download .pbix ↓</a>
+      </div>
+      <div class="dash-body">
+        <img src="screenshots/naukri-saaf/13_powerbi_preview.png" alt="Naukri Saaf Power BI dashboard preview" />
+        <div class="cap" style="padding:10px 16px;background:var(--bg-surface);border-top:1px solid var(--border-subtle);font-size:0.85rem;color:var(--text-secondary);">Comprehensive 8-page Power BI executive dashboard with interactive DAX drill-downs and cross-portal risk slicing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Honest Limitations Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Honest Engineering Notes</div>
+    <div class="limits-box">
+      <h4>Methodological Transparency &amp; Assumptions</h4>
+      <p>The ghost-job classification label is a programmatic proxy synthesized via Snorkel weak supervision and heuristic consensus (Fleiss' κ = 0.589), as no public job board publishes ground-truth confirmation of closed or phantom postings. The Chrome extension executes entirely within the browser sandbox using calibrated model coefficients from <code>feature_importance_v3.csv</code> and local TF-IDF cosine similarity, guaranteeing that applicant resumes never transmit over the network. Economic loss figures model direct candidate preparation hours valued at median early-career professional opportunity costs (₹650/hr). All API latency SLAs (&lt;15ms) were benchmarked using Locust across 100 concurrent asynchronous requests.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-links">
+      <a href="index.html">← All projects</a>
+      <a href="kavach.html">KAVACH case study →</a>
+      <a href="archon.html">Archon case study →</a>
+      <a href="profitara.html">Profitara case study →</a>
+      <a href="https://github.com/jaindhruv1923/Project-Naukri-Saaf-Job-Listings-Analysis" target="_blank">Repo ↗</a>
+    </div>
+    <div class="footer-clock" id="footer-clock"></div>
+    <div class="fine" style="margin-top:14px;">Dhruv Jain · © 2026</div>
+  </div>
+</footer>
+
+<div id="lightbox"><span class="close">✕</span><img src="" alt="" /></div>
+
+<script src="script.js"></script>
+<script src="chatbot.js"></script>
+<button id="chatbot-toggle" aria-label="Ask about Dhruv">💬</button>
+<div id="chatbot-panel">
+  <div class="cb-head">Ask about Dhruv — resume-only</div>
+  <div id="cb-log"></div>
+  <div class="cb-chip-row">
+    <span class="cb-chip">Skills</span><span class="cb-chip">Projects</span><span class="cb-chip">Experience</span><span class="cb-chip">Contact</span>
+  </div>
+  <div class="cb-input-row">
+    <input id="cb-input" type="text" placeholder="Ask a question..." />
+    <button id="cb-send">→</button>
+  </div>
+</div>
+</body>
+</html>

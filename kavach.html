@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KAVACH — Case Study · Dhruv Jain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<div id="loader"><div class="mark">◆ LOADING KAVACH CASE STUDY</div></div>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0%;z-index:100;"></div>
+<div id="cursor-glow"></div>
+
+<!-- BLUEPRINT CANVAS GRID (Visual Texture & Depth) -->
+<div class="blueprint-grid-canvas" aria-hidden="true"></div>
+
+<!-- INTERACTIVE BACKGROUND MOUSE PARTICLE CONSTELLATION WEB -->
+<canvas id="interactive-particle-web" aria-hidden="true"></canvas>
+
+<!-- FIXED TELEMETRY RAILS & FIBER-OPTIC DATA PACKET STREAMS -->
+<!-- Left Rail: CAD Ruler & Live Section Scroll-Spy -->
+<aside class="telemetry-rail telemetry-rail-left" aria-label="Section Navigation and Telemetry">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-cad-ruler" aria-hidden="true">
+    <span class="cad-tick">0000</span>
+    <span class="cad-tick">0600</span>
+    <span class="cad-tick">1200</span>
+    <span class="cad-tick">1800</span>
+    <span class="cad-tick">2400</span>
+    <span class="cad-tick">3000</span>
+    <span class="cad-tick">3600</span>
+    <span class="cad-tick">4200</span>
+  </div>
+  <div class="rail-header-tag" title="Flagship Case Study">
+    <span class="rail-pulse-dot"></span>
+    <span class="rail-mono-text">ACTIVE</span>
+  </div>
+  <nav class="rail-section-nav" aria-label="Quick Navigation">
+    <a href="index.html#projects" class="rail-nav-item active" title="Back to All Projects">
+      <span class="rail-nav-num">←</span>
+      <span class="rail-nav-label">Projects</span>
+    </a>
+    <a href="index.html#sql-lab" class="rail-nav-item" title="Live SQL Workbench">
+      <span class="rail-nav-num">02</span>
+      <span class="rail-nav-label">SQL Lab</span>
+    </a>
+    <a href="index.html#contact" class="rail-nav-item" title="Contact Dhruv">
+      <span class="rail-nav-num">08</span>
+      <span class="rail-nav-label">Contact</span>
+    </a>
+  </nav>
+  <div class="rail-footer-tag" title="Gurugram Development HQ Coordinates">
+    <span class="rail-coord-text">28.45°N</span>
+  </div>
+</aside>
+
+<!-- Right Rail: Fast-Action Dock, Socials & Back-To-Top -->
+<aside class="telemetry-rail telemetry-rail-right" aria-label="Executive Quick Actions and Socials">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-vertical-brand">
+    <span class="brand-monogram">DJ // 2025</span>
+    <span class="brand-sub">ANALYTICS</span>
+  </div>
+  <div class="rail-action-cluster">
+    <button type="button" class="rail-action-btn" onclick="copyEmail(event)" title="1-Click Copy Dhruv's Email" aria-label="Copy Email">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </button>
+    <button type="button" class="rail-action-btn" onclick="copyRecruiterBrief()" title="1-Click Copy ATS Candidate Summary" aria-label="Copy Recruiter Brief">
+      <span style="font-size:12px;">⚡</span>
+    </button>
+    <a href="https://github.com/dhruvjain2805" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="GitHub Profile" aria-label="GitHub">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/dhruvjain2805" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="LinkedIn Profile" aria-label="LinkedIn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.81a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+    </a>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="rail-action-btn" title="Download ATS Verified Resume (PDF)" aria-label="Resume PDF">
+      <span style="font-size:11px;font-weight:800;font-family:var(--font-mono);color:var(--accent);">CV↓</span>
+    </a>
+  </div>
+  <button type="button" class="rail-scroll-top-btn" id="railScrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" aria-label="Scroll to top">
+    ↑
+  </button>
+</aside>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand"><span class="dot">◆</span> Dhruv Jain</a>
+    <div class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="profitara.html">Profitara</a>
+      <a href="naukri-saaf.html">Naukri Saaf</a>
+      <a href="archon.html">Archon Copilot</a>
+      <a href="grilli.html">Grilli</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="nav-cta">Resume (1-Page) ↓</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap cs-hero-grid">
+    <div>
+      <a href="index.html#projects" class="cs-back">← Back to projects</a>
+      <div class="eyebrow">Security-Governed Agentic AI &amp; Data Platform</div>
+      <h1>KAVACH: zero-leakage RAG, AST blast-radius analysis, and deterministic PII defense.</h1>
+      <p class="lede">An enterprise-grade agentic data retrieval pipeline pairing Qdrant semantic vector search and Google Gemini with an automated security engine — evaluated at 1.00 Precision/Recall/F1 and enforced across 164 passing tests and automated CI/CD quality gates.</p>
+
+      <div class="cs-meta-row">
+        <div class="cs-meta"><div class="k">Role</div><div class="v">Lead Architect — Pipeline, Security Engine, AST Evaluator</div></div>
+        <div class="cs-meta"><div class="k">Stack</div><div class="v">Python · FastAPI · Qdrant Vector DB · Sentence Transformers · Gemini API · pytest</div></div>
+        <div class="cs-meta"><div class="k">Verification</div><div class="v">164/164 Unit &amp; Integration Tests Passing · 1.00 PII F1 Score</div></div>
+      </div>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="https://github.com/jaindhruv1923/KAVACH" target="_blank" class="btn btn-primary">View GitHub Repo ↗</a>
+        <a href="#architecture" class="btn btn-ghost">View Architecture ↓</a>
+        <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="btn btn-ghost">Download Resume ↓</a>
+      </div>
+    </div>
+
+    <aside class="flow-panel reveal">
+      <div class="flow-title">How KAVACH Governs AI</div>
+      <div class="flow-chain">
+        <div class="flow-node"><div class="flow-dot">01</div><div class="flow-body"><div class="t">The Vulnerability</div><div class="d">LLM code copilots leak Aadhaar/PAN keys, generate hallucinated packages, and break downstream dependencies silently.</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">02</div><div class="flow-body"><div class="t">Agentic RAG Engine</div><div class="d">Embeds repo codebases into Qdrant using Sentence Transformers with dense semantic chunking.</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">03</div><div class="flow-body"><div class="t">Deterministic Security Gate</div><div class="d">Sub-10ms regex &amp; entropy scanner intercepting PII, financial identifiers, and API secrets (1.00 F1).</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">04</div><div class="flow-body"><div class="t">AST Blast-Radius Analyzer</div><div class="d">Constructs call graphs from Abstract Syntax Trees to compute exact affected downstream files (0.72 avg F1).</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">05</div><div class="flow-body"><div class="t">Automated CI/CD Barrier</div><div class="d">Blocks insecure PRs directly in GitHub Actions with forensic incident JSON reports.</div></div></div>
+      </div>
+      <div class="flow-thumb"><img src="screenshots/kavach/ss1.png" alt="KAVACH security dashboard preview" /></div>
+    </aside>
+  </div>
+</header>
+
+<section class="cs-section" id="architecture">
+  <div class="wrap">
+    <div class="eyebrow">Interactive System Architecture</div>
+    <h2>Multi-Stage Security &amp; Retrieval Topology</h2>
+    <p style="margin-bottom: 24px;">KAVACH operates as an autonomous proxy between the engineer, the repository vector database, and the LLM generation layer. Every inbound request and outbound patch passes through a deterministic security boundary.</p>
+
+    <!-- Interactive Architecture Flowchart Component -->
+    <div class="interactive-flowchart" id="kavach-flowchart">
+      <!-- Controls -->
+      <div class="flow-controls">
+        <div class="flow-stepper-info">
+          <span class="flow-badge">Active Stage: <strong class="flow-current-label">Stage 01: Inbound API Interceptor</strong></span>
+          <span class="flow-status-pill"><span class="flow-pulse-dot"></span> <span class="flow-status-text">Interactive Mode (Ready)</span></span>
+        </div>
+        <div class="flow-actions">
+          <button class="flow-sim-btn" type="button">▶ Run Pipeline Simulation</button>
+          <button class="flow-step-btn prev" type="button" aria-label="Previous Stage">←</button>
+          <button class="flow-step-btn next" type="button" aria-label="Next Stage">→</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Track Nodes -->
+      <div class="flow-track-wrapper">
+        <div class="flow-track">
+          <button class="flow-node-btn active" type="button" data-log="[INTERCEPT] Incoming prompt/patch payload intercepted by FastAPI Security Proxy... Tokenizing stream.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">01</span>
+              <span class="flow-node-badge">Proxy Gateway</span>
+            </div>
+            <div class="flow-node-title">Inbound API Interceptor</div>
+            <div class="flow-node-desc">FastAPI proxy capturing prompts, completions &amp; diffs</div>
+            <div class="flow-node-footer">
+              <span>Zero Leakage</span>
+              <span>&lt;2ms SLA</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[SECURITY GATE] Deterministic token verification: Aadhaar (Verhoeff), PAN, AWS tokens... 0 Leakage detected (1.00 F1).">
+            <div class="flow-node-head">
+              <span class="flow-node-num">02</span>
+              <span class="flow-node-badge">1.00 F1 Score</span>
+            </div>
+            <div class="flow-node-title">Deterministic PII Gate</div>
+            <div class="flow-node-desc">Verhoeff checksum for Aadhaar, regex for PAN &amp; secrets</div>
+            <div class="flow-node-footer">
+              <span>Mathematical</span>
+              <span>&lt;10ms SLA</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[AST GRAPH] Generating repository Abstract Syntax Tree... Traversed 42 caller-callee edges to evaluate blast radius.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">03</span>
+              <span class="flow-node-badge">0.72 Avg F1</span>
+            </div>
+            <div class="flow-node-title">AST Blast Radius</div>
+            <div class="flow-node-desc">Python AST DAG parsing &amp; downstream breakage mapping</div>
+            <div class="flow-node-footer">
+              <span>Acyclic Graph</span>
+              <span>Static Analysis</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[RAG SYNTHESIS] Querying Qdrant vector database via Sentence Transformers embeddings... Context injected to Gemini 2.5.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">04</span>
+              <span class="flow-node-badge">Dense Vectors</span>
+            </div>
+            <div class="flow-node-title">Qdrant &amp; Gemini RAG</div>
+            <div class="flow-node-desc">Dense semantic vector search + Gemini API synthesis</div>
+            <div class="flow-node-footer">
+              <span>BGE Embeddings</span>
+              <span>Gemini 2.5</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[AUDIT GATE] Executing automated CI/CD security gate barrier... 164/164 Pytest suites PASSED. Emitted incident JSON.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">05</span>
+              <span class="flow-node-badge">164 Passed</span>
+            </div>
+            <div class="flow-node-title">CI/CD Gate &amp; Telemetry</div>
+            <div class="flow-node-desc">Automated PR barrier, 164 tests &amp; JSON incident log</div>
+            <div class="flow-node-footer">
+              <span>GitHub Actions</span>
+              <span>Zero-Tolerance</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Inspector Panels -->
+      <div class="flow-inspector">
+        <!-- Stage 01 Detail -->
+        <div class="flow-stage-content" style="display:block;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 01: Inbound Request Gateway &amp; Telemetry Proxy</div>
+              <div class="flow-inspector-subtitle">Intercepting all developer interactions before external foundation models or vector stores receive code.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">&lt;2ms Latency</span>
+              <span class="flow-meta-tag">FastAPI Gateway</span>
+              <span class="flow-meta-tag">Inbound Stream Proxy</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Operates as a high-throughput proxy intercepting prompt submissions, code auto-completions, and patch proposals from IDE extensions.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">FastAPI asynchronous ASGI middleware, streaming token reader, origin IP/session validation, cryptographically hashed request identifiers.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>kavach/backend/app/main.py</code><br/><code>run_kavach.bat</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Sub-2ms Gateway Latency</strong> added to developer prompt round-trips with 100% capture fidelity.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 02 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 02: Deterministic PII &amp; Secret Redaction Gate</div>
+              <div class="flow-inspector-subtitle">Mathematical token verification with 1.00 Precision, Recall, and F1 across sensitive credentials.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">1.00 F1 Score</span>
+              <span class="flow-meta-tag">Verhoeff Algorithm</span>
+              <span class="flow-meta-tag">Zero False Positives</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Replaces hallucination-prone LLM safety guardrails with deterministic algorithms to block Aadhaar numbers, PAN cards, phone numbers, and cloud API tokens.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Verhoeff dihedral group D5 checksum algorithm for Aadhaar, regex structural validators for PAN (5 letters, 4 digits, 1 letter), high-entropy secret scanners.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>kavach/backend/app/security/pii_engine.py</code><br/><code>test_cases_work.png</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Precision: 1.00 · Recall: 1.00 · F1: 1.00</strong> across a 42-run rigorous enterprise benchmark corpus.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 03 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 03: Static AST Dependency Graph &amp; Blast-Radius Engine</div>
+              <div class="flow-inspector-subtitle">Parsing repository Abstract Syntax Trees to predict downstream breakage before commits occur.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">0.72 Avg F1</span>
+              <span class="flow-meta-tag">Python AST Parsing</span>
+              <span class="flow-meta-tag">Acyclic Call DAG</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Traces function call graphs and import relationships across Python files to calculate the exact blast radius of proposed code patches.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Python native <code>ast</code> module traversal, directed acyclic graph (DAG) constructor, caller-callee resolution, change impact scoring.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>kavach/backend/app/ast/dependency_analyzer.py</code><br/><code>Change_Impact_Analysis.png</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>0.72 Average F1</strong> impact accuracy across 4 enterprise repo modules, mapping all affected callers.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 04 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 04: Semantic Dense Retrieval &amp; Gemini Synthesis</div>
+              <div class="flow-inspector-subtitle">Qdrant vector similarity search paired with guarded Google Gemini code generation.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Qdrant Vector DB</span>
+              <span class="flow-meta-tag">Sentence Transformers</span>
+              <span class="flow-meta-tag">Gemini 2.5 Flash</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Retrieves the most semantically relevant documentation and code snippets, sanitizing the payload before prompt context injection into Gemini.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Sentence Transformers dense embeddings (BGE-small), Qdrant vector database with cosine distance indexing, Google Gemini API client with fallback.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>kavach/backend/app/rag/vector_store.py</code><br/><code>kavach/backend/app/rag/gemini_client.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Zero-PII Injected Prompt</strong> confirmed: sensitive tokens are redacted prior to API transit.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 05 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 05: Outbound CI/CD Barrier &amp; Forensic Telemetry</div>
+              <div class="flow-inspector-subtitle">Zero-tolerance GitHub Actions security gate enforcing compliance across 164 test suites.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">164/164 Tests Passed</span>
+              <span class="flow-meta-tag">GitHub Actions CI Gate</span>
+              <span class="flow-meta-tag">JSON Forensic Log</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Blocks non-compliant PRs at the CI/CD boundary and records structured JSON incident logs for compliance and security auditing.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">GitHub Actions workflow gate (exit 1 on security breach), Pytest automated test runner (164 tests), forensic incident JSON dispatcher.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>security_gate_report.json</code><br/><code>pytest.ini</code><br/><code>01_Final_Test_Suite_164_Passed.png</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>164/164 Unit &amp; Integration Tests Passing</strong> with automated CI security barrier PASS status.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Console Ticker -->
+      <div class="flow-console" style="margin-top:16px;">
+        <span class="flow-console-prompt">&gt; telemetry:</span>
+        <span class="flow-console-text">[READY] Pipeline initialized. Click any stage or press 'Run Pipeline Simulation'.</span>
+      </div>
+    </div>
+
+    <div class="dash-embed" style="margin-top: 32px;">
+      <div class="dash-head">
+        <div class="t">KAVACH Core Backend &amp; Data Pipeline Architecture Graphic</div>
+        <span class="badge" style="background:rgba(16,185,129,0.15);color:#10B981;padding:4px 10px;border-radius:4px;font-family:var(--mono);font-size:0.75rem;">Verified Pipeline</span>
+      </div>
+      <div class="dash-body">
+        <img src="screenshots/kavach/Photo1_Backend_API Architecture.png" alt="KAVACH API Architecture" />
+        <div class="cap" style="padding:10px 16px;background:var(--bg-surface);border-top:1px solid var(--border-subtle);font-size:0.85rem;color:var(--text-secondary);">FastAPI microservice topology integrating deterministic regex scanner, Qdrant vector store, and Gemini API.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Production Dashboard &amp; Verification</div>
+    <h2>Audit Artifacts &amp; 164 Passing Tests</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="screenshots/kavach/ss1.png" alt="Executive Security Command Center with Live Production Telemetry" />
+        <div class="cap">Executive Security Command Center — Live production telemetry tracking 20/20 master checks, 164 pytest suites, and 39ms guardrail SLA.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/ss2.png" alt="Deterministic 8-Stage Architecture Flowchart" />
+        <div class="cap">Deterministic 8-Stage Architecture Flowchart — Interactive runtime simulation covering OWASP LLM01 injection, AST blast-radius, and CycloneDX SBOM.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/ss4.png" alt="Empirical CLI and Terminal Verification Suite" />
+        <div class="cap">Empirical CLI &amp; Verification Suite — Interactive master terminal verifying 20/20 academic rubrics, 164 tests, and 15 red-team intercept vectors.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/ss5.png" alt="Enterprise Governance Pillars and Audit Comparison Matrix" />
+        <div class="cap">Enterprise Governance Pillars &amp; Audit Matrix — Comparative analysis highlighting zero-knowledge privacy vaults and PyPI slopsquatting firewalls.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/ss24.png" alt="Comprehensive Verification Harness Terminal Output (278 Passed)" />
+        <div class="cap">End-to-End Verification Harness (python verify_project.py) — Passing 278/278 tests (100%), CI security gate, and all 10 cyber defense checks.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/Change_Impact_Analysis.png" alt="AST Dependency Blast-Radius Mapping" />
+        <div class="cap">Static AST Blast-Radius Engine — Multi-module Python call-graph mapping affected upstream and downstream functions across repositories.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/Secruity_Block_Review_1.png" alt="Forensic Incident Review and Credential Block" />
+        <div class="cap">Real-Time Credential Interception — Deterministic pre-execution gate intercepting Aadhaar and AWS tokens with forensic red-line diff markers.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/Secruity_Block_Review_2.png" alt="Security Reviewer Incident Dossier" />
+        <div class="cap">Forensic Incident Review Dossier — Cryptographically verifiable JSON audit reports dispatched directly to compliance teams and SOC analysts.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kavach/02_CI_Security_Gate_PASS.png" alt="GitHub Actions CI Security Gate Barrier PASS" />
+        <div class="cap">Automated CI/CD Quality Barrier — GitHub Actions workflow enforcing zero-regression compliance across enterprise pull requests.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">The Problem</div>
+    <h2>AI Code Assistants Are Blind to Data Governance</h2>
+    <p>Modern enterprises adopting GenAI code copilots face three catastrophic failure modes: accidental leakage of sensitive identifiers (Aadhaar, PAN, API credentials), hallucinated software dependencies, and unmapped downstream breakages. KAVACH replaces blind trust with deterministic mathematical verification.</p>
+
+    <div class="kpi-strip">
+      <div class="kpi"><div class="num">1.00</div><div class="label">PII Precision, Recall &amp; F1</div></div>
+      <div class="kpi"><div class="num">0.72</div><div class="label">AST Impact Avg F1</div></div>
+      <div class="kpi"><div class="num">164</div><div class="label">Verified Tests Passing</div></div>
+      <div class="kpi"><div class="num">&lt;10ms</div><div class="label">Scanner Gate Latency</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Engine Deep-Dive</div>
+    <h2>Two Mathematical Pillars Behind the Platform</h2>
+    <ul class="finding-list">
+      <li>
+        <span class="bullet">01</span>
+        <div>
+          <h3 style="margin-bottom:8px;font-size:1.2rem;">Deterministic Multi-Layer Security Engine (1.00 F1 Score)</h3>
+          <p>Unlike probabilistic LLM guardrails that hallucinate safety, KAVACH executes deterministic token pattern analysis and checksum validation across Aadhaar formats (Verhoeff algorithm validation), PAN structures (5 letters, 4 digits, 1 letter), phone numbers, and enterprise API keys. Evaluated against a 42-run rigorous test dataset with zero false positives or false negatives.</p>
+        </div>
+      </li>
+      <li>
+        <span class="bullet">02</span>
+        <div>
+          <h3 style="margin-bottom:8px;font-size:1.2rem;">AST-Driven Blast-Radius &amp; Dependency Analysis (0.72 Avg F1)</h3>
+          <p>Parses the entire target repository into Python Abstract Syntax Trees (AST) to generate an acyclic dependency graph. When an AI proposes a code modification, KAVACH traverses inbound and outbound import edges to calculate the exact blast radius — notifying developers of downstream breakage risk before committing to main.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Honest Limitations &amp; Architecture Roadmap</div>
+    <h2>What KAVACH Does and Does Not Do Yet</h2>
+    <div class="limit-grid">
+      <div class="limit-card">
+        <h4>Current Operational Reality</h4>
+        <p>Dynamic Python runtime attributes (such as <code>getattr</code> or dynamically imported modules) are not fully captured by static AST parsers alone. Dynamic call trace analysis was designated for Phase 2.</p>
+      </div>
+      <div class="limit-card">
+        <h4>Language Coverage Boundary</h4>
+        <p>The AST engine currently specializes in Python repositories. Cross-language dependency analysis for polyglot microservices (Go/Rust/TypeScript) is under active development.</p>
+      </div>
+      <div class="limit-card">
+        <h4>Air-Gapped LLM Roadmap</h4>
+        <p>The system currently integrates Google Gemini API with fallback to local Ollama models (Llama 3 / DeepSeek Coder) for sovereign air-gapped defense environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content: center;">Next Case Study</div>
+    <h2 style="font-size: 1.9rem; text-align: center; margin-bottom: 24px;">Explore Other Flagship Platforms</h2>
+    <div class="contact-links" style="justify-content: center; margin-bottom: 30px;">
+      <a href="profitara.html">Profitara (Retail BI) →</a>
+      <a href="naukri-saaf.html">Naukri Saaf (Ghost Jobs) →</a>
+      <a href="archon.html">Archon (LLM Benchmarking) →</a>
+      <a href="grilli.html">Grilli (Reservation) →</a>
+      <a href="index.html#projects">All Projects ↗</a>
+    </div>
+    <div class="fine">Dhruv Jain · B.Tech CSE (AI &amp; Data Science) · BML Munjal University (2023–2027)</div>
+  </div>
+</footer>
+
+<div id="lightbox"><span class="close">✕</span><img src="" alt="" /></div>
+
+<script src="script.js"></script>
+<script src="chatbot.js"></script>
+</body>
+</html>
