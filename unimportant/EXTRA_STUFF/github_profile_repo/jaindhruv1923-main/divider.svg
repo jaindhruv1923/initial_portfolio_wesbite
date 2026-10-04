@@ -1,0 +1,32 @@
+<svg width="1200" height="12" viewBox="0 0 1200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#F59E0B" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#F59E0B" stop-opacity="0.95"/>
+      <stop offset="75%" stop-color="#38BDF8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="glowPulse" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-1200 0; 1200 0; -1200 0" dur="4s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base Line -->
+  <line x1="40" y1="6" x2="1160" y2="6" stroke="url(#divGrad)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Sweeping Highlight -->
+  <line x1="40" y1="6" x2="1160" y2="6" stroke="url(#glowPulse)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Center Diamond Nodes -->
+  <g transform="translate(600, 6)">
+    <polygon points="0,-4 4,0 0,4 -4,0" fill="#F59E0B"/>
+    <circle cx="0" cy="0" r="1.5" fill="#FFFFFF"/>
+    <circle cx="-30" cy="0" r="1.5" fill="#38BDF8" opacity="0.6"/>
+    <circle cx="30" cy="0" r="1.5" fill="#38BDF8" opacity="0.6"/>
+  </g>
+</svg>

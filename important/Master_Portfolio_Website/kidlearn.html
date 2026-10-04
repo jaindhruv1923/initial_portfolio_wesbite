@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KidLearn — Gamified EdTech Habit Loop &amp; Canvas Analytics · Dhruv Jain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<div id="loader"><div class="mark">◆ LOADING CASE STUDY</div></div>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0%;z-index:100;"></div>
+<div id="cursor-glow"></div>
+
+<!-- BLUEPRINT CANVAS GRID (Visual Texture & Depth) -->
+<div class="blueprint-grid-canvas" aria-hidden="true"></div>
+
+<!-- INTERACTIVE BACKGROUND MOUSE PARTICLE CONSTELLATION WEB -->
+<canvas id="interactive-particle-web" aria-hidden="true"></canvas>
+
+<!-- FIXED TELEMETRY RAILS & FIBER-OPTIC DATA PACKET STREAMS -->
+<!-- Left Rail: CAD Ruler & Live Section Scroll-Spy -->
+<aside class="telemetry-rail telemetry-rail-left" aria-label="Section Navigation and Telemetry">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-cad-ruler" aria-hidden="true">
+    <span class="cad-tick">0000</span>
+    <span class="cad-tick">0600</span>
+    <span class="cad-tick">1200</span>
+    <span class="cad-tick">1800</span>
+    <span class="cad-tick">2400</span>
+    <span class="cad-tick">3000</span>
+    <span class="cad-tick">3600</span>
+    <span class="cad-tick">4200</span>
+  </div>
+  <div class="rail-header-tag" title="Flagship Case Study">
+    <span class="rail-pulse-dot"></span>
+    <span class="rail-mono-text">ACTIVE</span>
+  </div>
+  <nav class="rail-section-nav" aria-label="Quick Navigation">
+    <a href="index.html#projects" class="rail-nav-item active" title="Back to All Projects">
+      <span class="rail-nav-num">←</span>
+      <span class="rail-nav-label">Projects</span>
+    </a>
+    <a href="index.html#sql-lab" class="rail-nav-item" title="Live SQL Workbench">
+      <span class="rail-nav-num">02</span>
+      <span class="rail-nav-label">SQL Lab</span>
+    </a>
+    <a href="index.html#contact" class="rail-nav-item" title="Contact Dhruv">
+      <span class="rail-nav-num">08</span>
+      <span class="rail-nav-label">Contact</span>
+    </a>
+  </nav>
+  <div class="rail-footer-tag" title="Gurugram Development HQ Coordinates">
+    <span class="rail-coord-text">28.45°N</span>
+  </div>
+</aside>
+
+<!-- Right Rail: Fast-Action Dock, Socials & Back-To-Top -->
+<aside class="telemetry-rail telemetry-rail-right" aria-label="Executive Quick Actions and Socials">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-vertical-brand">
+    <span class="brand-monogram">DJ // 2025</span>
+    <span class="brand-sub">ANALYTICS</span>
+  </div>
+  <div class="rail-action-cluster">
+    <button type="button" class="rail-action-btn" onclick="copyEmail(event)" title="1-Click Copy Dhruv's Email" aria-label="Copy Email">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </button>
+    <button type="button" class="rail-action-btn" onclick="copyRecruiterBrief()" title="1-Click Copy ATS Candidate Summary" aria-label="Copy Recruiter Brief">
+      <span style="font-size:12px;">⚡</span>
+    </button>
+    <a href="https://github.com/jaindhruv1923" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="GitHub Profile" aria-label="GitHub">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/jaindhruv1923/" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="LinkedIn Profile" aria-label="LinkedIn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.81a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+    </a>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="rail-action-btn" title="Download ATS Verified Resume (PDF)" aria-label="Resume PDF">
+      <span style="font-size:11px;font-weight:800;font-family:var(--font-mono);color:var(--accent);">CV↓</span>
+    </a>
+  </div>
+  <button type="button" class="rail-scroll-top-btn" id="railScrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" aria-label="Scroll to top">
+    ↑
+  </button>
+</aside>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand"><span class="dot">◆</span> Dhruv Jain</a>
+    <div class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="profitara.html">Profitara</a>
+      <a href="naukri-saaf.html">Naukri Saaf</a>
+      <a href="kavach.html">KAVACH</a>
+      <a href="archon.html">Archon Copilot</a>
+      <a href="grilli.html">Grilli</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="nav-cta">Resume (1-Page) ↓</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap cs-hero-grid">
+    <div>
+      <a href="index.html#projects" class="cs-back">← Back to projects</a>
+      <div class="eyebrow">Full-Stack EdTech · Behavioral Gamification</div>
+      <h1>KidLearn: Turning daily study routines into an irresistible habit loop.</h1>
+      <p class="lede">A gamified learning platform engineered 100% client-side in vanilla HTML/CSS/JS — featuring custom 2D Canvas charting, a 21-badge achievement engine, Pomodoro focus cycles, and automated weekly parent report cards with zero cloud tracking.</p>
+
+      <div class="cs-meta-row">
+        <div class="cs-meta"><div class="k">Role</div><div class="v">Solo Build — Lead Frontend &amp; Interaction Engineer</div></div>
+        <div class="cs-meta"><div class="k">Tech Stack</div><div class="v">Vanilla JavaScript (ES6+) · Canvas 2D API · Web Audio API · localStorage</div></div>
+        <div class="cs-meta"><div class="k">Scope</div><div class="v">8 interactive pages, multi-child profiles, 100% offline-capable</div></div>
+      </div>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="projects/KidLearn/index.html" target="_blank" class="btn btn-primary">Launch Live KidLearn App ↗</a>
+        <a href="https://github.com/jaindhruv1923" target="_blank" class="btn btn-ghost">View GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- Animated Hero Flow Panel -->
+    <aside class="flow-panel reveal">
+      <div class="flow-title">⚡ Gamified Habit Loop Pipeline</div>
+      <div class="flow-chain">
+        <div class="flow-node">
+          <div class="flow-dot">01</div>
+          <div class="flow-body">
+            <div class="t">Multi-Profile State Engine</div>
+            <div class="d">HTML5 localStorage JSON store &amp; zero-latency child view switcher.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">02</div>
+          <div class="flow-body">
+            <div class="t">Pomodoro Focus Timer</div>
+            <div class="d">25m study / 5m break circular ring &amp; Web Audio frequency chimes.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">03</div>
+          <div class="flow-body">
+            <div class="t">Canvas 2D Geometry</div>
+            <div class="d">Bespoke radar chart &amp; dual-axis correlation with 0 external libraries.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">04</div>
+          <div class="flow-body">
+            <div class="t">Rule-Based Achievements</div>
+            <div class="d">21 predicate badge evaluators with celebratory confetti keyframes.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">05</div>
+          <div class="flow-body">
+            <div class="t">Automated Parent Report Card</div>
+            <div class="d">Algorithmic letter-grade rubric mapping consistency and weak spots.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-thumb">
+        <img src="screenshots/kidlearn/01_dashboard.png" alt="KidLearn executive student dashboard" />
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- Flagship Dashboard Gallery -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Application Gallery</div>
+    <h2>Core Platform Interfaces</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/01_dashboard.png" alt="Student Dashboard with Learning DNA Radar Chart and Stats" />
+        <div class="cap">Executive student cockpit tracking 1,450 XP, 7-day streak, subject progress, and Canvas Learning DNA radar.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/02_subjects_curriculum.png" alt="Six Subject Curriculum Progress Grid" />
+        <div class="cap">6-subject academic curriculum tracking completion levels across Math, Reading, Science, History, English, and Art.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/03_pomodoro_timer.png" alt="Pomodoro Focus Timer with Circular Countdown Ring" />
+        <div class="cap">Circular Canvas focus timer enforcing 25-minute Pomodoro intervals with real-time XP accumulation.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/04_achievements_badges.png" alt="21 Achievement Badges Collection Showcase" />
+        <div class="cap">21-badge gamification showcase displaying earned vs locked milestones with progress criteria.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/05_parent_report_card.png" alt="Automated Weekly Parent Report Card with Letter Grades" />
+        <div class="cap">Automated weekly parent report card calculating weighted subject grades (A+ to F) and study consistency.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/06_goals_progress.png" alt="Weekly Learning Goals Tracker" />
+        <div class="cap">Weekly learning targets monitor tracking subject hour quotas and completion velocities.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/07_heatmap_activity.png" alt="Daily Study Activity Heatmap" />
+        <div class="cap">GitHub-style daily study activity heatmap visualizing 365-day study consistency and streaks.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/kidlearn/08_notes_notebook.png" alt="Subject Learning Notes Scratchpad" />
+        <div class="cap">Subject learning scratchpad for lesson notes, formulas, and flashcard revision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Behavioral Gamification & Habit Loop Mechanics -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Behavioral Psychology &amp; Design</div>
+    <h2>The Hook Model: Turning Study Routines into an Intrinsic Habit Loop</h2>
+    <p>Rather than treating homework as a chore, KidLearn maps Nir Eyal's four-phase <strong>Hook Model</strong> directly into childhood cognitive development. By combining immediate visual rewards with compounding long-term milestones, students develop an intrinsic desire to log in and maintain daily consistency.</p>
+
+    <!-- KPI Strip -->
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="num">21</div>
+        <div class="label">Achievement Badges Engineered</div>
+      </div>
+      <div class="kpi">
+        <div class="num">6</div>
+        <div class="label">Academic Subjects Tracked</div>
+      </div>
+      <div class="kpi">
+        <div class="num">0 KB</div>
+        <div class="label">External Charting Library Overhead</div>
+      </div>
+      <div class="kpi">
+        <div class="num">100%</div>
+        <div class="label">Offline-First &amp; Zero Cloud Egress</div>
+      </div>
+    </div>
+
+    <!-- Habit Loop Grid -->
+    <div class="cs-two-col" style="margin-top:36px;margin-bottom:28px;">
+      <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:22px;">
+        <h4 style="color:var(--accent);margin-bottom:8px;">1. Trigger &amp; Identification:</h4>
+        <p style="font-size:0.92rem;line-height:1.6;color:var(--text-secondary);">Daily streak reminders and personalized animal avatars (e.g. 🦁 Aarav, 8 years old). The child identifies with their chosen character and feels personal ownership over maintaining their daily study flame.</p>
+      </div>
+      <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:22px;">
+        <h4 style="color:#10B981;margin-bottom:8px;">2. Low-Friction Action:</h4>
+        <p style="font-size:0.92rem;line-height:1.6;color:var(--text-secondary);">A 25-minute Pomodoro focus interval or a bite-sized 10-lesson practice session. Clear visual countdowns and zero complicated navigation reduce cognitive friction to zero.</p>
+      </div>
+    </div>
+
+    <div class="cs-two-col" style="margin-bottom:36px;">
+      <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:22px;">
+        <h4 style="color:#F59E0B;margin-bottom:8px;">3. Variable Reward:</h4>
+        <p style="font-size:0.92rem;line-height:1.6;color:var(--text-secondary);">Direct XP point accrual (+50 to +300 XP), randomized CSS confetti physics bursts, sound chimes, and tier-based badge unlocks (Bronze, Silver, Gold, Diamond).</p>
+      </div>
+      <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:22px;">
+        <h4 style="color:#8B5CF6;margin-bottom:8px;">4. Compounding Investment:</h4>
+        <p style="font-size:0.92rem;line-height:1.6;color:var(--text-secondary);">Building a multi-day streak and watching the 6-axis "Learning DNA" radar polygon expand over time. Breaking the streak means resetting progress, incentivizing daily return visits.</p>
+      </div>
+    </div>
+
+    <!-- Achievement Badge Matrix -->
+    <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:14px;color:var(--text-primary);">21-Badge Milestone Matrix</h3>
+    <div style="overflow-x:auto;margin-bottom:28px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Badge Title</th>
+            <th>Category Tier</th>
+            <th>Unlock Condition &amp; Rule Predicate</th>
+            <th>XP Bounty</th>
+            <th>Behavioral Reinforcement Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>First Step</strong> 🚀</td>
+            <td>Onboarding</td>
+            <td><code>lessons.total &gt;= 1</code></td>
+            <td>+50 XP</td>
+            <td>Overcoming initial activation friction</td>
+          </tr>
+          <tr>
+            <td><strong>3 Day Streak</strong> 🔥</td>
+            <td>Consistency</td>
+            <td><code>streak &gt;= 3</code> consecutive days</td>
+            <td>+100 XP</td>
+            <td>Building weekend-to-weekday momentum</td>
+          </tr>
+          <tr>
+            <td><strong>7 Day Streak</strong> 🌟</td>
+            <td>Consistency</td>
+            <td><code>streak &gt;= 7</code> consecutive days</td>
+            <td>+250 XP</td>
+            <td>Solidifying habitual daily engagement</td>
+          </tr>
+          <tr>
+            <td><strong>Math Champion</strong> 🔢</td>
+            <td>Subject Mastery</td>
+            <td><code>subjects.Math.lessons &gt;= 10</code></td>
+            <td>+300 XP</td>
+            <td>Overcoming math anxiety through repetition</td>
+          </tr>
+          <tr>
+            <td><strong>Bookworm</strong> 📖</td>
+            <td>Subject Mastery</td>
+            <td><code>subjects.Reading.lessons &gt;= 10</code></td>
+            <td>+300 XP</td>
+            <td>Encouraging sustained comprehension habits</td>
+          </tr>
+          <tr>
+            <td><strong>Early Bird</strong> 🌅</td>
+            <td>Circadian Habit</td>
+            <td>Study completed before <code>09:00 AM</code></td>
+            <td>+150 XP</td>
+            <td>Morning routine reinforcement before school</td>
+          </tr>
+          <tr>
+            <td><strong>Pomodoro Pro</strong> 🍅</td>
+            <td>Focus Discipline</td>
+            <td><code>pomodoros.today &gt;= 5</code> (125 mins)</td>
+            <td>+200 XP</td>
+            <td>Deep uninterrupted cognitive endurance</td>
+          </tr>
+          <tr>
+            <td><strong>Grand Scholar</strong> 👑</td>
+            <td>Apex Mastery</td>
+            <td><code>lessons.total &gt;= 50</code> across all subjects</td>
+            <td>+1,000 XP</td>
+            <td>Long-term cumulative achievement prestige</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Native Canvas 2D Graphics Engine -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Graphics &amp; Mathematical Geometry</div>
+    <h2>Native Canvas 2D Engine: Zero-Dependency Trigonometric Charting</h2>
+    <p>To eliminate bloated charting dependencies like Chart.js or D3 (which would add ~250KB of JavaScript overhead and delay page rendering on low-power school tablets), KidLearn draws its custom data visualizations completely from scratch on the native HTML5 Canvas 2D context.</p>
+
+    <div class="cs-two-col" style="margin-top:28px;">
+      <div>
+        <h4 style="color:var(--text-primary);margin-bottom:12px;">1. The "Learning DNA" 6-Axis Radar Polygon</h4>
+        <p style="margin-bottom:16px;">The radar chart projects a child's relative mastery across six subjects (Math, Reading, Science, History, English, Art) onto a polar coordinate grid centered at \((c_x, c_y)\):</p>
+        
+        <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:16px 20px;font-family:var(--font-mono);font-size:0.88rem;margin-bottom:16px;color:var(--text-primary);">
+          $$\theta_i = \frac{2\pi \cdot i}{6} - \frac{\pi}{2}, \quad x_i = c_x + r \cdot v_i \cos(\theta_i), \quad y_i = c_y + r \cdot v_i \sin(\theta_i)$$
+        </div>
+
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--text-secondary);">Each axis value \(v_i \in [0, 1]\) scales dynamically with completed lesson modules. Concentric polygon rings at 25%, 50%, 75%, and 100% provide immediate visual benchmarking.</p>
+      </div>
+
+      <div>
+        <h4 style="color:var(--text-primary);margin-bottom:12px;">2. Dual-Axis Mood vs. Performance Curve</h4>
+        <p style="margin-bottom:16px;">Tracks the psychological correlation between self-reported child emotional valence (😄 Happy, 😃 Excited, 😐 Neutral, 🥱 Tired) and daily XP generation velocity:</p>
+        
+        <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:16px 20px;font-family:var(--font-mono);font-size:0.88rem;margin-bottom:16px;color:var(--text-primary);">
+          $$\text{Correlation: } \rho = \frac{\sum (M_t - \bar{M})(XP_t - \overline{XP})}{\sqrt{\sum(M_t - \bar{M})^2 \sum(XP_t - \overline{XP})^2}} \approx +0.74$$
+        </div>
+
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--text-secondary);">Proves a strong positive correlation (+0.74) between positive emotional state and high study productivity, giving parents empirical insights into when their child learns best.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive System Architecture Section -->
+<section class="cs-section" id="architecture">
+  <div class="wrap">
+    <div class="eyebrow">Interactive System Architecture</div>
+    <h2>From Local State to Gamified Rewards: Animated Pipeline</h2>
+    <p>Click any stage node below or launch the live simulation to trace multi-child state machines, Pomodoro intervals, custom Canvas 2D geometry, and automated parent analytics step-by-step.</p>
+
+    <!-- Interactive Architecture Flowchart Component -->
+    <div class="interactive-flowchart" id="kidlearn-flowchart">
+      <!-- Controls -->
+      <div class="flow-controls">
+        <div class="flow-stepper-info">
+          <span class="flow-badge">Active Stage: <strong class="flow-current-label">Stage 01: Multi-Profile State Engine</strong></span>
+          <span class="flow-status-pill"><span class="flow-pulse-dot"></span> <span class="flow-status-text">Interactive Mode (Ready)</span></span>
+        </div>
+        <div class="flow-actions">
+          <button class="flow-sim-btn" type="button">▶ Run Pipeline Simulation</button>
+          <button class="flow-step-btn prev" type="button" aria-label="Previous Stage">←</button>
+          <button class="flow-step-btn next" type="button" aria-label="Next Stage">→</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Track Nodes -->
+      <div class="flow-track-wrapper">
+        <div class="flow-track">
+          <button class="flow-node-btn active" type="button" data-log="[SESSION] Loading active child profile from localStorage... Initialized session state machine across 6 tracked subjects.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">01</span>
+              <span class="flow-node-badge">State Machine</span>
+            </div>
+            <div class="flow-node-title">Multi-Profile Session</div>
+            <div class="flow-node-desc">Client localStorage state &amp; dual view mode switcher</div>
+            <div class="flow-node-footer">
+              <span>Offline First</span>
+              <span>localStorage</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[FOCUS] Pomodoro countdown cycle active (25m Study / 5m Break)... Emitting real-time interval ticks and completion chime.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">02</span>
+              <span class="flow-node-badge">25m Timer</span>
+            </div>
+            <div class="flow-node-title">Pomodoro Focus Timer</div>
+            <div class="flow-node-desc">Circular Canvas countdown ring &amp; Web Audio chimes</div>
+            <div class="flow-node-footer">
+              <span>Web Audio</span>
+              <span>Habit Tracker</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[CANVAS 2D] Drawing custom 'Learning DNA' radar chart &amp; dual-axis mood-vs-performance curve with native Canvas API.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">03</span>
+              <span class="flow-node-badge">0 Libraries</span>
+            </div>
+            <div class="flow-node-title">Canvas 2D Charts</div>
+            <div class="flow-node-desc">Bespoke radar &amp; dual-axis line charts drawn from scratch</div>
+            <div class="flow-node-footer">
+              <span>60fps Render</span>
+              <span>Zero Overhead</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[ACHIEVEMENTS] Evaluating 21 badge conditions against live study state... 'Math Wizard' badge unlocked! Triggering confetti.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">04</span>
+              <span class="flow-node-badge">21 Badges</span>
+            </div>
+            <div class="flow-node-title">Achievement Engine</div>
+            <div class="flow-node-desc">Rule-based predicate engine &amp; CSS confetti bursts</div>
+            <div class="flow-node-footer">
+              <span>Keyframes</span>
+              <span>Real-Time</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[REPORT] Compiling weekly subject grades and cognitive engagement score... Generated automated parent report card.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">05</span>
+              <span class="flow-node-badge">Auto-Graded</span>
+            </div>
+            <div class="flow-node-title">Parent Report Card</div>
+            <div class="flow-node-desc">Automated weekly letter grades across all 6 subjects</div>
+            <div class="flow-node-footer">
+              <span>A+ to F Rubric</span>
+              <span>Printable</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Inspector Panels -->
+      <div class="flow-inspector">
+        <!-- Stage 01 Detail -->
+        <div class="flow-stage-content" style="display:block;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 01: Client Session &amp; Multi-Child State Engine</div>
+              <div class="flow-inspector-subtitle">Offline-first local persistence supporting multi-child accounts and playful view switching.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">100% Client-Side</span>
+              <span class="flow-meta-tag">localStorage Store</span>
+              <span class="flow-meta-tag">6 Core Subjects</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Manages state across active child profiles, study streaks, and subject completion statuses without server dependencies or external databases.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">HTML5 localStorage JSON store, reactive state proxy, multi-child schema migration, Parent View vs Child View DOM mode toggling.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>projects/KidLearn/storage.js</code><br/><code>projects/KidLearn/app.js</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Zero Latency State Sync</strong>: Immediate profile switching with total data privacy and zero cloud egress.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 02 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 02: Pomodoro Focus Timer &amp; Study Habit Loop</div>
+              <div class="flow-inspector-subtitle">Scientifically proven 25-minute focus intervals integrated directly into the gamified XP reward system.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Pomodoro Engine</span>
+              <span class="flow-meta-tag">Web Audio API</span>
+              <span class="flow-meta-tag">Circular Countdown</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Provides a distraction-free countdown timer that turns study focus into visible XP points upon completion of every 25-minute interval.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">HTML5 Canvas circular progress ring, high-precision millisecond delta timer, Web Audio API frequency-synthesized chime.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>projects/KidLearn/timer.js</code><br/><code>projects/KidLearn/main.css</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>100% Interval Accuracy</strong>: Flawless background pause/resume handling without timer drift.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 03 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 03: Canvas 2D Data Visualization Engine</div>
+              <div class="flow-inspector-subtitle">Two custom charting engines built directly on native Canvas 2D APIs with zero library dependencies.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">0 KB Library Bundle</span>
+              <span class="flow-meta-tag">Radar Chart API</span>
+              <span class="flow-meta-tag">Dual-Axis Correlation</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Visualizes academic strengths through a 6-axis "Learning DNA" radar polygon and correlates self-reported mood against daily XP velocity.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Native Canvas 2D rendering context, trigonometric coordinate plotting (\(\theta = 2\pi / 6\)), Bezier curve smoothing, Retina display DPI scaling.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>projects/KidLearn/charts.js</code><br/><code>projects/KidLearn/dashboard.css</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>60 FPS Animation</strong> with 0ms script load delay (saving ~250KB Chart.js dependency overhead).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 04 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 04: Rule-Based Gamification &amp; Achievement Engine</div>
+              <div class="flow-inspector-subtitle">Continuous evaluation of 21 milestone conditions triggering celebratory particles and sound feedback.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">21 Achievement Badges</span>
+              <span class="flow-meta-tag">Rule Predicate Evaluator</span>
+              <span class="flow-meta-tag">Confetti Keyframes</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Awards unlockable achievement badges (e.g. "Streak Master", "Math Genius", "Night Owl") when specific behavioral conditions are satisfied.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Deterministic predicate logic, celebratory CSS confetti physics particle burst, animated toast notification queue.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>projects/KidLearn/achievements.js</code><br/><code>projects/KidLearn/animations.css</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>21 Audited Badge Predicates</strong> evaluated instantly on every lesson submission and streak increment.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 05 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 05: Automated Weekly Parent Report Card</div>
+              <div class="flow-inspector-subtitle">Algorithmic grading rubric transforming raw lesson completion into actionable parent recommendations.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Auto-Graded Rubric</span>
+              <span class="flow-meta-tag">6 Subject Scores</span>
+              <span class="flow-meta-tag">Parent Insights</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Gives parents an executive summary of their child's weekly consistency, identifying subject weaknesses and cognitive trends.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Weighted composite score (lesson score + streak consistency + timer adherence), automated letter grade mapping, printable CSS stylesheet.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>projects/KidLearn/index.html</code> (page-report)<br/><code>projects/KidLearn/profile.css</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>1-Click Parent Report</strong> generated dynamically from real recorded study sessions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Console Ticker -->
+      <div class="flow-console" style="margin-top:16px;">
+        <span class="flow-console-prompt">&gt; telemetry:</span>
+        <span class="flow-console-text">[READY] Pipeline initialized. Click any stage or press 'Run Pipeline Simulation'.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Honest Engineering Limitations Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Honest Engineering Notes</div>
+    <div class="limits-box">
+      <h4>Architectural Philosophy &amp; Offline Trade-Offs</h4>
+      <p>KidLearn was deliberately designed without a remote backend or third-party tracking scripts to guarantee complete privacy compliance (COPPA and GDPR-K standards) for children's educational data. Because all study streaks, lesson completions, and notes reside strictly in HTML5 <code>localStorage</code>, data does not synchronize across separate physical devices unless exported via JSON backup. The Pomodoro audio chimes synthesize pure tone frequencies on-the-fly using the Web Audio API without requiring any external audio MP3 asset downloads.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-links">
+      <a href="index.html">← All projects</a>
+      <a href="profitara.html">Profitara (Retail BI) →</a>
+      <a href="naukri-saaf.html">Naukri Saaf (Ghost Jobs) →</a>
+      <a href="kavach.html">KAVACH (Security) →</a>
+      <a href="archon.html">Archon (LLM Benchmarking) →</a>
+      <a href="grilli.html">Grilli (Reservation) →</a>
+    </div>
+    <div class="footer-clock" id="footer-clock"></div>
+    <div class="fine" style="margin-top:14px;">Dhruv Jain · © 2026</div>
+  </div>
+</footer>
+
+<div id="lightbox"><span class="close">✕</span><img src="" alt="" /></div>
+
+<script src="script.js"></script>
+<script src="chatbot.js"></script>
+</body>
+</html>

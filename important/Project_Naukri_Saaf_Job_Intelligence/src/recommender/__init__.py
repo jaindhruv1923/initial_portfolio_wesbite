@@ -1,0 +1,1 @@
+from src.recommender.safe_alternatives import SafeAlternativeRecommender, safe_recommender

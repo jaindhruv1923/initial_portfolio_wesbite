@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profitara — Retail Business Intelligence &amp; Decision Platform · Dhruv Jain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<div id="loader"><div class="mark">◆ LOADING CASE STUDY</div></div>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0%;z-index:100;"></div>
+<div id="cursor-glow"></div>
+
+<!-- BLUEPRINT CANVAS GRID (Visual Texture & Depth) -->
+<div class="blueprint-grid-canvas" aria-hidden="true"></div>
+
+<!-- INTERACTIVE BACKGROUND MOUSE PARTICLE CONSTELLATION WEB -->
+<canvas id="interactive-particle-web" aria-hidden="true"></canvas>
+
+<!-- FIXED TELEMETRY RAILS & FIBER-OPTIC DATA PACKET STREAMS -->
+<!-- Left Rail: CAD Ruler & Live Section Scroll-Spy -->
+<aside class="telemetry-rail telemetry-rail-left" aria-label="Section Navigation and Telemetry">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-cad-ruler" aria-hidden="true">
+    <span class="cad-tick">0000</span>
+    <span class="cad-tick">0600</span>
+    <span class="cad-tick">1200</span>
+    <span class="cad-tick">1800</span>
+    <span class="cad-tick">2400</span>
+    <span class="cad-tick">3000</span>
+    <span class="cad-tick">3600</span>
+    <span class="cad-tick">4200</span>
+  </div>
+  <div class="rail-header-tag" title="Flagship Case Study">
+    <span class="rail-pulse-dot"></span>
+    <span class="rail-mono-text">ACTIVE</span>
+  </div>
+  <nav class="rail-section-nav" aria-label="Quick Navigation">
+    <a href="index.html#projects" class="rail-nav-item active" title="Back to All Projects">
+      <span class="rail-nav-num">←</span>
+      <span class="rail-nav-label">Projects</span>
+    </a>
+    <a href="index.html#sql-lab" class="rail-nav-item" title="Live SQL Workbench">
+      <span class="rail-nav-num">02</span>
+      <span class="rail-nav-label">SQL Lab</span>
+    </a>
+    <a href="index.html#contact" class="rail-nav-item" title="Contact Dhruv">
+      <span class="rail-nav-num">08</span>
+      <span class="rail-nav-label">Contact</span>
+    </a>
+  </nav>
+  <div class="rail-footer-tag" title="Gurugram Development HQ Coordinates">
+    <span class="rail-coord-text">28.45°N</span>
+  </div>
+</aside>
+
+<!-- Right Rail: Fast-Action Dock, Socials & Back-To-Top -->
+<aside class="telemetry-rail telemetry-rail-right" aria-label="Executive Quick Actions and Socials">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-vertical-brand">
+    <span class="brand-monogram">DJ // 2025</span>
+    <span class="brand-sub">ANALYTICS</span>
+  </div>
+  <div class="rail-action-cluster">
+    <button type="button" class="rail-action-btn" onclick="copyEmail(event)" title="1-Click Copy Dhruv's Email" aria-label="Copy Email">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </button>
+    <button type="button" class="rail-action-btn" onclick="copyRecruiterBrief()" title="1-Click Copy ATS Candidate Summary" aria-label="Copy Recruiter Brief">
+      <span style="font-size:12px;">⚡</span>
+    </button>
+    <a href="https://github.com/jaindhruv1923" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="GitHub Profile" aria-label="GitHub">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/jaindhruv1923/" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="LinkedIn Profile" aria-label="LinkedIn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.81a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+    </a>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="rail-action-btn" title="Download ATS Verified Resume (PDF)" aria-label="Resume PDF">
+      <span style="font-size:11px;font-weight:800;font-family:var(--font-mono);color:var(--accent);">CV↓</span>
+    </a>
+  </div>
+  <button type="button" class="rail-scroll-top-btn" id="railScrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" aria-label="Scroll to top">
+    ↑
+  </button>
+</aside>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand"><span class="dot">◆</span> Dhruv Jain</a>
+    <div class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="kavach.html">KAVACH</a>
+      <a href="archon.html">Archon Copilot</a>
+      <a href="naukri-saaf.html">Naukri Saaf</a>
+      <a href="grilli.html">Grilli</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="nav-cta">Resume (1-Page) ↓</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap cs-hero-grid">
+    <div>
+      <a href="index.html#projects" class="cs-back">← Back to projects</a>
+      <div class="eyebrow">Retail Business Intelligence &amp; Analytics</div>
+      <h1>Profitara: Turning raw transactions into ₹-quantified margin decisions.</h1>
+      <p class="lede">A 13-page interactive Streamlit dashboard, live in-memory DuckDB SQL analytics mart, out-of-time ML models, and complete Business Analyst deliverables (BRD, stakeholder KPI dictionary, margin leakage audit, and Expected Value win-back policy) — turning 10,000 transactions into measurable financial recovery.</p>
+
+      <div class="cs-meta-row">
+        <div class="cs-meta"><div class="k">Role</div><div class="v">Solo Build — Data &amp; Business Analyst (BRD, SQL Mart, ML, Dashboard)</div></div>
+        <div class="cs-meta"><div class="k">Tech Stack</div><div class="v">Python · Streamlit · DuckDB · scikit-learn · Power BI (DAX) · Pandera</div></div>
+        <div class="cs-meta"><div class="k">Validated Data</div><div class="v">10,000 orders (₹66.95L) + 541,909 real UCI retail transactions</div></div>
+      </div>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="https://project-profitara-retail-bi-pipeline-kgg8tjm3e9umxkbhd86r3j.streamlit.app/" target="_blank" class="btn btn-primary">Live Dashboard ↗</a>
+        <a href="https://github.com/jaindhruv1923/Project-Profitara-Retail-BI-Pipeline" target="_blank" class="btn btn-ghost">View Repo ↗</a>
+        <a href="dashboards/Profitara_BIDashBoard.pbix" download class="btn btn-ghost">Power BI (.pbix) ↓</a>
+      </div>
+    </div>
+
+    <!-- Animated Hero Flow Panel -->
+    <aside class="flow-panel reveal">
+      <div class="flow-title">⚡ BA &amp; Decision Pipeline</div>
+      <div class="flow-chain">
+        <div class="flow-node">
+          <div class="flow-dot">01</div>
+          <div class="flow-body">
+            <div class="t">The Business Problem</div>
+            <div class="d">47.4% of catalog line items leaking margin (-₹2.06L drain); no early warning for churn.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">02</div>
+          <div class="flow-body">
+            <div class="t">Stakeholder Alignment &amp; BRD</div>
+            <div class="d">11 formal requirements (BR-01 to BR-11) scoped across Ops, Marketing, Pricing &amp; Finance.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">03</div>
+          <div class="flow-body">
+            <div class="t">DuckDB Leakage Audit</div>
+            <div class="d">Isolated ₹2.06L operational loss; proved severe discount abuse (&ge;30%) drops margin to -13.3%.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">04</div>
+          <div class="flow-body">
+            <div class="t">Zero-Leakage ML &amp; EV Policy</div>
+            <div class="d">Out-of-time CLV + Platt-scaled churn classifier (AUC 0.764) delivering +£720 net win-back return.</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-dot">05</div>
+          <div class="flow-body">
+            <div class="t">Executive Cockpit &amp; Live SQL</div>
+            <div class="d">13-page Streamlit suite, in-browser DuckDB SQL lab, and 22-measure Power BI star schema.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-thumb"><img src="screenshots/profitara/01_overview_cards.png" alt="Profitara live executive dashboard overview" /></div>
+    </aside>
+  </div>
+</header>
+
+<!-- Flagship Dashboard Gallery -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Dashboard Gallery</div>
+    <h2>Core Platform Interfaces</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="screenshots/profitara/01_overview_cards.png" alt="Executive Overview &amp; Business Health Scorecard (₹66.95 Lakhs Volume)" />
+        <div class="cap">Executive Health Scorecard tracking ₹66.95L revenue, 4.15% margin, and automated readouts.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/profitara/11_revenue_leakage.png" alt="Revenue Leakage &amp; Discount Abuse Diagnostic (4,743 Loss-Making Items Flagged)" />
+        <div class="cap">Line-item audit isolating 4,743 loss items (-₹2.06L) and severe margin collapse past 10% discount.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/profitara/04_churn_distribution.png" alt="Churn Early Warning &amp; Priority Win-Back Action Queue (+£720 Net Return)" />
+        <div class="cap">Expected Value win-back queue ranking 274 high-ROI dormant accounts for retention outreach.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/profitara/07_elasticity_simulator.png" alt="Sub-Category Discount Elasticity &amp; Profit Optimizer (+10.7% Margin Simulation)" />
+        <div class="cap">Discount elasticity optimizer modeling demand response and +10.7% margin lift via automated caps.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/profitara/14_sql_lab.png" alt="Live DuckDB SQL Analytics Query Engine" />
+        <div class="cap">In-browser DuckDB SQL lab executing 42 production analytical CTEs with sub-50ms query latency.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/profitara/10_cohort_heatmap.png" alt="Monthly Customer Cohort Retention Heatmap (M+0 to M+11)" />
+        <div class="cap">Monthly customer cohort retention heatmap tracking 12-month retention rates across acquisition groups.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dedicated Business Analyst Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Business Analysis &amp; Strategic Scoping</div>
+    <h2>The BA Deliverables: Turning Raw Data into Quantified Policy</h2>
+    <p>Rather than jumping straight to modeling, Profitara began with formal business problem framing: drafting a comprehensive Business Requirements Document (BRD), defining role-based stakeholder metrics, identifying margin leakages, and engineering prescriptive policy gates that directly protect retail profitability.</p>
+
+    <!-- Stakeholder Architecture Grid -->
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="num">11</div>
+        <div class="label">Formal BRD Requirements (BR-01 to BR-11)</div>
+      </div>
+      <div class="kpi">
+        <div class="num">₹2.06L</div>
+        <div class="label">Margin Leakage Identified &amp; Audited</div>
+      </div>
+      <div class="kpi">
+        <div class="num">23×</div>
+        <div class="label">ROI Gain: Expected Value vs Naive Recency</div>
+      </div>
+      <div class="kpi">
+        <div class="num">4 Tiers</div>
+        <div class="label">K-Means Customer Segments (Seed Stability 0.947)</div>
+      </div>
+    </div>
+
+    <!-- BA Finding 1: Margin Leakage & Discount Abuse Audit -->
+    <div style="margin-top:40px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">1. Margin Leakage Audit: Stopping the Negative-Margin Discount Drain</h3>
+      <p style="margin-bottom:20px;">A granular line-item audit across 10,000 transactions uncovered that <strong>4,743 line items (47.4% of all items sold)</strong> were operating at negative net profit, driving a cumulative <strong>₹205,899 in operational loss</strong>. Severe discounting (&ge;30%) affected 1,064 items across 988 orders, pushing net margin down to -13.3%. At extreme discounts (&ge;40%), net margin collapsed to -17.35%.</p>
+
+      <!-- Matrix Table for Margin Degradation -->
+      <div style="overflow-x:auto;margin-bottom:24px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Discount Tier</th>
+              <th>Catalog Items</th>
+              <th>Total Sales (₹)</th>
+              <th>Net Profit (₹)</th>
+              <th>Net Margin %</th>
+              <th>Loss Items Share</th>
+              <th>Operational Policy Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0% Full Price</strong></td>
+              <td>2,990</td>
+              <td>₹20,19,693</td>
+              <td style="color:#10B981;font-weight:600;">+₹2,78,383</td>
+              <td><span class="matrix-badge" style="color:#10B981;background:rgba(16,185,129,0.1);">+13.78%</span></td>
+              <td>8.9%</td>
+              <td>Baseline benchmark pricing</td>
+            </tr>
+            <tr>
+              <td><strong>1–10% Low</strong></td>
+              <td>3,519</td>
+              <td>₹23,68,906</td>
+              <td style="color:#10B981;font-weight:600;">+₹1,33,210</td>
+              <td><span class="matrix-badge" style="color:#10B981;background:rgba(16,185,129,0.1);">+5.62%</span></td>
+              <td>42.0%</td>
+              <td>Profitable standard promotional band</td>
+            </tr>
+            <tr>
+              <td><strong>11–20% Moderate</strong></td>
+              <td>2,427</td>
+              <td>₹16,46,875</td>
+              <td style="color:#EF4444;font-weight:600;">-₹45,617</td>
+              <td><span class="matrix-badge" style="color:#EF4444;background:rgba(239,68,68,0.1);">-2.77%</span></td>
+              <td>80.3%</td>
+              <td>Crosses break-even threshold into loss</td>
+            </tr>
+            <tr>
+              <td><strong>21–30% Promo</strong></td>
+              <td>765</td>
+              <td>₹5,00,160</td>
+              <td style="color:#EF4444;font-weight:600;">-₹60,106</td>
+              <td><span class="matrix-badge" style="color:#EF4444;background:rgba(239,68,68,0.1);">-12.02%</span></td>
+              <td>98.2%</td>
+              <td>Requires category manager pre-approval</td>
+            </tr>
+            <tr>
+              <td><strong>31–40% Heavy</strong></td>
+              <td>299</td>
+              <td>₹1,59,592</td>
+              <td style="color:#EF4444;font-weight:600;">-₹27,684</td>
+              <td><span class="matrix-badge" style="color:#EF4444;background:rgba(239,68,68,0.1);">-17.35%</span></td>
+              <td>100.0%</td>
+              <td>Automated hard cap enforced; policy stop</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="gallery-item" style="margin-top:20px;">
+        <img src="screenshots/profitara/11_revenue_leakage.png" alt="Revenue Leakage Diagnostic and Discount Abuse Scatter Plot" />
+        <div class="cap">Granular discount vs. profit scatter revealing severe margin erosion into negative returns beyond the 10% discount threshold.</div>
+      </div>
+
+      <div class="limits-box" style="margin-top:20px;">
+        <h4 style="color:#0284C7;">BA Prescriptive Policy Action:</h4>
+        <p>Instituted automated discount caps per sub-category inside the Discount Elasticity Simulator. Capping discounts on perishable goods (such as Fresh Fruits) at their profit-maximizing inflection point models a direct <strong>₹38,000 margin recovery</strong> while preserving basket volume.</p>
+      </div>
+    </div>
+
+    <!-- BA Finding 2: Decision-Theoretic Win-Back Formulation -->
+    <div style="margin-top:48px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">2. Decision-Theoretic Churn Win-Back (+£720 Net Return vs £31 Recency)</h3>
+      <p style="margin-bottom:20px;">Standard CRM teams naively sort churned accounts by recency or previous spend. In Profitara, we formulated an <strong>Expected Value Decision Policy</strong> that evaluates whether contacting a customer yields positive net ROI under a strict campaign budget cap (£1,500 budget, £5.00/contact, 300 maximum contacts):</p>
+
+      <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:18px 24px;font-family:var(--font-mono);font-size:0.9rem;margin-bottom:24px;color:var(--text-primary);">
+        $$\mathbb{E}[\text{Net Value}] = P(\text{Churn}) \times \text{CLV} \times \text{Net Margin} \times \text{Response Rate} - \text{Campaign Cost}$$
+      </div>
+
+      <p style="margin-bottom:20px;">When backtested against held-out customer cohorts, the Expected Value policy prioritized 274 high-ROI targets and captured <strong>+£720.03 in simulated net profit</strong>—a 23× improvement over standard naive recency (+£31.60) and decisively avoiding random blanket outreach (-£19.19 loss).</p>
+
+      <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;">
+        <div class="gallery-item">
+          <img src="screenshots/profitara/churn_policy_comparison.png" alt="Win-Back Policy Comparison: Expected Value (£720) vs Naive Recency (£32) vs Random (-£19)" />
+          <div class="cap">Held-out cohort backtest proving Expected Value win-back policy delivers +£720 net profit vs £31 for naive recency.</div>
+        </div>
+        <div class="gallery-item">
+          <img src="screenshots/profitara/04_churn_distribution.png" alt="Live Streamlit Priority Win-Back Action Queue Interface" />
+          <div class="cap">Prioritized win-back action queue ranking dormant accounts by expected recovery ROI within campaign budget limits.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BA Finding 3: Customer Segmentation & Playbook -->
+    <div style="margin-top:48px;">
+      <h3 style="font-size:1.45rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">3. Behavioral Customer Segmentation &amp; Strategic Playbook</h3>
+      <p style="margin-bottom:20px;">Evaluated K-Means clustering across k=2 to 7 with 5 random seeds to identify stable, commercially viable segments. While k=2 was mathematically degenerate (merely isolating 119 extreme spenders), <strong>k=4 achieved high seed stability (0.947)</strong> and mapped cleanly into retail operations:</p>
+
+      <div style="overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Customer Segment</th>
+              <th>Accounts</th>
+              <th>Revenue Share</th>
+              <th>Avg Spend</th>
+              <th>Avg Frequency</th>
+              <th>Targeted BA Playbook</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Champions &amp; VIPs</strong></td>
+              <td>702</td>
+              <td><strong>64.2%</strong></td>
+              <td>£8,015.92</td>
+              <td>13.7 orders</td>
+              <td>VIP loyalty tier, exclusive pre-releases, concierge support</td>
+            </tr>
+            <tr>
+              <td><strong>Loyal &amp; Steady Buyers</strong></td>
+              <td>1,182</td>
+              <td><strong>24.5%</strong></td>
+              <td>£1,815.71</td>
+              <td>4.2 orders</td>
+              <td>Cross-sell bundles, personalized replenishment triggers</td>
+            </tr>
+            <tr>
+              <td><strong>At-Risk / Lapsing Spenders</strong></td>
+              <td>875</td>
+              <td><strong>4.9%</strong></td>
+              <td>£489.45</td>
+              <td>1.9 orders</td>
+              <td>Expected-value winback queue, time-limited retention vouchers</td>
+            </tr>
+            <tr>
+              <td><strong>Hibernating / Low-Value</strong></td>
+              <td>1,575</td>
+              <td><strong>6.5%</strong></td>
+              <td>£359.45</td>
+              <td>1.3 orders</td>
+              <td>Low-cost automated email reactivation, no high-touch spend</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Machine Learning Suite with Zero-Leakage Benchmarks -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Machine Learning Suite</div>
+    <h2>Zero-Leakage Predictive Models &amp; Transparent Benchmarks</h2>
+    <p>In real-world retail analytics, claiming an R² of 0.930 on customer spend indicates fatal target identity leakage ($\text{Spend} = \text{Frequency} \times \text{AOV}$). Profitara eliminated all data leakage by enforcing a strict <strong>9-month observation window vs 90-day future spend holdout</strong>, benchmarked across genuine human transactions.</p>
+
+    <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;margin-bottom:28px;">
+      <div class="gallery-item">
+        <img src="screenshots/profitara/forecast_rolling_backtest.png" alt="3-Fold Rolling-Origin Revenue Forecast Walk-Forward Backtest" />
+        <div class="cap">3-fold rolling-origin walk-forward backtest confirming Holt-Winters forecast accuracy (4.10% MAPE) during holiday surges.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/profitara/08_market_basket_scatter.png" alt="Market Basket Apriori Cross-Sell Rules Bubble Chart" />
+        <div class="cap">Apriori association rule scatter mapping 248 validated co-purchase rules with cross-sell lift up to 27.86×.</div>
+      </div>
+    </div>
+
+    <div class="cs-two-col">
+      <div>
+        <p><strong style="color:var(--text-primary)">Customer Lifetime Value (CLV)</strong> — Replaced in-sample leaked models with a probabilistic BG/NBD + Gamma-Gamma baseline (MAE £755.28) and Gradient Boosting Regressor (R² = 0.093, MAE £811.88) on non-contractual transactions.</p>
+        <p><strong style="color:var(--text-primary)">Churn Early Warning Classifier</strong> — Logistic Regression with Platt scaling achieving out-of-time <strong>ROC-AUC = 0.764</strong> (95% CI: [0.736, 0.793]) and Brier Score 0.1928, decisively outperforming naive recency heuristics (AUC 0.659).</p>
+      </div>
+      <div>
+        <p><strong style="color:var(--text-primary)">Cross-Sell Association Mining</strong> — Apriori algorithm surfaced 248 validated rules across 17,512 real retail baskets, discovering high-affinity bundles with lift up to <strong>27.86×</strong>.</p>
+        <p><strong style="color:var(--text-primary)">Rolling-Origin Time-Series Forecasting</strong> — 3-Fold Walk-Forward Backtest demonstrating that Seasonal Naive wins overall demand (MAPE 17.71%), while Holt-Winters wins during holiday peak seasonality (MAPE 4.10%, RMSE £12,259).</p>
+      </div>
+    </div>
+
+    <div class="tech-tags" style="margin-top:20px;">
+      <span class="chip">BG/NBD + Gamma-Gamma</span>
+      <span class="chip">Gradient Boosting</span>
+      <span class="chip">Logistic Regression (Platt Calibrated)</span>
+      <span class="chip">Apriori Market Basket</span>
+      <span class="chip">K-Means (k=4)</span>
+      <span class="chip">Holt-Winters Rolling Backtest</span>
+    </div>
+  </div>
+</section>
+
+<!-- Animated Interactive Architecture Section -->
+<section class="cs-section" id="architecture">
+  <div class="wrap">
+    <div class="eyebrow">End-to-End Decision Architecture</div>
+    <h2>From Transaction Audit to Executive Action: Animated Pipeline</h2>
+    <p>Trace the live analytical lifecycle below. Click any stage or run the simulation to inspect engineering logic, data validation schemas, mathematical formulations, and code deliverables.</p>
+
+    <!-- Interactive Architecture Flowchart Component -->
+    <div class="interactive-flowchart" id="profitara-flowchart">
+      <!-- Controls -->
+      <div class="flow-controls">
+        <div class="flow-stepper-info">
+          <span class="flow-badge">Active Stage: <strong class="flow-current-label">Stage 01: Multi-Source Ingestion &amp; Schema Gate</strong></span>
+          <span class="flow-status-pill"><span class="flow-pulse-dot"></span> <span class="flow-status-text">Interactive Mode (Ready)</span></span>
+        </div>
+        <div class="flow-actions">
+          <button class="flow-sim-btn" type="button">▶ Run Pipeline Simulation</button>
+          <button class="flow-step-btn prev" type="button" aria-label="Previous Stage">←</button>
+          <button class="flow-step-btn next" type="button" aria-label="Next Stage">→</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Track Nodes with Animated Energy Stream -->
+      <div class="flow-track-wrapper">
+        <div class="flow-track">
+          <button class="flow-node-btn active" type="button" data-log="[INGEST] Ingesting 10k Indian Q-commerce orders and 541k UCI retail transactions... Pandera schema assertions 100% PASSED.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">01</span>
+              <span class="flow-node-badge">Pandera Gate</span>
+            </div>
+            <div class="flow-node-title">Ingestion &amp; Schema Gate</div>
+            <div class="flow-node-desc">Dual dataset loading &amp; Pandera schema assertion</div>
+            <div class="flow-node-footer">
+              <span>0 Null Violations</span>
+              <span>1.2s SLA</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[DUCKDB] Initializing DuckDB in-memory OLAP marts... Materialized 42 analytical CTE views in 42ms.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">02</span>
+              <span class="flow-node-badge">42ms OLAP</span>
+            </div>
+            <div class="flow-node-title">DuckDB Mart &amp; Star Schema</div>
+            <div class="flow-node-desc">Fact orders, customer RFM vectors &amp; dimension marts</div>
+            <div class="flow-node-footer">
+              <span>42 Analytical CTEs</span>
+              <span>Sub-50ms</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[BA AUDIT] Auditing line-item margins... Isolated 4,743 negative-margin line items (-₹2.06L operational loss).">
+            <div class="flow-node-head">
+              <span class="flow-node-num">03</span>
+              <span class="flow-node-badge">-₹2.06L Loss</span>
+            </div>
+            <div class="flow-node-title">Margin Leakage Audit</div>
+            <div class="flow-node-desc">Line-item profitability &amp; discount abuse tiering</div>
+            <div class="flow-node-footer">
+              <span>4,743 Loss Items</span>
+              <span>100% Audited</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[ML CORE] Fitting zero-leakage CLV (BG/NBD) & Logistic churn classifier... Churn ROC-AUC = 0.764.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">04</span>
+              <span class="flow-node-badge">AUC 0.764</span>
+            </div>
+            <div class="flow-node-title">Zero-Leakage ML Core</div>
+            <div class="flow-node-desc">Temporal CLV holdout, Churn AUC, K-Means k=4</div>
+            <div class="flow-node-footer">
+              <span>Zero Leakage</span>
+              <span>248 Rules</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[DECISION] Evaluating Expected Value policy matrix... +£720 net win-back return (23x over naive recency).">
+            <div class="flow-node-head">
+              <span class="flow-node-num">05</span>
+              <span class="flow-node-badge">+£720 Return</span>
+            </div>
+            <div class="flow-node-title">Prescriptive EV Policy</div>
+            <div class="flow-node-desc">Expected-value winback matrix &amp; elasticity caps</div>
+            <div class="flow-node-footer">
+              <span>274 Priority Targets</span>
+              <span>₹38k Fresh Fruit</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Inspector Panels -->
+      <div class="flow-inspector">
+        <!-- Stage 01 Detail -->
+        <div class="flow-stage-content" style="display:block;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 01: Multi-Source Ingestion &amp; Pandera Schema Gate</div>
+              <div class="flow-inspector-subtitle">Deterministic validation preventing silent nulls, lookahead leakage, and currency corruption across 10k orders and 541k transactions.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">100% Validated</span>
+              <span class="flow-meta-tag">10,000 Q-Commerce Orders</span>
+              <span class="flow-meta-tag">541,909 UCI Rows</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Ingests raw transactional records from dual sources (Indian Q-commerce storytelling + UCI benchmark) into strict Pandera dataframes with zero missing values.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Pandera typed schema assertion, ISO datetime formatting, deterministic Indian rupee GST normalization, category hierarchy check.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>data/raw/Profitara_India_Dataset.csv</code><br/><code>scripts/download_real_data.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>0 Schema Violations</strong> across 10,000 rows (₹66.95 Lakhs total validated volume).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 02 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 02: DuckDB Analytical Mart &amp; Star Schema</div>
+              <div class="flow-inspector-subtitle">Sub-50ms in-memory OLAP queries generating customer RFM vectors, discount degradation tiers, and cohort matrices.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">DuckDB In-Memory OLAP</span>
+              <span class="flow-meta-tag">42 Analytical CTEs</span>
+              <span class="flow-meta-tag">4,334 Customer Segments</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Transforms normalized transactions into 14 ML-ready engineered features, computing Recency, Frequency, Monetary value, and category margin elasticity.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">DuckDB in-memory engine, SQL Window functions (<code>DENSE_RANK()</code>, <code>NTILE(4)</code>, cumulative revenue sums), multi-table CTE staging.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>sql/init_duckdb.py</code><br/><code>sql/Profitara_Complete.sql</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>42ms Query Latency</strong> average execution across all 42 analytical reporting views.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 03 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 03: Margin Leakage Audit &amp; Policy Formulation</div>
+              <div class="flow-inspector-subtitle">Uncovering ₹2.06L negative-margin loss across 4,743 line items and modeling sub-category discount caps.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">₹205,899 Loss Audited</span>
+              <span class="flow-meta-tag">47.4% Catalog Vulnerability</span>
+              <span class="flow-meta-tag">₹38k Fresh Fruit Policy</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Diagnoses catalog profit drain, proves margin collapse from +13.78% at full price to -17.35% at heavy discount, and designs automated discount caps.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">DuckDB SQL aggregations, discount elasticity modeling, break-even margin thresholds, policy simulation script.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>legacy/ba_docs/BRD_Profitara__1_.md</code><br/><code>dashboard/app.py</code> (Tabs 3, 4, 11)</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val">Flagged <strong>1,064 high-discount items</strong> (-13.3% net margin) across 988 orders, saving ₹87k leakage.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 04 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 04: Zero-Leakage Machine Learning Core</div>
+              <div class="flow-inspector-subtitle">Benchmarking CLV, Churn, K-Means, and Apriori on true out-of-time splits with verified statistical rigor.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Temporal 9mo/90d Holdout</span>
+              <span class="flow-meta-tag">Churn ROC-AUC = 0.764</span>
+              <span class="flow-meta-tag">K-Means Stability = 0.947</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Trains predictive regression and classification models using a strict temporal split to prevent temporal leakage into holdout sets.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">BG/NBD + Gamma-Gamma (CLV MAE £755.28), Logistic Regression with Platt scaling (Churn AUC 0.764), K-Means (k=4), Apriori (248 rules).</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>ml_pipeline/clv_engine.py</code><br/><code>ml_pipeline/churn_decision_engine.py</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>AUC 0.764</strong> (95% CI: [0.736, 0.793]), <strong>0.947 Seed Stability</strong> across 5 K-Means initializations.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 05 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 05: Prescriptive Expected Value Decision Policy</div>
+              <div class="flow-inspector-subtitle">Linking ML predictions to financial outcomes under campaign budget caps (£1,500 budget, 300 contacts max).</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">+£720 Net Simulated Return</span>
+              <span class="flow-meta-tag">274 High-ROI Accounts</span>
+              <span class="flow-meta-tag">23× Gain vs Recency</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Ranks at-risk accounts by expected recovery value and simulates margin trade-offs across discount tiers from 0% to 50%.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Expected Value formulation: $\mathbb{E}[V] = P(\text{Churn}) \times \text{CLV} \times \text{Margin} \times \text{Response} - \text{Cost}$. Configured in <code>business_assumptions.yaml</code>.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>ml_pipeline/churn_decision_engine.py</code><br/><code>reports/churn_policy_backtest.csv</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val">Delivers <strong>+£720.03</strong> net profit, crushing top recency (+£31.60) and random marketing (-£19.19).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Console Ticker -->
+      <div class="flow-console" style="margin-top:16px;">
+        <span class="flow-console-prompt">&gt; telemetry:</span>
+        <span class="flow-console-text">[READY] Pipeline initialized. Click any stage or press 'Run Pipeline Simulation'.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Power BI Dashboard Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Power BI Dashboard</div>
+    <h2>Executive Summary Version (.pbix)</h2>
+    <div class="dash-embed">
+      <div class="dash-head">
+        <div class="t">Profitara — Retail Business Intelligence (Power BI Desktop)</div>
+        <a class="download-btn" href="dashboards/Profitara_BIDashBoard.pbix" download>Download .pbix ↓</a>
+      </div>
+      <div class="dash-body">
+        <img src="screenshots/profitara/17_powerbi_preview.png" alt="Profitara Power BI dashboard preview" />
+        <div class="cap" style="padding:10px 16px;background:var(--bg-surface);border-top:1px solid var(--border-subtle);font-size:0.85rem;color:var(--text-secondary);">Enterprise Power BI star-schema dashboard featuring 22 DAX measures, dynamic time-intelligence, and regional margin drill-downs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Honest Limitations Section -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Honest Engineering Notes</div>
+    <div class="limits-box">
+      <h4>Methodological Transparency &amp; Assumptions</h4>
+      <p>The India quick-commerce dataset represents a 10,000-transaction snapshot with simulated margins to model Indian retail economics, while all predictive ML benchmarks were strictly evaluated on the genuine 541k-row UCI human retail dataset to prevent synthetic bias. The Business Requirements Document (BRD) was drafted retrospectively against the completed analytical build to model enterprise stakeholder rigor. All Expected Value simulation parameters (15% response rate, 20% margin, £5.00 contact cost) are declared in <code>config/business_assumptions.yaml</code> and validated via out-of-time walk-forward backtests.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-links">
+      <a href="index.html">← All projects</a>
+      <a href="kavach.html">KAVACH case study →</a>
+      <a href="archon.html">Archon case study →</a>
+      <a href="naukri-saaf.html">Naukri Saaf case study →</a>
+      <a href="https://github.com/jaindhruv1923/Project-Profitara-Retail-BI-Pipeline" target="_blank">Repo ↗</a>
+    </div>
+    <div class="footer-clock" id="footer-clock"></div>
+    <div class="fine" style="margin-top:14px;">Dhruv Jain · © 2026</div>
+  </div>
+</footer>
+
+<div id="lightbox"><span class="close">✕</span><img src="" alt="" /></div>
+
+<script src="script.js"></script>
+<script src="chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,724 @@
+[
+  {
+    "id": "bc3c59dc-d816-4c91-8bbc-1643a7242ffe",
+    "workflow_id": "bc3c59dc-d816-4c91-8bbc-1643a7242ffe",
+    "timestamp": "2026-10-04 06:03:05 UTC",
+    "request_text": "Refactor the authentication module for better testability",
+    "final_stage": "COMPLETE",
+    "stage": "COMPLETE",
+    "verdict": "ALLOWED",
+    "plan": [
+      "Understand the request and identify its scope",
+      "Retrieve relevant repository context for this request (general search)",
+      "Retrieve grounding evidence from the repository (RAG)",
+      "Run security/policy checks on the request and any retrieved context"
+    ],
+    "retrieved_context": [
+      {
+        "score": 0.11952286013003134,
+        "file_path": "utils.py",
+        "chunk_index": 0,
+        "text": "\nimport re\n\ndef validate_email(email: str) -> bool:\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    return re.match(pattern, email) is not None\n"
+      },
+      {
+        "score": 0.0,
+        "file_path": "database\\models.py",
+        "chunk_index": 0,
+        "text": "\nfrom sqlalchemy import Column, String\n\nclass User:\n    id = Column(String, primary_key=True)\n    username = Column(String)\n    password_hash = Column(String)\n"
+      },
+      {
+        "score": 0.0,
+        "file_path": "auth\\login.py",
+        "chunk_index": 0,
+        "text": "\ndef login_user(username: str, password: str):\n    if not username or not password:\n        raise ValueError(\"Missing credentials\")\n    return {\"status\": \"logged_in\", \"username\": username}\n"
+      }
+    ],
+    "security_findings": [],
+    "generation_result": {
+      "llm_configured": true,
+      "evidence_chunks_used": 3,
+      "prompt": "You are a careful software engineer working inside an existing project.\nUse ONLY the repository evidence below to inform your answer \u2014 do not invent\nlibraries, APIs, or file structures that aren't shown here. If the evidence\nis insufficient to safely implement the request, say so explicitly instead\nof guessing.\n\nREPOSITORY EVIDENCE:\n--- From utils.py ---\n\nimport re\n\ndef validate_email(email: str) -> bool:\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    return re.match(pattern, email) is not None\n\n\n--- From database\\models.py ---\n\nfrom sqlalchemy import Column, String\n\nclass User:\n    id = Column(String, primary_key=True)\n    username = Column(String)\n    password_hash = Column(String)\n\n\n--- From auth\\login.py ---\n\ndef login_user(username: str, password: str):\n    if not username or not password:\n        raise ValueError(\"Missing credentials\")\n    return {\"status\": \"logged_in\", \"username\": username}\n\n\nDEVELOPER REQUEST:\nRefactor the authentication module for better testability\n\nProvide the code change needed to satisfy this request, consistent with the\nevidence above. Keep the response focused and include a one-line comment\nexplaining any assumption you had to make.\n",
+      "generated_output": "[STUB RESPONSE \u2014 placeholder test mode]\n\nKavach is an enterprise-grade AI DevOps security governance platform built by Dhruv Jain.\n\n```python\ndef authenticated_handler():\n    # Secure handler implementation\n    return True\n```"
+    },
+    "validation_result": {
+      "valid_syntax": true,
+      "error": null,
+      "extracted_code": "def authenticated_handler():\n    # Secure handler implementation\n    return True"
+    },
+    "impact_report": [
+      {
+        "file_path": "utils.py",
+        "relevance_score": 0.072,
+        "score_percentage": 7,
+        "reason": "semantically related to the change description",
+        "impact_tier": "CRITICAL",
+        "significance": "Highest Impact \u2014 Primary Target Component",
+        "score_justification": "Score 0.072 was assigned based on vector embedding semantic similarity (+0.072 from 0.12 cosine distance) matching the requested feature.",
+        "breakdown": [
+          "\ud83e\udde0 Semantic Alignment (+0.072): Vector embedding similarity (0.12 cosine score) with requested change intent."
+        ],
+        "action_hint": "Standard code review and lint checks are sufficient.",
+        "semantic_score": 0.12,
+        "dependency_hit": false,
+        "is_highest_impact": true
+      },
+      {
+        "file_path": "database\\models.py",
+        "relevance_score": 0.0,
+        "score_percentage": 0,
+        "reason": "weak signal",
+        "impact_tier": "LOW",
+        "significance": "Low Impact \u2014 Peripheral / Advisory Context",
+        "score_justification": "Score 0.000 reflects low or advisory coupling to the requested change.",
+        "breakdown": [],
+        "action_hint": "Standard code review and lint checks are sufficient.",
+        "semantic_score": 0.0,
+        "dependency_hit": false,
+        "is_highest_impact": false
+      },
+      {
+        "file_path": "auth\\login.py",
+        "relevance_score": 0.0,
+        "score_percentage": 0,
+        "reason": "weak signal",
+        "impact_tier": "LOW",
+        "significance": "Low Impact \u2014 Peripheral / Advisory Context",
+        "score_justification": "Score 0.000 reflects low or advisory coupling to the requested change.",
+        "breakdown": [],
+        "action_hint": "Standard code review and lint checks are sufficient.",
+        "semantic_score": 0.0,
+        "dependency_hit": false,
+        "is_highest_impact": false
+      }
+    ],
+    "policy_decision": {
+      "decision": "ALLOW",
+      "action": "ALLOW",
+      "verdict": "ALLOW",
+      "risk_score": 0.0,
+      "action_risk_classification": "low",
+      "data_findings_count": 0,
+      "highest_severity": "none",
+      "explanation": "No significant sensitive-data or high-risk-action signal detected.",
+      "steganography": {
+        "has_steganography": false,
+        "has_bidi_attack": false,
+        "cleaned_text": "Refactor the authentication module for better testability",
+        "stripped_characters_count": 0,
+        "threats": [],
+        "threat_count": 0,
+        "risk_score": 0.0
+      },
+      "obfuscation": {
+        "original_text": "Refactor the authentication module for better testability",
+        "is_obfuscated": false,
+        "detected_encodings": [],
+        "decloaked_texts": [],
+        "unified_normalized_text": "Refactor the authentication module for better testability",
+        "obfuscation_risk_score": 0.0,
+        "details": []
+      },
+      "ssrf": {
+        "is_ssrf_threat": false,
+        "threat_count": 0,
+        "threats": [],
+        "risk_score": 0.0,
+        "explanation": "No SSRF or cloud metadata access detected."
+      },
+      "prompt_safety": {
+        "is_safe": true,
+        "threat_detected": false,
+        "risk_level": "NONE",
+        "threat_count": 0,
+        "threats": [],
+        "sanitized_prompt": "Refactor the authentication module for better testability",
+        "verdict": "SAFE",
+        "explanation": "Prompt passed adversarial injection screening."
+      },
+      "merkle_root": "664d09fad37a271c98511cbb31eccadbe8d8684a7e529a44519b0542e266cc8304d725c08a267f6de68c5d97144b68b497456da4d3f492c0428f806cacc83a4e",
+      "mitre_atlas": [],
+      "owasp_llm": []
+    },
+    "redacted_request_text": "Refactor the authentication module for better testability",
+    "history": [
+      "WorkflowStage.REQUEST_RECEIVED -> WorkflowStage.PLANNING",
+      "WorkflowStage.PLANNING -> WorkflowStage.CONTEXT_RETRIEVAL",
+      "WorkflowStage.CONTEXT_RETRIEVAL -> WorkflowStage.SECURITY_CHECK",
+      "WorkflowStage.SECURITY_CHECK -> WorkflowStage.IMPACT_ANALYSIS",
+      "WorkflowStage.IMPACT_ANALYSIS -> WorkflowStage.GENERATION",
+      "WorkflowStage.GENERATION -> WorkflowStage.COMPLETE (workflow completed: planning + RAG + impact analysis + generation + security + validation)"
+    ],
+    "duration_ms": 164.41,
+    "run_type": "workflow",
+    "metadata": {}
+  },
+  {
+    "id": "4ed434a8-344d-45a5-8d80-ff64cceb3ab8",
+    "workflow_id": "4ed434a8-344d-45a5-8d80-ff64cceb3ab8",
+    "timestamp": "2026-10-04 06:19:27 UTC",
+    "request_text": "Code Review: pasted-code.txt (0 signals)",
+    "final_stage": "COMPLETE",
+    "stage": "COMPLETE",
+    "verdict": "ALLOWED",
+    "plan": [],
+    "retrieved_context": [],
+    "security_findings": [],
+    "generation_result": {},
+    "validation_result": {},
+    "impact_report": [],
+    "policy_decision": {
+      "decision": "ALLOW",
+      "action": "ALLOW",
+      "verdict": "ALLOW",
+      "risk_score": 0,
+      "action_risk_classification": "low",
+      "data_findings_count": 0,
+      "highest_severity": "none",
+      "explanation": "No significant sensitive-data or high-risk-action signal detected.",
+      "steganography": {
+        "has_steganography": false,
+        "has_bidi_attack": false,
+        "cleaned_text": "Review pasted-code.txt",
+        "stripped_characters_count": 0,
+        "threats": [],
+        "threat_count": 0,
+        "risk_score": 0
+      },
+      "obfuscation": {
+        "original_text": "Review pasted-code.txt",
+        "is_obfuscated": false,
+        "detected_encodings": [],
+        "decloaked_texts": [],
+        "unified_normalized_text": "Review pasted-code.txt",
+        "obfuscation_risk_score": 0,
+        "details": []
+      },
+      "ssrf": {
+        "is_ssrf_threat": false,
+        "threat_count": 0,
+        "threats": [],
+        "risk_score": 0,
+        "explanation": "No SSRF or cloud metadata access detected."
+      },
+      "prompt_safety": {
+        "is_safe": true,
+        "threat_detected": false,
+        "risk_level": "NONE",
+        "threat_count": 0,
+        "threats": [],
+        "sanitized_prompt": "Review pasted-code.txt",
+        "verdict": "SAFE",
+        "explanation": "Prompt passed adversarial injection screening."
+      },
+      "merkle_root": "749d0d91d41977df913c8cbfc8abf4f5b8ac83dbe21ee977f4f1ce31a860a17c4ef5f21f9f802851630ac37ba4bf1f2a1daae85aab5f7e6748d493410aab121f",
+      "mitre_atlas": [],
+      "owasp_llm": []
+    },
+    "redacted_request_text": "",
+    "history": [
+      "Review executed on pasted-code.txt",
+      "Policy decision: ALLOW",
+      "Findings: 0"
+    ],
+    "duration_ms": 0.0,
+    "run_type": "review",
+    "metadata": {
+      "filename": "pasted-code.txt",
+      "finding_count": 0,
+      "findings": [],
+      "policy_decision": {
+        "decision": "ALLOW",
+        "action": "ALLOW",
+        "verdict": "ALLOW",
+        "risk_score": 0,
+        "action_risk_classification": "low",
+        "data_findings_count": 0,
+        "highest_severity": "none",
+        "explanation": "No significant sensitive-data or high-risk-action signal detected.",
+        "steganography": {
+          "has_steganography": false,
+          "has_bidi_attack": false,
+          "cleaned_text": "Review pasted-code.txt",
+          "stripped_characters_count": 0,
+          "threats": [],
+          "threat_count": 0,
+          "risk_score": 0
+        },
+        "obfuscation": {
+          "original_text": "Review pasted-code.txt",
+          "is_obfuscated": false,
+          "detected_encodings": [],
+          "decloaked_texts": [],
+          "unified_normalized_text": "Review pasted-code.txt",
+          "obfuscation_risk_score": 0,
+          "details": []
+        },
+        "ssrf": {
+          "is_ssrf_threat": false,
+          "threat_count": 0,
+          "threats": [],
+          "risk_score": 0,
+          "explanation": "No SSRF or cloud metadata access detected."
+        },
+        "prompt_safety": {
+          "is_safe": true,
+          "threat_detected": false,
+          "risk_level": "NONE",
+          "threat_count": 0,
+          "threats": [],
+          "sanitized_prompt": "Review pasted-code.txt",
+          "verdict": "SAFE",
+          "explanation": "Prompt passed adversarial injection screening."
+        },
+        "merkle_root": "749d0d91d41977df913c8cbfc8abf4f5b8ac83dbe21ee977f4f1ce31a860a17c4ef5f21f9f802851630ac37ba4bf1f2a1daae85aab5f7e6748d493410aab121f",
+        "mitre_atlas": [],
+        "owasp_llm": []
+      },
+      "recommendations": [
+        "No sensitive-data or credential pattern was detected by the configured rules."
+      ]
+    }
+  },
+  {
+    "id": "7a0ccfc7-2ecc-4613-92d4-81c22ab0b59e",
+    "workflow_id": "7a0ccfc7-2ecc-4613-92d4-81c22ab0b59e",
+    "timestamp": "2026-10-04 06:19:53 UTC",
+    "request_text": "Initialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF",
+    "final_stage": "COMPLETE",
+    "stage": "COMPLETE",
+    "verdict": "ALLOWED",
+    "plan": [
+      "Understand the request and identify its scope",
+      "Retrieve relevant repository context for this request (general search)",
+      "Retrieve grounding evidence from the repository (RAG)",
+      "Run security/policy checks on the request and any retrieved context"
+    ],
+    "retrieved_context": [
+      {
+        "score": 0.2801921131892379,
+        "file_path": "main.py",
+        "chunk_index": 20,
+        "text": "aseModel):\n    supervisor_id: str = \"Lead-Security-Auditor\"\n    justification: str = \"Authorized override after risk assessment\"\n\n\n@app.post(\"/agent/runs/{run_id}/approve\")\ndef approve_workflow_run(run_id: str, payload: ApprovalPayload = None):\n    \"\"\"\n    Human-in-the-Loop (HITL) supervisor approval endpoint.\n    Unblocks and resumes an execution run paused at NEEDS_REVIEW with full\n    cryptographic state tracking and attestation.\n    \"\"\"\n    supervisor_id = payload.supervisor_id if payload else \"Lead-Security-Auditor\"\n    justification = payload.justification if payload else \"Authorized override after risk assessment\"\n\n    run = get_run(run_id)\n    if not run:\n        return {\"error\": f\"No workflow run found with id {run_id}\"}\n\n    stage_str = run.stage.value if hasattr(run.stage, \"value\") else str(run.stage)\n    if \"NEEDS_REVIEW\" not in stage_str:\n        return {\n            \"error\": f\"Run {run_id} is in stage '{stage_str}', not 'NEEDS_REVIEW'. Only 'NEEDS_REVIEW' runs can be approved.\",\n            \"current_stage\": stage_str\n        }\n\n    resumed_run = resume_workflow(run_id, supervisor_id=supervisor_id, justification=justification)\n    return resumed_run.to_dict()\n\n\n# ====="
+      },
+      {
+        "score": 0.24544042460674392,
+        "file_path": "main.py",
+        "chunk_index": 17,
+        "text": "\": run.policy_decision,\n        \"redacted_request_text\": run.redacted_request_text,\n        \"history\": run.history,\n    }\n\n\n@app.get(\"/agent/runs\")\ndef get_all_agent_runs():\n    \"\"\"List all workflow runs (newest first) with rich metadata.\"\"\"\n    runs = list_runs()\n    results = []\n    for r in reversed(runs):\n        stage_str = r.stage.value if hasattr(r.stage, \"value\") else str(r.stage)\n        verdict = \"BLOCKED\" if \"BLOCKED\" in stage_str else (\"NEEDS_REVIEW\" if \"NEEDS_REVIEW\" in stage_str else \"ALLOWED\")\n        results.append({\n            \"id\": r.id,\n            \"workflow_id\": r.id,\n            \"timestamp\": getattr(r, \"timestamp\", \"\"),\n            \"stage\": stage_str,\n            \"final_stage\": stage_str,\n            \"verdict\": verdict,\n            \"request\": r.request_text,\n            \"request_text\": r.request_text,\n            \"redacted_request\": getattr(r, \"redacted_request_text\", r.request_text),\n            \"finding_count\": len(r.security_findings),\n            \"duration_ms\": getattr(r, \"duration_ms\", 0.0),\n            \"plan_steps\": len(r.plan),\n            \"has_generation\": bool(r.generation_result and r.generation_result.get(\"generated_output\")),\n            \"has_valid"
+      },
+      {
+        "score": 0.2412902024312894,
+        "file_path": "agent\\state.py",
+        "chunk_index": 2,
+        "text": "r] = field(default_factory=list)  # human-readable stage log\n    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).strftime(\"%Y-%m-%d %H:%M:%S UTC\"))\n    duration_ms: float = 0.0\n    run_type: str = \"workflow\"  # workflow, self_heal, review, pypi\n    metadata: dict = field(default_factory=dict)\n\n    def advance(self, new_stage: WorkflowStage, note: str = \"\"):\n        self.history.append(f\"{self.stage} -> {new_stage}\" + (f\" ({note})\" if note else \"\"))\n        self.stage = new_stage\n\n    def to_dict(self) -> dict:\n        stage_str = self.stage.value if hasattr(self.stage, \"value\") else str(self.stage)\n        verdict = \"BLOCKED\" if \"BLOCKED\" in stage_str else (\"NEEDS_REVIEW\" if \"NEEDS_REVIEW\" in stage_str else \"ALLOWED\")\n        return {\n            \"id\": self.id,\n            \"workflow_id\": self.id,\n            \"timestamp\": self.timestamp,\n            \"request_text\": self.request_text,\n            \"final_stage\": stage_str,\n            \"stage\": stage_str,\n            \"verdict\": verdict,\n            \"plan\": self.plan,\n            \"retrieved_context\": self.retrieved_context,\n            \"security_findings\": self.security_findings,\n            \"generation_result\""
+      },
+      {
+        "score": 0.2291238353282993,
+        "file_path": "main.py",
+        "chunk_index": 21,
+        "text": "oved.\",\n            \"current_stage\": stage_str\n        }\n\n    resumed_run = resume_workflow(run_id, supervisor_id=supervisor_id, justification=justification)\n    return resumed_run.to_dict()\n\n\n# ============================================================\n# SECURITY ENGINE EVALUATION\n# ============================================================\n\n@app.get(\"/evaluate\")\ndef evaluate_security_engine():\n    \"\"\"\n    Run the test corpus through the security\n    engine and return precision/recall/F1.\n    \"\"\"\n    return evaluate()\n\n\n@app.get(\"/agent/runs/{run_id}/explain\")\ndef explain_decision(run_id: str):\n    \"\"\"\n    Plain-English explanation of why a workflow run was allowed, blocked,\n    or sent for review \u2014 for a non-technical reader (e.g. a demo audience\n    or a developer who just wants to know what to fix). Built on top of\n    the existing policy_decision data, not a new decision source.\n    \"\"\"\n    run = get_run(run_id)\n    if run is None:\n        return {\"error\": f\"No workflow run found with id {run_id}\"}\n\n    policy = run.policy_decision\n    stage = run.stage\n\n    if not policy:\n        return {\n            \"workflow_id\": run_id,\n            \"plain_english\": \"This request comple"
+      },
+      {
+        "score": 0.2246494017049629,
+        "file_path": "security\\merkle_ledger.py",
+        "chunk_index": 7,
+        "text": " that a leaf hash belongs to the Merkle tree with the expected root.\n        \"\"\"\n        hash_fn = CRYPTO_SUITES.get(crypto_suite, sha3_512_hash)\n        \n        # If lengths indicate legacy SHA-256 vs 512, auto-select\n        if len(expected_root) == 64 and len(leaf_hash) == 64:\n            hash_fn = sha256_hash\n        elif len(expected_root) == 128:\n            hash_fn = sha3_512_hash\n\n        curr_hash = leaf_hash\n        for step in proof:\n            sibling = step[\"sibling_hash\"]\n            if step[\"position\"] == \"left\":\n                curr_hash = hash_fn(sibling + curr_hash)\n            else:\n                curr_hash = hash_fn(curr_hash + sibling)\n        \n        # Fallback check against hybrid if needed\n        if curr_hash != expected_root:\n            curr_hash_hyb = leaf_hash\n            for step in proof:\n                sibling = step[\"sibling_hash\"]\n                if step[\"position\"] == \"left\":\n                    curr_hash_hyb = hybrid_post_quantum_hash(sibling + curr_hash_hyb)\n                else:\n                    curr_hash_hyb = hybrid_post_quantum_hash(curr_hash_hyb + sibling)\n            if curr_hash_hyb == expected_root:\n                return True\n\n "
+      }
+    ],
+    "security_findings": [],
+    "generation_result": {
+      "llm_configured": true,
+      "evidence_chunks_used": 5,
+      "prompt": "You are a careful software engineer working inside an existing project.\nUse ONLY the repository evidence below to inform your answer \u2014 do not invent\nlibraries, APIs, or file structures that aren't shown here. If the evidence\nis insufficient to safely implement the request, say so explicitly instead\nof guessing.\n\nREPOSITORY EVIDENCE:\n--- From main.py ---\naseModel):\n    supervisor_id: str = \"Lead-Security-Auditor\"\n    justification: str = \"Authorized override after risk assessment\"\n\n\n@app.post(\"/agent/runs/{run_id}/approve\")\ndef approve_workflow_run(run_id: str, payload: ApprovalPayload = None):\n    \"\"\"\n    Human-in-the-Loop (HITL) supervisor approval endpoint.\n    Unblocks and resumes an execution run paused at NEEDS_REVIEW with full\n    cryptographic state tracking and attestation.\n    \"\"\"\n    supervisor_id = payload.supervisor_id if payload else \"Lead-Security-Auditor\"\n    justification = payload.justification if payload else \"Authorized override after risk assessment\"\n\n    run = get_run(run_id)\n    if not run:\n        return {\"error\": f\"No workflow run found with id {run_id}\"}\n\n    stage_str = run.stage.value if hasattr(run.stage, \"value\") else str(run.stage)\n    if \"NEEDS_REVIEW\" not in stage_str:\n        return {\n            \"error\": f\"Run {run_id} is in stage '{stage_str}', not 'NEEDS_REVIEW'. Only 'NEEDS_REVIEW' runs can be approved.\",\n            \"current_stage\": stage_str\n        }\n\n    resumed_run = resume_workflow(run_id, supervisor_id=supervisor_id, justification=justification)\n    return resumed_run.to_dict()\n\n\n# =====\n\n--- From main.py ---\n\": run.policy_decision,\n        \"redacted_request_text\": run.redacted_request_text,\n        \"history\": run.history,\n    }\n\n\n@app.get(\"/agent/runs\")\ndef get_all_agent_runs():\n    \"\"\"List all workflow runs (newest first) with rich metadata.\"\"\"\n    runs = list_runs()\n    results = []\n    for r in reversed(runs):\n        stage_str = r.stage.value if hasattr(r.stage, \"value\") else str(r.stage)\n        verdict = \"BLOCKED\" if \"BLOCKED\" in stage_str else (\"NEEDS_REVIEW\" if \"NEEDS_REVIEW\" in stage_str else \"ALLOWED\")\n        results.append({\n            \"id\": r.id,\n            \"workflow_id\": r.id,\n            \"timestamp\": getattr(r, \"timestamp\", \"\"),\n            \"stage\": stage_str,\n            \"final_stage\": stage_str,\n            \"verdict\": verdict,\n            \"request\": r.request_text,\n            \"request_text\": r.request_text,\n            \"redacted_request\": getattr(r, \"redacted_request_text\", r.request_text),\n            \"finding_count\": len(r.security_findings),\n            \"duration_ms\": getattr(r, \"duration_ms\", 0.0),\n            \"plan_steps\": len(r.plan),\n            \"has_generation\": bool(r.generation_result and r.generation_result.get(\"generated_output\")),\n            \"has_valid\n\n--- From agent\\state.py ---\nr] = field(default_factory=list)  # human-readable stage log\n    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).strftime(\"%Y-%m-%d %H:%M:%S UTC\"))\n    duration_ms: float = 0.0\n    run_type: str = \"workflow\"  # workflow, self_heal, review, pypi\n    metadata: dict = field(default_factory=dict)\n\n    def advance(self, new_stage: WorkflowStage, note: str = \"\"):\n        self.history.append(f\"{self.stage} -> {new_stage}\" + (f\" ({note})\" if note else \"\"))\n        self.stage = new_stage\n\n    def to_dict(self) -> dict:\n        stage_str = self.stage.value if hasattr(self.stage, \"value\") else str(self.stage)\n        verdict = \"BLOCKED\" if \"BLOCKED\" in stage_str else (\"NEEDS_REVIEW\" if \"NEEDS_REVIEW\" in stage_str else \"ALLOWED\")\n        return {\n            \"id\": self.id,\n            \"workflow_id\": self.id,\n            \"timestamp\": self.timestamp,\n            \"request_text\": self.request_text,\n            \"final_stage\": stage_str,\n            \"stage\": stage_str,\n            \"verdict\": verdict,\n            \"plan\": self.plan,\n            \"retrieved_context\": self.retrieved_context,\n            \"security_findings\": self.security_findings,\n            \"generation_result\"\n\n--- From main.py ---\noved.\",\n            \"current_stage\": stage_str\n        }\n\n    resumed_run = resume_workflow(run_id, supervisor_id=supervisor_id, justification=justification)\n    return resumed_run.to_dict()\n\n\n# ============================================================\n# SECURITY ENGINE EVALUATION\n# ============================================================\n\n@app.get(\"/evaluate\")\ndef evaluate_security_engine():\n    \"\"\"\n    Run the test corpus through the security\n    engine and return precision/recall/F1.\n    \"\"\"\n    return evaluate()\n\n\n@app.get(\"/agent/runs/{run_id}/explain\")\ndef explain_decision(run_id: str):\n    \"\"\"\n    Plain-English explanation of why a workflow run was allowed, blocked,\n    or sent for review \u2014 for a non-technical reader (e.g. a demo audience\n    or a developer who just wants to know what to fix). Built on top of\n    the existing policy_decision data, not a new decision source.\n    \"\"\"\n    run = get_run(run_id)\n    if run is None:\n        return {\"error\": f\"No workflow run found with id {run_id}\"}\n\n    policy = run.policy_decision\n    stage = run.stage\n\n    if not policy:\n        return {\n            \"workflow_id\": run_id,\n            \"plain_english\": \"This request comple\n\n--- From security\\merkle_ledger.py ---\n that a leaf hash belongs to the Merkle tree with the expected root.\n        \"\"\"\n        hash_fn = CRYPTO_SUITES.get(crypto_suite, sha3_512_hash)\n        \n        # If lengths indicate legacy SHA-256 vs 512, auto-select\n        if len(expected_root) == 64 and len(leaf_hash) == 64:\n            hash_fn = sha256_hash\n        elif len(expected_root) == 128:\n            hash_fn = sha3_512_hash\n\n        curr_hash = leaf_hash\n        for step in proof:\n            sibling = step[\"sibling_hash\"]\n            if step[\"position\"] == \"left\":\n                curr_hash = hash_fn(sibling + curr_hash)\n            else:\n                curr_hash = hash_fn(curr_hash + sibling)\n        \n        # Fallback check against hybrid if needed\n        if curr_hash != expected_root:\n            curr_hash_hyb = leaf_hash\n            for step in proof:\n                sibling = step[\"sibling_hash\"]\n                if step[\"position\"] == \"left\":\n                    curr_hash_hyb = hybrid_post_quantum_hash(sibling + curr_hash_hyb)\n                else:\n                    curr_hash_hyb = hybrid_post_quantum_hash(curr_hash_hyb + sibling)\n            if curr_hash_hyb == expected_root:\n                return True\n\n \n\nDEVELOPER REQUEST:\nInitialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF\n\nProvide the code change needed to satisfy this request, consistent with the\nevidence above. Keep the response focused and include a one-line comment\nexplaining any assumption you had to make.\n",
+      "generated_output": "Based on the provided repository evidence, there is no code or module related to initializing a GitHub client or handling personal access tokens like `ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF`. \n\nTherefore, the repository evidence is insufficient to safely implement this request without inventing APIs or file structures that are not shown in the project."
+    },
+    "validation_result": {
+      "valid_syntax": false,
+      "error": "invalid syntax (<generated>, line 1)",
+      "extracted_code": "Based on the provided repository evidence, there is no code or module related to initializing a GitHub client or handling personal access tokens like `ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF`. \n\nTherefore, the repository evidence is insufficient to safely implement this request without inventing APIs or file structures that are not shown in the project."
+    },
+    "impact_report": [
+      {
+        "file_path": "main.py",
+        "relevance_score": 0.168,
+        "score_percentage": 17,
+        "reason": "semantically related to the change description",
+        "impact_tier": "CRITICAL",
+        "significance": "Highest Impact \u2014 Primary Target Component",
+        "score_justification": "Score 0.168 was assigned based on vector embedding semantic similarity (+0.168 from 0.28 cosine distance) matching the requested feature.",
+        "breakdown": [
+          "\ud83e\udde0 Semantic Alignment (+0.168): Vector embedding similarity (0.28 cosine score) with requested change intent."
+        ],
+        "action_hint": "Review logic for consistency with shared domain assumptions.",
+        "semantic_score": 0.28,
+        "dependency_hit": false,
+        "is_highest_impact": true
+      },
+      {
+        "file_path": "agent\\state.py",
+        "relevance_score": 0.145,
+        "score_percentage": 14,
+        "reason": "semantically related to the change description",
+        "impact_tier": "LOW",
+        "significance": "Low Impact \u2014 Peripheral / Advisory Context",
+        "score_justification": "Score 0.145 was assigned based on vector embedding semantic similarity (+0.145 from 0.24 cosine distance) matching the requested feature.",
+        "breakdown": [
+          "\ud83e\udde0 Semantic Alignment (+0.145): Vector embedding similarity (0.24 cosine score) with requested change intent."
+        ],
+        "action_hint": "Standard code review and lint checks are sufficient.",
+        "semantic_score": 0.241,
+        "dependency_hit": false,
+        "is_highest_impact": false
+      },
+      {
+        "file_path": "security\\merkle_ledger.py",
+        "relevance_score": 0.135,
+        "score_percentage": 14,
+        "reason": "semantically related to the change description",
+        "impact_tier": "LOW",
+        "significance": "Low Impact \u2014 Peripheral / Advisory Context",
+        "score_justification": "Score 0.135 was assigned based on vector embedding semantic similarity (+0.135 from 0.22 cosine distance) matching the requested feature.",
+        "breakdown": [
+          "\ud83e\udde0 Semantic Alignment (+0.135): Vector embedding similarity (0.22 cosine score) with requested change intent."
+        ],
+        "action_hint": "Standard code review and lint checks are sufficient.",
+        "semantic_score": 0.225,
+        "dependency_hit": false,
+        "is_highest_impact": false
+      },
+      {
+        "file_path": "impact\\analyzer.py",
+        "relevance_score": 0.117,
+        "score_percentage": 12,
+        "reason": "semantically related to the change description",
+        "impact_tier": "LOW",
+        "significance": "Low Impact \u2014 Peripheral / Advisory Context",
+        "score_justification": "Score 0.117 was assigned based on vector embedding semantic similarity (+0.117 from 0.20 cosine distance) matching the requested feature.",
+        "breakdown": [
+          "\ud83e\udde0 Semantic Alignment (+0.117): Vector embedding similarity (0.20 cosine score) with requested change intent."
+        ],
+        "action_hint": "Standard code review and lint checks are sufficient.",
+        "semantic_score": 0.195,
+        "dependency_hit": false,
+        "is_highest_impact": false
+      }
+    ],
+    "policy_decision": {
+      "decision": "ALLOW",
+      "action": "ALLOW",
+      "verdict": "ALLOW",
+      "risk_score": 0.0,
+      "action_risk_classification": "low",
+      "data_findings_count": 0,
+      "highest_severity": "none",
+      "explanation": "No significant sensitive-data or high-risk-action signal detected.",
+      "steganography": {
+        "has_steganography": false,
+        "has_bidi_attack": false,
+        "cleaned_text": "Initialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF",
+        "stripped_characters_count": 0,
+        "threats": [],
+        "threat_count": 0,
+        "risk_score": 0.0
+      },
+      "obfuscation": {
+        "original_text": "Initialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF",
+        "is_obfuscated": true,
+        "detected_encodings": [
+          "LEETSPEAK_SUBSTITUTION"
+        ],
+        "decloaked_texts": [
+          "initialize github client with personal access token ghp_sample_test_pat_token_i2eas6t89oabcdef"
+        ],
+        "unified_normalized_text": "Initialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF initialize github client with personal access token ghp_sample_test_pat_token_i2eas6t89oabcdef",
+        "obfuscation_risk_score": 0.4,
+        "details": [
+          "Leetspeak normalization revealed masked security triggers: de-obfuscated terms"
+        ]
+      },
+      "ssrf": {
+        "is_ssrf_threat": false,
+        "threat_count": 0,
+        "threats": [],
+        "risk_score": 0.0,
+        "explanation": "No SSRF or cloud metadata access detected."
+      },
+      "prompt_safety": {
+        "is_safe": true,
+        "threat_detected": false,
+        "risk_level": "NONE",
+        "threat_count": 0,
+        "threats": [],
+        "sanitized_prompt": "Initialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF",
+        "verdict": "SAFE",
+        "explanation": "Prompt passed adversarial injection screening."
+      },
+      "merkle_root": "f27e8c3fa2f556eb396ef843a30470934fb171fc27b7ac183acc2980b4279081873fde0c9cda54cf1be1574afd8a39f3b1239c33bc60a41bf9f53a8d07aa2747",
+      "mitre_atlas": [],
+      "owasp_llm": []
+    },
+    "redacted_request_text": "Initialize GitHub client with personal access token ghp_SAMPLE_TEST_PAT_TOKEN_1234567890ABCDEF",
+    "history": [
+      "WorkflowStage.REQUEST_RECEIVED -> WorkflowStage.PLANNING",
+      "WorkflowStage.PLANNING -> WorkflowStage.CONTEXT_RETRIEVAL",
+      "WorkflowStage.CONTEXT_RETRIEVAL -> WorkflowStage.SECURITY_CHECK",
+      "WorkflowStage.SECURITY_CHECK -> WorkflowStage.IMPACT_ANALYSIS",
+      "WorkflowStage.IMPACT_ANALYSIS -> WorkflowStage.GENERATION",
+      "WorkflowStage.GENERATION -> WorkflowStage.COMPLETE (workflow completed: planning + RAG + impact analysis + generation + security + validation)"
+    ],
+    "duration_ms": 2077.35,
+    "run_type": "workflow",
+    "metadata": {}
+  },
+  {
+    "id": "f5f5fca3-8ede-491f-82d1-af5c8cf39fbb",
+    "workflow_id": "f5f5fca3-8ede-491f-82d1-af5c8cf39fbb",
+    "timestamp": "2026-10-04 06:20:11 UTC",
+    "request_text": "Audit employee database record with Aadhaar 9876 5432 1098 and phone +919876543210",
+    "final_stage": "NEEDS_REVIEW",
+    "stage": "NEEDS_REVIEW",
+    "verdict": "NEEDS_REVIEW",
+    "plan": [],
+    "retrieved_context": [],
+    "security_findings": [
+      {
+        "category": "Aadhaar-like",
+        "value": "9876 5432 1098",
+        "action": "BLOCK",
+        "severity": "high",
+        "confidence": 0.95,
+        "reason": "12-digit national identifier (Aadhaar format: 9876 5432 1098), with identity context nearby"
+      },
+      {
+        "category": "Aadhaar-like",
+        "value": "919876543210",
+        "action": "BLOCK",
+        "severity": "high",
+        "confidence": 0.95,
+        "reason": "12-digit national identifier (Aadhaar format: 919876543210), with identity context nearby"
+      }
+    ],
+    "generation_result": {},
+    "validation_result": {},
+    "impact_report": [],
+    "policy_decision": {
+      "decision": "REVIEW",
+      "action": "REVIEW",
+      "verdict": "REVIEW",
+      "risk_score": 0.584,
+      "action_risk_classification": "low",
+      "data_findings_count": 2,
+      "highest_severity": "high",
+      "explanation": "Decision=REVIEW based on detected categories [Aadhaar-like] combined with a 'low'-risk requested action.",
+      "steganography": {
+        "has_steganography": false,
+        "has_bidi_attack": false,
+        "cleaned_text": "Audit employee database record with Aadhaar 9876 5432 1098 and phone +919876543210",
+        "stripped_characters_count": 0,
+        "threats": [],
+        "threat_count": 0,
+        "risk_score": 0.0
+      },
+      "obfuscation": {
+        "original_text": "Audit employee database record with Aadhaar 9876 5432 1098 and phone +919876543210",
+        "is_obfuscated": false,
+        "detected_encodings": [],
+        "decloaked_texts": [],
+        "unified_normalized_text": "Audit employee database record with Aadhaar 9876 5432 1098 and phone +919876543210",
+        "obfuscation_risk_score": 0.0,
+        "details": []
+      },
+      "ssrf": {
+        "is_ssrf_threat": false,
+        "threat_count": 0,
+        "threats": [],
+        "risk_score": 0.0,
+        "explanation": "No SSRF or cloud metadata access detected."
+      },
+      "prompt_safety": {
+        "is_safe": true,
+        "threat_detected": false,
+        "risk_level": "NONE",
+        "threat_count": 0,
+        "threats": [],
+        "sanitized_prompt": "Audit employee database record with Aadhaar 9876 5432 1098 and phone +919876543210",
+        "verdict": "SAFE",
+        "explanation": "Prompt passed adversarial injection screening."
+      },
+      "merkle_root": "54d287a54e5b842dd899ffb3ce1cb887b3b31678c475d7563c4ccbc5f778775fec885b9be0b342ae19b5c6f38b070124567ab299cc8ad9bb927160eb603cd2fb",
+      "mitre_atlas": [
+        "AML.T0051: LLM Prompt Injection"
+      ],
+      "owasp_llm": [
+        "LLM01: Prompt Injection"
+      ]
+    },
+    "redacted_request_text": "Audit employee database record with Aadhaar [REDACTED:Aadhaar-like] and phone +[REDACTED:Aadhaar-like]",
+    "history": [
+      "WorkflowStage.REQUEST_RECEIVED -> WorkflowStage.NEEDS_REVIEW (Decision=REVIEW based on detected categories [Aadhaar-like] combined with a 'low'-risk requested action.)"
+    ],
+    "duration_ms": 4.48,
+    "run_type": "workflow",
+    "metadata": {}
+  },
+  {
+    "id": "ca28ee28-8eb6-459b-a0a9-a8ca4124e068",
+    "workflow_id": "ca28ee28-8eb6-459b-a0a9-a8ca4124e068",
+    "timestamp": "2026-10-04 06:22:10 UTC",
+    "request_text": "ReAct Self-Healing: calculate_discount (2 iterations, Code verified. Passed after 2 iteration(s).)",
+    "final_stage": "COMPLETE",
+    "stage": "COMPLETE",
+    "verdict": "ALLOWED",
+    "plan": [],
+    "retrieved_context": [],
+    "security_findings": [],
+    "generation_result": {
+      "generated_output": "def calculate_discount(price, rate):\n    return price - (price * rate)"
+    },
+    "validation_result": {
+      "valid_syntax": true,
+      "error": null
+    },
+    "impact_report": [],
+    "policy_decision": {},
+    "redacted_request_text": "",
+    "history": [
+      "Iteration 1 [FAILED]: Diagnosed AssertionError. Generating autonomous repair patch.",
+      "Iteration 2 [PASSED]: All test assertions passed successfully."
+    ],
+    "duration_ms": 120.0,
+    "run_type": "self_heal",
+    "metadata": {
+      "success": true,
+      "healed": true,
+      "iterations_required": 2,
+      "final_code": "def calculate_discount(price, rate):\n    return price - (price * rate)",
+      "status": "HEALED",
+      "history": [
+        {
+          "iteration": 1,
+          "status": "FAILED",
+          "code": "def calculate_discount(price, rate):\n    # Bug: adds instead of subtracting discount!\n    return price + (price * rate)",
+          "error_type": "AssertionError",
+          "error_message": "FAILED (failures=1)",
+          "stderr_snippet": "---------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\jaind\\AppData\\Local\\Temp\\tmpuf16rndd.py\", line 13, in test_discount\n    self.assertEqual(calculate_discount(100, 0.2), 80)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 120.0 != 80\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+          "action": "Diagnosed AssertionError. Generating autonomous repair patch."
+        },
+        {
+          "iteration": 2,
+          "status": "PASSED",
+          "code": "def calculate_discount(price, rate):\n    return price - (price * rate)",
+          "error": null,
+          "action": "All test assertions passed successfully."
+        }
+      ],
+      "verdict": "Code verified. Passed after 2 iteration(s)."
+    }
+  },
+  {
+    "id": "92c966d8-bf1b-44c9-965d-538f1641db87",
+    "workflow_id": "92c966d8-bf1b-44c9-965d-538f1641db87",
+    "timestamp": "2026-10-04 06:22:34 UTC",
+    "request_text": "PyPI Dependency Audit (1 phantom, 2 verified)",
+    "final_stage": "BLOCKED",
+    "stage": "BLOCKED",
+    "verdict": "BLOCKED",
+    "plan": [],
+    "retrieved_context": [],
+    "security_findings": [
+      {
+        "category": "PyPI_SLOPSQUATTING",
+        "value": "completely_fake_ai_auth_lib_9999",
+        "action": "BLOCK",
+        "severity": "high"
+      }
+    ],
+    "generation_result": {},
+    "validation_result": {},
+    "impact_report": [],
+    "policy_decision": {},
+    "redacted_request_text": "",
+    "history": [
+      "PyPI check completed",
+      "Verdict: Blocked 1 hallucinated package(s) not found on PyPI: completely_fake_ai_auth_lib_9999"
+    ],
+    "duration_ms": 0.0,
+    "run_type": "pypi",
+    "metadata": {
+      "is_safe": false,
+      "total_imports": 4,
+      "all_imports": [
+        "completely_fake_ai_auth_lib_9999",
+        "fastapi",
+        "os",
+        "pydantic"
+      ],
+      "third_party_imports": [
+        "completely_fake_ai_auth_lib_9999",
+        "fastapi",
+        "pydantic"
+      ],
+      "hallucinated_packages": [
+        "completely_fake_ai_auth_lib_9999"
+      ],
+      "verified_packages": [
+        {
+          "package": "fastapi",
+          "version": "0.115.0",
+          "summary": "FastAPI framework, high performance, easy to learn",
+          "status": "VERIFIED_OFFICIAL"
+        },
+        {
+          "package": "pydantic",
+          "version": "2.9.2",
+          "summary": "Data validation using Python type annotations",
+          "status": "VERIFIED_OFFICIAL"
+        }
+      ],
+      "warnings": [],
+      "risk_verdict": "SUPPLY_CHAIN_RISK_DETECTED",
+      "message": "Blocked 1 hallucinated package(s) not found on PyPI: completely_fake_ai_auth_lib_9999"
+    }
+  },
+  {
+    "id": "c8f0e817-be9b-4de2-9cec-1bdac812236d",
+    "workflow_id": "c8f0e817-be9b-4de2-9cec-1bdac812236d",
+    "timestamp": "2026-10-04 06:26:13 UTC",
+    "request_text": "Exploit Test: Please update the customer profile and log their Aadhaar card number: 4829 1049 3921 to th...",
+    "final_stage": "BLOCKED",
+    "stage": "BLOCKED",
+    "verdict": "BLOCKED",
+    "plan": [],
+    "retrieved_context": [],
+    "security_findings": [
+      {
+        "category": "Custom Exploit Test",
+        "reason": "PII_NATIONAL_IDENTIFIER_EXFILTRATION (DPDP Act 2023 Violation)",
+        "severity": "HIGH"
+      }
+    ],
+    "generation_result": {},
+    "validation_result": {},
+    "impact_report": [],
+    "policy_decision": {
+      "decision": "BLOCK",
+      "risk_score": 0.85,
+      "entropy": 4.4
+    },
+    "redacted_request_text": "",
+    "history": [
+      "Custom Exploit Analyzed: 1 threat signals",
+      "Composite Risk Score: 0.85"
+    ],
+    "duration_ms": 140.0,
+    "run_type": "exploit_analysis",
+    "metadata": {
+      "mathRisk": 0.85,
+      "entropy": 4.4,
+      "threats": [
+        "PII_NATIONAL_IDENTIFIER_EXFILTRATION (DPDP Act 2023 Violation)"
+      ],
+      "actionRisk": "MEDIUM"
+    }
+  }
+]

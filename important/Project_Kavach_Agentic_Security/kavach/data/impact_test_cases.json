@@ -1,0 +1,27 @@
+[
+  {
+    "id": "IC-01",
+    "change_description": "Modify the security detection logic for PAN numbers",
+    "actual_affected_files": ["app\\security\\detector.py", "app\\security\\patterns.py", "app\\security\\evaluator.py"]
+  },
+  {
+    "id": "IC-02",
+    "change_description": "Change how workflow runs are stored and retrieved",
+    "actual_affected_files": ["app\\agent\\state.py", "app\\agent\\orchestrator.py", "app\\main.py"]
+  },
+  {
+    "id": "IC-03",
+    "change_description": "Update the RAG embedding model used for repository search",
+    "actual_affected_files": ["app\\rag\\embed_store.py", "app\\rag\\ingest.py"]
+  },
+  {
+    "id": "IC-04",
+    "change_description": "Change the prompt sent to the LLM for code generation",
+    "actual_affected_files": ["app\\generation\\generator.py", "app\\generation\\llm_client.py", "app\\generation\\validator.py"]
+  },
+  {
+    "id": "IC-05",
+    "change_description": "Modify the task planning logic that breaks down a developer request",
+    "actual_affected_files": ["app\\agent\\planner.py", "app\\agent\\orchestrator.py"]
+  }
+]

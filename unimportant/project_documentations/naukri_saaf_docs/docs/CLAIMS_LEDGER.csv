@@ -1,0 +1,22 @@
+claim,value,file,command_that_regenerates_it,status,notes
+Deduplicated job listings count,2851,01_Datasets_Raw_Scrapes/naukri_saaf_v3_dataset.csv,python -c "import pandas as pd; print(len(pd.read_csv('01_Datasets_Raw_Scrapes/naukri_saaf_v3_dataset.csv')))",verified,Exact row count after cross-portal deduplication
+Raw scraped postings count,3000,01_Datasets_Raw_Scrapes/DATA_DICTIONARY.md,python -c "import pandas as pd, glob; print(sum(len(pd.read_csv(f)) for f in glob.glob('01_Datasets_Raw_Scrapes/dataset_*.csv')))",verified,1000 each from Glassdoor Indeed LinkedIn via Apify
+Dropped duplicate records,149,01_Datasets_Raw_Scrapes/DATA_DICTIONARY.md,python -c "print(3000 - 2851)",verified,Exact duplicates on (title company location date)
+Silver proxy set size,180,data/silver_labeling_sheet.csv,python -c "import pandas as pd; print(len(pd.read_csv('data/silver_labeling_sheet.csv')))",verified,Machine-generated heuristic proxy sample (not human ground truth)
+Gold human benchmark size,80,data/BLIND_LABELING_SHEET_80.csv,python -c "import pandas as pd; print(len(pd.read_csv('data/BLIND_LABELING_SHEET_80.csv')))",verified,Blank sheet generated for candidate human verification
+Platt calibrated Brier score,0.0167,data/calibration_metrics_v4.csv,pytest tests/test_calibration.py,verified,Improved from raw uncalibrated Brier score of 0.0188
+Platt calibrated ECE,0.0220,data/calibration_metrics_v4.csv,pytest tests/test_calibration.py,verified,Improved from raw uncalibrated ECE of 0.0366
+GroupKFold OOF ROC-AUC,0.9961,data/model_benchmark_group_cv.csv,python -c "import pandas as pd; print(pd.read_csv('data/model_benchmark_group_cv.csv'))",verified,5-fold GroupKFold by employer evaluated on weak-supervision target
+Holdout ROC-AUC on 180 set,0.9200,data/model_benchmark_gold_test.csv,python src/models/train_pipeline.py,relabelled,Evaluated against machine-generated silver proxy labels not human ground truth
+Holdout Recall on 180 set,0.9318,data/model_benchmark_gold_test.csv,python src/models/train_pipeline.py,relabelled,Evaluated against machine-generated silver proxy labels not human ground truth
+Kaplan-Meier survival half-life (128d vs 3d),128.0 days vs 3.0 days,src/analytics/survival_analysis.py,None,removed,Invalid methodology: cross-sectional scrape without observed closures (events forced to 1)
+Lingering duration factor,42.6x,src/analytics/survival_analysis.py,None,removed,Invalid methodology derived from artificial Kaplan-Meier events
+Cross-sectional overall mean age,32.7 days,data/listing_age_distribution.csv,python src/analytics/listing_age_analysis.py,verified,Actual mean days_live at scrape date across all 2851 listings (median 11.0 days)
+Glassdoor mean age at scrape,63.8 days,data/listing_age_distribution.csv,python src/analytics/listing_age_analysis.py,verified,Actual mean days_live at scrape date for Glassdoor listings (median 41.0 days)
+Indeed mean age at scrape,0.3 days,data/listing_age_distribution.csv,python src/analytics/listing_age_analysis.py,verified,Indeed listings scraped fresh within 0-4 days (median 0.0 days)
+LinkedIn mean age at scrape,37.2 days,data/listing_age_distribution.csv,python src/analytics/listing_age_analysis.py,verified,Actual mean days_live at scrape date for LinkedIn listings (median 12.0 days)
+Cross-company JD plagiarism rate,54.47%,data/cross_company_plagiarism.csv,python src/features/plagiarism_detector.py,unverified,High similarity is an artifact of 64-d LSA vector compression rather than verified copy-paste
+Verification agent 100% recall,100.0%,src/agent/benchmark.py,python src/agent/benchmark.py,removed,Circular evaluation: agent used same features and models that produced the target proxy labels
+Pytest passing test modules,11/11,tests/,pytest -v tests/,verified,11 unit and integration tests passing in ~2 seconds
+SQL workbench queries,42,02_SQL/naukri_saaf_sql_workbench.sql,git grep -c "QUERY " 02_SQL/naukri_saaf_sql_workbench.sql,verified,42 production queries across 9 analytical categories
+FastAPI scoring latency,<15ms,tests/test_api.py,pytest tests/test_api.py,verified,Local in-process TestClient response latency

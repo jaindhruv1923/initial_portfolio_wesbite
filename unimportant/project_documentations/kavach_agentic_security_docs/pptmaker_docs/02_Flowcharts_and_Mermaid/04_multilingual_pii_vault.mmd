@@ -1,0 +1,25 @@
+flowchart TD
+    RawInput([Raw Developer Input with Multilingual Hinglish Text & Secrets]) --> ScanPhase[Regex & Entropy Scanning Engine]
+
+    ScanPhase --> PII_Check[Detect Statutory Indian Identifiers:<br/>- Aadhaar: 12 digits<br/>- PAN: 10 chars A-Z 0-9]
+    ScanPhase --> Secret_Check[Detect High-Entropy Credentials:<br/>- Shannon Entropy H > 4.0<br/>- AWS AKIA, GitHub ghp_, Stripe keys]
+
+    PII_Check --> MatchDecision{Any Sensitive Findings?}
+    Secret_Check --> MatchDecision
+
+    MatchDecision -- No --> PassClean[Pass Untouched to LLM Context]
+    MatchDecision -- Yes --> Pseudonymize[Deterministic Reversible Tokenization]
+
+    Pseudonymize --> VaultStore[(In-Memory Session Vault Store:<br/>Token ID <---> Raw Sensitive Value)]
+    Pseudonymize --> Replace[Replace with Opaque Placeholders:<br/>e.g., &lt;REDACTED_AADHAAR_001&gt;,<br/>&lt;REDACTED_AWS_KEY_001&gt;]
+
+    Replace --> SanitizedPayload([Zero-Knowledge Sanitized Prompt])
+    SanitizedPayload --> CloudLLM[External Third-Party Cloud LLM<br/>No Raw PII / No Raw Secrets in Provider Logs]
+
+    CloudLLM --> GeneratedOutput([Generated Code / Reasoning Response])
+    GeneratedOutput --> AuthCheck{Authorized Local Recipient?}
+
+    AuthCheck -- No --> KeepRedacted[Preserve Redacted Tokens in Public Logs]
+    AuthCheck -- Yes --> Rehydrate[Query Vault & Rehydrate Raw Identifiers]
+
+    Rehydrate --> FinalClearText([Delivered Securely to Authorized Developer Sandbox])

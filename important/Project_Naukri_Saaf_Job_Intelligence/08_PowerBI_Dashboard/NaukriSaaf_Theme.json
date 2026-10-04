@@ -1,0 +1,176 @@
+{
+  "name": "Naukri Saaf",
+  "dataColors": [
+    "#1B3A5C",
+    "#C9971F",
+    "#3A7CA5",
+    "#9C3B34",
+    "#2F7D4F",
+    "#5C6F8A",
+    "#8F6B3D",
+    "#6B8FA3",
+    "#B5762A",
+    "#4A5A70"
+  ],
+  "background": "#FBFAF7",
+  "foreground": "#16232F",
+  "tableAccent": "#1B3A5C",
+  "good": "#2F7D4F",
+  "neutral": "#C9971F",
+  "bad": "#9C3B34",
+  "maximum": "#1B3A5C",
+  "center": "#C9971F",
+  "minimum": "#E9EEF3",
+  "null": "#B0B0B0",
+
+  "textClasses": {
+    "callout": {
+      "fontSize": 34,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1B3A5C"
+    },
+    "title": {
+      "fontSize": 15,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#16232F"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#16232F"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#4B5563"
+    }
+  },
+
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E4E9EF" } },
+            "radius": 14
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#1B3A5C" } },
+            "transparency": 88,
+            "position": "Bottom Center",
+            "shadowBlur": 14,
+            "shadowDistance": 4,
+            "shadowAngle": 90
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#16232F" } },
+            "fontSize": 14,
+            "fontFamily": "Segoe UI Semibold",
+            "alignment": "left",
+            "background": { "solid": { "color": "#FFFFFF" } }
+          }
+        ],
+        "visualHeader": [
+          { "show": false }
+        ],
+        "general": [
+          { "responsive": true }
+        ],
+        "padding": [
+          { "top": 12, "bottom": 12, "left": 14, "right": 14 }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#1B3A5C" } },
+            "fontSize": 30,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": { "solid": { "color": "#4B5563" } },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#1B3A5C" } },
+            "radius": 14
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [
+          { "show": true, "color": { "solid": { "color": "#F3F1EA" } } }
+        ],
+        "items": [
+          {
+            "fontColor": { "solid": { "color": "#16232F" } },
+            "background": { "solid": { "color": "#F3F1EA" } }
+          }
+        ]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "lineStyles": [
+          { "lineThickness": 3 }
+        ]
+      }
+    },
+    "pieChart": {
+      "*": {
+        "slices": [
+          { "innerRadiusRatio": 65 }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [
+          {
+            "fontColor": { "solid": { "color": "#FFFFFF" } },
+            "backColor": { "solid": { "color": "#1B3A5C" } },
+            "fontSize": 11,
+            "bold": true
+          }
+        ],
+        "values": [
+          {
+            "fontSize": 10,
+            "alternateBackColor": { "solid": { "color": "#F6F5F0" } }
+          }
+        ],
+        "total": [
+          {
+            "fontColor": { "solid": { "color": "#16232F" } },
+            "backColor": { "solid": { "color": "#E9EEF3" } },
+            "bold": true
+          }
+        ]
+      }
+    }
+  }
+}

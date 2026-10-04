@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data folders
+data/real/
+data/processed/
+data/*.duckdb
+data/*.duckdb.wal
+*.zip
+*.parquet
+
+# Allow data/raw to be tracked
+!data/raw/
+
+# Allow legacy excel
+!legacy/excel/*.xlsx
+
+# Scratch and temp files
+scratch/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# OS files
+.DS_Store
+Thumbs.db

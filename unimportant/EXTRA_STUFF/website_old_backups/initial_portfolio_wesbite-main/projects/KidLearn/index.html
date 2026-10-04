@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KidLearn 🚀</title>
+  <link rel="stylesheet" href="main.css"/>
+  <link rel="stylesheet" href="dashboard.css"/>
+  <link rel="stylesheet" href="profile.css"/>
+  <link rel="stylesheet" href="animations.css"/>
+  <script src="achievements.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="charts.js" defer></script>
+  <script src="storage.js" defer></script>
+  <script src="timer.js" defer></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- ===== SPLASH / ONBOARDING ===== -->
+<div id="splashScreen" class="splash-screen">
+  <div class="splash-content animate-bounce-in">
+    <div class="splash-logo">🚀</div>
+    <h1 class="splash-title">KidLearn</h1>
+    <p class="splash-sub">Smart learning for curious minds</p>
+    <button class="btn-primary btn-lg" onclick="App.showOnboarding()">Get Started →</button>
+  </div>
+</div>
+
+<!-- ===== ONBOARDING ===== -->
+<div id="onboardingScreen" class="screen hidden">
+  <div class="onboarding-card animate-slide-up">
+    <h2>👨‍👩‍👧‍👦 Set up your family</h2>
+    <p>Add a parent name and your first child to begin</p>
+    <div class="form-group">
+      <label>Parent Name</label>
+      <input type="text" id="parentNameInput" placeholder="e.g. Rahul Sharma" class="input-field"/>
+    </div>
+    <div class="form-group">
+      <label>First Child's Name</label>
+      <input type="text" id="childNameInput" placeholder="e.g. Aarav" class="input-field"/>
+    </div>
+    <div class="form-group">
+      <label>Child's Age</label>
+      <input type="number" id="childAgeInput" placeholder="e.g. 8" min="4" max="16" class="input-field"/>
+    </div>
+    <div class="form-group">
+      <label>Avatar</label>
+      <div class="avatar-picker" id="avatarPicker">
+        <span class="avatar-opt selected" data-val="🦁">🦁</span>
+        <span class="avatar-opt" data-val="🐯">🐯</span>
+        <span class="avatar-opt" data-val="🦊">🦊</span>
+        <span class="avatar-opt" data-val="🐼">🐼</span>
+        <span class="avatar-opt" data-val="🦄">🦄</span>
+        <span class="avatar-opt" data-val="🐸">🐸</span>
+        <span class="avatar-opt" data-val="🤖">🤖</span>
+        <span class="avatar-opt" data-val="🦋">🦋</span>
+      </div>
+    </div>
+    <button class="btn-primary btn-full" onclick="App.completeOnboarding()">Start Learning! 🎉</button>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="mainApp" class="hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🚀</span>
+      <span class="logo-text">KidLearn</span>
+    </div>
+
+    <div class="profile-switcher" id="profileSwitcher">
+      <!-- filled by JS -->
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item active" data-page="dashboard" onclick="App.navigate('dashboard')">
+        <i class="fa fa-home"></i><span>Dashboard</span>
+      </a>
+      <a class="nav-item" data-page="subjects" onclick="App.navigate('subjects')">
+        <i class="fa fa-book"></i><span>Subjects</span>
+      </a>
+      <a class="nav-item" data-page="timer" onclick="App.navigate('timer')">
+        <i class="fa fa-clock"></i><span>Focus Timer</span>
+      </a>
+      <a class="nav-item" data-page="achievements" onclick="App.navigate('achievements')">
+        <i class="fa fa-trophy"></i><span>Badges</span>
+      </a>
+      <a class="nav-item" data-page="goals" onclick="App.navigate('goals')">
+        <i class="fa fa-bullseye"></i><span>Goals</span>
+      </a>
+      <a class="nav-item" data-page="notes" onclick="App.navigate('notes')">
+        <i class="fa fa-sticky-note"></i><span>Notes</span>
+      </a>
+      <a class="nav-item" data-page="report" onclick="App.navigate('report')">
+        <i class="fa fa-chart-bar"></i><span>Report Card</span>
+      </a>
+      <a class="nav-item" data-page="heatmap" onclick="App.navigate('heatmap')">
+        <i class="fa fa-fire"></i><span>Heatmap</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="view-toggle">
+        <button id="btnParentView" class="view-btn active" onclick="App.setView('parent')">👨 Parent</button>
+        <button id="btnChildView" class="view-btn" onclick="App.setView('child')">👧 Child</button>
+      </div>
+      <div class="settings-row">
+        <button class="icon-btn" onclick="App.toggleDark()" title="Dark Mode"><i class="fa fa-moon"></i></button>
+        <button class="icon-btn" onclick="App.toggleSound()" title="Sound" id="soundBtn"><i class="fa fa-volume-up"></i></button>
+        <button class="icon-btn" onclick="App.addChild()" title="Add Child"><i class="fa fa-user-plus"></i></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger" onclick="App.toggleSidebar()"><i class="fa fa-bars"></i></button>
+        <h2 class="page-title" id="pageTitle">Dashboard</h2>
+      </div>
+      <div class="topbar-right">
+        <div class="mood-checkin" id="moodCheckin">
+          <span>How are you feeling?</span>
+          <div class="mood-emojis">
+            <span class="mood-btn" data-mood="5" onclick="App.logMood(5)">😄</span>
+            <span class="mood-btn" data-mood="4" onclick="App.logMood(4)">🙂</span>
+            <span class="mood-btn" data-mood="3" onclick="App.logMood(3)">😐</span>
+            <span class="mood-btn" data-mood="2" onclick="App.logMood(2)">😕</span>
+            <span class="mood-btn" data-mood="1" onclick="App.logMood(1)">😢</span>
+          </div>
+        </div>
+        <div class="xp-chip"><i class="fa fa-star"></i> <span id="topXP">0</span> XP</div>
+        <div class="streak-chip">🔥 <span id="topStreak">0</span></div>
+      </div>
+    </header>
+
+    <!-- PAGE: DASHBOARD -->
+    <section id="page-dashboard" class="page active">
+      <div class="welcome-banner" id="welcomeBanner"></div>
+
+      <div class="stats-grid">
+        <div class="stat-card purple">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-info">
+            <div class="stat-val" id="statXP">0</div>
+            <div class="stat-label">Total XP</div>
+          </div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-info">
+            <div class="stat-val" id="statStreak">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-info">
+            <div class="stat-val" id="statLessons">0</div>
+            <div class="stat-label">Lessons Done</div>
+          </div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon">🏅</div>
+          <div class="stat-info">
+            <div class="stat-val" id="statBadges">0</div>
+            <div class="stat-label">Badges</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Progress -->
+        <div class="card">
+          <h3 class="card-title">📚 Subject Progress</h3>
+          <div id="progressBars"></div>
+        </div>
+
+        <!-- Learning DNA -->
+        <div class="card">
+          <h3 class="card-title">🧬 Learning DNA</h3>
+          <canvas id="dnaChart" width="260" height="220"></canvas>
+        </div>
+
+        <!-- Mood vs Performance -->
+        <div class="card">
+          <h3 class="card-title">💭 Mood vs Performance</h3>
+          <canvas id="moodChart" width="260" height="200"></canvas>
+        </div>
+
+        <!-- Recent Badges -->
+        <div class="card">
+          <h3 class="card-title">🏆 Recent Badges</h3>
+          <div id="recentBadges" class="badge-grid-mini"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: SUBJECTS -->
+    <section id="page-subjects" class="page hidden">
+      <div class="subjects-header">
+        <h3>Pick a subject and log a lesson</h3>
+      </div>
+      <div class="subjects-grid" id="subjectsGrid"></div>
+    </section>
+
+    <!-- PAGE: TIMER -->
+    <section id="page-timer" class="page hidden">
+      <div class="timer-wrap">
+        <div class="timer-card">
+          <h3>🍅 Focus Timer</h3>
+          <p class="timer-sub">25 min focus · 5 min break</p>
+          <div class="timer-circle" id="timerCircle">
+            <svg viewBox="0 0 200 200">
+              <circle class="timer-bg" cx="100" cy="100" r="88"/>
+              <circle class="timer-progress" id="timerArc" cx="100" cy="100" r="88"
+                stroke-dasharray="553" stroke-dashoffset="0"/>
+            </svg>
+            <div class="timer-display" id="timerDisplay">25:00</div>
+          </div>
+          <div class="timer-label" id="timerLabel">Ready to focus?</div>
+          <div class="timer-controls">
+            <button class="btn-primary" id="timerStartBtn" onclick="Timer.toggle()">▶ Start</button>
+            <button class="btn-secondary" onclick="Timer.reset()">↺ Reset</button>
+          </div>
+          <div class="pomodoro-count">
+            Pomodoros today: <strong id="pomodoroCount">0</strong> 🍅
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: ACHIEVEMENTS -->
+    <section id="page-achievements" class="page hidden">
+      <div class="achievements-header">
+        <h3>Your Badge Collection</h3>
+        <p id="badgeProgress"></p>
+      </div>
+      <div class="badges-grid" id="badgesGrid"></div>
+    </section>
+
+    <!-- PAGE: GOALS -->
+    <section id="page-goals" class="page hidden">
+      <div class="goals-wrap">
+        <div class="card">
+          <h3 class="card-title">🎯 Set Weekly Goals</h3>
+          <div id="goalsList"></div>
+          <div class="add-goal-form">
+            <input type="text" id="goalSubjectInput" placeholder="Subject" class="input-field input-sm"/>
+            <input type="number" id="goalTargetInput" placeholder="Lessons/week" class="input-field input-sm" min="1" max="30"/>
+            <button class="btn-primary btn-sm" onclick="App.addGoal()">Add Goal</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: NOTES -->
+    <section id="page-notes" class="page hidden">
+      <div class="notes-wrap">
+        <div class="notes-sidebar-panel">
+          <h4>Subjects</h4>
+          <div id="notesSubjectList" class="notes-subject-list"></div>
+        </div>
+        <div class="notes-editor">
+          <div class="notes-toolbar">
+            <select id="notesSubjectSelect" class="input-field input-sm"></select>
+            <button class="btn-primary btn-sm" onclick="App.saveNote()">💾 Save</button>
+          </div>
+          <textarea id="notesArea" class="notes-textarea" placeholder="Write your notes here..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: REPORT CARD -->
+    <section id="page-report" class="page hidden">
+      <div class="report-wrap" id="reportWrap"></div>
+    </section>
+
+    <!-- PAGE: HEATMAP -->
+    <section id="page-heatmap" class="page hidden">
+      <div class="heatmap-wrap">
+        <h3>🌡️ Difficulty Heatmap</h3>
+        <p>Which subjects need your attention?</p>
+        <div id="heatmapGrid" class="heatmap-grid"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL: Add Child -->
+<div id="addChildModal" class="modal-overlay hidden">
+  <div class="modal-card animate-bounce-in">
+    <h3>Add a Child Profile</h3>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" id="newChildName" class="input-field" placeholder="Child's name"/>
+    </div>
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" id="newChildAge" class="input-field" placeholder="Age" min="4" max="16"/>
+    </div>
+    <div class="form-group">
+      <label>Avatar</label>
+      <div class="avatar-picker" id="addAvatarPicker">
+        <span class="avatar-opt selected" data-val="🦁">🦁</span>
+        <span class="avatar-opt" data-val="🐯">🐯</span>
+        <span class="avatar-opt" data-val="🦊">🦊</span>
+        <span class="avatar-opt" data-val="🐼">🐼</span>
+        <span class="avatar-opt" data-val="🦄">🦄</span>
+        <span class="avatar-opt" data-val="🐸">🐸</span>
+        <span class="avatar-opt" data-val="🤖">🤖</span>
+        <span class="avatar-opt" data-val="🦋">🦋</span>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="App.closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="App.saveNewChild()">Add Child 🎉</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- SCRIPTS -->
+<script src="storage.js"></script>
+<script src="achievements.js"></script>
+<script src="charts.js"></script>
+<script src="timer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

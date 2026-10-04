@@ -1,0 +1,36 @@
+{
+  "baseline_sample_size": 1800,
+  "incoming_sample_size": 1051,
+  "features": {
+    "days_live": {
+      "type": "continuous",
+      "psi": 1.6125,
+      "status": "DRIFT"
+    },
+    "description_word_count": {
+      "type": "continuous",
+      "psi": 0.4764,
+      "status": "DRIFT"
+    },
+    "company_overall_rating": {
+      "type": "continuous",
+      "psi": 0.0,
+      "status": "STABLE"
+    },
+    "source": {
+      "type": "categorical",
+      "psi": 13.9291,
+      "status": "DRIFT"
+    },
+    "job_category": {
+      "type": "categorical",
+      "psi": 10.2825,
+      "status": "DRIFT"
+    }
+  },
+  "overall_alert": "RED (Automated Retraining Alert)",
+  "prediction_concept_drift": {
+    "psi": 0.7904,
+    "status": "ALERT (Retrain Required)"
+  }
+}

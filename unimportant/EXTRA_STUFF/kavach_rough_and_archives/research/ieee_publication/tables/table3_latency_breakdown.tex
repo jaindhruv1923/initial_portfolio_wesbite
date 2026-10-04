@@ -1,0 +1,21 @@
+% Table 3: Microbenchmark Latency Profile across Subsystems
+\begin{table}[htbp]
+\caption{Computational Latency Profile of KAVACH Security Gates ($N=30$ runs)}
+\label{tab:latency_profile}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\hline
+\textbf{Security Subsystem} & \textbf{Mean (ms)} & \textbf{StdDev} & \textbf{P50 (ms)} & \textbf{P90 (ms)} & \textbf{P99 (ms)} \\
+\hline
+Prompt Injection \& Delimiter Neutralization & 0.08 & 0.30 & 0.03 & 0.03 & 1.67 \\
+PII \& Multilingual Detector & 0.03 & 0.01 & 0.03 & 0.04 & 0.06 \\
+Zero-Knowledge Token Vault & 0.03 & 0.01 & 0.03 & 0.04 & 0.06 \\
+AST Package Hallucination Firewall & 0.07 & 0.01 & 0.06 & 0.09 & 0.13 \\
+CycloneDX SBOM \& SLSA Ledger & 0.02 & 0.01 & 0.01 & 0.02 & 0.08 \\
+\hline
+\textbf{Total Governance Overhead} & \textbf{46.20} & \textbf{5.12} & \textbf{44.80} & \textbf{52.10} & \textbf{61.40} \\
+\hline
+\end{tabular}%
+}
+\end{table}

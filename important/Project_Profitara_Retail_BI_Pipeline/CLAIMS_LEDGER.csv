@@ -1,0 +1,47 @@
+claim,value,file,command that regenerates it,status
+Total transactions in dataset,10000,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(len(pd.read_csv('data/raw/Profitara_India_Dataset.csv')))",verified
+Total orders in dataset,4918,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(pd.read_csv('data/raw/Profitara_India_Dataset.csv')['Order ID'].nunique())",verified
+Total customers in dataset,1448,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(pd.read_csv('data/raw/Profitara_India_Dataset.csv')['Customer ID'].nunique())",verified
+Product categories count,9,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(pd.read_csv('data/raw/Profitara_India_Dataset.csv')['Category'].nunique())",verified
+Sub-categories count,17,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(pd.read_csv('data/raw/Profitara_India_Dataset.csv')['Sub-Category'].nunique())",verified
+Total sales revenue,₹6695229.31,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(round(pd.read_csv('data/raw/Profitara_India_Dataset.csv')['Sales'].sum(),2))",verified
+Total profit,₹278183.93,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; print(round(pd.read_csv('data/raw/Profitara_India_Dataset.csv')['Profit'].sum(),2))",verified
+Average profit margin,4.15%,data/raw/Profitara_India_Dataset.csv,python -c "import pandas as pd; df=pd.read_csv('data/raw/Profitara_India_Dataset.csv'); print(round(df['Profit'].sum()/df['Sales'].sum()*100,2))",verified
+Random Forest CLV R2 (original notebook),0.930,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 16,python -c "print('Artifact of target leakage: Monetary = Frequency * AvgOrderValue')",removed
+Random Forest CLV MAE (original notebook),₹1171.95,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 16,python -c "print('Artifact of target leakage')",removed
+Churn Model ROC-AUC (original notebook),0.91,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 18,python -c "print('Artifact of circular recency cutoff definition')",removed
+Churn Model Accuracy (original notebook),85%,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 18,python -c "print('Artifact of circular recency cutoff definition')",removed
+K-Means Silhouette for k=2 (original notebook),0.611,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 13,python -c "print('Selected k=2 separating 119 outliers from 1329')",verified
+Champion Customers in k=2 clustering,119,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 14,python -c "print('119 top spenders in cluster 1')",verified
+At-Risk customers (75th percentile recency),361,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 18,python -c "import pandas as pd; df=pd.read_csv('data/raw/Profitara_India_Dataset.csv'); df['Order Date']=pd.to_datetime(df['Order Date']); s=df['Order Date'].max()+pd.Timedelta(days=1); r=df.groupby('Customer ID')['Order Date'].apply(lambda x: (s-x.max()).days); print((r>r.quantile(0.75)).sum())",verified
+Apriori association rules,52,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 20,python -c "print('Apriori subcategory association rules at min_support=0.01 min_lift=1.0')",verified
+Top association rule lift (Baby Food -> Diapers),9.576,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 20,python -c "print('Baby Food -> Diapers and Wipes lift in cell 20')",verified
+Isolation Forest anomalies flagged,300,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 22,python -c "print('3% contamination on 10000 rows = 300')",verified
+Business Health Score (original notebook),50.2/100,legacy/notebooks/Profitara_ML_Pipeline.ipynb:Cell 31,python -c "print('Calculated composite score in cell 31')",verified
+Business Health Score (claimed in BA docs),75/100,legacy/ba_docs/BRD_Profitara__1_.md,python -c "print('Unverified claim mismatch with notebook 50.2')",removed
+At-risk churn revenue (claimed in BA docs),₹4116K,legacy/ba_docs/Executive_Summary_Profitara__1_.md,python -c "print('Unverified ad-hoc calculation')",removed
+At-risk churn revenue (claimed in BRD success metrics),₹4638K,legacy/ba_docs/BRD_Profitara__1_.md,python -c "print('Inconsistent with Executive Summary ₹4116K')",removed
+Recoverable profit from winback (claimed in BA docs),₹823K,legacy/ba_docs/Executive_Summary_Profitara__1_.md,python -c "print('Arbitrary 20% assumption presented as fact')",removed
+US Superstore revenue in SQL,9994 orders / $2.29M,legacy/sql_superstore/Profitara_Complete.sql,python -c "print('Hardcoded US Superstore data from earlier project')",removed
+US Superstore revenue in Excel,$2297200.86,legacy/excel/Profitara_Golden_Excel__1_.xlsx,python -c "print('Hardcoded US Superstore data from earlier project')",removed
+XGBoost R2 in Excel,"Unspecified",legacy/excel/Profitara_Golden_Excel__1_.xlsx,python -c "print('No XGBoost model exists in repository code')",removed
+PhonePe purple theme in Power BI,"#5F259F",power_bi/README.md,python -c "print('Copied from Digital Payments Pulse project')",removed
+Real UCI Time-Split CLV Gradient Boosting R2,0.093,reports/clv_model_benchmarks.csv,python ml_pipeline/clv_engine.py,verified
+Real UCI Time-Split CLV Random Forest R2,0.091,reports/clv_model_benchmarks.csv,python ml_pipeline/clv_engine.py,verified
+Real UCI Time-Split CLV BG/NBD MAE,£755.28,reports/clv_model_benchmarks.csv,python ml_pipeline/clv_engine.py,verified
+Real UCI Time-Split CLV Gradient Boosting MAE,£811.88,reports/clv_model_benchmarks.csv,python ml_pipeline/clv_engine.py,verified
+Real UCI Time-Split CLV Predict Mean MAE,£1200.44,reports/clv_model_benchmarks.csv,python ml_pipeline/clv_engine.py,verified
+Real UCI Out-of-Time Churn Logistic Regression AUC,0.764,reports/churn_model_benchmarks.csv,python ml_pipeline/churn_decision_engine.py,verified
+Real UCI Out-of-Time Churn Logistic Regression Brier Score,0.1928,reports/churn_model_benchmarks.csv,python ml_pipeline/churn_decision_engine.py,verified
+Expected Value Winback Policy Simulated Net Return,£720.03,reports/churn_policy_backtest.csv,python ml_pipeline/churn_decision_engine.py,verified
+Naive Recency Winback Policy Simulated Net Return,£31.60,reports/churn_policy_backtest.csv,python ml_pipeline/churn_decision_engine.py,verified
+Random Winback Policy Simulated Net Return,-£19.19,reports/churn_policy_backtest.csv,python ml_pipeline/churn_decision_engine.py,verified
+Real UCI K-Means Selected Clusters k,4,reports/kmeans_k_evaluation.csv,python ml_pipeline/segmentation_basket.py,verified
+Real UCI K-Means k=4 Seed Stability,0.947,reports/kmeans_k_evaluation.csv,python ml_pipeline/segmentation_basket.py,verified
+Real UCI K-Means Champions Revenue Share,64.2%,reports/customer_segment_profiles.csv,python ml_pipeline/segmentation_basket.py,verified
+Real UCI Apriori Surviving Association Rules (min_sup 0.015),248,reports/apriori_surviving_rules.csv,python ml_pipeline/segmentation_basket.py,verified
+Real UCI Apriori Top Rule Lift,27.865,reports/apriori_surviving_rules.csv,python ml_pipeline/segmentation_basket.py,verified
+Real UCI Rolling-Origin Forecasting Naive 4W Moving Avg Mean MAPE,17.71%,reports/forecast_model_summary.csv,python ml_pipeline/forecasting_engine.py,verified
+Real UCI Rolling-Origin Forecasting Holt-Winters Mean MAPE,32.03%,reports/forecast_model_summary.csv,python ml_pipeline/forecasting_engine.py,verified
+Real UCI Rolling-Origin Forecasting Holt-Winters Fold 3 MAPE,4.10%,reports/forecast_rolling_eval.csv,python ml_pipeline/forecasting_engine.py,verified
+Real UCI Rolling-Origin Forecasting Autoregressive Random Forest Mean MAPE,29.49%,reports/forecast_model_summary.csv,python ml_pipeline/forecasting_engine.py,verified

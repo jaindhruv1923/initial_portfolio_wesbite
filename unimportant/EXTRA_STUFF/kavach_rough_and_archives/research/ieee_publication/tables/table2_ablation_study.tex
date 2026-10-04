@@ -1,0 +1,19 @@
+% Table 2: System Component Ablation Study
+\begin{table}[htbp]
+\caption{Ablation Study Demonstrating Impact of KAVACH Security Subsystems}
+\label{tab:ablation_study}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+\textbf{Subsystem Configuration} & \textbf{PII F1} & \textbf{Supply-Chain Catch} & \textbf{Patch Validity} & \textbf{Latency (ms)} \\
+\hline
+(A) Full KAVACH Framework & \textbf{0.962} & \textbf{100.0\%} & \textbf{93.4\%} & 46.2 \\
+(B) w/o AST Package Firewall & 0.962 & 0.0\% & 81.2\% & 31.4 \\
+(C) w/o Zero-Knowledge Vault & 0.895 & 100.0\% & 93.4\% & 42.1 \\
+(D) w/o AST Dependency Graph & 0.962 & 100.0\% & 72.8\% & 27.6 \\
+(E) w/o Reflexion Self-Healer & 0.962 & 100.0\% & 74.5\% & 19.8 \\
+\hline
+\end{tabular}%
+}
+\end{table}

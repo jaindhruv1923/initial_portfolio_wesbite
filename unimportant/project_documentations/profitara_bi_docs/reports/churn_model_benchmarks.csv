@@ -1,0 +1,4 @@
+model,roc_auc,auc_ci_lower,auc_ci_upper,brier_score,log_loss
+Prior Baseline,0.4814,0.5,0.5,0.2412,0.6754
+Recency Heuristic (>90d),0.6593,0.6142,0.685,0.3424,9.46
+Logistic Regression,0.7636,0.736,0.7925,0.1928,0.5611

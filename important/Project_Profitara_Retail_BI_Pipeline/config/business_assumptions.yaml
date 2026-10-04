@@ -1,0 +1,10 @@
+# Business Assumptions for Churn Decision Layer & Win-Back Optimization
+# NOTE: These values are operational planning assumptions for policy simulation,
+# NOT empirically measured field test results.
+
+assumptions:
+  campaign_cost_per_contact_gbp: 5.00     # Estimated cost of direct marketing / outreach per customer
+  retail_gross_margin_pct: 0.20           # Estimated 20% gross product margin
+  winback_response_rate: 0.15             # Assumed 15% probability that targeted customer responds & returns
+  marketing_budget_gbp: 1500.00           # Budget cap for quarterly win-back campaign
+  churn_inactivity_window_days: 90        # Inactivity threshold defining non-contractual churn

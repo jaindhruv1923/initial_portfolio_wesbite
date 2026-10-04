@@ -1,0 +1,642 @@
+[
+  {
+    "id": "GD1010191037769",
+    "platform": "Glassdoor",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010182505963",
+    "platform": "Glassdoor",
+    "days_live": 7.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "LARGE"
+  },
+  {
+    "id": "GD1010176793854",
+    "platform": "Glassdoor",
+    "days_live": 13.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "SMALL"
+  },
+  {
+    "id": "GD1010178130737",
+    "platform": "Glassdoor",
+    "days_live": 12.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": true,
+    "company_size": "LARGE"
+  },
+  {
+    "id": "GD1010183724312",
+    "platform": "Glassdoor",
+    "days_live": 6.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010181391595",
+    "platform": "Glassdoor",
+    "days_live": 9.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": true,
+    "company_size": "SMALL"
+  },
+  {
+    "id": "GD1010177201472",
+    "platform": "Glassdoor",
+    "days_live": 13.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010188241213",
+    "platform": "Glassdoor",
+    "days_live": 4.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1009560045549",
+    "platform": "Glassdoor",
+    "days_live": 10.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "SMALL"
+  },
+  {
+    "id": "GD1010163867714",
+    "platform": "Glassdoor",
+    "days_live": 26.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010142850457",
+    "platform": "Glassdoor",
+    "days_live": 45.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": true,
+    "company_size": "SMALL"
+  },
+  {
+    "id": "GD1010161837536",
+    "platform": "Glassdoor",
+    "days_live": 28.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010147404998",
+    "platform": "Glassdoor",
+    "days_live": 40.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": true,
+    "company_size": "SMALL"
+  },
+  {
+    "id": "GD1010164013179",
+    "platform": "Glassdoor",
+    "days_live": 26.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "LARGE"
+  },
+  {
+    "id": "GD1010144855575",
+    "platform": "Glassdoor",
+    "days_live": 42.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010171869640",
+    "platform": "Glassdoor",
+    "days_live": 19.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "LARGE_TO_GIANT"
+  },
+  {
+    "id": "GD1010154948927",
+    "platform": "Glassdoor",
+    "days_live": 34.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": true,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010168537225",
+    "platform": "Glassdoor",
+    "days_live": 21.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "LARGE"
+  },
+  {
+    "id": "GD1010089894937",
+    "platform": "Glassdoor",
+    "days_live": 94.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010092514780",
+    "platform": "Glassdoor",
+    "days_live": 90.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "SMALL_TO_MEDIUM"
+  },
+  {
+    "id": "GD1010134770420",
+    "platform": "Glassdoor",
+    "days_live": 53.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1009991584703",
+    "platform": "Glassdoor",
+    "days_live": 124.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": true,
+    "company_size": "SMALL_TO_MEDIUM"
+  },
+  {
+    "id": "GD1008687043240",
+    "platform": "Glassdoor",
+    "days_live": 130.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "SMALL"
+  },
+  {
+    "id": "GD1010088776550",
+    "platform": "Glassdoor",
+    "days_live": 95.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": true,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010028316025",
+    "platform": "Glassdoor",
+    "days_live": 122.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1010085863733",
+    "platform": "Glassdoor",
+    "days_live": 96.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "GIANT"
+  },
+  {
+    "id": "GD1007955280209",
+    "platform": "Glassdoor",
+    "days_live": 130.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "LARGE"
+  },
+  {
+    "id": "IN3455cf437da2438c",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INfe5188b67cfcf4b0",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INd59a27fc08a9d27b",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN179006098f107476",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN4f2fccf4742c62aa",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN165c386195d46113",
+    "platform": "Indeed",
+    "days_live": 1.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN3b9d8aad20b3ad28",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INc6fd7480ff3bb88c",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN3da8cd5e0d123aa2",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN8402ddf35459c31f",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN4db7f70340874bed",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN4f9bb379d105ac09",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN80d3cfbd3e9640c9",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INc1a9227dc3912d0d",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INd61cf4887955ec91",
+    "platform": "Indeed",
+    "days_live": 4.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INd07d8d25ecb9ecac",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN4149dbc9651d31d8",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INc709043b9856e067",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN4e1cbc8ab1be57e5",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN7242e738107208be",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": true,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN39d7d7cdcc8c292d",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN1e8b495b4c7fe204",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INfa5dcd3dc16677fa",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "INea8697b6ddec0dc4",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": true,
+    "company_size": "nan"
+  },
+  {
+    "id": "INb582b212c3185cfb",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN9ee8b2cb023a8780",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "IN313d781ff3099db7",
+    "platform": "Indeed",
+    "days_live": 0.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4370841972",
+    "platform": "LinkedIn",
+    "days_live": 12.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4346121454",
+    "platform": "LinkedIn",
+    "days_live": 12.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4436031374",
+    "platform": "LinkedIn",
+    "days_live": 2.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4437153799",
+    "platform": "LinkedIn",
+    "days_live": 1.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4398013685",
+    "platform": "LinkedIn",
+    "days_live": 6.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4436707398",
+    "platform": "LinkedIn",
+    "days_live": 4.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4436776454",
+    "platform": "LinkedIn",
+    "days_live": 4.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4432771508",
+    "platform": "LinkedIn",
+    "days_live": 5.0,
+    "age_stratum": "fresh_le14d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4420422992",
+    "platform": "LinkedIn",
+    "days_live": 18.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4418728636",
+    "platform": "LinkedIn",
+    "days_live": 15.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4421528330",
+    "platform": "LinkedIn",
+    "days_live": 31.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4430458664",
+    "platform": "LinkedIn",
+    "days_live": 19.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4428538401",
+    "platform": "LinkedIn",
+    "days_live": 17.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4403425640",
+    "platform": "LinkedIn",
+    "days_live": 16.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4427112985",
+    "platform": "LinkedIn",
+    "days_live": 26.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4427406195",
+    "platform": "LinkedIn",
+    "days_live": 24.0,
+    "age_stratum": "normal_15_45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4361276299",
+    "platform": "LinkedIn",
+    "days_live": 175.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4353663500",
+    "platform": "LinkedIn",
+    "days_live": 172.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4413212174",
+    "platform": "LinkedIn",
+    "days_live": 56.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4303974438",
+    "platform": "LinkedIn",
+    "days_live": 288.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4306125307",
+    "platform": "LinkedIn",
+    "days_live": 280.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4306114556",
+    "platform": "LinkedIn",
+    "days_live": 280.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4413985079",
+    "platform": "LinkedIn",
+    "days_live": 55.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4393280964",
+    "platform": "LinkedIn",
+    "days_live": 98.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4325866630",
+    "platform": "LinkedIn",
+    "days_live": 214.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  },
+  {
+    "id": "LI4417313757",
+    "platform": "LinkedIn",
+    "days_live": 48.0,
+    "age_stratum": "stale_gt45d",
+    "salary_disclosed": false,
+    "company_size": "nan"
+  }
+]

@@ -1,0 +1,5 @@
+cluster,customers,mean_recency,median_recency,mean_frequency,mean_monetary,total_revenue,revenue_share_pct,segment_name,recommended_action
+0,875,21.41,19.0,1.94,489.45,428264.5,4.9,At-Risk / Lapsing Spenders,"Targeted win-back outreach, proactive survey on why inactive"
+1,702,11.44,8.0,13.72,8015.92,5627178.67,64.2,Champions & VIPs,"Exclusive loyalty perks, early access, no heavy discounting"
+2,1575,189.7,185.0,1.34,359.45,566136.23,6.5,Hibernating / Low-Value Inactive,"Low-cost automated re-engagement, exclude from high-cost ads"
+3,1182,64.49,51.0,4.2,1815.71,2146173.25,24.5,Loyal & Steady Buyers,"Cross-sell relevant categories, subscription/recurring reminders"

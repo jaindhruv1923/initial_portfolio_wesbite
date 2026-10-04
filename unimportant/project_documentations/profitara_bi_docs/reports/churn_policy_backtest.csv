@@ -1,0 +1,5 @@
+policy,customers_contacted,total_campaign_cost_gbp,simulated_net_value_gbp,actual_churners_reached,actual_churn_capture_rate,future_clv_at_stake_gbp
+Expected Value Policy (Proposed),274,1370.0,720.03,114,41.6%,228250.39
+Top Recency Policy (Naive RFM),300,1500.0,31.6,200,66.7%,94147.05
+Top Spender Policy (High Monetary),300,1500.0,261.47,50,16.7%,596995.17
+Random Policy (Control),300,1500.0,-19.19,134,44.7%,218315.76

@@ -1,0 +1,10 @@
+fold,origin_week,model,rmse,mae,mape
+1,39,Naive (4W Moving Avg),85166.7,65927.45,29.86
+1,39,Holt-Winters (Double Exp),88578.55,68952.51,30.67
+1,39,Autoregressive Random Forest,97899.16,76758.61,33.37
+2,43,Naive (4W Moving Avg),56078.44,40774.98,14.92
+2,43,Holt-Winters (Double Exp),143367.74,136318.7,61.32
+2,43,Autoregressive Random Forest,101114.01,90120.48,35.78
+3,47,Naive (4W Moving Avg),26715.11,22494.6,8.35
+3,47,Holt-Winters (Double Exp),12258.83,10294.1,4.11
+3,47,Autoregressive Random Forest,56098.08,51344.93,19.32

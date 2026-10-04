@@ -1,0 +1,28 @@
+flowchart TD
+    Start([Generated Code Patch from LLM]) --> Parse[AST Parse: ast.parse source_code]
+    
+    Parse --> CheckSyntax{AST Syntax Valid?}
+    CheckSyntax -- No --> RejectSyntax[🛑 Emit AST Syntax Error & Route to ReAct Healer]
+    CheckSyntax -- Yes --> Visitor[AST ImportVisitor: Extract Import & ImportFrom Nodes]
+
+    Visitor --> Loop[For Each Imported Module 'M']
+    Loop --> CheckStdlib{Is 'M' in Python STDLIB?}
+    CheckStdlib -- Yes --> AllowStdlib[Mark Valid Standard Library e.g., os, json, sys] --> NextMod
+    
+    CheckStdlib -- No --> CheckLocal{Is 'M' in Local Codebase?}
+    CheckLocal -- Yes --> AllowLocal[Mark Valid Internal Module e.g., auth, db] --> NextMod
+
+    CheckLocal -- No --> CheckCache{Is 'M' in In-Memory LRU Cache?}
+    CheckCache -- Hit (Valid) --> AllowCached[Mark Verified from Cache <0.1ms] --> NextMod
+    CheckCache -- Hit (Known Bad) --> FlagBad[Quarantine as Known Slopsquat] --> Halt
+
+    CheckCache -- Miss --> QueryPyPI[Live HTTP Query to PyPI JSON API: https://pypi.org/pypi/M/json]
+    QueryPyPI --> RespCheck{HTTP Status == 200?}
+    RespCheck -- Yes --> CacheSafe[Cache in LRU as Verified] --> NextMod
+    RespCheck -- No / 404 --> FlagHallucination[Flag AI Package Hallucination e.g., fastapi-jwt-vault] --> Halt
+
+    NextMod{More Modules?} -- Yes --> Loop
+    NextMod -- No --> AllPassed[All Imports Verified Cleanly]
+
+    AllPassed --> EmitSafe[🟢 Safe: Forward to Ephemeral Sandbox]
+    Halt[Package Slopsquatting Detected] --> EmitBlocked[🛑 BLOCKED: Intercept Supply-Chain Hijack]

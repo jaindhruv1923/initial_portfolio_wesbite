@@ -1,0 +1,4 @@
+model,mean_rmse,mean_mae,mean_mape
+Naive (4W Moving Avg),55986.75,43065.68,17.71
+Holt-Winters (Double Exp),81401.71,71855.1,32.03
+Autoregressive Random Forest,85037.08,72741.34,29.49

@@ -1,0 +1,5 @@
+Model,ROC-AUC,F1 Score,Precision,Recall,Accuracy
+Gradient Boosting (GBM),0.8651,0.708,0.5797,0.9091,0.8167
+Logistic Regression,0.932,0.6992,0.5443,0.9773,0.7944
+Random Forest (Tuned) (Calibrated),0.9193,0.6891,0.5467,0.9318,0.7944
+Random Forest (Tuned),0.9193,0.6833,0.5395,0.9318,0.7889

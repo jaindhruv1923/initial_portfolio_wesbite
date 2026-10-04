@@ -1,0 +1,171 @@
+/* ===========================
+   profile.css — KidLearn
+   =========================== */
+
+/* ---- TIMER PAGE ---- */
+.timer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.timer-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  max-width: 360px;
+  width: 100%;
+}
+.timer-card h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.timer-sub {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.timer-circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 24px;
+}
+.timer-circle svg {
+  width: 200px;
+  height: 200px;
+  transform: rotate(-90deg);
+}
+.timer-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 10;
+}
+.timer-progress {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+}
+.timer-progress.break-mode { stroke: var(--accent-green); }
+.timer-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -1px;
+}
+.timer-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.timer-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.pomodoro-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.pomodoro-count strong { color: var(--accent-orange); }
+
+/* ---- CHILD VIEW MODE ---- */
+body.child-view .sidebar { background: linear-gradient(180deg, #6C63FF 0%, #FF6584 100%); }
+body.child-view .welcome-banner { background: linear-gradient(135deg, #FF6584 0%, #FF9F43 100%); }
+body.child-view .stat-card.purple { background: linear-gradient(135deg, #EEF0FF, #fff); }
+
+/* ---- CHILD VIEW - bigger, more playful ---- */
+body.child-view .card-title { font-size: 18px; }
+body.child-view .stat-val { font-size: 32px; }
+body.child-view .subject-emoji { font-size: 52px; }
+body.child-view .subject-name { font-size: 18px; }
+body.child-view .badge-emoji { font-size: 56px; }
+
+/* ---- EMPTY STATES ---- */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}
+.empty-state-icon { font-size: 48px; margin-bottom: 12px; }
+.empty-state-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.empty-state-sub { font-size: 14px; }
+
+/* ---- STREAK BADGE ---- */
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FF9F43, #FF6584);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 99px;
+  box-shadow: 0 4px 12px rgba(255,159,67,0.35);
+}
+
+/* ---- XP LEVEL BAR ---- */
+.xp-level-wrap {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.xp-level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.xp-level-title { font-weight: 800; font-size: 14px; }
+.xp-level-count { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+.xp-level-track {
+  height: 12px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.xp-level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent-purple));
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ---- MOOD HISTORY ---- */
+.mood-history-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.mood-history-row:last-child { border-bottom: none; }
+.mood-date { color: var(--text-muted); font-size: 12px; min-width: 80px; }
+.mood-emoji-lg { font-size: 22px; }
+.mood-perf { margin-left: auto; font-weight: 700; color: var(--primary); }
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-light); }

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grilli — Case Study · Dhruv Jain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader"><div class="mark">◆ LOADING CASE STUDY</div></div>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0%;z-index:100;"></div>
+<div id="cursor-glow"></div>
+
+<!-- BLUEPRINT CANVAS GRID (Visual Texture & Depth) -->
+<div class="blueprint-grid-canvas" aria-hidden="true"></div>
+
+<!-- INTERACTIVE BACKGROUND MOUSE PARTICLE CONSTELLATION WEB -->
+<canvas id="interactive-particle-web" aria-hidden="true"></canvas>
+
+<!-- FIXED TELEMETRY RAILS & FIBER-OPTIC DATA PACKET STREAMS -->
+<!-- Left Rail: CAD Ruler & Live Section Scroll-Spy -->
+<aside class="telemetry-rail telemetry-rail-left" aria-label="Section Navigation and Telemetry">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-cad-ruler" aria-hidden="true">
+    <span class="cad-tick">0000</span>
+    <span class="cad-tick">0600</span>
+    <span class="cad-tick">1200</span>
+    <span class="cad-tick">1800</span>
+    <span class="cad-tick">2400</span>
+    <span class="cad-tick">3000</span>
+    <span class="cad-tick">3600</span>
+    <span class="cad-tick">4200</span>
+  </div>
+  <div class="rail-header-tag" title="Flagship Case Study">
+    <span class="rail-pulse-dot"></span>
+    <span class="rail-mono-text">ACTIVE</span>
+  </div>
+  <nav class="rail-section-nav" aria-label="Quick Navigation">
+    <a href="index.html#projects" class="rail-nav-item active" title="Back to All Projects">
+      <span class="rail-nav-num">←</span>
+      <span class="rail-nav-label">Projects</span>
+    </a>
+    <a href="index.html#sql-lab" class="rail-nav-item" title="Live SQL Workbench">
+      <span class="rail-nav-num">02</span>
+      <span class="rail-nav-label">SQL Lab</span>
+    </a>
+    <a href="index.html#contact" class="rail-nav-item" title="Contact Dhruv">
+      <span class="rail-nav-num">08</span>
+      <span class="rail-nav-label">Contact</span>
+    </a>
+  </nav>
+  <div class="rail-footer-tag" title="Gurugram Development HQ Coordinates">
+    <span class="rail-coord-text">28.45°N</span>
+  </div>
+</aside>
+
+<!-- Right Rail: Fast-Action Dock, Socials & Back-To-Top -->
+<aside class="telemetry-rail telemetry-rail-right" aria-label="Executive Quick Actions and Socials">
+  <div class="rail-fiber-stream" aria-hidden="true">
+    <div class="fiber-pulse-packet"></div>
+  </div>
+  <div class="rail-vertical-brand">
+    <span class="brand-monogram">DJ // 2025</span>
+    <span class="brand-sub">ANALYTICS</span>
+  </div>
+  <div class="rail-action-cluster">
+    <button type="button" class="rail-action-btn" onclick="copyEmail(event)" title="1-Click Copy Dhruv's Email" aria-label="Copy Email">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </button>
+    <button type="button" class="rail-action-btn" onclick="copyRecruiterBrief()" title="1-Click Copy ATS Candidate Summary" aria-label="Copy Recruiter Brief">
+      <span style="font-size:12px;">⚡</span>
+    </button>
+    <a href="https://github.com/jaindhruv1923" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="GitHub Profile" aria-label="GitHub">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/jaindhruv1923/" target="_blank" rel="noopener noreferrer" class="rail-action-btn" title="LinkedIn Profile" aria-label="LinkedIn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.81a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+    </a>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="rail-action-btn" title="Download ATS Verified Resume (PDF)" aria-label="Resume PDF">
+      <span style="font-size:11px;font-weight:800;font-family:var(--font-mono);color:var(--accent);">CV↓</span>
+    </a>
+  </div>
+  <button type="button" class="rail-scroll-top-btn" id="railScrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" aria-label="Scroll to top">
+    ↑
+  </button>
+</aside>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand"><span class="dot">◆</span> Dhruv Jain</a>
+    <div class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="kavach.html">KAVACH</a>
+      <a href="archon.html">Archon Copilot</a>
+      <a href="profitara.html">Profitara</a>
+      <a href="naukri-saaf.html">Naukri Saaf</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="assets/DhruvJain_Resume.pdf" target="_blank" class="nav-cta">Resume (1-Page) ↓</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap cs-hero-grid">
+    <div>
+      <a href="index.html#projects" class="cs-back">← Back to projects</a>
+      <div class="eyebrow">Full-Stack · Restaurant Tech</div>
+      <h1>Grilli: fixing a broken template, then giving it a real backend.</h1>
+      <p class="lede">Started as a free restaurant-website template with dead
+      links and a form that silently failed. Ended as a full MongoDB-backed
+      reservation system with a brand-new section the original never had.</p>
+
+      <div class="cs-meta-row">
+        <div class="cs-meta"><div class="k">Role</div><div class="v">Solo build — debugging, new feature, full backend</div></div>
+        <div class="cs-meta"><div class="k">Stack</div><div class="v">Node.js · Express · MongoDB</div></div>
+        <div class="cs-meta"><div class="k">Base</div><div class="v">MIT-licensed template, extended and repaired</div></div>
+      </div>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="https://github.com/jaindhruv1923/grilli-fullstack-restaurant-reservation-system" target="_blank" class="btn btn-primary">View Repo ↗</a>
+      </div>
+    </div>
+
+    <aside class="flow-panel reveal">
+      <div class="flow-title">How this project started</div>
+      <div class="flow-chain">
+        <div class="flow-node"><div class="flow-dot">01</div><div class="flow-body"><div class="t">Found a broken template</div><div class="d">A free, MIT-licensed restaurant site with dead "Find a Table" links and no working backend.</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">02</div><div class="flow-body"><div class="t">Found a real bug</div><div class="d">Two form dropdowns shared <code>name="person"</code> — only one value was ever submitted.</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">03</div><div class="flow-body"><div class="t">Built the backend from scratch</div><div class="d">Node.js + Express + MongoDB — full reservation CRUD API, wired to the form via fetch.</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">04</div><div class="flow-body"><div class="t">Added what didn't exist</div><div class="d">A brand-new "Our Chefs" section — 4 hover-reveal cards — built from scratch.</div></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-node"><div class="flow-dot">05</div><div class="flow-body"><div class="t">Verified it works live</div><div class="d">A real booking saved to MongoDB Atlas confirms the end-to-end flow actually persists data.</div></div></div>
+      </div>
+      <div class="flow-thumb"><img src="screenshots/grilli/01_hero.png" alt="Grilli homepage hero" /></div>
+    </aside>
+  </div>
+</header>
+
+<section class="cs-section" id="engineering-flow">
+  <div class="wrap">
+    <div class="eyebrow">Interactive Engineering Flowchart</div>
+    <h2>From broken static template to a live full-stack platform.</h2>
+    <p>Click any stage node below or launch the live simulation to trace bug isolation, REST endpoint routing, MongoDB persistence, and custom frontend engineering step-by-step.</p>
+
+    <!-- Interactive Architecture Flowchart Component -->
+    <div class="interactive-flowchart" id="grilli-flowchart">
+      <!-- Controls -->
+      <div class="flow-controls">
+        <div class="flow-stepper-info">
+          <span class="flow-badge">Active Stage: <strong class="flow-current-label">Stage 01: Template Audit &amp; Bug Isolation</strong></span>
+          <span class="flow-status-pill"><span class="flow-pulse-dot"></span> <span class="flow-status-text">Interactive Mode (Ready)</span></span>
+        </div>
+        <div class="flow-actions">
+          <button class="flow-sim-btn" type="button">▶ Run Pipeline Simulation</button>
+          <button class="flow-step-btn prev" type="button" aria-label="Previous Stage">←</button>
+          <button class="flow-step-btn next" type="button" aria-label="Next Stage">→</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Track Nodes -->
+      <div class="flow-track-wrapper">
+        <div class="flow-track">
+          <button class="flow-node-btn active" type="button" data-log="[AUDIT] Scanning template DOM... Discovered dead '#' anchor links, duplicate 'person' form name collisions, and missing backend.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">01</span>
+              <span class="flow-node-badge">6 Bugs</span>
+            </div>
+            <div class="flow-node-title">Template Audit</div>
+            <div class="flow-node-desc">Isolating dead links, form collisions &amp; zero backend</div>
+            <div class="flow-node-footer">
+              <span>Static Audit</span>
+              <span>Root Cause</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[API] Initializing Node.js Express server on port 5000... Mounted 5 REST routes for /api/reservations.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">02</span>
+              <span class="flow-node-badge">5 Routes</span>
+            </div>
+            <div class="flow-node-title">Express REST API</div>
+            <div class="flow-node-desc">Full CRUD endpoints with input validation &amp; CORS</div>
+            <div class="flow-node-footer">
+              <span>Node.js</span>
+              <span>RESTful</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[DATABASE] Connecting to MongoDB Atlas cluster... Mongoose schema validated with anti-collision date/time slot locking.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">03</span>
+              <span class="flow-node-badge">Cloud DB</span>
+            </div>
+            <div class="flow-node-title">MongoDB Atlas</div>
+            <div class="flow-node-desc">Mongoose schema with anti-collision slot locking</div>
+            <div class="flow-node-footer">
+              <span>Atlas Cloud</span>
+              <span>Persistence</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[CLIENT] Wiring frontend HTML form to backend via asynchronous Fetch API... Zero-reload success/error state active.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">04</span>
+              <span class="flow-node-badge">Zero Reload</span>
+            </div>
+            <div class="flow-node-title">Asynchronous Fetch</div>
+            <div class="flow-node-desc">Live AJAX form submission &amp; responsive toast banners</div>
+            <div class="flow-node-footer">
+              <span>Vanilla JS</span>
+              <span>Real-Time</span>
+            </div>
+          </button>
+
+          <button class="flow-node-btn" type="button" data-log="[FEATURE] Rendering custom-engineered 'Our Chefs' section with responsive CSS 4-card hover overlays and ARIA accessibility.">
+            <div class="flow-node-head">
+              <span class="flow-node-num">05</span>
+              <span class="flow-node-badge">New Section</span>
+            </div>
+            <div class="flow-node-title">Our Chefs Feature</div>
+            <div class="flow-node-desc">Custom-built 4-card responsive staff hover gallery</div>
+            <div class="flow-node-footer">
+              <span>CSS Grid</span>
+              <span>Accessible</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Inspector Panels -->
+      <div class="flow-inspector">
+        <!-- Stage 01 Detail -->
+        <div class="flow-stage-content" style="display:block;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 01: Vulnerability &amp; Usability Audit of Template</div>
+              <div class="flow-inspector-subtitle">Uncovering architectural and functional breakdowns in the original open-source template.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">6 Real Bugs Fixed</span>
+              <span class="flow-meta-tag">Dead Anchor Targets</span>
+              <span class="flow-meta-tag">Form Input Collision</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Systematically audit all user action paths on the landing page, discovering that key conversion CTA buttons were non-functional dead links.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">DOM tree inspection, form validation testing, anchor target linking (<code>#reservation</code>), fixing duplicate <code>name="person"</code> attributes.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>frontend/index.html</code><br/><code>frontend/assets/js/script.js</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>6 Definite Flaws Resolved</strong>: CTA links re-anchored, form inputs properly named, silent submission failures eradicated.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 02 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 02: Node.js &amp; Express REST API Architecture</div>
+              <div class="flow-inspector-subtitle">Engineering a modular backend API to handle table reservations from scratch.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">5 REST Endpoints</span>
+              <span class="flow-meta-tag">Express Middleware</span>
+              <span class="flow-meta-tag">CORS &amp; Body-Parser</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Build an enterprise RESTful server capable of processing reservation payloads with sanitized input checking and error handling middleware.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Node.js runtime, Express framework, Express Router modularization, input sanitization, HTTP 201 Created and 400 Bad Request statuses.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>backend/server.js</code><br/><code>backend/routes/reservations.js</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>5 Complete Endpoints</strong> handling reservation creation, retrieval, updates, and cancellations.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 03 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 03: MongoDB Atlas Document Persistence</div>
+              <div class="flow-inspector-subtitle">Cloud database integration with strict Mongoose schema validation and anti-collision locking.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">MongoDB Atlas</span>
+              <span class="flow-meta-tag">Mongoose ODM</span>
+              <span class="flow-meta-tag">Anti-Collision Locking</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Persist each reservation safely in a cloud database with schema-level validation on telephone numbers, dates, and party sizes.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">MongoDB Atlas cloud cluster, Mongoose ODM schemas, connection pooling, ISO datetime indexing to avoid double-booking overlaps.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>backend/models/Reservation.js</code><br/><code>backend/config/db.js</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>Verified Live Record</strong> in MongoDB Atlas console matching user input submitted from frontend.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 04 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 04: Asynchronous Client-Side Fetch Wiring</div>
+              <div class="flow-inspector-subtitle">Zero page reload AJAX submission with responsive inline confirmation and error states.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Zero Reload</span>
+              <span class="flow-meta-tag">Fetch API</span>
+              <span class="flow-meta-tag">Inline Toast Banners</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Intercept form submission in JavaScript, stream payload via HTTP POST to the Express server, and give the user instant visual confirmation.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">Vanilla JavaScript Fetch API, JSON serialization, asynchronous async/await error catching, dynamic banner animation.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>frontend/assets/js/script.js</code><br/><code>frontend/index.html</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>100% Client-Side Flow</strong>: zero jarring page resets; immediate green success banner upon booking.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 05 Detail -->
+        <div class="flow-stage-content" style="display:none;">
+          <div class="flow-inspector-header">
+            <div>
+              <div class="flow-inspector-title">Stage 05: Custom UI Engineering — "Our Chefs" Showcase</div>
+              <div class="flow-inspector-subtitle">Building a responsive, accessible culinary staff showcase completely from scratch.</div>
+            </div>
+            <div class="flow-inspector-meta">
+              <span class="flow-meta-tag highlight">Built from Scratch</span>
+              <span class="flow-meta-tag">4-Card Grid</span>
+              <span class="flow-meta-tag">Hover Reveal Overlays</span>
+            </div>
+          </div>
+          <div class="flow-inspector-grid">
+            <div class="flow-detail-box">
+              <div class="flow-box-label">🎯 Stage Objective</div>
+              <div class="flow-box-val">Fill a major content gap in the template by designing and coding an engaging staff showcase section with rich hover micro-interactions.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">⚙️ Technology &amp; Validation</div>
+              <div class="flow-box-val">CSS Grid responsive layout, CSS transform transitions for hover reveal overlays, ARIA focus labels for screen readers.</div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📁 Code Artifacts &amp; Paths</div>
+              <div class="flow-box-val"><code>frontend/index.html#chefs</code><br/><code>frontend/assets/css/style.css</code></div>
+            </div>
+            <div class="flow-detail-box">
+              <div class="flow-box-label">📊 Key Verification Metric</div>
+              <div class="flow-box-val"><strong>4 Interactive Cards</strong> displaying culinary specialty, awards, and experience on hover and focus.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Console Ticker -->
+      <div class="flow-console" style="margin-top:16px;">
+        <span class="flow-console-prompt">&gt; telemetry:</span>
+        <span class="flow-console-text">[READY] Pipeline initialized. Click any stage or press 'Run Pipeline Simulation'.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Site &amp; Database Gallery</div>
+    <h2>Core Application Interfaces</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="screenshots/grilli/01_hero.png" alt="Grilli Homepage &amp; Luxury Hero Interface" />
+        <div class="cap">Luxury restaurant hero interface featuring reservation quick-action triggers and royal dining aesthetics.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/06_reservation_contact.png" alt="Online Table Reservation Form" />
+        <div class="cap">Asynchronous booking form with guest, date, time selection and live client-side validation.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/08_mongodb_record.png" alt="MongoDB Atlas Live Saved Reservation Record" />
+        <div class="cap">Real-time reservation document persisted in MongoDB Atlas with ISO timestamps and schema sanitization.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/05_our_chefs.png" alt="Our Chefs Custom Showcase" />
+        <div class="cap">Custom-built 'Our Chefs' section with responsive 4-card CSS hover overlays and culinary bios.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/02_we_offer.png" alt="Culinary Services and Dining Experiences" />
+        <div class="cap">Culinary service showcase displaying breakfast, lunch, and dinner signature dining experiences.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/03_menu.png" alt="Interactive Seasonal Dish Catalog" />
+        <div class="cap">Interactive seasonal dish catalog with pricing, dietary callouts, and chef recommendations.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/04_our_story.png" alt="Brand Heritage and Culinary Narrative" />
+        <div class="cap">Brand heritage and culinary narrative section detailing 15 years of Michelin-grade hospitality.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="screenshots/grilli/07_footer.png" alt="Responsive Brand Footer and Working Anchors" />
+        <div class="cap">Responsive brand footer with working reservation anchor links, operational hours, and location.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Template Debugging &amp; Remediation</div>
+    <h2>Six Real Bugs Isolated &amp; Resolved</h2>
+    <p>Rather than styling over flaws, this project started with a systematic audit of the source template, catching critical DOM defects and architectural omissions that prevented the site from functioning as an actual business tool:</p>
+
+    <ul class="finding-list">
+      <li>
+        <span class="bullet">01</span>
+        <p><strong>Dead CTA Anchors:</strong> "Find A Table" and "Book A Table" hero buttons both pointed to empty <code>href="#"</code> anchors. The reservation section itself lacked an HTML <code>id</code>. Assigned <code>id="reservation"</code> and wired smooth-scrolling event triggers across header, hero, and banner CTAs.</p>
+      </li>
+      <li>
+        <span class="bullet">02</span>
+        <p><strong>Form Field Name Collision (Data Loss):</strong> The guest-count select dropdown and the time-slot select dropdown both shared the identical attribute <code>name="person"</code>. When submitted, the time value silently overwrote the guest count in standard URL-encoded form serialization. Disambiguated into <code>name="person"</code> and <code>name="time"</code>.</p>
+      </li>
+      <li>
+        <span class="bullet">03</span>
+        <p><strong>Non-Existent Backend &amp; Silent Failures:</strong> The original form attempted to submit to the current URL with no server endpoint to process it. Built an asynchronous Node.js + Express REST API backed by MongoDB Atlas, handling payload validation and persistent storage.</p>
+      </li>
+      <li>
+        <span class="bullet">04</span>
+        <p><strong>Jarring Page Refreshes:</strong> Standard HTML form submission forced a full-page reload, erasing user context and providing zero feedback. Intercepted the <code>submit</code> event with vanilla JavaScript <code>fetch()</code>, displaying an animated green toast confirmation on success and field-level validation errors on failure.</p>
+      </li>
+      <li>
+        <span class="bullet">05</span>
+        <p><strong>Missing Staff &amp; Culinary Profile:</strong> The restaurant template lacked any section to introduce executive chefs and culinary credentials. Designed, engineered, and integrated a responsive 4-card "Our Chefs" showcase with CSS hover-reveal overlays.</p>
+      </li>
+      <li>
+        <span class="bullet">06</span>
+        <p><strong>Unconstrained Schema &amp; Booking Collisions:</strong> The original inputs permitted negative guest counts and past dates. Implemented strict Mongoose schema validators (date &ge; today, party size between 1 and 20, regex phone/email verification).</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- REST API Architecture & Endpoints Matrix -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Backend Engineering &amp; Data Model</div>
+    <h2>REST API Architecture &amp; MongoDB Persistence</h2>
+    <p>The backend was engineered as a decoupled, production-ready Express.js microservice adhering to RESTful resource conventions and strict schema sanitization:</p>
+
+    <div style="overflow-x:auto;margin-bottom:28px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>HTTP Method</th>
+            <th>Route Endpoint</th>
+            <th>Description &amp; Purpose</th>
+            <th>Payload / Query</th>
+            <th>Response Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="matrix-badge" style="color:#10B981;background:rgba(16,185,129,0.1);">POST</span></td>
+            <td><code>/api/reservations</code></td>
+            <td>Creates new verified booking document in MongoDB Atlas with date slot lock.</td>
+            <td><code>{ name, email, phone, person, date, time, message }</code></td>
+            <td><code>201 Created</code></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-badge" style="color:#0284C7;background:rgba(2,132,199,0.1);">GET</span></td>
+            <td><code>/api/reservations</code></td>
+            <td>Retrieves chronological list of all active table reservations for restaurant management.</td>
+            <td>Query: <code>?date=YYYY-MM-DD</code> (optional filter)</td>
+            <td><code>200 OK</code></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-badge" style="color:#0284C7;background:rgba(2,132,199,0.1);">GET</span></td>
+            <td><code>/api/reservations/:id</code></td>
+            <td>Fetches specific booking by MongoDB <code>_id</code> for lookup and receipt rendering.</td>
+            <td>Param: <code>ObjectId</code></td>
+            <td><code>200 OK / 404</code></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-badge" style="color:#F59E0B;background:rgba(245,158,11,0.1);">PUT</span></td>
+            <td><code>/api/reservations/:id</code></td>
+            <td>Updates guest headcount, seating time, or special culinary requests.</td>
+            <td><code>{ person, time, message }</code></td>
+            <td><code>200 OK</code></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-badge" style="color:#EF4444;background:rgba(239,68,68,0.1);">DELETE</span></td>
+            <td><code>/api/reservations/:id</code></td>
+            <td>Cancels booking and releases table slot back to available inventory.</td>
+            <td>Param: <code>ObjectId</code></td>
+            <td><code>200 OK</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi"><div class="num">5</div><div class="label">REST API endpoints</div></div>
+      <div class="kpi"><div class="num">6</div><div class="label">Critical bugs fixed</div></div>
+      <div class="kpi"><div class="num">1</div><div class="label">New section built end-to-end</div></div>
+      <div class="kpi"><div class="num">0</div><div class="label">Page reloads on booking</div></div>
+    </div>
+
+    <div class="tech-tags" style="margin-top:20px;">
+      <span class="chip">Node.js + Express: REST API</span>
+      <span class="chip">MongoDB Atlas: Schema + CRUD</span>
+      <span class="chip">JS: Asynchronous Fetch API</span>
+      <span class="chip">CSS: 4-Card Chef Grid + Hover Overlays</span>
+      <span class="chip">Mongoose: Data Validation</span>
+    </div>
+  </div>
+</section>
+
+<!-- Honest Engineering Limitations -->
+<section class="cs-section">
+  <div class="wrap">
+    <div class="eyebrow">Honest Engineering Notes</div>
+    <div class="limits-box">
+      <h4>Scope &amp; Production Architecture Trade-Offs</h4>
+      <p>Grilli demonstrates taking an abandoned static template and elevating it into a functional full-stack web application. While the backend includes complete CRUD operations and live MongoDB Atlas persistence, production commercial deployment would require integrating an SMS/WhatsApp gateway (e.g. Twilio) for booking confirmation alerts, multi-table floor plan visualizers, and staff role-based access control (RBAC). All database records featured in this case study were created and verified during live staging tests against MongoDB Atlas.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-links">
+      <a href="index.html">← All projects</a>
+      <a href="kavach.html">KAVACH case study →</a>
+      <a href="archon.html">Archon case study →</a>
+      <a href="naukri-saaf.html">Naukri Saaf case study →</a>
+      <a href="https://github.com/jaindhruv1923/grilli-fullstack-restaurant-reservation-system" target="_blank">Repo ↗</a>
+    </div>
+    <div class="footer-clock" id="footer-clock"></div>
+    <div class="fine" style="margin-top:14px;">Dhruv Jain · © 2026</div>
+  </div>
+</footer>
+
+<div id="lightbox"><span class="close">✕</span><img src="" alt="" /></div>
+
+<script src="script.js"></script>
+<script src="chatbot.js"></script>
+<button id="chatbot-toggle" aria-label="Ask about Dhruv">💬</button>
+<div id="chatbot-panel">
+  <div class="cb-head">Ask about Dhruv — resume-only</div>
+  <div id="cb-log"></div>
+  <div class="cb-chip-row">
+    <span class="cb-chip">Skills</span><span class="cb-chip">Projects</span><span class="cb-chip">Experience</span><span class="cb-chip">Contact</span>
+  </div>
+  <div class="cb-input-row">
+    <input id="cb-input" type="text" placeholder="Ask a question..." />
+    <button id="cb-send">→</button>
+  </div>
+</div>
+</body>
+</html>

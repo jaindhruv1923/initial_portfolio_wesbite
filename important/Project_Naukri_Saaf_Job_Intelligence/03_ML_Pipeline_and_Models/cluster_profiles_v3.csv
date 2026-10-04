@@ -1,0 +1,6 @@
+kmeans_cluster_label,count,ghost_rate,avg_days_live,salary_trans,avg_repost
+High-Risk Ghost Poster,1361,32.8,23.3,2.1,3.0
+Mid-tier Mixed Signals,48,27.1,2.4,4.2,12.6
+Serial Reposter (Repeat Same Role),427,35.8,10.7,0.0,332.8
+Stale Long-Lived Listing,563,25.9,61.9,0.0,1.4
+Trusted Transparent Hirer,452,16.6,48.8,100.0,1.4

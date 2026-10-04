@@ -1,0 +1,1 @@
+from src.security.domain_auditor import RecruiterSecurityAuditor, recruiter_auditor

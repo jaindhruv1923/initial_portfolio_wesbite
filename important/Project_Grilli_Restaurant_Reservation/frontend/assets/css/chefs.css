@@ -1,0 +1,115 @@
+/*-----------------------------------*\
+  #OUR CHEFS SECTION
+  Custom addition — separate from the vendor style.css
+\*-----------------------------------*/
+
+.chefs .section-text {
+  max-width: 500px;
+  margin-inline: auto;
+  margin-block-end: 40px;
+  color: var(--quick-silver);
+}
+
+.chefs-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.chef-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chef-card-banner {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 380 / 460;
+  border-radius: var(--radius-24);
+  overflow: hidden;
+  margin-inline: auto;
+  margin-block-end: 20px;
+  cursor: pointer;
+}
+
+.chef-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-2);
+}
+
+.chef-card-banner:is(:hover, :focus-within) .chef-photo {
+  transform: scale(1.08);
+  filter: brightness(0.35);
+}
+
+.chef-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: var(--transition-2);
+  pointer-events: none;
+}
+
+.chef-card-banner:is(:hover, :focus-within) .chef-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chef-overlay ion-icon {
+  color: var(--gold-crayola);
+  font-size: 2.6rem;
+  margin-block-end: 6px;
+}
+
+.chef-overlay-label {
+  color: var(--gold-crayola);
+  font-size: var(--fontSize-label-2);
+  letter-spacing: var(--letterSpacing-3);
+  text-transform: uppercase;
+}
+
+.chef-overlay-value {
+  color: var(--white);
+  font-size: var(--fontSize-body-4);
+  font-weight: var(--weight-bold);
+  margin-block-end: 10px;
+}
+
+.chef-overlay-value:last-child { margin-block-end: 0; }
+
+.chef-name {
+  color: var(--white);
+  font-family: var(--fontFamily-forum);
+  font-size: var(--fontSize-title-3);
+  font-weight: var(--weight-regular);
+  margin-block-end: 4px;
+}
+
+.chef-role {
+  color: var(--gold-crayola);
+  font-size: var(--fontSize-label-1);
+  letter-spacing: var(--letterSpacing-3);
+  text-transform: uppercase;
+}
+
+/* Tablet */
+@media (min-width: 575px) {
+  .chefs-list { grid-template-columns: 1fr 1fr; }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .chefs-list { grid-template-columns: repeat(4, 1fr); }
+}

@@ -1,0 +1,20 @@
+flowchart TD
+    CandidateCode([Candidate Generated Code + Test Assertions]) --> InitCounter[Initialize Iteration Counter: k = 1]
+
+    InitCounter --> ASTCheck{Passes AST Syntax Parsing?}
+    ASTCheck -- No --> StderrSyntax[Capture AST SyntaxError Traceback] --> Reflect
+    ASTCheck -- Yes --> Sandbox[Execute in Ephemeral Subprocess Sandbox<br/>Timeout = 3.0s]
+
+    Sandbox --> ExecCheck{Return Code == 0?}
+    ExecCheck -- Yes --> PassSuccess[🟢 PASS: Candidate Patch Validated & Sealed]
+
+    ExecCheck -- No --> StderrRuntime[Capture Runtime / AssertionError Stderr]
+    StderrRuntime --> Reflect[ReAct Reflection Formulation:<br/>Prompt_k+1 = Prompt_k + Traceback_k]
+
+    Reflect --> MaxIterCheck{Has Counter Reached Max Iterations: k >= 3?}
+    MaxIterCheck -- Yes --> FailHalt[🛑 Max Cycles Exceeded: Escalate to Human Gatekeeper]
+
+    MaxIterCheck -- No --> AutoRepair[Apply Heuristic & Reflection Self-Healing:<br/>- Inject Missing Imports<br/>- Correct Off-By-One Logic<br/>- Fix Missing Syntax Colons]
+
+    AutoRepair --> Increment[Increment Counter: k = k + 1]
+    Increment --> ASTCheck

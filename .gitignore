@@ -1,0 +1,44 @@
+# Python virtualenvs, caches & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+dist/
+wheels/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js & Next.js caches
+node_modules/
+.next/
+out/
+.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and sensitive keys
+.env
+.env.local
+.env.*.local
+*.log
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+.vscode/
+*.swp
+*.swo
+
+# Sub-repository git folders
+.git_subrepo/

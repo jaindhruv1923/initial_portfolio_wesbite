@@ -1,0 +1,30 @@
+{
+  "run_id": "run_1790873199_random_forest_(calibrated)",
+  "run_name": "Production V4 Tuned Random Forest + Platt Calibration",
+  "experiment": "naukri_saaf_ghost_detection",
+  "timestamp": "2026-10-01 16:46:40 UTC",
+  "seed": 42,
+  "data_lineage": {
+    "dataset_path": "01_Datasets_Raw_Scrapes/naukri_saaf_v3_dataset.csv",
+    "dataset_sha256": "22d4078d7af2dab0667380576f3ce2b5943de6feaf29a64aadaf6e8ebd23e49b"
+  },
+  "model_type": "Random Forest (Calibrated)",
+  "hyperparameters": {
+    "n_estimators": 80,
+    "max_depth": 7,
+    "min_samples_leaf": 4
+  },
+  "group_cv_metrics": {
+    "ROC-AUC": 0.9961,
+    "F1": 0.9638,
+    "Recall": 0.9864,
+    "Precision": 0.9421
+  },
+  "holdout_gold_metrics": {
+    "ROC-AUC": 0.92,
+    "F1": 0.6949,
+    "Recall": 0.9318,
+    "Precision": 0.5541
+  },
+  "status": "COMPLETED"
+}

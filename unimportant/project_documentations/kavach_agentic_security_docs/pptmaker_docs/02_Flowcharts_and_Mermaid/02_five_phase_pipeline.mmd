@@ -1,0 +1,44 @@
+sequenceDiagram
+    autonumber
+    actor Dev as Developer / Autonomous Agent
+    participant P1 as Phase 1: AST Ingestion
+    participant P2 as Phase 2: Security Guardrail
+    participant P3 as Phase 3: Blast Radius Analyzer
+    participant P4 as Phase 4: Dual-Engine LLM
+    participant P5 as Phase 5: AST Firewall & Sandbox
+    participant Output as Final Governed Output
+
+    Dev->>P1: Submit Prompt / Engineering Task
+    P1->>P1: Parse Repo AST, Extract Functions & Classes
+    P1->>P2: Forward Code Chunks & User Prompt
+
+    alt Destructive Command Detected (DROP TABLE, rm -rf)
+        P2-->>Output: 🛑 HALT: Emit Verdict BLOCKED (Risk Score > 0.9)
+    else High-Entropy Secret or Indian PII (Aadhaar/PAN) Found
+        P2->>P2: Calculate Shannon Entropy H(X)
+        P2->>P2: Reversible Pseudonymization (<REDACTED_TOKEN_...>)
+        P2->>P3: Forward Sanitized Prompt + Flag NEEDS_REVIEW
+    else Clean Prompt Passed
+        P2->>P3: Forward Clean Sanitized Prompt
+    end
+
+    P3->>P3: Compute Transitive Caller-Callee Adjacency Matrix
+    P3->>P3: Calculate Downstream Blast Radius %
+    P3->>P4: Dispatch Context & Prompt to LLM Router
+
+    P4->>P4: Synthesize Candidate Code Patch
+    P4->>P5: Send Generated Code for AST Auditing
+
+    P5->>P5: Parse AST Imports (Import / ImportFrom)
+    P5->>P5: Query PyPI Cache & Registry API (<5ms)
+    alt Hallucinated / Non-Existent Package Detected
+        P5-->>Output: 🛑 HALT: Emit Verdict BLOCKED (AI Slopsquatting Intercepted)
+    else Imports Validated Cleanly
+        P5->>P5: Run Sandbox Unit Test Execution
+        opt Sandbox Execution Fails
+            P5->>P5: ReAct Loop: Capture stderr & Reflect to Repair (Max 3x)
+        end
+        P5->>P5: Rehydrate Pseudonymized Tokens for Authorized Local Dev
+        P5->>P5: Generate CycloneDX v1.5 JSON SBOM with SHA-256 Hashes
+        P5-->>Output: 🟢 Emit Verdict ALLOWED (or NEEDS_REVIEW if credentials present)
+    end

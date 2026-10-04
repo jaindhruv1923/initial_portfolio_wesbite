@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Naukri Saaf — Job Fit & Ghost Check",
+  "version": "1.1.0",
+  "description": "Reads the job posting you're viewing, scores your resume fit, and flags ghost-listing risk. 100% local, no API calls.",
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel", "tabs"],
+  "host_permissions": [
+    "*://*.linkedin.com/*",
+    "*://*.naukri.com/*",
+    "*://*.indeed.com/*",
+    "*://*.glassdoor.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.linkedin.com/jobs/*",
+        "*://*.naukri.com/*",
+        "*://*.indeed.com/*",
+        "*://*.glassdoor.com/*",
+        "*://*.glassdoor.co.in/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Naukri Saaf"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

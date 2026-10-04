@@ -1,0 +1,20 @@
+[
+  {"id": "SEC-01", "category": "credential", "text": "API_KEY=sk-abc123XYZ789defGHI456jkl", "sensitive": true, "entity_type": "credential"},
+  {"id": "SEC-02", "category": "credential", "text": "API_KEY=your_key_here", "sensitive": false, "entity_type": null},
+  {"id": "SEC-03", "category": "credential", "text": "password: correcthorsebatterystaple99xz", "sensitive": true, "entity_type": "credential"},
+  {"id": "SEC-04", "category": "credential", "text": "GEMINI_API_KEY=AIzaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe", "sensitive": true, "entity_type": "credential"},
+  {"id": "SEC-05", "category": "credential", "text": "database password field is required for login", "sensitive": false, "entity_type": null},
+  {"id": "SEC-06", "category": "credential_hinglish_gap", "text": "mera password hai Xk9$mLpQ2vZr8nT", "sensitive": false, "entity_type": null, "note": "KNOWN GAP: Hinglish natural-language credential mentions are NOT yet caught (see KAVACH_LIMITATIONS.md and test_security_v2.py::test_hinglish_password_mention_not_yet_detected). Labeled sensitive:false here only because that reflects current actual detector behavior, not because this text is genuinely safe."},
+
+  {"id": "NEG-01", "category": "hard_negative", "text": "Order ID: 123456789012, please check the status", "sensitive": false, "entity_type": null},
+  {"id": "NEG-02", "category": "hard_negative", "text": "Transaction reference number is 123456789012", "sensitive": false, "entity_type": null},
+  {"id": "NEG-03", "category": "hard_negative", "text": "The invoice total was ABCDE1234F units shipped", "sensitive": false, "entity_type": null},
+  {"id": "NEG-04", "category": "hard_negative", "text": "my Aadhaar number is 123456789012", "sensitive": true, "entity_type": "Aadhaar-like"},
+  {"id": "NEG-05", "category": "hard_negative", "text": "calculate the average sales for Q1", "sensitive": false, "entity_type": null},
+  {"id": "NEG-06", "category": "hard_negative", "text": "the product SKU is 123456789012 in our catalog", "sensitive": false, "entity_type": null},
+  {"id": "NEG-07", "category": "hard_negative", "text": "please process 123456789012", "sensitive": false, "entity_type": null},
+
+  {"id": "ACT-01", "category": "action_risk", "text": "explain what this PAN validation function does", "sensitive": false, "entity_type": null, "expected_action_risk": "low"},
+  {"id": "ACT-02", "category": "action_risk", "text": "delete all customer records matching this Aadhaar 123456789012", "sensitive": true, "entity_type": "Aadhaar-like", "expected_action_risk": "high"},
+  {"id": "ACT-03", "category": "action_risk", "text": "add a health-check endpoint to the backend", "sensitive": false, "entity_type": null, "expected_action_risk": "low"}
+]

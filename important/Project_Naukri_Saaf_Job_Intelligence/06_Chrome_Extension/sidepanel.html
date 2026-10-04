@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Naukri Saaf</title>
+<link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">Naukri Saaf</div>
+    <button id="refreshBtn" class="icon-btn" title="Re-read this page">↻</button>
+  </header>
+
+  <div class="version-stamp">build 1.1.0</div>
+  <script src="bootstrap.js"></script>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="match">Resume Match</button>
+    <button class="tab-btn" data-tab="legit">Legitimacy</button>
+  </nav>
+
+  <main id="content">
+
+    <section id="tab-overview" class="tab-panel active">
+      <div id="ov-empty" class="empty-state">
+        Open a job posting on LinkedIn, Naukri, Indeed, or Glassdoor, then click ↻ to read it.
+      </div>
+      <div id="ov-data" class="hidden">
+        <h2 id="ov-title"></h2>
+        <div class="meta-row">
+          <span id="ov-company" class="pill pill-company"></span>
+          <span id="ov-portal" class="pill"></span>
+        </div>
+        <div id="ov-meta" class="sub-meta"></div>
+        <h3>Skills mentioned in this posting</h3>
+        <div id="ov-skills" class="chip-row"></div>
+        <h3>Full description</h3>
+        <p id="ov-desc" class="desc-block"></p>
+      </div>
+    </section>
+
+    <section id="tab-match" class="tab-panel">
+      <div id="resume-setup">
+        <h3>1. Upload or paste your resume (once)</h3>
+        <div class="upload-row">
+          <label for="resumeFile" class="upload-btn">📄 Upload PDF / .txt</label>
+          <input type="file" id="resumeFile" accept=".pdf,.txt" class="hidden" />
+          <span id="uploadFileName" class="upload-filename"></span>
+        </div>
+        <div class="or-divider">or paste text directly</div>
+        <textarea id="resumeInput" placeholder="Paste your resume text here — this is stored locally in the browser only, never sent anywhere."></textarea>
+        <button id="saveResumeBtn" class="primary-btn">Save resume</button>
+        <span id="resumeSavedNote" class="saved-note hidden">✓ Saved locally</span>
+        <div id="uploadError" class="upload-error hidden"></div>
+      </div>
+
+      <div id="match-empty" class="empty-state">
+        Save your resume above, then open a job posting and hit ↻.
+      </div>
+
+      <div id="match-data" class="hidden">
+        <h3>Fit score</h3>
+        <div class="score-wrap">
+          <div id="matchScoreNum" class="score-num">–</div>
+          <div class="score-label">/ 10</div>
+        </div>
+        <div id="matchBand" class="band-note"></div>
+
+        <h3>Skills you have that this posting wants</h3>
+        <div id="skillsHave" class="chip-row chip-good"></div>
+
+        <h3>Skills this posting wants that aren't obviously in your resume</h3>
+        <div id="skillsMissing" class="chip-row chip-bad"></div>
+
+        <h3>What to do</h3>
+        <ul id="matchAdvice" class="advice-list"></ul>
+      </div>
+    </section>
+
+    <section id="tab-legit" class="tab-panel">
+      <div id="legit-empty" class="empty-state">
+        Open a job posting and hit ↻ to run the legitimacy check.
+      </div>
+      <div id="legit-data" class="hidden">
+        <h3>Overall read</h3>
+        <div id="legitVerdict" class="verdict-box"></div>
+        <div id="legitCoverage" class="coverage-note"></div>
+
+        <h3>Signals checked on this page</h3>
+        <div id="legitComputed" class="signal-list"></div>
+
+        <h3>Needs a manual check (can't be read from this page alone)</h3>
+        <p class="hint-text">Your GBM model weighs these heavily too — click through before deciding.</p>
+        <div id="legitManual" class="signal-list"></div>
+
+        <h3>Quick verification links</h3>
+        <div id="legitLinks" class="link-row"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="lib/pdfjs/pdf.min.js"></script>
+  <script src="lib/nlp.js"></script>
+  <script src="lib/legitimacy.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

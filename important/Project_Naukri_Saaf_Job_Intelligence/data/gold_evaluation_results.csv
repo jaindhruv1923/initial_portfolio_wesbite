@@ -1,0 +1,4 @@
+Method / Model,Cohen's Kappa,F1 Score,Precision,Recall,Accuracy,ROC-AUC
+Generative Label Model (Snorkel),0.589,0.713,0.5775,0.9318,0.8167,0.9424
+Majority Vote Labeling,0.5244,0.6604,0.5645,0.7955,0.8,0.8517
+Legacy Heuristic Rule,0.2545,0.4536,0.4151,0.5,0.7056,—

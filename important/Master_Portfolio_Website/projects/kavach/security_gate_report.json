@@ -1,0 +1,27 @@
+{
+  "overall_passed": true,
+  "checks": [
+    {
+      "check": "security_engine",
+      "passed": true,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "thresholds": {
+        "min_precision": 0.9,
+        "min_recall": 0.85
+      }
+    },
+    {
+      "check": "impact_analyzer",
+      "passed": true,
+      "avg_precision": 0.48,
+      "avg_recall": 0.767,
+      "avg_f1": 0.571,
+      "thresholds": {
+        "min_avg_precision": 0.4,
+        "min_avg_recall": 0.5
+      }
+    }
+  ]
+}

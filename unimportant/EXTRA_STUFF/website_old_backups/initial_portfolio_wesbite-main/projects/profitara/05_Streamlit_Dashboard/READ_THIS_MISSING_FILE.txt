@@ -1,0 +1,21 @@
+IMPORTANT — Profitara's app.py (the actual Streamlit dashboard Python code)
+could NOT be recovered.
+
+What happened: you uploaded Profitara's app.py first, then later uploaded
+Naukri Saaf's app.py in a separate message. Both files were named exactly
+"app.py". On the server's upload folder, the second file silently
+overwrote the first before I ever opened/read Profitara's version — so by
+the time I could look at it, only Naukri Saaf's app.py existed on disk.
+
+I did not fabricate a replacement, since that would just hand you code
+that looks like your project but isn't actually the file you had.
+
+requirements.txt and config.toml in this folder ARE the real, exact
+Profitara versions — I had their full text from earlier in our
+conversation, so those were safely reconstructed byte-for-byte.
+
+If you still have Profitara_Golden_Dashboard.html (the standalone HTML
+version, included in this folder) or the ML pipeline notebook, most of
+the actual analysis/model logic is intact there. The Streamlit-specific
+UI wiring in app.py would need to be rebuilt from those, or from any
+other backup/GitHub push you may have made.
