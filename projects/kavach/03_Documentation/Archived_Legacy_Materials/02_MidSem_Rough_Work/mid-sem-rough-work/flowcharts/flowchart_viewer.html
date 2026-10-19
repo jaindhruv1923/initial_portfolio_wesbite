@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAVACH | Interactive Architecture & Flowchart Viewer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a192f;
+      --surface: #112240;
+      --border: #233554;
+      --cyan: #00d2ff;
+      --green: #64ffda;
+      --gold: #ffd166;
+      --text: #ccd6f6;
+      --text-muted: #8892b0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-bottom: 24px;
+    }
+    .title { font-size: 22px; font-weight: 800; color: white; }
+    .sub { font-size: 13px; color: var(--cyan); font-weight: 600; }
+    .badge {
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .tab-btn:hover { background: #1d3557; border-color: var(--cyan); color: white; }
+    .tab-btn.active {
+      background: rgba(0, 210, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .viewer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .desc-box {
+      width: 100%;
+      background: #060d19;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .desc-box strong { color: var(--cyan); }
+    .mermaid-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      padding: 20px 0;
+    }
+    .mermaid {
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <div class="title">🛡️ KAVACH System Architecture & Flowchart Explorer</div>
+      <div class="sub">PRJ-IV Mid-Term Presentation Demonstration | Prof. Anusha Chhabra</div>
+    </div>
+    <div class="badge">5 Interactive Flowcharts Available</div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchChart(1)">1. System Architecture</button>
+    <button class="tab-btn" onclick="switchChart(2)">2. 5-Phase Lifecycle</button>
+    <button class="tab-btn" onclick="switchChart(3)">3. AST Package Firewall</button>
+    <button class="tab-btn" onclick="switchChart(4)">4. DPDP Token Vault</button>
+    <button class="tab-btn" onclick="switchChart(5)">5. ReAct Self-Healing</button>
+  </div>
+
+  <div class="viewer-card">
+    <div class="desc-box" id="desc-box">
+      <strong>Flowchart 1: End-to-End System Architecture:</strong> Visualizes the multi-agent topology across client interfaces (CLI, Web UI, MCP IDEs), deterministic governance gateway, vector intelligence, dual-engine LLM router, and the AST verification layer.
+    </div>
+    <div class="mermaid-container">
+      <div class="mermaid" id="mermaid-target"></div>
+    </div>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#0a192f',
+        primaryColor: '#112240',
+        primaryTextColor: '#ccd6f6',
+        primaryBorderColor: '#00d2ff',
+        lineColor: '#64ffda',
+        secondaryColor: '#1d3557',
+        tertiaryColor: '#0a192f'
+      }
+    });
+
+    const charts = {
+      1: {
+        desc: "<strong>Flowchart 1: End-to-End System Architecture:</strong> Visualizes the multi-agent topology across client interfaces (CLI, Web UI, MCP IDEs), deterministic governance gateway, vector intelligence, dual-engine LLM router, and the AST verification layer.",
+        code: `graph TB
+    subgraph ClientLayer ["Client & IDE Integration Layer"]
+        CLI["CLI Terminal Runner (main.py)"]
+        WEB["Mission Control Dashboard (Web UI :8765)"]
+        IDE["Cursor / Claude / VS Code (via Model Context Protocol)"]
+    end
+
+    subgraph GovernanceGateway ["KAVACH Deterministic Governance Gateway"]
+        MCP["MCP JSON-RPC Server (Protocol 2024-11-05)"]
+        P1["Phase 1: AST Repo Ingestion (Code Chunking & Indexing)"]
+        P2["Phase 2: Pre-Execution Guardrails (Entropy H > 4.0 & Destructive Filter)"]
+        VAULT["Zero-Knowledge Token Vault (DPDP Aadhaar/PAN Pseudonymizer)"]
+    end
+
+    subgraph IntelligenceLayer ["Repository Intelligence & Routing"]
+        P3["Phase 3: Context & Blast Radius (AST Dependency Call Graph)"]
+        QDRANT["Vector Database (Dense Semantic Retrieval)"]
+        ROUTER["Dual-Engine LLM Router (Air-Gapped IP Isolation)"]
+    end
+
+    subgraph SynthesisLayer ["Inference & Code Generation"]
+        CLOUD["Google Gemini 2.0 Flash (Public Sanitized Tasks)"]
+        LOCAL["Local Ollama Qwen2.5-Coder (Private IP Sandboxing)"]
+        SYNTH["Deterministic Synthesizer (Zero-Failure Fallback Engine)"]
+    end
+
+    subgraph VerificationLayer ["Post-Execution AST Verification & Sandbox"]
+        P5["Phase 5: Output Validation (AST Syntax & Import Auditor)"]
+        FIREWALL["AST Supply-Chain Firewall (PyPI Slopsquatting Interceptor)"]
+        REACT["ReAct Self-Healing Sandbox (Closed-Loop Pytest Reflection N<=3)"]
+        SBOM["CycloneDX v1.5 Engine (SLSA Level 3 Cryptographic SBOM)"]
+    end
+
+    CLI --> MCP
+    WEB --> MCP
+    IDE --> MCP
+    MCP --> P1
+    P1 --> P2
+    P2 --> VAULT
+    VAULT --> P3
+    P3 --> QDRANT
+    P3 --> ROUTER
+    ROUTER --> CLOUD
+    ROUTER --> LOCAL
+    ROUTER --> SYNTH
+    CLOUD --> P5
+    LOCAL --> P5
+    SYNTH --> P5
+    P5 --> FIREWALL
+    FIREWALL --> REACT
+    REACT --> SBOM
+    SBOM --> ClientLayer`
+      },
+      2: {
+        desc: "<strong>Flowchart 2: The 5-Phase Governed DevOps Execution Lifecycle:</strong> Sequence diagram tracking execution through Ingestion, Pre-Execution Gateways, AST Dependency Analysis, Dual-Engine LLM Generation, and Output AST Verification.",
+        code: `sequenceDiagram
+    autonumber
+    actor Dev as Developer / Autonomous Agent
+    participant P1 as Phase 1: AST Ingestion
+    participant P2 as Phase 2: Security Guardrail
+    participant P3 as Phase 3: Blast Radius Analyzer
+    participant P4 as Phase 4: Dual-Engine LLM
+    participant P5 as Phase 5: AST Firewall & Sandbox
+    participant Output as Final Governed Output
+
+    Dev->>P1: Submit Prompt / Engineering Task
+    P1->>P1: Parse Repo AST, Extract Functions & Classes
+    P1->>P2: Forward Code Chunks & User Prompt
+
+    alt Destructive Command Detected (DROP TABLE, rm -rf)
+        P2-->>Output: 🛑 HALT: Emit Verdict BLOCKED (Risk Score > 0.9)
+    else High-Entropy Secret or Indian PII (Aadhaar/PAN) Found
+        P2->>P2: Calculate Shannon Entropy H(X)
+        P2->>P2: Reversible Pseudonymization (<REDACTED_TOKEN_...>)
+        P2->>P3: Forward Sanitized Prompt + Flag NEEDS_REVIEW
+    else Clean Prompt Passed
+        P2->>P3: Forward Clean Sanitized Prompt
+    end
+
+    P3->>P3: Compute Transitive Caller-Callee Adjacency Matrix
+    P3->>P3: Calculate Downstream Blast Radius %
+    P3->>P4: Dispatch Context & Prompt to LLM Router
+
+    P4->>P4: Synthesize Candidate Code Patch
+    P4->>P5: Send Generated Code for AST Auditing
+
+    P5->>P5: Parse AST Imports (Import / ImportFrom)
+    P5->>P5: Query PyPI Cache & Registry API (<5ms)
+    alt Hallucinated / Non-Existent Package Detected
+        P5-->>Output: 🛑 HALT: Emit Verdict BLOCKED (AI Slopsquatting Intercepted)
+    else Imports Validated Cleanly
+        P5->>P5: Run Sandbox Unit Test Execution
+        opt Sandbox Execution Fails
+            P5->>P5: ReAct Loop: Capture stderr & Reflect to Repair (Max 3x)
+        end
+        P5->>P5: Rehydrate Pseudonymized Tokens for Authorized Local Dev
+        P5->>P5: Generate CycloneDX v1.5 JSON SBOM with SHA-256 Hashes
+        P5-->>Output: 🟢 Emit Verdict ALLOWED (or NEEDS_REVIEW if credentials present)
+    end`
+      },
+      3: {
+        desc: "<strong>Flowchart 3: AST Supply-Chain Package Firewall & Slopsquatting Interception:</strong> Traverses Python AST to extract imported modules, audits against Python STDLIB and local codebase, queries PyPI index with LRU cache, and quarantines non-existent packages.",
+        code: `flowchart TD
+    Start([Generated Code Patch from LLM]) --> Parse[AST Parse: ast.parse source_code]
+    Parse --> CheckSyntax{AST Syntax Valid?}
+    CheckSyntax -- No --> RejectSyntax[🛑 Emit AST Syntax Error & Route to ReAct Healer]
+    CheckSyntax -- Yes --> Visitor[AST ImportVisitor: Extract Import & ImportFrom Nodes]
+
+    Visitor --> Loop[For Each Imported Module 'M']
+    Loop --> CheckStdlib{Is 'M' in Python STDLIB?}
+    CheckStdlib -- Yes --> AllowStdlib[Mark Valid Standard Library e.g., os, json, sys] --> NextMod
+    CheckStdlib -- No --> CheckLocal{Is 'M' in Local Codebase?}
+    CheckLocal -- Yes --> AllowLocal[Mark Valid Internal Module e.g., auth, db] --> NextMod
+    CheckLocal -- No --> CheckCache{Is 'M' in In-Memory LRU Cache?}
+    CheckCache -- Hit (Valid) --> AllowCached[Mark Verified from Cache <0.1ms] --> NextMod
+    CheckCache -- Hit (Known Bad) --> FlagBad[Quarantine as Known Slopsquat] --> Halt
+    CheckCache -- Miss --> QueryPyPI[Live HTTP Query to PyPI JSON API: https://pypi.org/pypi/M/json]
+    QueryPyPI --> RespCheck{HTTP Status == 200?}
+    RespCheck -- Yes --> CacheSafe[Cache in LRU as Verified] --> NextMod
+    RespCheck -- No / 404 --> FlagHallucination[Flag AI Package Hallucination e.g., fastapi-jwt-vault] --> Halt
+
+    NextMod{More Modules?} -- Yes --> Loop
+    NextMod -- No --> AllPassed[All Imports Verified Cleanly]
+    AllPassed --> EmitSafe[🟢 Safe: Forward to Ephemeral Sandbox]
+    Halt[Package Slopsquatting Detected] --> EmitBlocked[🛑 BLOCKED: Intercept Supply-Chain Hijack]`
+      },
+      4: {
+        desc: "<strong>Flowchart 4: Multilingual Zero-Knowledge Token Vault:</strong> Reversibly de-identifies Indian Aadhaar/PAN cards and cloud API credentials into opaque surrogate placeholders before external LLM dispatch, rehydrating them downstream.",
+        code: `flowchart TD
+    RawInput([Raw Developer Input with Multilingual Hinglish Text & Secrets]) --> ScanPhase[Regex & Entropy Scanning Engine]
+    ScanPhase --> PII_Check[Detect Statutory Indian Identifiers:<br/>- Aadhaar: 12 digits<br/>- PAN: 10 chars A-Z 0-9]
+    ScanPhase --> Secret_Check[Detect High-Entropy Credentials:<br/>- Shannon Entropy H > 4.0<br/>- AWS AKIA, GitHub ghp_, Stripe keys]
+    PII_Check --> MatchDecision{Any Sensitive Findings?}
+    Secret_Check --> MatchDecision
+    MatchDecision -- No --> PassClean[Pass Untouched to LLM Context]
+    MatchDecision -- Yes --> Pseudonymize[Deterministic Reversible Tokenization]
+    Pseudonymize --> VaultStore[(In-Memory Session Vault Store:<br/>Token ID <---> Raw Sensitive Value)]
+    Pseudonymize --> Replace[Replace with Opaque Placeholders:<br/>e.g., &lt;REDACTED_AADHAAR_001&gt;,<br/>&lt;REDACTED_AWS_KEY_001&gt;]
+    Replace --> SanitizedPayload([Zero-Knowledge Sanitized Prompt])
+    SanitizedPayload --> CloudLLM[External Third-Party Cloud LLM<br/>No Raw PII / No Raw Secrets in Provider Logs]
+    CloudLLM --> GeneratedOutput([Generated Code / Reasoning Response])
+    AuthCheck{Authorized Local Recipient?}
+    GeneratedOutput --> AuthCheck
+    AuthCheck -- No --> KeepRedacted[Preserve Redacted Tokens in Public Logs]
+    AuthCheck -- Yes --> Rehydrate[Query Vault & Rehydrate Raw Identifiers]
+    Rehydrate --> FinalClearText([Delivered Securely to Authorized Developer Sandbox])`
+      },
+      5: {
+        desc: "<strong>Flowchart 5: Closed-Loop ReAct Self-Healing Reflection Engine:</strong> Executes generated code inside an isolated subprocess sandbox. On failure, captures stderr tracebacks and reflects back to auto-repair missing imports or assertions (max 3 cycles).",
+        code: `flowchart TD
+    CandidateCode([Candidate Generated Code + Test Assertions]) --> InitCounter[Initialize Iteration Counter: k = 1]
+    InitCounter --> ASTCheck{Passes AST Syntax Parsing?}
+    ASTCheck -- No --> StderrSyntax[Capture AST SyntaxError Traceback] --> Reflect
+    ASTCheck -- Yes --> Sandbox[Execute in Ephemeral Subprocess Sandbox<br/>Timeout = 3.0s]
+    Sandbox --> ExecCheck{Return Code == 0?}
+    ExecCheck -- Yes --> PassSuccess[🟢 PASS: Candidate Patch Validated & Sealed]
+    ExecCheck -- No --> StderrRuntime[Capture Runtime / AssertionError Stderr]
+    StderrRuntime --> Reflect[ReAct Reflection Formulation:<br/>Prompt_k+1 = Prompt_k + Traceback_k]
+    Reflect --> MaxIterCheck{Has Counter Reached Max Iterations: k >= 3?}
+    MaxIterCheck -- Yes --> FailHalt[🛑 Max Cycles Exceeded: Escalate to Human Gatekeeper]
+    MaxIterCheck -- No --> AutoRepair[Apply Heuristic & Reflection Self-Healing:<br/>- Inject Missing Imports<br/>- Correct Off-By-One Logic<br/>- Fix Missing Syntax Colons]
+    AutoRepair --> Increment[Increment Counter: k = k + 1]
+    Increment --> ASTCheck`
+      }
+    };
+
+    async function switchChart(id) {
+      document.querySelectorAll('.tab-btn').forEach((b, idx) => {
+        b.classList.toggle('active', idx === id - 1);
+      });
+      document.getElementById('desc-box').innerHTML = charts[id].desc;
+      const target = document.getElementById('mermaid-target');
+      target.removeAttribute('data-processed');
+      target.innerHTML = charts[id].code;
+      await mermaid.run({ nodes: [target] });
+    }
+
+    // Load initial chart on startup
+    window.addEventListener('DOMContentLoaded', () => {
+      switchChart(1);
+    });
+  </script>
+</body>
+</html>

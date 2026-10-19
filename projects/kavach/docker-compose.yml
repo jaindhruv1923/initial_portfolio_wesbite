@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # 1. KAVACH AI DevOps Security & Governance Platform (Port 8000)
+  kavach-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kavach-platform-engine
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - KAVACH_OFFLINE=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./01_KAVACH_Platform/backend/data:/app/backend/data
+      - ./02_Banking_and_Results_Dashboard/results_dashboard/data:/app/results_data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # 2. Bharat Core Banking Highway Engine (Port 8050)
+  bharat-core-banking:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bharat-banking-highway
+    ports:
+      - "8050:8050"
+    environment:
+      - PORT=8050
+      - PYTHONUNBUFFERED=1
+    command: ["python", "-m", "uvicorn", "implementation_banks.server:app", "--host", "0.0.0.0", "--port", "8050"]
+    volumes:
+      - ./02_Banking_and_Results_Dashboard/implementation_banks/data:/app/implementation_banks/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8050/api/bank/accounts"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # 3. Unified Operations & Results Cockpit (Port 8090)
+  results-cockpit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kavach-results-hub
+    ports:
+      - "8090:8090"
+    environment:
+      - PORT=8090
+      - PYTHONUNBUFFERED=1
+    command: ["python", "-m", "uvicorn", "results_hub:app", "--app-dir", "02_Banking_and_Results_Dashboard/results_dashboard", "--host", "0.0.0.0", "--port", "8090"]
+    volumes:
+      - ./02_Banking_and_Results_Dashboard/results_dashboard/data:/app/results/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/api/results/summary"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped

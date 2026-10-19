@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kavach-mesh
+  labels:
+    app.kubernetes.io/name: kavach-mesh
+    app.kubernetes.io/part-of: kavach-zero-trust
+    security.kavach.io/policy: zero-trust-enforced

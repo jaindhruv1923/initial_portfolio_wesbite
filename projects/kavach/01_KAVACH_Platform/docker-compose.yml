@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  kavach:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kavach-platform:latest
+    container_name: kavach-platform
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+    volumes:
+      - kavach_data:/app/backend/data
+      - kavach_qdrant:/app/backend/qdrant_storage
+
+volumes:
+  kavach_data:
+  kavach_qdrant:

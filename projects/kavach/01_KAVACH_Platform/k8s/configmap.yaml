@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kavach-config
+  namespace: kavach-mesh
+data:
+  KAVACH_OFFLINE: "1"
+  PYTHONUNBUFFERED: "1"
+  LOG_LEVEL: "INFO"
+  SECURITY_MODE: "ENFORCED"
+  A2A_PROTOCOL_VERSION: "2.0-JSONRPC"
+  NIST_PROVENANCE_HASH: "SHA3-512"

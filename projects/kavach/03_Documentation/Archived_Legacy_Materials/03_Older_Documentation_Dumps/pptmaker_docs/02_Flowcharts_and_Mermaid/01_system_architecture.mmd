@@ -1,0 +1,52 @@
+graph TB
+    subgraph ClientLayer ["Client & IDE Integration Layer"]
+        CLI["CLI Terminal Runner<br/>(main.py)"]
+        WEB["Mission Control Dashboard<br/>(Web UI :8765)"]
+        IDE["Cursor / Claude / VS Code<br/>(via Model Context Protocol)"]
+    end
+
+    subgraph GovernanceGateway ["KAVACH Deterministic Governance Gateway"]
+        MCP["MCP JSON-RPC Server<br/>(Protocol 2024-11-05)"]
+        P1["Phase 1: AST Repo Ingestion<br/>Code Chunking & Indexing"]
+        P2["Phase 2: Pre-Execution Guardrails<br/>Entropy H > 4.0 & Destructive Filter"]
+        VAULT["Zero-Knowledge Token Vault<br/>DPDP Aadhaar/PAN Pseudonymizer"]
+    end
+
+    subgraph IntelligenceLayer ["Repository Intelligence & Routing"]
+        P3["Phase 3: Context & Blast Radius<br/>AST Dependency Call Graph"]
+        QDRANT["Vector Database<br/>Dense Semantic Retrieval"]
+        ROUTER["Dual-Engine LLM Router<br/>Air-Gapped IP Isolation"]
+    end
+
+    subgraph SynthesisLayer ["Inference & Code Generation"]
+        CLOUD["Google Gemini 2.0 Flash<br/>Public Sanitized Tasks"]
+        LOCAL["Local Ollama (Qwen2.5-Coder)<br/>Private IP Sandboxing"]
+        SYNTH["Deterministic Synthesizer<br/>Zero-Failure Fallback Engine"]
+    end
+
+    subgraph VerificationLayer ["Post-Execution AST Verification & Sandbox"]
+        P5["Phase 5: Output Validation<br/>AST Syntax & Import Auditor"]
+        FIREWALL["AST Supply-Chain Firewall<br/>PyPI Slopsquatting Interceptor"]
+        REACT["ReAct Self-Healing Sandbox<br/>Closed-Loop Pytest Reflection (N<=3)"]
+        SBOM["CycloneDX v1.5 Engine<br/>SLSA Level 3 Cryptographic SBOM"]
+    end
+
+    CLI --> MCP
+    WEB --> MCP
+    IDE --> MCP
+    MCP --> P1
+    P1 --> P2
+    P2 --> VAULT
+    VAULT --> P3
+    P3 --> QDRANT
+    P3 --> ROUTER
+    ROUTER --> CLOUD
+    ROUTER --> LOCAL
+    ROUTER --> SYNTH
+    CLOUD --> P5
+    LOCAL --> P5
+    SYNTH --> P5
+    P5 --> FIREWALL
+    FIREWALL --> REACT
+    REACT --> SBOM
+    SBOM --> ClientLayer

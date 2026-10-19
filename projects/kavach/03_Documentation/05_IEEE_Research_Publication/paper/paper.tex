@@ -1,0 +1,243 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{multirow}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\lstset{
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    frame=single,
+    captionpos=b,
+    numbers=left,
+    numberstyle=\tiny\color{gray}
+}
+
+\begin{document}
+
+\title{KAVACH: A Multi-Stage Security-Governed Agentic DevOps Framework with AST Supply-Chain Firewalls and Multilingual Guardrails}
+
+\author{\IEEEauthorblockN{Dhruv Jain}
+\IEEEauthorblockA{\textit{School of Engineering and Technology} \\
+\textit{BML Munjal University}\\
+Gurugram, India \\
+dhruv.jain.21cse@bmu.edu.in}
+}
+
+\maketitle
+
+\begin{abstract}
+Autonomous Agentic AI developers (e.g., SWE-agent, Devin) promise automated bug-fixing, feature implementation, and CI/CD operations. However, deploying unconstrained autonomous agents in enterprise software ecosystems introduces catastrophic vulnerabilities: (i) package hallucinations and ``slopsquatting'' attacks, where agents invoke non-existent modules subsequently weaponized by adversaries on public registries; (ii) data exfiltration of sensitive identifiers (PII/SPDI) and API credentials into third-party cloud LLM contexts, violating localization regulations such as the Indian Digital Personal Data Protection (DPDP) Act; (iii) unbounded blast radiuses causing cascading breaking changes; and (iv) non-convergent debugging loops.
+
+To address these vulnerabilities, this paper introduces \textbf{KAVACH}, an enterprise-grade, deterministic, security-governed agentic DevOps framework. KAVACH implements a three-tier lifecycle inspection topology ($Input \rightarrow RAG \rightarrow Patch$) featuring: (1) an Abstract Syntax Tree (AST) Package Hallucination Firewall that statically intercepts imports and audits them against registry caches to prevent supply-chain hijacking; (2) a Zero-Knowledge Token Vault providing reversible identifier de-identification before external API dispatch; (3) an AST-guided semantic change-impact analyzer; and (4) cryptographic CycloneDX Software Bill of Materials (SBOM) generation satisfying SLSA Level 3 provenance. Empirical evaluation across 100 software packages and 100 multilingual developer prompts demonstrates that KAVACH achieves a 100.0\% catch rate against package hallucinations, 0.990 F1 on code-mixed Hinglish PII detection (a 139.7\% improvement over naive regex baselines), and improves patch validity to 93.4\% via sandboxed AST reflexion—all with an overhead of under 47 ms ($<6\%$ total lifecycle latency).
+\end{abstract}
+
+\begin{IEEEkeywords}
+Agentic AI, DevSecOps, Large Language Models, Software Supply Chain Security, Package Hallucination, PII Governance, DPDP Act, AST Analysis.
+\end{IEEEkeywords}
+
+\section{Introduction}
+The rapid evolution of Large Language Models (LLMs) from passive autocomplete assistants to autonomous, tool-calling software engineering agents represents a fundamental paradigm shift \cite{jimenez2024swebench, chen2021evaluating}. Modern agentic frameworks are capable of decomposing complex natural language requirements, querying vector databases via Retrieval-Augmented Generation (RAG) \cite{lewis2020rag}, editing multi-file software repositories, and generating automated continuous integration (CI) tests \cite{yao2023react, shinn2024reflexion}.
+
+Despite their software development capabilities, deploying unconstrained agentic architectures in regulated industrial settings introduces critical security, governance, and supply-chain vulnerabilities \cite{pearce2022asleep, owasp2025top10llm}:
+
+\begin{enumerate}
+    \item \textbf{AI Package Hallucination \& Slopsquatting:} LLMs frequently generate code referencing plausible yet non-existent software packages (e.g., \texttt{fastapi-jwt-vault-sentinel}) \cite{wu2024slopsquatting}. Attackers monitor these hallucinations, register the corresponding package names on public registries such as PyPI and npm, and embed malicious post-install hooks—effectively weaponizing the autonomous developer against its host organization \cite{ladisa2023supplychain}.
+    \item \textbf{Multilingual \& Code-Mixed PII Leakage:} Software engineering teams across emerging technology hubs routinely communicate in code-mixed dialects (e.g., Hinglish, Tamil-English). Existing guardrails (such as Microsoft Presidio \cite{presidio2023microsoft}) are primarily calibrated for standard English, failing to intercept national identifiers (e.g., Indian Aadhaar, Permanent Account Number [PAN]) or localized financial credentials before dispatching raw prompts to external LLM provider clouds. This poses severe compliance violations under the Indian Digital Personal Data Protection (DPDP) Act 2023 \cite{dpdp2023act} and European GDPR.
+    \item \textbf{Unbounded Blast Radiuses:} Without topological code awareness, agents modify peripheral files or break invisible dependencies across architectural boundaries \cite{wan2019does}.
+\end{enumerate}
+
+To resolve these fundamental limitations, we propose \textbf{KAVACH}, a security-governed agentic AI DevOps framework. KAVACH does not treat security as an afterthought or post-hoc log filter; instead, it enforces deterministic, multi-stage governance directly within the agent's finite state machine.
+
+\subsection{Key Contributions}
+The core contributions of this work are summarized as follows:
+\begin{itemize}
+    \item \textbf{AST Package Hallucination Firewall:} An AST import interceptor that queries cached and official registry endpoints to eliminate package hallucinations and slopsquatting attacks before code execution.
+    \item \textbf{Multilingual Zero-Knowledge Token Vault:} A context-aware identifier detection and reversible pseudonymization engine that scrubs code-mixed PII before external LLM dispatch and rehydrates it downstream.
+    \item \textbf{Hybrid Blast-Radius Impact Analyzer:} A dual-mode dependency engine combining AST call-graph centrality with dense vector embeddings to calculate candidate modification blast radiuses.
+    \item \textbf{Cryptographic CycloneDX Attestation:} Automated generation of CycloneDX v1.5 SBOMs with SHA-256 tamper-proof ledgers meeting SLSA Level 3 requirements for all agent-authored patches.
+    \item \textbf{Empirical Validation:} Comprehensive evaluation establishing a 100.0\% hallucination catch rate, 0.990 F1 on multilingual PII detection, and an overall runtime overhead of under 47 ms.
+\end{itemize}
+
+\section{Threat Model \& Formal Problem Formulation}
+
+\subsection{Adversary Model \& Trust Boundaries}
+We consider an adversary $\mathcal{A}$ whose objective is to compromise the host repository, exfiltrate sensitive data, or induce unauthorized execution via an autonomous software engineering agent. The trust boundaries and threat vectors are defined as follows:
+
+\begin{itemize}
+    \item \textbf{Threat 1 (Supply-Chain Weaponization / Slopsquatting):} $\mathcal{A}$ identifies package names hallucinated by public LLM generation patterns and publishes weaponized packages to the PyPI registry. When the autonomous agent attempts to build or test the code, $\mathcal{A}$'s payload executes inside the developer sandbox.
+    \item \textbf{Threat 2 (Eavesdropping \& Data Exfiltration):} $\mathcal{A}$ monitors network traces or gains unauthorized access to third-party LLM cloud provider logs containing prompt transcripts with raw PII or secret credentials.
+    \item \textbf{Threat 3 (Adversarial Indirect Prompt Injection):} $\mathcal{A}$ embeds adversarial prompt overrides within repository issues, docstrings, or dependency comments to hijack the agent's planning state \cite{greshake2023promptinjection}.
+\end{itemize}
+
+\subsection{Formal Mathematical Formulation}
+\subsubsection{Dynamic Policy Risk Scoring}
+Given an incoming prompt or code artifact $x$, KAVACH calculates a bounded continuous risk score $R(x) \in [0, 1]$:
+\begin{equation}
+R(x) = \sigma \left( w_1 \cdot \mathcal{S}_{\text{action}}(x) + w_2 \cdot \max_{f \in \mathcal{F}(x)} \text{Sev}(f) + w_3 \cdot \mathcal{H}_{\text{Shannon}}(x) \right)
+\label{eq:risk}
+\end{equation}
+where $\sigma(z) = (1 + e^{-z})^{-1}$ denotes the sigmoid activation function, $\mathcal{S}_{\text{action}} \in [0, 1]$ quantifies the operational privilege level of the requested action (e.g., read vs. delete/commit), $\mathcal{F}(x)$ represents the set of detected sensitive entities with discrete severity tiers $\text{Sev}(f) \in \{0.2, 0.5, 0.8, 1.0\}$, and $\mathcal{H}_{\text{Shannon}}(x)$ is the byte-level Shannon entropy score \cite{shannon1948mathematical} defined over candidate token strings $s$:
+\begin{equation}
+\mathcal{H}_{\text{Shannon}}(s) = -\sum_{i=1}^{|\Sigma|} p_i \log_2 p_i
+\label{eq:entropy}
+\end{equation}
+
+The policy engine maps $R(x)$ to discrete enforcement actions:
+\begin{equation}
+\text{Action}(x) = 
+\begin{cases}
+\text{ALLOW}, & \text{if } R(x) < \theta_1 \\
+\text{REDACT}, & \text{if } \theta_1 \le R(x) < \theta_2 \\
+\text{REVIEW}, & \text{if } \theta_2 \le R(x) < \theta_3 \\
+\text{BLOCK}, & \text{if } R(x) \ge \theta_3
+\end{cases}
+\end{equation}
+
+\subsubsection{Hybrid Blast-Radius Impact Metric}
+For a candidate file $f_i \in \mathcal{R}$ in repository $\mathcal{R}$ given an agent change intent $q$:
+\begin{equation}
+\mathcal{I}(f_i, q) = \alpha \cdot \frac{\mathbf{e}_q \cdot \mathbf{e}_{f_i}}{\|\mathbf{e}_q\| \|\mathbf{e}_{f_i}\|} + (1 - \alpha) \cdot \frac{\text{Deg}_{\text{in}}(f_i) + \text{Dist}_{\text{AST}}(q, f_i)^{-1}}{\sum_{j} \text{Deg}_{\text{in}}(f_j)}
+\label{eq:impact}
+\end{equation}
+where $\mathbf{e}$ represents 384-dimensional dense sentence embeddings from \texttt{all-MiniLM-L6-v2} \cite{reimers2019sentencebert}, $\text{Deg}_{\text{in}}(f_i)$ is the in-degree centrality of file $f_i$ within the repository import graph $G_{\text{AST}}$, and $\alpha \in [0, 1]$ is a tunable coupling weight (empirically set to $0.6$).
+
+\section{System Architecture}
+The KAVACH architecture comprises five tightly integrated subsystems organized around a governed execution state machine:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/figure1_architecture.png}
+\caption{Architectural topology of the KAVACH Security-Governed Agentic DevOps Platform, highlighting the 3-checkpoint verification boundary.}
+\label{fig:arch}
+\end{figure}
+
+\subsection{Pre-Flight Intent Shield \& Delimiter Neutralization}
+Before any LLM reasoning takes place, the developer's raw natural-language prompt undergoes sanitization. The Delimiter Neutralization Shield inspects the prompt for prompt-injection markers (e.g., ``ignore all previous instructions'', persona hijacking, delimiter escapement). Prompts triggering critical override patterns are instantly aborted with HTTP 403.
+
+\subsection{Multilingual Zero-Knowledge Token Vault}
+To permit third-party cloud LLM inference without violating data localization norms, KAVACH implements a reversible pseudonymization vault. Identified entities (e.g., PAN cards, Aadhaar sequences, bearer tokens) are extracted and replaced with deterministic cryptographic pseudonyms (e.g., \texttt{KAVACH\_TOKEN\_8F3A2B}). When the LLM generates the corresponding code patch, the vault re-evaluates the output context and safely rehydrates the original identifiers strictly within the local on-premise perimeter.
+
+\subsection{In-Flight AST-RAG \& Blast-Radius Analysis}
+The repository is chunked into syntax-preserving AST windows and indexed into a local Qdrant vector database \cite{qdrant2023vectordb}. The blast-radius analyzer computes the static import hierarchy across all Python source modules. If an agent-planned modification affects high-centrality security modules (e.g., authentication middleware), the orchestrator automatically elevates the required policy threshold to \texttt{REVIEW}, mandating explicit human-in-the-loop approval.
+
+\subsection{Post-Flight AST Package Hallucination Firewall}
+Before any generated patch is written to disk or sent to the compiler, the generated Python code is parsed into an abstract syntax tree using the native Python \texttt{ast} engine. All \texttt{Import} and \texttt{ImportFrom} nodes are extracted. Modules matching the standard Python library (\texttt{STDLIB\_MODULES}) or local repository submodules are immediately whitelisted. All third-party packages are audited against an internal verified cache and verified against the official PyPI JSON endpoint. Any non-existent package triggers an immediate pipeline halt, completely neutralizing slopsquatting attacks.
+
+\subsection{Cryptographic CycloneDX SBOM Ledger}
+Every successfully verified commit generates a CycloneDX v1.5 compliant Software Bill of Materials (SBOM) \cite{cyclonedx2024sbom}. The ledger records: (1) exact versions of all resolved dependencies; (2) SHA-256 digests of modified files; and (3) a digital attestation confirming policy compliance, establishing SLSA Level 3 verifiable provenance \cite{slsa2024framework}.
+
+\section{Formal Algorithms}
+The core logic of the AST Package Hallucination Firewall is formalized in Algorithm~\ref{alg:firewall}.
+
+\begin{algorithm}[htbp]
+\caption{AST Package Hallucination Firewall}
+\label{alg:firewall}
+\begin{algorithmic}[1]
+\REQUIRE Generated Python code snippet $\mathcal{C}$, Verified package cache $\mathcal{K}_{\text{verified}}$, Standard library set $\mathcal{S}_{\text{stdlib}}$, Internal project modules $\mathcal{M}_{\text{internal}}$
+\ENSURE Safety boolean $\text{is\_safe}$, Hallucinated package list $\mathcal{H}$
+\STATE Initialize $\mathcal{H} \leftarrow \emptyset$, $\mathcal{T}_{\text{third\_party}} \leftarrow \emptyset$
+\TRY
+    \STATE $\mathcal{T}_{\text{AST}} \leftarrow \text{ast.parse}(\mathcal{C})$
+\CATCH{SyntaxError}
+    \RETURN $\text{is\_safe} \leftarrow \text{False}, \mathcal{H} \leftarrow [\text{"SYNTAX\_ERROR"}]$
+\ENDTRY
+\FORALL{\text{node} $\in \text{ast.walk}(\mathcal{T}_{\text{AST}})$}
+    \IF{\text{node is} $\text{Import}(names)$}
+        \FORALL{$alias \in names$}
+            \STATE $pkg \leftarrow \text{head}(alias.name)$
+            \STATE $\mathcal{T}_{\text{third\_party}} \leftarrow \mathcal{T}_{\text{third\_party}} \cup \{pkg\}$
+        \ENDFOR
+    \ELSIF{\text{node is} $\text{ImportFrom}(module)$}
+        \STATE $pkg \leftarrow \text{head}(module)$
+        \STATE $\mathcal{T}_{\text{third\_party}} \leftarrow \mathcal{T}_{\text{third\_party}} \cup \{pkg\}$
+    \ENDIF
+\ENDFOR
+\FORALL{$pkg \in \mathcal{T}_{\text{third\_party}}$}
+    \STATE $pkg_{\text{clean}} \leftarrow \text{lower}(\text{replace}(pkg, \text{"\_"}, \text{"\-"\}))$
+    \IF{$pkg \in \mathcal{S}_{\text{stdlib}} \lor pkg \in \mathcal{M}_{\text{internal}}$}
+        \STATE \textbf{continue}
+    \ENDIF
+    \IF{$pkg_{\text{clean}} \in \mathcal{K}_{\text{verified}}$}
+        \STATE \textbf{continue}
+    \ENDIF
+    \STATE $meta \leftarrow \text{QueryPyPI}(pkg_{\text{clean}})$
+    \IF{$meta = \text{NULL}$}
+        \STATE $\mathcal{H} \leftarrow \mathcal{H} \cup \{pkg\}$
+    \ENDIF
+\ENDFOR
+\STATE $\text{is\_safe} \leftarrow (|\mathcal{H}| = 0)$
+\RETURN $\text{is\_safe}, \mathcal{H}$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Experimental Evaluation}
+To evaluate KAVACH rigorously, we formulate four Research Questions:
+\begin{itemize}
+    \item \textbf{RQ1 (Supply Chain Defense):} Does static AST firewalling eliminate package hallucination risks compared to unconstrained LLMs?
+    \item \textbf{RQ2 (Multilingual PII Governance):} How accurately does KAVACH detect code-mixed sensitive identifiers under Indian DPDP Act standards?
+    \item \textbf{RQ3 (Component Ablation):} What is the quantitative contribution of each security subsystem to patch validity and threat mitigation?
+    \item \textbf{RQ4 (Runtime Latency Overhead):} Does deterministic multi-stage governance introduce unacceptable latency bottlenecks into the developer lifecycle?
+\end{itemize}
+
+\subsection{Experimental Setup \& Datasets}
+\begin{itemize}
+    \item \textbf{Package Hallucination Corpus ($N=100$):} A curated dataset consisting of 50 verified production PyPI packages spanning 20 domains and 50 synthetic hallucinated package names generated by state-of-the-art LLMs (e.g., \texttt{fastapi-jwt-vault-sentinel}, \texttt{crypto-sha256-multi-hasher}).
+    \item \textbf{Multilingual PII Corpus ($N=100$):} A balanced corpus of 50 sensitive prompts (Indian PAN, Aadhaar, bank accounts, bare numeric sequences, API keys) and 50 clean developer prompts across English, Hindi, Hinglish, Tamil, and Telugu.
+\end{itemize}
+
+\subsection{RQ1: AI Package Hallucination Defense}
+Table~\ref{tab:comparative_evaluation} presents the empirical results comparing KAVACH against: (1) Raw unconstrained Gemini 1.5; (2) Stdlib-only heuristic filtering; and (3) Microsoft Presidio with standard Vector RAG.
+
+\input{tables/table1_comparative_baselines.tex}
+
+As documented in Table~\ref{tab:comparative_evaluation}, raw LLM architectures exhibit a 0.0\% catch rate against package hallucinations, accepting hallucinated imports indiscriminately. The naive stdlib-only heuristic achieves 100\% catch rate on hallucinations but suffers from an intolerable 50.0\% false-positive rate on legitimate third-party dependencies (e.g., flagging \texttt{fastapi}, \texttt{pydantic}, \texttt{numpy} as invalid). In contrast, the KAVACH AST Package Firewall achieves \textbf{1.000 Precision, 1.000 Recall, and 1.000 F1}, completely eliminating the slopsquatting attack surface with zero false positives.
+
+\subsection{RQ2: Multilingual \& Code-Mixed PII Governance}
+On the balanced multilingual developer dataset, naive regex and standard Presidio-style NER baselines achieved an F1 score of only $0.413$ (Precision: $1.000$, Recall: $0.260$), missing nearly three-quarters of code-mixed prompts due to lack of colloquial context awareness and failing on bare 11-to-12-digit numeric sequences. KAVACH’s context-aware regex patterns, entropy thresholds, and multilingual context matching achieved \textbf{1.000 Precision, 0.980 Recall, and 0.990 F1}—an empirical F1 improvement of \textbf{$+139.7\%$}.
+
+\subsection{RQ3: Component Ablation Study}
+To evaluate the individual contributions of each subsystem, we performed an ablation study across five configurations. The results are summarized in Table~\ref{tab:ablation_study}.
+
+\input{tables/table2_ablation_study.tex}
+
+Removing the AST Package Firewall (Config B) drops supply-chain defense to 0.0\% and degrades patch validity to 81.2\%. Disabling the Zero-Knowledge Vault (Config C) exposes raw customer identifiers directly to external LLM provider logs. Eliminating the AST Dependency Graph (Config D) reduces patch validity to 72.8\% due to uncoordinated cross-file modifications. Finally, disabling the Reflexion Self-Healing loop (Config E) drops patch compilation validity from 93.4\% to 74.5\%, proving the necessity of closed-loop syntax repair.
+
+\subsection{RQ4: Runtime Latency Overhead}
+To confirm that KAVACH does not impede developer velocity, we microbenchmarked each governance subsystem over $N=30$ consecutive execution runs. The latency distributions are detailed in Table~\ref{tab:latency_profile}.
+
+\input{tables/table3_latency_breakdown.tex}
+
+The total overhead introduced across all security gates averages \textbf{46.20 ms} (P50: 44.80 ms, P99: 61.40 ms). In an end-to-end agentic workflow requiring approximately 1,800–2,500 ms for LLM generation and vector retrieval, KAVACH's governance overhead accounts for \textbf{less than 2.5\%} of overall turnaround time.
+
+\section{Limitations \& Discussion}
+In adherence to scientific rigor, we acknowledge specific limitations of the current KAVACH implementation:
+\begin{enumerate}
+    \item \textbf{Bare Number Disambiguation:} Extremely short or isolated numeric sequences without semantic context can produce edge-case false positives (e.g., distinguishing internal order IDs from bare sensitive identifiers).
+    \item \textbf{Semantic vs. Static Analysis:} Package firewalling validates package existence on PyPI but does not perform full dynamic binary analysis of third-party package source code, an area reserved for future sandbox instrumentation.
+\end{enumerate}
+
+\section{Related Work}
+Existing observability platforms such as LangSmith and Langfuse provide tracing and prompt logging but operate primarily in the cloud, conflicting with strict data localization laws. Guardrails AI and NeMo Guardrails offer programmatic rails but focus predominantly on conversational chat rather than multi-file software engineering AST graphs and software supply chains. Snyk and Dependabot audit existing static dependencies in \texttt{requirements.txt} post-commit, whereas KAVACH operates pre-commit and pre-execution directly within the agent generation loop.
+
+\section{Conclusion \& Open Science Artifacts}
+This paper introduced KAVACH, a multi-stage security-governed agentic AI DevOps framework. By integrating AST Package Hallucination Firewalls, Zero-Knowledge Multilingual Token Vaults, AST blast-radius analyzers, and CycloneDX SLSA attestations, KAVACH resolves critical supply-chain and data-leakage vulnerabilities in autonomous AI software development. Empirical benchmarks confirm a 100.0\% hallucination catch rate, 0.990 PII F1 score, and 93.4\% patch compilation validity with negligible latency overhead ($<47$ ms).
+
+To facilitate reproducibility, all experimental runners, datasets, and LaTeX evaluation tables are openly available at: \\
+\url{https://github.com/jaindhruv1923/KAVACH}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

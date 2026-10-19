@@ -1,0 +1,24 @@
+{
+  "total_operations": 1,
+  "kavach_events": 1,
+  "banking_events": 0,
+  "threats_blocked": 0,
+  "critical_threats_blocked": 0,
+  "hitl_quarantined": 0,
+  "banking_volume_inr": 0.0,
+  "average_risk_score": 0.0,
+  "compliance_pass_rate": 100.0,
+  "merkle_anchors_active": 1,
+  "hsm_fips_signatures": 1,
+  "recent_ticker": [
+    {
+      "event_id": "KAVACH-9be5f736-f0c",
+      "platform": "KAVACH",
+      "action_title": "Workflow Run: Refactor the authentication module for better...",
+      "status": "SUCCESS",
+      "formatted_time": "2026-10-19 07:42:19 UTC",
+      "risk_level": "LOW"
+    }
+  ],
+  "last_synced_at": "2026-10-19 07:47:34 UTC"
+}

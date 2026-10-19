@@ -1,0 +1,213 @@
+[
+  {
+    "event_id": "KAVACH-9be5f736-f0c",
+    "platform": "KAVACH",
+    "category": "AI_AGENT",
+    "action_title": "Workflow Run: Refactor the authentication module for better...",
+    "actor": "DevSecOps Engineer",
+    "target": "Agent Pipeline",
+    "status": "SUCCESS",
+    "risk_score": 0.0,
+    "risk_level": "LOW",
+    "amount": 0.0,
+    "summary": "No significant sensitive-data or high-risk-action signal detected.",
+    "details_json": "{\"id\": \"9be5f736-f0c3-4eb2-9119-c045f788c35e\", \"workflow_id\": \"9be5f736-f0c3-4eb2-9119-c045f788c35e\", \"timestamp\": \"2026-10-19 07:42:19 UTC\", \"request_text\": \"Refactor the authentication module for better testability\", \"final_stage\": \"COMPLETE\", \"stage\": \"COMPLETE\", \"verdict\": \"ALLOWED\", \"plan\": [\"Understand the request and identify its scope\", \"Retrieve relevant repository context for this request (general search)\", \"Retrieve grounding evidence from the repository (RAG)\", \"Run security/policy checks on the request and any retrieved context\"], \"retrieved_context\": [{\"score\": 0.11952286013003134, \"file_path\": \"utils.py\", \"chunk_index\": 0, \"text\": \"\\nimport re\\n\\ndef validate_email(email: str) -> bool:\\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$'\\n    return re.match(pattern, email) is not None\\n\"}, {\"score\": 0.0, \"file_path\": \"database\\\\models.py\", \"chunk_index\": 0, \"text\": \"\\nfrom sqlalchemy import Column, String\\n\\nclass User:\\n    id = Column(String, primary_key=True)\\n    username = Column(String)\\n    password_hash = Column(String)\\n\"}, {\"score\": 0.0, \"file_path\": \"auth\\\\login.py\", \"chunk_index\": 0, \"text\": \"\\ndef login_user(username: str, password: str):\\n    if not username or not password:\\n        raise ValueError(\\\"Missing credentials\\\")\\n    return {\\\"status\\\": \\\"logged_in\\\", \\\"username\\\": username}\\n\"}], \"security_findings\": [], \"generation_result\": {\"llm_configured\": true, \"evidence_chunks_used\": 3, \"prompt\": \"You are a careful software engineer working inside an existing project.\\nUse ONLY the repository evidence below to inform your answer — do not invent\\nlibraries, APIs, or file structures that aren't shown here. If the evidence\\nis insufficient to safely implement the request, say so explicitly instead\\nof guessing.\\n\\nREPOSITORY EVIDENCE:\\n--- From utils.py ---\\n\\nimport re\\n\\ndef validate_email(email: str) -> bool:\\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$'\\n    return re.match(pattern, email) is not None\\n\\n\\n--- From database\\\\models.py ---\\n\\nfrom sqlalchemy import Column, String\\n\\nclass User:\\n    id = Column(String, primary_key=True)\\n    username = Column(String)\\n    password_hash = Column(String)\\n\\n\\n--- From auth\\\\login.py ---\\n\\ndef login_user(username: str, password: str):\\n    if not username or not password:\\n        raise ValueError(\\\"Missing credentials\\\")\\n    return {\\\"status\\\": \\\"logged_in\\\", \\\"username\\\": username}\\n\\n\\nDEVELOPER REQUEST:\\nRefactor the authentication module for better testability\\n\\nProvide the code change needed to satisfy this request, consistent with the\\nevidence above. Keep the response focused and include a one-line comment\\nexplaining any assumption you had to make.\\n\", \"generated_output\": \"[STUB RESPONSE — placeholder test mode]\\n\\nKavach is an enterprise-grade AI DevOps security governance platform built by Dhruv Jain.\\n\\n```python\\ndef authenticated_handler():\\n    # Secure handler implementation\\n    return True\\n```\"}, \"validation_result\": {\"valid_syntax\": true, \"error\": null, \"extracted_code\": \"def authenticated_handler():\\n    # Secure handler implementation\\n    return True\"}, \"impact_report\": [{\"file_path\": \"agent/orchestrator.py\", \"relevance_score\": 0.195, \"score_percentage\": 20, \"reason\": \"imports/references the most-related file; semantically related to the change description\", \"impact_tier\": \"CRITICAL\", \"significance\": \"Highest Impact — Primary Target Component\", \"score_justification\": \"Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.\", \"breakdown\": [\"⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.\", \"🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent.\"], \"action_hint\": \"Review logic for consistency with shared domain assumptions.\", \"semantic_score\": 0.1, \"dependency_hit\": true, \"is_highest_impact\": true}, {\"file_path\": \"main.py\", \"relevance_score\": 0.195, \"score_percentage\": 20, \"reason\": \"imports/references the most-related file; semantically related to the change description\", \"impact_tier\": \"MODERATE\", \"significance\": \"Moderate Impact — Shared Business Domain / Semantic Overlap\", \"score_justification\": \"Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.\", \"breakdown\": [\"⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.\", \"🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent.\"], \"action_hint\": \"Review logic for consistency with shared domain assumptions.\", \"semantic_score\": 0.1, \"dependency_hit\": true, \"is_highest_impact\": false}, {\"file_path\": \"a2a/interop_bridge.py\", \"relevance_score\": 0.195, \"score_percentage\": 20, \"reason\": \"imports/references the most-related file; semantically related to the change description\", \"impact_tier\": \"MODERATE\", \"significance\": \"Moderate Impact — Shared Business Domain / Semantic Overlap\", \"score_justification\": \"Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.\", \"breakdown\": [\"⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.\", \"🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent.\"], \"action_hint\": \"Review logic for consistency with shared domain assumptions.\", \"semantic_score\": 0.1, \"dependency_hit\": true, \"is_highest_impact\": false}, {\"file_path\": \"adk/agent.py\", \"relevance_score\": 0.195, \"score_percentage\": 20, \"reason\": \"imports/references the most-related file; semantically related to the change description\", \"impact_tier\": \"MODERATE\", \"significance\": \"Moderate Impact — Shared Business Domain / Semantic Overlap\", \"score_justification\": \"Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.\", \"breakdown\": [\"⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.\", \"🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent.\"], \"action_hint\": \"Review logic for consistency with shared domain assumptions.\", \"semantic_score\": 0.1, \"dependency_hit\": true, \"is_highest_impact\": false}, {\"file_path\": \"adk/medical_triage.py\", \"relevance_score\": 0.195, \"score_percentage\": 20, \"reason\": \"imports/references the most-related file; semantically related to the change description\", \"impact_tier\": \"MODERATE\", \"significance\": \"Moderate Impact — Shared Business Domain / Semantic Overlap\", \"score_justification\": \"Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.\", \"breakdown\": [\"⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.\", \"🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent.\"], \"action_hint\": \"Review logic for consistency with shared domain assumptions.\", \"semantic_score\": 0.1, \"dependency_hit\": true, \"is_highest_impact\": false}], \"policy_decision\": {\"decision\": \"ALLOW\", \"action\": \"ALLOW\", \"verdict\": \"ALLOW\", \"risk_score\": 0.0, \"action_risk_classification\": \"low\", \"data_findings_count\": 0, \"highest_severity\": \"none\", \"explanation\": \"No significant sensitive-data or high-risk-action signal detected.\", \"steganography\": {\"has_steganography\": false, \"has_bidi_attack\": false, \"cleaned_text\": \"Refactor the authentication module for better testability\", \"stripped_characters_count\": 0, \"threats\": [], \"threat_count\": 0, \"risk_score\": 0.0}, \"obfuscation\": {\"original_text\": \"Refactor the authentication module for better testability\", \"is_obfuscated\": false, \"detected_encodings\": [], \"decloaked_texts\": [], \"unified_normalized_text\": \"Refactor the authentication module for better testability\", \"obfuscation_risk_score\": 0.0, \"details\": []}, \"ssrf\": {\"is_ssrf_threat\": false, \"threat_count\": 0, \"threats\": [], \"risk_score\": 0.0, \"explanation\": \"No SSRF or cloud metadata access detected.\"}, \"prompt_safety\": {\"is_safe\": true, \"threat_detected\": false, \"risk_level\": \"NONE\", \"threat_count\": 0, \"threats\": [], \"sanitized_prompt\": \"Refactor the authentication module for better testability\", \"verdict\": \"SAFE\", \"explanation\": \"Prompt passed adversarial injection screening.\"}, \"merkle_root\": \"2ca6d25ce870cad4d24fd174a01ff52beef17dcc8a63fbb66908afb35655b6014b9cb5264499617670980947a76c227b3028248daadfc7d12998388ba159e723\", \"mitre_atlas\": [], \"owasp_llm\": []}, \"redacted_request_text\": \"Refactor the authentication module for better testability\", \"history\": [\"WorkflowStage.REQUEST_RECEIVED -> WorkflowStage.PLANNING\", \"WorkflowStage.PLANNING -> WorkflowStage.CONTEXT_RETRIEVAL\", \"WorkflowStage.CONTEXT_RETRIEVAL -> WorkflowStage.SECURITY_CHECK\", \"WorkflowStage.SECURITY_CHECK -> WorkflowStage.IMPACT_ANALYSIS\", \"WorkflowStage.IMPACT_ANALYSIS -> WorkflowStage.GENERATION\", \"WorkflowStage.GENERATION -> WorkflowStage.COMPLETE (workflow completed: planning + RAG + impact analysis + generation + security + validation)\"], \"duration_ms\": 191.47, \"run_type\": \"workflow\", \"metadata\": {}}",
+    "merkle_hash": "49a5ebee6eae7f29d83fed144038bf5a03e0cbe0e33b6894bd0432d51eda6d61313a8e1d7a8327ea6a8fdc9f605daf0887361aa2d70e69452d61341352fd51bb",
+    "created_at": 1792395739.0,
+    "formatted_time": "2026-10-19 07:42:19 UTC",
+    "details": {
+      "id": "9be5f736-f0c3-4eb2-9119-c045f788c35e",
+      "workflow_id": "9be5f736-f0c3-4eb2-9119-c045f788c35e",
+      "timestamp": "2026-10-19 07:42:19 UTC",
+      "request_text": "Refactor the authentication module for better testability",
+      "final_stage": "COMPLETE",
+      "stage": "COMPLETE",
+      "verdict": "ALLOWED",
+      "plan": [
+        "Understand the request and identify its scope",
+        "Retrieve relevant repository context for this request (general search)",
+        "Retrieve grounding evidence from the repository (RAG)",
+        "Run security/policy checks on the request and any retrieved context"
+      ],
+      "retrieved_context": [
+        {
+          "score": 0.11952286013003134,
+          "file_path": "utils.py",
+          "chunk_index": 0,
+          "text": "\nimport re\n\ndef validate_email(email: str) -> bool:\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    return re.match(pattern, email) is not None\n"
+        },
+        {
+          "score": 0.0,
+          "file_path": "database\\models.py",
+          "chunk_index": 0,
+          "text": "\nfrom sqlalchemy import Column, String\n\nclass User:\n    id = Column(String, primary_key=True)\n    username = Column(String)\n    password_hash = Column(String)\n"
+        },
+        {
+          "score": 0.0,
+          "file_path": "auth\\login.py",
+          "chunk_index": 0,
+          "text": "\ndef login_user(username: str, password: str):\n    if not username or not password:\n        raise ValueError(\"Missing credentials\")\n    return {\"status\": \"logged_in\", \"username\": username}\n"
+        }
+      ],
+      "security_findings": [],
+      "generation_result": {
+        "llm_configured": true,
+        "evidence_chunks_used": 3,
+        "prompt": "You are a careful software engineer working inside an existing project.\nUse ONLY the repository evidence below to inform your answer — do not invent\nlibraries, APIs, or file structures that aren't shown here. If the evidence\nis insufficient to safely implement the request, say so explicitly instead\nof guessing.\n\nREPOSITORY EVIDENCE:\n--- From utils.py ---\n\nimport re\n\ndef validate_email(email: str) -> bool:\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    return re.match(pattern, email) is not None\n\n\n--- From database\\models.py ---\n\nfrom sqlalchemy import Column, String\n\nclass User:\n    id = Column(String, primary_key=True)\n    username = Column(String)\n    password_hash = Column(String)\n\n\n--- From auth\\login.py ---\n\ndef login_user(username: str, password: str):\n    if not username or not password:\n        raise ValueError(\"Missing credentials\")\n    return {\"status\": \"logged_in\", \"username\": username}\n\n\nDEVELOPER REQUEST:\nRefactor the authentication module for better testability\n\nProvide the code change needed to satisfy this request, consistent with the\nevidence above. Keep the response focused and include a one-line comment\nexplaining any assumption you had to make.\n",
+        "generated_output": "[STUB RESPONSE — placeholder test mode]\n\nKavach is an enterprise-grade AI DevOps security governance platform built by Dhruv Jain.\n\n```python\ndef authenticated_handler():\n    # Secure handler implementation\n    return True\n```"
+      },
+      "validation_result": {
+        "valid_syntax": true,
+        "error": null,
+        "extracted_code": "def authenticated_handler():\n    # Secure handler implementation\n    return True"
+      },
+      "impact_report": [
+        {
+          "file_path": "agent/orchestrator.py",
+          "relevance_score": 0.195,
+          "score_percentage": 20,
+          "reason": "imports/references the most-related file; semantically related to the change description",
+          "impact_tier": "CRITICAL",
+          "significance": "Highest Impact — Primary Target Component",
+          "score_justification": "Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.",
+          "breakdown": [
+            "⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.",
+            "🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent."
+          ],
+          "action_hint": "Review logic for consistency with shared domain assumptions.",
+          "semantic_score": 0.1,
+          "dependency_hit": true,
+          "is_highest_impact": true
+        },
+        {
+          "file_path": "main.py",
+          "relevance_score": 0.195,
+          "score_percentage": 20,
+          "reason": "imports/references the most-related file; semantically related to the change description",
+          "impact_tier": "MODERATE",
+          "significance": "Moderate Impact — Shared Business Domain / Semantic Overlap",
+          "score_justification": "Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.",
+          "breakdown": [
+            "⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.",
+            "🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent."
+          ],
+          "action_hint": "Review logic for consistency with shared domain assumptions.",
+          "semantic_score": 0.1,
+          "dependency_hit": true,
+          "is_highest_impact": false
+        },
+        {
+          "file_path": "a2a/interop_bridge.py",
+          "relevance_score": 0.195,
+          "score_percentage": 20,
+          "reason": "imports/references the most-related file; semantically related to the change description",
+          "impact_tier": "MODERATE",
+          "significance": "Moderate Impact — Shared Business Domain / Semantic Overlap",
+          "score_justification": "Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.",
+          "breakdown": [
+            "⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.",
+            "🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent."
+          ],
+          "action_hint": "Review logic for consistency with shared domain assumptions.",
+          "semantic_score": 0.1,
+          "dependency_hit": true,
+          "is_highest_impact": false
+        },
+        {
+          "file_path": "adk/agent.py",
+          "relevance_score": 0.195,
+          "score_percentage": 20,
+          "reason": "imports/references the most-related file; semantically related to the change description",
+          "impact_tier": "MODERATE",
+          "significance": "Moderate Impact — Shared Business Domain / Semantic Overlap",
+          "score_justification": "Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.",
+          "breakdown": [
+            "⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.",
+            "🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent."
+          ],
+          "action_hint": "Review logic for consistency with shared domain assumptions.",
+          "semantic_score": 0.1,
+          "dependency_hit": true,
+          "is_highest_impact": false
+        },
+        {
+          "file_path": "adk/medical_triage.py",
+          "relevance_score": 0.195,
+          "score_percentage": 20,
+          "reason": "imports/references the most-related file; semantically related to the change description",
+          "impact_tier": "MODERATE",
+          "significance": "Moderate Impact — Shared Business Domain / Semantic Overlap",
+          "score_justification": "Score 0.195 was assigned because this file combines semantic alignment (+0.075) with an explicit AST import link (+0.400 bonus) to the target module.",
+          "breakdown": [
+            "⚡ AST Dependency Link (+0.40): Directly imports or references the modified target module. Breaking changes to exported symbols or signatures will fail runtime imports.",
+            "🧠 Semantic Alignment (+0.075): Vector embedding similarity (0.10 cosine score) with requested change intent."
+          ],
+          "action_hint": "Review logic for consistency with shared domain assumptions.",
+          "semantic_score": 0.1,
+          "dependency_hit": true,
+          "is_highest_impact": false
+        }
+      ],
+      "policy_decision": {
+        "decision": "ALLOW",
+        "action": "ALLOW",
+        "verdict": "ALLOW",
+        "risk_score": 0.0,
+        "action_risk_classification": "low",
+        "data_findings_count": 0,
+        "highest_severity": "none",
+        "explanation": "No significant sensitive-data or high-risk-action signal detected.",
+        "steganography": {
+          "has_steganography": false,
+          "has_bidi_attack": false,
+          "cleaned_text": "Refactor the authentication module for better testability",
+          "stripped_characters_count": 0,
+          "threats": [],
+          "threat_count": 0,
+          "risk_score": 0.0
+        },
+        "obfuscation": {
+          "original_text": "Refactor the authentication module for better testability",
+          "is_obfuscated": false,
+          "detected_encodings": [],
+          "decloaked_texts": [],
+          "unified_normalized_text": "Refactor the authentication module for better testability",
+          "obfuscation_risk_score": 0.0,
+          "details": []
+        },
+        "ssrf": {
+          "is_ssrf_threat": false,
+          "threat_count": 0,
+          "threats": [],
+          "risk_score": 0.0,
+          "explanation": "No SSRF or cloud metadata access detected."
+        },
+        "prompt_safety": {
+          "is_safe": true,
+          "threat_detected": false,
+          "risk_level": "NONE",
+          "threat_count": 0,
+          "threats": [],
+          "sanitized_prompt": "Refactor the authentication module for better testability",
+          "verdict": "SAFE",
+          "explanation": "Prompt passed adversarial injection screening."
+        },
+        "merkle_root": "2ca6d25ce870cad4d24fd174a01ff52beef17dcc8a63fbb66908afb35655b6014b9cb5264499617670980947a76c227b3028248daadfc7d12998388ba159e723",
+        "mitre_atlas": [],
+        "owasp_llm": []
+      },
+      "redacted_request_text": "Refactor the authentication module for better testability",
+      "history": [
+        "WorkflowStage.REQUEST_RECEIVED -> WorkflowStage.PLANNING",
+        "WorkflowStage.PLANNING -> WorkflowStage.CONTEXT_RETRIEVAL",
+        "WorkflowStage.CONTEXT_RETRIEVAL -> WorkflowStage.SECURITY_CHECK",
+        "WorkflowStage.SECURITY_CHECK -> WorkflowStage.IMPACT_ANALYSIS",
+        "WorkflowStage.IMPACT_ANALYSIS -> WorkflowStage.GENERATION",
+        "WorkflowStage.GENERATION -> WorkflowStage.COMPLETE (workflow completed: planning + RAG + impact analysis + generation + security + validation)"
+      ],
+      "duration_ms": 191.47,
+      "run_type": "workflow",
+      "metadata": {}
+    }
+  }
+]

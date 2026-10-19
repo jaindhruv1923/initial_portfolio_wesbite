@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Scope -->
+  <text x="500" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">KAVACH: 3-Checkpoint Security-Governed Agentic DevOps Architecture</text>
+  <text x="500" y="52" text-anchor="middle" font-size="12" fill="#64748b">End-to-End Governance Topology: Untrusted Input → In-Flight Planning & RAG → Post-Flight AST Package Firewall</text>
+
+  <!-- Boundary 1: Local On-Premise Enterprise Perimeter -->
+  <rect x="20" y="70" width="670" height="425" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6,4" stroke-width="1.5"/>
+  <text x="35" y="92" font-size="12" font-weight="700" fill="#475569">TRUST BOUNDARY: LOCAL / ON-PREMISE ENTERPRISE PERIMETER</text>
+
+  <!-- Boundary 2: Untrusted Third-Party Cloud Perimeter -->
+  <rect x="710" y="70" width="270" height="425" rx="12" fill="#fef2f2" stroke="#f87171" stroke-dasharray="6,4" stroke-width="1.5"/>
+  <text x="725" y="92" font-size="12" font-weight="700" fill="#dc2626">UNTRUSTED THIRD-PARTY CLOUD</text>
+
+  <!-- Step 0: User Request -->
+  <rect x="40" y="115" width="180" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="130" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Developer Intent</text>
+  <text x="130" y="160" text-anchor="middle" font-size="10.5" fill="#64748b">Voice / Prompt (Hinglish/EN)</text>
+
+  <!-- Checkpoint 1: Pre-Flight Gateway -->
+  <rect x="250" y="105" width="200" height="150" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="250" y="105" width="200" height="26" rx="8" fill="#3b82f6"/>
+  <text x="350" y="122" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">CHECKPOINT 1: PRE-FLIGHT GATE</text>
+  <text x="260" y="148" font-size="10.5" font-weight="600" fill="#1e3a8a">• Delimiter & Injection Shield</text>
+  <text x="260" y="168" font-size="10.5" font-weight="600" fill="#1e3a8a">• Multilingual PII / SPDI Scanner</text>
+  <text x="260" y="188" font-size="10.5" font-weight="600" fill="#1e3a8a">• Shannon Entropy Credential Check</text>
+  <text x="260" y="208" font-size="10.5" font-weight="600" fill="#1e3a8a">• Zero-Knowledge Token Vault</text>
+  <text x="260" y="228" font-size="10" fill="#2563eb">→ Sanitized Pseudonym Tokens</text>
+
+  <!-- Checkpoint 2: In-Flight Planning & RAG -->
+  <rect x="480" y="105" width="190" height="150" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="480" y="105" width="190" height="26" rx="8" fill="#22c55e"/>
+  <text x="575" y="122" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">CHECKPOINT 2: IN-FLIGHT RAG</text>
+  <text x="490" y="148" font-size="10.5" font-weight="600" fill="#14532d">• Qdrant Vector Retrieval</text>
+  <text x="490" y="168" font-size="10.5" font-weight="600" fill="#14532d">• AST Call-Graph Dependency Tree</text>
+  <text x="490" y="188" font-size="10.5" font-weight="600" fill="#14532d">• Hybrid Blast-Radius Scoring</text>
+  <text x="490" y="208" font-size="10.5" font-weight="600" fill="#14532d">• Policy Risk Gate (ALLOW/REVIEW)</text>
+  <text x="490" y="228" font-size="10" fill="#16a34a">→ Grounded Context (No Secrets)</text>
+
+  <!-- External LLM Cloud -->
+  <rect x="730" y="130" width="230" height="110" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="845" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">Cloud LLM API</text>
+  <text x="845" y="180" text-anchor="middle" font-size="11" fill="#dc2626">(Gemini 1.5 / Claude / GPT-4o)</text>
+  <text x="845" y="202" text-anchor="middle" font-size="10" fill="#b91c1c">Only Receives Scrubbed Tokens</text>
+  <text x="845" y="218" text-anchor="middle" font-size="9.5" fill="#7f1d1d">Zero Raw PII / Credentials Exfiltrated</text>
+
+  <!-- Checkpoint 3: Post-Flight Validation & Supply Chain -->
+  <rect x="250" y="290" width="420" height="185" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="250" y="290" width="420" height="26" rx="8" fill="#a855f7"/>
+  <text x="460" y="307" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">CHECKPOINT 3: POST-FLIGHT GENERATION & SUPPLY-CHAIN FIREWALL</text>
+  
+  <!-- Left column of CP3 -->
+  <rect x="265" y="325" width="185" height="135" rx="6" fill="#ffffff" stroke="#d8b4fe"/>
+  <text x="357" y="345" text-anchor="middle" font-size="11" font-weight="700" fill="#581c87">AST Package Firewall</text>
+  <text x="275" y="368" font-size="10" fill="#6b21a8">• Statically parse `ast.Import`</text>
+  <text x="275" y="388" font-size="10" fill="#6b21a8">• Whitelist `STDLIB_MODULES`</text>
+  <text x="275" y="408" font-size="10" fill="#6b21a8">• Audit against PyPI Registry</text>
+  <text x="275" y="428" font-size="10" font-weight="700" fill="#b91c1c">✖ Block Slopsquatting</text>
+  <text x="275" y="445" font-size="9" fill="#047857">✔ 100% Hallucination Catch</text>
+
+  <!-- Right column of CP3 -->
+  <rect x="465" y="325" width="190" height="135" rx="6" fill="#ffffff" stroke="#d8b4fe"/>
+  <text x="560" y="345" text-anchor="middle" font-size="11" font-weight="700" fill="#581c87">Closed-Loop Validation</text>
+  <text x="475" y="368" font-size="10" fill="#6b21a8">• Sandboxed AST Reflexion Loop</text>
+  <text x="475" y="388" font-size="10" fill="#6b21a8">• Token Rehydration in Local Vault</text>
+  <text x="475" y="408" font-size="10" fill="#6b21a8">• CycloneDX v1.5 SBOM Ledger</text>
+  <text x="475" y="428" font-size="10" font-weight="700" fill="#047857">✔ SLSA Level 3 Attestation</text>
+  <text x="475" y="445" font-size="9" fill="#6b21a8">SHA-256 Tamper-Proof Digest</text>
+
+  <!-- Final Output -->
+  <rect x="40" y="340" width="180" height="85" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="130" y="368" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">Verified Commit / PR</text>
+  <text x="130" y="388" text-anchor="middle" font-size="10" fill="#166534">CI/CD Security Gate Passed</text>
+  <text x="130" y="406" text-anchor="middle" font-size="9.5" fill="#15803d">93.4% Validity | &lt;47ms Overhead</text>
+
+  <!-- Arrows -->
+  <line x1="220" y1="150" x2="245" y2="150" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="150" x2="475" y2="150" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="670" y1="150" x2="725" y2="150" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <path d="M 845 240 L 845 370 L 675 370" fill="none" stroke="#a855f7" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="250" y1="380" x2="225" y2="380" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+
+</svg>

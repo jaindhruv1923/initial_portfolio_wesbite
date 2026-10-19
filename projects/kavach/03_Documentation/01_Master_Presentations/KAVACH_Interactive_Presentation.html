@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAVACH (कवच) — Master 24-Slide Defense Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #08090d;
+      --panel: #12151d;
+      --panel-hover: #181c28;
+      --border: #262d3e;
+      --cyan: #00d2ff;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --purple: #a855f7;
+      --gold: #fbbf24;
+      --white: #ffffff;
+      --light-gray: #cbd5e1;
+      --muted: #94a3b8;
+      --dark-gray: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--light-gray);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      background: rgba(18, 21, 29, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-shield {
+      font-size: 24px;
+      filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--white);
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--cyan);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--panel-hover);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+    }
+
+    .btn-primary {
+      background: rgba(0, 210, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .slide-select {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .slide-select:focus {
+      border-color: var(--cyan);
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: var(--border);
+      position: sticky;
+      top: 57px;
+      z-index: 99;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      width: 4.16%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
+    }
+
+    /* Main Presentation Frame */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .slide-deck {
+      width: 100%;
+      max-width: 1280px;
+      min-height: 720px;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slide Header */
+    .slide-header {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .slide-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .slide-number-tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--muted);
+      background: rgba(38, 45, 62, 0.5);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .slide-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(8, 9, 13, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 4px 16px rgba(0, 210, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .card.cyan-border { border-color: rgba(0, 210, 255, 0.4); }
+    .card.green-border { border-color: rgba(16, 185, 129, 0.4); }
+    .card.amber-border { border-color: rgba(245, 158, 11, 0.4); }
+    .card.red-border { border-color: rgba(239, 68, 68, 0.4); }
+    .card.gold-border { border-color: rgba(251, 191, 36, 0.4); }
+    .card.purple-border { border-color: rgba(168, 85, 247, 0.4); }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title.cyan { color: var(--cyan); }
+    .card-title.green { color: var(--green); }
+    .card-title.amber { color: var(--amber); }
+    .card-title.red { color: var(--red); }
+    .card-title.gold { color: var(--gold); }
+    .card-title.purple { color: var(--purple); }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bullet-item {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--light-gray);
+    }
+
+    .bullet-item strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* Stat Cards */
+    .stat-card {
+      background: rgba(8, 9, 13, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .stat-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Mermaid Container */
+    .mermaid-container {
+      background: rgba(8, 9, 13, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Mathematical Box */
+    .math-box {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.5);
+      border-left: 3px solid var(--cyan);
+      padding: 8px 12px;
+      border-radius: 4px;
+      color: var(--green);
+      font-size: 12px;
+      margin: 8px 0;
+    }
+
+    /* Speaker Notes Drawer */
+    .speaker-notes-panel {
+      margin-top: 24px;
+      background: rgba(8, 9, 13, 0.9);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 10px;
+      padding: 16px;
+      display: none;
+    }
+
+    .speaker-notes-panel.active {
+      display: block;
+    }
+
+    .notes-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notes-content {
+      font-size: 13px;
+      color: var(--light-gray);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Footer Controls */
+    footer {
+      background: rgba(18, 21, 29, 0.9);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .key-hints {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      gap: 16px;
+    }
+
+    .key-badge {
+      background: var(--panel-hover);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--cyan);
+      font-size: 11px;
+    }
+
+    /* Print Styles */
+    @media print {
+      header, footer, .progress-bar-container, .nav-controls {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .slide {
+        display: block !important;
+        page-break-after: always;
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .card, .stat-card {
+        background: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        color: #000000 !important;
+      }
+      .card-title, .slide-title {
+        color: #0f172a !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header>
+    <div class="brand">
+      <span class="brand-shield">🛡️</span>
+      <div>
+        <div class="brand-title">KAVACH (कवच)</div>
+        <div class="brand-subtitle">Master 24-Slide Defense Presentation</div>
+      </div>
+    </div>
+    <div class="nav-controls">
+      <select id="slideSelect" class="slide-select" onchange="jumpToSlide(parseInt(this.value))">
+        <!-- Options injected via JavaScript -->
+      </select>
+      <button class="btn" onclick="prevSlide()">◀ Prev</button>
+      <button class="btn btn-primary" onclick="nextSlide()">Next ▶</button>
+      <button class="btn" onclick="toggleNotes()">🎙️ Presenter Notes</button>
+      <button class="btn" onclick="toggleFullScreen()">⛶ Fullscreen</button>
+      <a href="KAVACH_PERFECT_COMPREHENSIVE_MASTER_DECK.pptx" download class="btn" style="text-decoration:none;">📥 Download .PPTX</a>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <!-- Main Slide Canvas -->
+  <main>
+    <div class="slide-deck">
+
+      <!-- ========================================== -->
+      <!-- SLIDE 1: TITLE SLIDE -->
+      <!-- ========================================== -->
+      <section class="slide active" id="slide-1" data-title="Title & Academic Identity">
+        <div class="slide-header">
+          <div class="slide-badge">BML Munjal University | School of Engineering & Technology</div>
+          <div class="slide-number-tag">SLIDE 01 / 24</div>
+          <h1 class="slide-title" style="font-size: 38px; margin-top: 8px;">KAVACH (कवच)</h1>
+          <div style="font-size: 18px; color: var(--green); font-weight: 700; margin-top: 4px;">
+            A Security-Governed Multi-Agent AI DevOps & Observability Platform
+          </div>
+          <div style="font-size: 13px; color: var(--muted); margin-top: 4px;">
+            PRJ-IV Capstone Project & CSE3101 Agentic AI (7th Semester B.Tech CSE, AY 2026–27)
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card gold-border">
+            <div class="card-title gold">👥 Academic Engineering Team</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Lead Architect:</strong> Dhruv Jain (Roll No. 230532) — Core Orchestrator & State Machine</li>
+              <li class="bullet-item"><strong>Security Lead:</strong> Dev Garg (Roll No. 230487) — Shannon Entropy & Secret Screening</li>
+              <li class="bullet-item"><strong>Intelligence Lead:</strong> Ansh Rohilla (Roll No. 230794) — Qdrant Vector RAG & AST Graph</li>
+              <li class="bullet-item"><strong>Systems Lead:</strong> Ansh Adhikari (Roll No. 230822) — ReAct Sandbox & PyPI Firewall</li>
+            </ul>
+          </div>
+
+          <div class="card cyan-border">
+            <div class="card-title cyan">⚖️ Faculty Governance & Operational Baseline</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Faculty Evaluators:</strong> Prof. Anusha Chhabra & Dr. Soharab Hossain Shaikh</li>
+              <li class="bullet-item"><strong>Evaluation Rubrics:</strong> Lit. Review (10M) + Research Gap (5M) + Problem Def. (5M) + Methodology (5M) = 25M</li>
+              <li class="bullet-item"><strong>Operational Status:</strong> 18 FastAPI Endpoints Live | Anthropic Model Context Protocol (MCP) Server Active</li>
+              <li class="bullet-item"><strong>Verification Rigor:</strong> 220+ Automated Unit & Integration Tests Passing (100% CI/CD Coverage)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-1">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Good afternoon, respected Professor Anusha Chhabra, Dr. Soharab Hossain Shaikh, and evaluators. We are presenting our 7th-semester Capstone and Agentic AI project titled KAVACH: A Security-Governed Multi-Agent AI DevOps and Observability Platform. Our team consists of Dhruv Jain, Dev Garg, Ansh Rohilla, and Ansh Adhikari. Today we present an exhaustive 24-slide defense covering our theoretical foundations, research gaps, mathematical proofs, architectural flowcharts, empirical benchmarks, and working production implementation."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 2: EXECUTIVE SUMMARY -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-2" data-title="Executive Summary & Agent Revolution">
+        <div class="slide-header">
+          <div class="slide-badge">Problem Definition & Industry Context</div>
+          <div class="slide-number-tag">SLIDE 02 / 24</div>
+          <h2 class="slide-title">Executive Summary: The Autonomous Coding Agent Revolution</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">⚡ The Engineering Paradigm Shift</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>From Autocomplete to Autonomy:</strong> Software engineering has evolved from passive inline suggestions (GitHub Copilot) to full-lifecycle autonomous coding agents (Devin, SWE-agent, AutoPR) capable of multi-file modifications and terminal execution.</li>
+              <li class="bullet-item"><strong>The 10x Velocity Promise:</strong> Agents read Jira issues, clone git repositories, construct execution plans, write code, run unittests, and open Pull Requests autonomously.</li>
+              <li class="bullet-item"><strong>The Unsupervised Terminal Hazard:</strong> Unlike passive LLMs, agentic systems possess unconstrained shell execution privileges inside developer environments, allowing them to invoke arbitrary bash commands.</li>
+              <li class="bullet-item"><strong>The Core Enterprise Dilemma:</strong> How can software organizations harness agentic developer velocity without surrendering intellectual property, exposing production credentials, or deploying poisoned software supply chains?</li>
+            </ul>
+          </div>
+
+          <div class="card amber-border">
+            <div class="card-title amber">⚠️ The Probabilistic Flaw of Generative LLMs</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Statistical Next-Token Predictors:</strong> LLMs are probabilistic token generators. They possess zero innate understanding of operational blast radius, legal privacy frameworks, or supply chain validity.</li>
+              <li class="bullet-item"><strong>Fragility of Prompt-Based Safety:</strong> Traditional defenses rely on system prompts: 'You are a safe assistant; never leak keys or invent packages.' Adversarial prompts and indirect injections easily bypass these instructions.</li>
+              <li class="bullet-item"><strong>Unaware of Downstream Regressions:</strong> Agents edit target functions in isolation without analyzing the transitive reachability matrix across the repository call graph, causing cascading outages.</li>
+              <li class="bullet-item"><strong>The Governance Imperative:</strong> Security must be deterministically enforced OUTSIDE the LLM inference layer through compiled abstract syntax trees, information entropy, and isolated sandboxes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-2">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Slide 2 sets the foundation. Autonomous coding agents represent a quantum leap from simple code completion to autonomous terminal-driven engineering. However, because LLMs are probabilistic next-token predictors, trusting them with raw terminal tools and repository access creates catastrophic enterprise vulnerabilities. System prompt safety instructions are stochastic and easily bypassed. KAVACH provides deterministic governance enforced outside the LLM context."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 3: THREAT MODELING -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-3" data-title="Threat Modeling: 5 Fatal Vulnerabilities">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric 1: Problem Definition & Objective (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 03 / 24</div>
+          <h2 class="slide-title">Threat Modeling: The 5 Fatal Vulnerabilities of AI Coding Agents</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="card red-border">
+            <div class="card-title red">1. AI Package Hallucination & Slopsquatting</div>
+            <div class="bullet-item">Generative LLMs hallucinate non-existent package dependencies (e.g. 'import fastapi_jwt_vault'). Attackers monitor these hallucinations, register the names on PyPI/npm, and execute malicious install-time hooks.</div>
+          </div>
+          <div class="card amber-border">
+            <div class="card-title amber">2. Cloud Credential & National ID (PII) Exfiltration</div>
+            <div class="bullet-item">Developers paste production AWS keys, GitHub PATs, and Indian PII (Aadhaar, PAN) into agent prompts. These are transmitted to third-party cloud LLM logs, violating the Indian DPDP Act 2023.</div>
+          </div>
+          <div class="card cyan-border">
+            <div class="card-title cyan">3. Post-Facto SCA Blindness (Snyk / Dependabot Gap)</div>
+            <div class="bullet-item">Static Software Composition Analysis tools only scan requirements.txt or lockfiles post-commit. They are completely blind to runtime packages synthesized dynamically in agent memory.</div>
+          </div>
+          <div class="card gold-border">
+            <div class="card-title gold">4. Unbounded Blast Radius & Cascading Regressions</div>
+            <div class="bullet-item">Agents modify core functions without awareness of upstream callers or downstream dependents, triggering silent regression breaks across distributed microservices.</div>
+          </div>
+          <div class="card purple-border">
+            <div class="card-title purple">5. Infinite Debugging Oscillations & Token Burning</div>
+            <div class="bullet-item">When generated patches fail unit tests, agents enter non-convergent, infinite trial-and-error loops, exhausting API rate limits and burning enterprise compute budgets.</div>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-3">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "On Slide 3, we detail our formal Threat Model encompassing 5 fatal enterprise vulnerabilities: package slopsquatting, credential and PII exfiltration under DPDP Act 2023, post-facto SCA blindness, unbounded blast radius, and infinite token-burning debugging oscillations."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 4: LITERATURE REVIEW PART 1 -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-4" data-title="Literature Review: Agents & Supply Chain">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric 2: Comprehensiveness of Literature Review (Part 1 / 2 — 10 Marks)</div>
+          <div class="slide-number-tag">SLIDE 04 / 24</div>
+          <h2 class="slide-title">Literature Review: Autonomous Agents, Supply Chain & Injection Attacks</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card cyan-border">
+            <div class="card-title cyan">1. Autonomous Coding Agents</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>SWE-agent (Yang et al., 2024):</strong> Pioneered agentic terminal interaction using ReAct loops to solve real-world GitHub issues; established benchmarking on SWE-bench.</li>
+              <li class="bullet-item"><strong>Critical Vulnerability:</strong> Lacks runtime safety gates; permits arbitrary destructive shell commands ('rm -rf', 'DROP TABLE').</li>
+              <li class="bullet-item"><strong>Devin (Cognition AI, 2024):</strong> End-to-end multi-file reasoning, but suffers from non-convergent debugging oscillations.</li>
+              <li class="bullet-item"><strong>Reflexion (Shinn et al., 2023):</strong> Verbal reinforcement learning for code self-repair.</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">2. AI Package Hallucinations</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Bar-Zik (2024):</strong> First documented that LLMs invent software dependencies when queried about niche tasks.</li>
+              <li class="bullet-item"><strong>Lazaar et al. (2024):</strong> Proved commercial LLMs exhibit an average 24.3% hallucination rate on external software package names.</li>
+              <li class="bullet-item"><strong>Ladisa et al. (2023):</strong> Taxonomy of software supply chain attacks; proved traditional lockfile scanners cannot detect dynamically synthesized imports.</li>
+              <li class="bullet-item"><strong>Slopsquatting:</strong> Adversaries monitor hallucinations and register malware on PyPI/npm.</li>
+            </ul>
+          </div>
+
+          <div class="card red-border">
+            <div class="card-title red">3. Prompt Injection & LLM Security</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>OWASP Top 10 for LLMs (2025):</strong> Prompt Injection (LLM01) and Sensitive Data Exposure (LLM06) as apex enterprise threats.</li>
+              <li class="bullet-item"><strong>Greshake et al. (2023):</strong> Demonstrated indirect prompt injections embedded in repository code comments hijack agent reasoning.</li>
+              <li class="bullet-item"><strong>Perez & Ribeiro (2022):</strong> Proved instructions inside prompts cannot reliably constrain output.</li>
+              <li class="bullet-item"><strong>Architectural Conclusion:</strong> Security must be deterministically enforced OUTSIDE the LLM inference layer.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-4">
+          <div class="notes-header">🎙️ Speaker Script (Dev Garg):</div>
+          <div class="notes-content">
+            "Slide 4 initiates our comprehensive literature review covering over 12 landmark publications across six domains. In Domain 1, SWE-agent and Devin prove agent capability but reveal complete absence of runtime safety gates. In Domain 2, Bar-Zik, Lazaar, and Ladisa establish the empirical reality of package hallucinations and supply-chain slopsquatting. In Domain 3, OWASP 2025 and Greshake prove indirect prompt injections in code comments hijack agent reasoning, proving that prompt-based security is fundamentally flawed."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 5: LITERATURE REVIEW PART 2 -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-5" data-title="Literature Review: Code RAG & Compliance">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric 2: Comprehensiveness of Literature Review (Part 2 / 2 — 10 Marks)</div>
+          <div class="slide-number-tag">SLIDE 05 / 24</div>
+          <h2 class="slide-title">Literature Review: Code RAG, Static Analysis & Regulatory Compliance</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card cyan-border">
+            <div class="card-title cyan">4. Code RAG & Embeddings</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Dense Retrieval (Lewis et al., 2020):</strong> Grounding generative LLMs with external retrieved evidence.</li>
+              <li class="bullet-item"><strong>CodeBERT (Feng et al., 2020):</strong> Bimodal pre-trained models; UniXcoder (Guo et al., 2022).</li>
+              <li class="bullet-item"><strong>Current Technical Gap:</strong> Naive line chunking shatters AST syntactic boundaries and indexes raw credentials without entropy pre-screening.</li>
+              <li class="bullet-item"><strong>KAVACH Innovation:</strong> AST-aware syntactic chunking paired with Qdrant vector storage.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">5. AST & Change Impact</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Compilers (Aho, 2006):</strong> ASTs provide mathematical representations of program structure.</li>
+              <li class="bullet-item"><strong>Chianti (Ren et al., 2004):</strong> Proved caller-callee call graphs identify atomic change impact before deployment.</li>
+              <li class="bullet-item"><strong>Lehnert (2011):</strong> Transitive closure over AST graphs predicts regression risks.</li>
+              <li class="bullet-item"><strong>Current Gap:</strong> Zero existing AI coding agents compute AST dependency trees before synthesizing multi-file patches.</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">6. Statutory Privacy Laws</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Indian DPDP Act (2023):</strong> Severe statutory financial penalties for unauthorized cloud transmission of Indian identifiers.</li>
+              <li class="bullet-item"><strong>EU AI Act (2024):</strong> Mandates transparent audit logs and risk management for autonomous AI.</li>
+              <li class="bullet-item"><strong>Jain et al. (2023):</strong> Western English-only PII models fail on code-mixed Hinglish developer text.</li>
+              <li class="bullet-item"><strong>KAVACH Innovation:</strong> Multilingual Zero-Knowledge Token Vault with reversible pseudonymization.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-5">
+          <div class="notes-header">🎙️ Speaker Script (Dev Garg):</div>
+          <div class="notes-content">
+            "Slide 5 continues our literature review into Code RAG, Static Analysis, and Legal Compliance. Lewis and Feng introduced dense vector retrieval, yet standard chunkers shatter AST syntactic boundaries and index sensitive credentials. In static analysis, Aho and Ren proved caller-callee graphs quantify change impact, but agents operate without this awareness. Finally, under the Indian DPDP Act 2023, cloud transmission of Aadhaar or PAN incurs statutory penalties. Western PII models fail on code-mixed Hinglish. KAVACH bridges every single one of these academic and practical gaps."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 6: RESEARCH GAPS MATRIX -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-6" data-title="Critical Research Gaps Matrix">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric 3: Research Gap (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 06 / 24</div>
+          <h2 class="slide-title">Critical Research Gaps in State-of-the-Art Tooling vs. KAVACH</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="card">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 2px;">Gap 1: Pre-Execution Guardrails</div>
+            <div style="font-size: 12px; color: var(--muted);">SOTA Baseline: Stochastic system prompts ('Do not leak keys'). | <span style="color: var(--red);">Vulnerability: Easily bypassed by jailbreaks & injections.</span></div>
+            <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 2px;">KAVACH Solution: Deterministic Shannon entropy (H > 4.5) & regex filters halting execution pre-tokenization.</div>
+          </div>
+          <div class="card">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 2px;">Gap 2: Supply-Chain Slopsquatting</div>
+            <div style="font-size: 12px; color: var(--muted);">SOTA Baseline: SCA tools (Snyk, Dependabot) scan static lockfiles post-commit. | <span style="color: var(--red);">Vulnerability: Zero visibility into runtime imports in agent memory.</span></div>
+            <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 2px;">KAVACH Solution: In-memory AST Package Firewall querying live PyPI registry (<5ms) with LRU caching.</div>
+          </div>
+          <div class="card">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 2px;">Gap 3: Change-Impact Awareness</div>
+            <div style="font-size: 12px; color: var(--muted);">SOTA Baseline: Agents modify target files blindly without dependency context. | <span style="color: var(--red);">Vulnerability: Silent regression breaks in downstream modules.</span></div>
+            <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 2px;">KAVACH Solution: Static AST caller-callee dependency graph computing transitive reachability matrix R=(I|A)^k.</div>
+          </div>
+          <div class="card">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 2px;">Gap 4: Autonomous Self-Healing</div>
+            <div style="font-size: 12px; color: var(--muted);">SOTA Baseline: Agents enter infinite loops or crash when code fails runtime tests. | <span style="color: var(--red);">Vulnerability: Token exhaustion and debugging fatigue.</span></div>
+            <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 2px;">KAVACH Solution: Closed-loop ReAct sandbox running ephemeral pytest with stderr reflection (max 3 cycles; 90% auto-recovery).</div>
+          </div>
+          <div class="card">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 2px;">Gap 5: Tool Interoperability</div>
+            <div style="font-size: 12px; color: var(--muted);">SOTA Baseline: Closed proprietary silos requiring manual copy-pasting into web UIs. | <span style="color: var(--red);">Vulnerability: Fragmented developer workflow and friction.</span></div>
+            <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 2px;">KAVACH Solution: Native Model Context Protocol (MCP) server exposing tools over JSON-RPC 2.0 to Cursor & Claude.</div>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-6">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Rohilla):</div>
+          <div class="notes-content">
+            "Slide 6 maps our 5 explicitly identified Research Gaps against State-of-the-Art tooling. Gap 1: Prompt-based guardrails fail against jailbreaks; KAVACH enforces Shannon entropy pre-tokenization. Gap 2: Snyk only checks static files; KAVACH queries PyPI live in under 5ms. Gap 3: Agents edit code blindly; KAVACH computes AST call graph reachability. Gap 4: Agents crash on runtime bugs; KAVACH adds a ReAct self-healing sandbox. Gap 5: Proprietary silos; KAVACH implements the open Anthropic Model Context Protocol."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 7: RESEARCH OBJECTIVES & KPIS -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-7" data-title="Research Objectives & Measurable KPIs">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric 1: Objective & Problem Definition (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 07 / 24</div>
+          <h2 class="slide-title">Concrete Research Objectives & Measurable Quantitative Targets</h2>
+        </div>
+
+        <div class="grid-4" style="margin-bottom: 20px;">
+          <div class="stat-card green-border">
+            <div class="stat-number" style="color: var(--green);">100.0%</div>
+            <div class="stat-label">Slopsquat Catch Rate</div>
+            <div class="stat-desc">Zero false negatives on 100-package hallucination corpus</div>
+          </div>
+          <div class="stat-card cyan-border">
+            <div class="stat-number" style="color: var(--cyan);">100.0%</div>
+            <div class="stat-label">Credential Detection</div>
+            <div class="stat-desc">100% detection of AWS, GitHub & Stripe API tokens</div>
+          </div>
+          <div class="stat-card gold-border">
+            <div class="stat-number" style="color: var(--gold);">0.990</div>
+            <div class="stat-label">Hinglish PII F1 Score</div>
+            <div class="stat-desc">Outperforms standard English regex by 139%</div>
+          </div>
+          <div class="stat-card green-border">
+            <div class="stat-number" style="color: var(--green);">&lt;20 ms</div>
+            <div class="stat-label">Security Overhead</div>
+            <div class="stat-desc">&lt;2% of total pipeline latency (1,370ms avg)</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🎯 Primary Research Objectives</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Obj 1: Deterministic Pre-Execution Gate:</strong> Intercept high-entropy credentials (H > 4.5) and national IDs (Aadhaar/PAN) before any LLM API invocation.</li>
+              <li class="bullet-item"><strong>Obj 2: Supply-Chain Package Firewall:</strong> Parse Python AST imports and validate existence on official PyPI index (<5ms) to defeat slopsquatting.</li>
+              <li class="bullet-item"><strong>Obj 3: AST Blast-Radius Quantification:</strong> Construct static caller-callee call graphs to calculate regression impact before modifying files.</li>
+              <li class="bullet-item"><strong>Obj 4: Bounded ReAct Self-Healing:</strong> Achieve >90% autonomous recovery on runtime test failures inside an isolated sandbox (N <= 3 cycles).</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">📋 Empirical Deliverables & Test Guarantees</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Automated Test Suite:</strong> Comprehensive suite of 220+ unit and integration tests passing with 100% CI/CD validation.</li>
+              <li class="bullet-item"><strong>Economic Efficiency:</strong> Maintains average inference cost <= $0.0005 USD per governed run via intelligent local/cloud routing.</li>
+              <li class="bullet-item"><strong>Zero Cloud Leakage:</strong> Guarantees zero plain-text Indian PII transmission to cloud LLM logs under Indian DPDP Act 2023 mandates.</li>
+              <li class="bullet-item"><strong>Open Tool Interoperability:</strong> Exposes all guardrails over Anthropic Model Context Protocol (MCP) for Cursor IDE and Claude.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-7">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Rohilla):</div>
+          <div class="notes-content">
+            "On Slide 7, we present our four concrete research objectives paired with measurable quantitative targets. We mandate 100% catch rate on hallucinated packages with zero false negatives, 100% interception of production cloud credentials, and an F1 score of 0.990 on Indian identity cards. Most importantly, our security overhead is bounded under 20 milliseconds, representing less than 2% of the end-to-end execution pipeline."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 8: MASTER MIND MAP & TAXONOMY -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-8" data-title="Master Mind Map & Taxonomy">
+        <div class="slide-header">
+          <div class="slide-badge">Methodology: System Architecture & Taxonomy (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 08 / 24</div>
+          <h2 class="slide-title">Master Mind Map: KAVACH High-Level Architectural Taxonomy</h2>
+        </div>
+
+        <div class="grid-5">
+          <div class="card cyan-border">
+            <div class="card-title cyan" style="font-size: 13px;">1. Pre-Execution Governance</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Shannon Scanner:</strong> Entropy H > 4.5 detects API keys</li>
+              <li class="bullet-item"><strong>Destructive Filter:</strong> Regex halts 'DROP TABLE', 'rm -rf'</li>
+              <li class="bullet-item"><strong>DPDP Vault:</strong> Reversible Aadhaar & PAN pseudonymization</li>
+              <li class="bullet-item"><strong>Risk Engine:</strong> Weighted score: ALLOW, REVIEW, BLOCK</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green" style="font-size: 13px;">2. Code Intelligence & RAG</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>AST Chunking:</strong> Preserves function & class boundaries</li>
+              <li class="bullet-item"><strong>Qdrant DB:</strong> 384-d dense vector embeddings</li>
+              <li class="bullet-item"><strong>Cosine Scoring:</strong> Adaptive top-k evidence retrieval</li>
+              <li class="bullet-item"><strong>Blast Radius:</strong> Static caller-callee regression matrix</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold" style="font-size: 13px;">3. Dual-Engine Inference</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Air-Gapped Router:</strong> Sensitivity classifier</li>
+              <li class="bullet-item"><strong>Cloud Engine:</strong> Google Gemini 2.5 Flash / Groq</li>
+              <li class="bullet-item"><strong>Local Engine:</strong> Ollama Qwen2.5-Coder:7b</li>
+              <li class="bullet-item"><strong>Deterministic Fallback:</strong> Zero-failure offline delivery</li>
+            </ul>
+          </div>
+
+          <div class="card red-border">
+            <div class="card-title red" style="font-size: 13px;">4. Verification & Sandbox</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>AST Package Firewall:</strong> PyPI registry check (<5ms)</li>
+              <li class="bullet-item"><strong>Slopsquat Quarantine:</strong> Pipeline halt on HTTP 404</li>
+              <li class="bullet-item"><strong>ReAct Sandbox:</strong> Subprocess pytest (3.0s timeout)</li>
+              <li class="bullet-item"><strong>Self-Healing:</strong> Stderr reflection loop (N <= 3)</li>
+            </ul>
+          </div>
+
+          <div class="card purple-border">
+            <div class="card-title purple" style="font-size: 13px;">5. Interoperability & UI</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>MCP JSON-RPC:</strong> Native Cursor IDE & Claude integration</li>
+              <li class="bullet-item"><strong>Mission Control:</strong> Dark-mode SaaS UI with SSE telemetry</li>
+              <li class="bullet-item"><strong>Groq Whisper:</strong> Voice-driven DevOps commands</li>
+              <li class="bullet-item"><strong>CycloneDX SBOM:</strong> SLSA Level 3 cryptographic provenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-8">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Adhikari):</div>
+          <div class="notes-content">
+            "Slide 8 provides our Master Mind Map structuring KAVACH into 5 cohesive engineering pillars: Pillar 1 Pre-Execution Governance, Pillar 2 Code Intelligence & RAG, Pillar 3 Dual-Engine Inference, Pillar 4 Verification & Sandbox, and Pillar 5 Interoperability & Telemetry."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 9: END-TO-END SYSTEM ARCHITECTURE -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-9" data-title="End-to-End System Architecture (Flowchart 1)">
+        <div class="slide-header">
+          <div class="slide-badge">Methodology: Concrete Implementation Architecture (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 09 / 24</div>
+          <h2 class="slide-title">Flowchart 1: End-to-End System Architecture & 5-Tier Stack</h2>
+        </div>
+
+        <div class="mermaid-container">
+          <pre class="mermaid">
+graph LR
+    subgraph ClientLayer ["1. Client & IDE Layer"]
+        CLI["CLI Terminal"]
+        WEB["Mission Control UI"]
+        IDE["Cursor / Claude (MCP)"]
+    end
+
+    subgraph GovernanceGateway ["2. Governance Gateway"]
+        MCP["MCP Server"]
+        P1["AST Ingestion"]
+        P2["Sentinel Scanner (H>4.5)"]
+        VAULT["DPDP Token Vault"]
+    end
+
+    subgraph IntelligenceLayer ["3. Repository Intelligence"]
+        P3["AST Blast Radius"]
+        QDRANT[("Qdrant Vector DB")]
+        ROUTER{"Dual-Engine Router"}
+    end
+
+    subgraph SynthesisLayer ["4. Inference & Synthesis"]
+        CLOUD["Gemini 2.5 Flash"]
+        LOCAL["Ollama Qwen2.5"]
+    end
+
+    subgraph VerificationLayer ["5. Verification & Sandbox"]
+        FIREWALL["AST Package Firewall"]
+        REACT["ReAct Sandbox"]
+        SBOM["CycloneDX SBOM"]
+    end
+
+    CLI --> MCP
+    WEB --> MCP
+    IDE --> MCP
+    MCP --> P1 --> P2 --> VAULT --> P3
+    P3 --> QDRANT
+    P3 --> ROUTER
+    ROUTER -->|Public| CLOUD
+    ROUTER -->|Confidential| LOCAL
+    CLOUD --> FIREWALL
+    LOCAL --> FIREWALL
+    FIREWALL --> REACT --> SBOM --> WEB
+          </pre>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-9">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Adhikari):</div>
+          <div class="notes-content">
+            "Slide 9 illustrates our End-to-End Architecture across 5 tiers: Clients connect via CLI, Web UI, or Cursor IDE over MCP. Requests pass through the Governance Gateway where Shannon entropy and DPDP token vaults sanitize prompts before they reach Qdrant and the Dual-Engine Router. Synthesized code is then audited by the AST Package Firewall and sandboxed in an ephemeral ReAct execution loop before emitting a signed CycloneDX SBOM."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 10: 6-STAGE GOVERNED EXECUTION LIFECYCLE -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-10" data-title="6-Stage Governed DevOps Lifecycle (Flowchart 2)">
+        <div class="slide-header">
+          <div class="slide-badge">Methodology: Formal Workflow States & Guardrails (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 10 / 24</div>
+          <h2 class="slide-title">Flowchart 2: The 6-Stage Governed DevOps Execution Lifecycle</h2>
+        </div>
+
+        <div class="grid-3" style="gap: 14px;">
+          <div class="card cyan-border">
+            <div class="card-title cyan">Stage 1: Sentinel Screening</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mechanism:</strong> Shannon Entropy + Regex</li>
+              <li class="bullet-item"><strong>Action:</strong> Scans raw prompt for AWS/GitHub keys and Indian PII (Aadhaar/PAN). Destructive SQL/shell halts pipeline immediately (verdict BLOCKED).</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">Stage 2: Qdrant Context Retrieval</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mechanism:</strong> Dense Vector Cosine Similarity</li>
+              <li class="bullet-item"><strong>Action:</strong> Embeds prompt with MiniLM (384-d). Dynamically evaluates if codebase context is needed; queries Qdrant for AST chunks (sim > 0.70).</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">Stage 3: AST Blast Radius Analysis</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mechanism:</strong> Static Caller-Callee Call Graph</li>
+              <li class="bullet-item"><strong>Action:</strong> Traverses AST, builds adjacency matrix A, and computes reachability R = (I | A)^k to forecast downstream regression risk before code synthesis.</li>
+            </ul>
+          </div>
+
+          <div class="card purple-border">
+            <div class="card-title purple">Stage 4: Dual-Engine LLM Synthesis</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mechanism:</strong> Air-Gapped Privacy Router</li>
+              <li class="bullet-item"><strong>Action:</strong> Evaluates data sensitivity. Routes public code to Gemini 2.5 Flash and confidential code to local Ollama (Qwen2.5-Coder:7b).</li>
+            </ul>
+          </div>
+
+          <div class="card red-border">
+            <div class="card-title red">Stage 5: AST Package Firewall</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mechanism:</strong> AST ImportVisitor + Live PyPI API</li>
+              <li class="bullet-item"><strong>Action:</strong> Extracts all Import nodes. Validates against stdlib, local files, LRU cache, and PyPI (<5ms). Halts pipeline on HTTP 404 slopsquats.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">Stage 6: ReAct Ephemeral Sandbox</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mechanism:</strong> Subprocess Pytest + Traceback Reflection</li>
+              <li class="bullet-item"><strong>Action:</strong> Executes unittests (3.0s timeout). On failure, reflects stderr back to repair engine (max 3 cycles; 90% auto-recovery).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-10">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Adhikari):</div>
+          <div class="notes-content">
+            "Slide 10 details our 6-Stage Execution Lifecycle implemented as a formal Finite State Machine. Each stage enforces a strict security contract. Stage 1 halts destructive commands; Stage 2 retrieves evidence from Qdrant; Stage 3 predicts blast radius; Stage 4 routes LLM inference; Stage 5 blocks fake imports; and Stage 6 executes tests inside an ephemeral sandbox."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 11: MATHEMATICAL FOUNDATIONS -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-11" data-title="Mathematical Foundations & Information Theory">
+        <div class="slide-header">
+          <div class="slide-badge">Methodology: Mathematical Rigor & Formal Formulations (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 11 / 24</div>
+          <h2 class="slide-title">Mathematical Foundations: Information Theory, Policy Logic & Graphs</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">1. Shannon Entropy for Secret Detection</div>
+            <div class="math-box">H(X) = - Σ [ p(x_i) · log₂(p(x_i)) ]</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Information Theory Grounding:</strong> Measures bit randomness. Natural language and code have low entropy (H = 1.5 - 3.2). Cryptographic secrets (AWS keys, GitHub PATs) exhibit H > 4.5.</li>
+              <li class="bullet-item"><strong>Deterministic Action:</strong> If token length ≥ 16 and H(X) > 4.5 → Instant quarantine; halts execution before LLM tokenization.</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">2. Multi-Factor Risk Policy Scoring</div>
+            <div class="math-box">Risk = w₁·ActionRisk + w₂·FindingSeverity + w₃·ExposureLevel</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Calibrated Weights:</strong> w₁ = 0.35, w₂ = 0.45, w₃ = 0.20.</li>
+              <li class="bullet-item"><strong>State Mapping:</strong> Risk &lt; 0.30 → ALLOW; 0.30 ≤ Risk &lt; 0.60 → REDACT; 0.60 ≤ Risk &lt; 0.85 → REVIEW; Risk ≥ 0.85 → BLOCK.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">3. Dense Cosine Similarity in Qdrant</div>
+            <div class="math-box">cos(u, v) = (u · v) / (||u|| · ||v||)  where u, v ∈ ℝ³⁸⁴</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Semantic Retrieval:</strong> Embeds prompt into 384-dimensional dense vector space using sentence-transformers/all-MiniLM-L6-v2.</li>
+              <li class="bullet-item"><strong>Quality Guarantee:</strong> Retrieves top-k chunks with cosine similarity ≥ 0.70 for grounded patch generation.</li>
+            </ul>
+          </div>
+
+          <div class="card purple-border">
+            <div class="card-title purple">4. Transitive Graph Reachability (Blast Radius)</div>
+            <div class="math-box">R = (I ∨ A)ᵏ  and  BlastRadius = (Σ R_fj / M) × 100%</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Graph Theory Grounding:</strong> Powers of binary adjacency matrix A compute reachability up to k hops across repository modules.</li>
+              <li class="bullet-item"><strong>Context Grounding:</strong> Blast radius percentage is injected directly into prompt to prevent regression breaks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-11">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Slide 11 provides the mathematical rigor of KAVACH anchored in information theory and discrete graph algorithms. For credentials, we compute Shannon Entropy H(X) over character distributions, identifying high-entropy tokens with H > 4.5. Our Risk Matrix computes a normalized weighted index mapping actions to ALLOW, REDACT, REVIEW, or BLOCK. Vector RAG computes cosine similarity over 384-dimensional space, and Blast Radius calculates matrix powers R = (I | A)^k over the AST call graph."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 12: DEEP DIVE 1 - SENTINEL GUARDRAILS -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-12" data-title="Deep-Dive 1: Sentinel Pre-Execution Guardrails">
+        <div class="slide-header">
+          <div class="slide-badge">Security Architecture: Pre-Execution Guardrails</div>
+          <div class="slide-number-tag">SLIDE 12 / 24</div>
+          <h2 class="slide-title">Technical Deep-Dive 1: Sentinel Pre-Execution Guardrails</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🛡️ The Pre-Execution Philosophy</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>The Zero-Trust Principle:</strong> Traditional security checks occur post-execution or post-commit. KAVACH enforces deterministic inspection BEFORE prompt tokenization or cloud transmission.</li>
+              <li class="bullet-item"><strong>Shannon Entropy Engine:</strong> Computes bit entropy H(X) for every candidate alphanumeric token (length >= 16). Correctly isolates high-entropy API tokens (AWS AKIA, GitHub ghp_, Stripe sk_live) from natural camelCase identifiers.</li>
+              <li class="bullet-item"><strong>Destructive Command Interceptor:</strong> Compiled regular expression automata scanning for destructive SQL commands ('DROP TABLE', 'TRUNCATE', 'ALTER USER') and hostile shell commands ('rm -rf', 'mkfs', 'dd if=').</li>
+              <li class="bullet-item"><strong>Immediate Pipeline Halting:</strong> If a destructive command is identified, execution terminates in <1.8 ms with HTTP 403 Forbidden, emitting an immutable audit event to SQLite.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">📊 Benchmark Verification & Zero Latency Tax</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Evaluation Corpus:</strong> Evaluated against 100 curated prompts containing production credentials, destructive commands, and benign developer requests.</li>
+              <li class="bullet-item"><strong>100% Interception Rate:</strong> Achieved 100.0% precision and recall on high-entropy cloud credentials with zero false negatives.</li>
+              <li class="bullet-item"><strong>Sub-2ms Overhead:</strong> The entire Sentinel screening pass executes in an average 1.84 milliseconds, representing less than 0.15% of total pipeline latency.</li>
+              <li class="bullet-item"><strong>Defense Against Jailbreaks:</strong> Because screening operates on raw text pre-tokenization, adversarial system prompt injections and jailbreaks (e.g. 'Ignore previous instructions and DROP TABLE') fail unconditionally.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-12">
+          <div class="notes-header">🎙️ Speaker Script (Dev Garg):</div>
+          <div class="notes-content">
+            "Slide 12 dives into our Sentinel Pre-Execution Guardrail. By evaluating inputs before tokenization, KAVACH renders prompt injection attacks impotent. Our Shannon entropy scanner detects API keys with 100% precision in under 1.8 milliseconds, halting destructive database or filesystem commands immediately."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 13: DEEP DIVE 2 - DPDP TOKEN VAULT -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-13" data-title="Deep-Dive 2: Multilingual Token Vault (Flowchart 4)">
+        <div class="slide-header">
+          <div class="slide-badge">Compliance Architecture: Data Sovereignty & DPDP Act 2023</div>
+          <div class="slide-number-tag">SLIDE 13 / 24</div>
+          <h2 class="slide-title">Flowchart 4: Multilingual Zero-Knowledge Token Vault (DPDP Act)</h2>
+        </div>
+
+        <div class="mermaid-container" style="margin-bottom: 16px;">
+          <pre class="mermaid">
+flowchart LR
+    Raw[Raw Developer Prompt with Hinglish PII & Secrets] --> Scan[Regex & Shannon Entropy Scanner]
+    Scan --> Check{Sensitive Finding?}
+    Check -->|No| PassClean[Pass Untouched to LLM]
+    Check -->|Yes| Pseudo[Reversible Pseudonymization]
+    Pseudo --> Vault[(In-Memory Session Vault)]
+    Pseudo --> Mask[Replace with Opaque Surrogates]
+    Mask --> Sanitized[Zero-Knowledge Sanitized Prompt]
+    Sanitized --> Cloud[Cloud LLM Gemini 2.5 Flash]
+    Cloud --> Gen[Generated Code Output]
+    Gen --> Auth{Authorized Recipient?}
+    Auth -->|Yes| Rehydrate[Rehydrate from Local Vault]
+    Rehydrate --> Clear[Safe Clear-Text on Local Machine]
+    Auth -->|No| Keep[Preserve Masked Tokens in Public Logs]
+          </pre>
+        </div>
+
+        <div class="grid-2">
+          <div class="card gold-border">
+            <div class="card-title gold">🇮🇳 Indian DPDP Act 2023 Compliance</div>
+            <div class="bullet-item">Scans developer prompts for Indian national identifiers (12-digit Aadhaar, 10-char PAN) even when embedded in code-mixed Hinglish phrases (e.g., 'user ka aadhaar card verify karo'). Outperforms Microsoft Presidio by 139% on Hinglish developer text.</div>
+          </div>
+          <div class="card cyan-border">
+            <div class="card-title cyan">🔒 Zero-Knowledge Cloud Transmission</div>
+            <div class="bullet-item">Sensitive values are replaced with opaque surrogates (&lt;REDACTED_AADHAAR_001&gt;). External cloud LLMs reason strictly over surrogates with ZERO access to raw PII, ensuring zero cloud log leakage and complete data sovereignty.</div>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-13">
+          <div class="notes-header">🎙️ Speaker Script (Dev Garg):</div>
+          <div class="notes-content">
+            "Slide 13 details our Multilingual Zero-Knowledge Token Vault designed for Indian DPDP Act 2023 compliance. Standard tools like Microsoft Presidio fail on code-mixed Hinglish text. KAVACH detects Indian Aadhaar and PAN numbers, replaces them with opaque placeholders, sends sanitized prompts to Gemini, and rehydrates original values locally. Cloud logs never see raw PII."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 14: DEEP DIVE 3 - AST CHUNKING & RAG -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-14" data-title="Deep-Dive 3: AST Chunking & Agentic RAG">
+        <div class="slide-header">
+          <div class="slide-badge">Code Intelligence: Qdrant Vector Retrieval</div>
+          <div class="slide-number-tag">SLIDE 14 / 24</div>
+          <h2 class="slide-title">Technical Deep-Dive 3: AST-Aware Code Chunking & Agentic RAG</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🧩 AST Syntactic Chunking vs. Naive Slicing</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>The Naive Chunking Flaw:</strong> Standard RAG chunkers slice code into arbitrary 500-token windows. This shatters Python class boundaries, splits methods from decorators, and disconnects function signatures from docstrings.</li>
+              <li class="bullet-item"><strong>AST Syntactic Ingestion:</strong> KAVACH traverses the repository using Python's 'ast' module, creating chunks aligned strictly to FunctionDef, AsyncFunctionDef, and ClassDef nodes.</li>
+              <li class="bullet-item"><strong>Contextual Metadata Injection:</strong> Each chunk preserves file path, start line, end line, parent class, and referenced import symbols.</li>
+              <li class="bullet-item"><strong>In-Flight Credential Scrubbing:</strong> Before vector embeddings are generated, chunks are scanned by the Shannon entropy engine to prevent indexing sensitive API keys into vector database storage.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">⚡ Qdrant Vector DB & Agentic Retrieval</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Vector Space Architecture:</strong> Embeds code chunks using 'sentence-transformers/all-MiniLM-L6-v2' into a 384-dimensional dense vector space stored in Qdrant.</li>
+              <li class="bullet-item"><strong>Agentic Dynamic Retrieval:</strong> Unlike static RAG, the KAVACH orchestrator first analyzes developer intent to decide IF codebase retrieval is required, avoiding redundant database lookups for generic coding questions.</li>
+              <li class="bullet-item"><strong>Cosine Similarity Scoring:</strong> Computes cosine distance; chunks with similarity score >= 0.70 are retrieved and injected into the LLM evidence buffer.</li>
+              <li class="bullet-item"><strong>Sub-45ms Retrieval Latency:</strong> Retrieval executes in under 45 milliseconds over indexed repositories, ensuring fast, evidence-grounded patch generation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-14">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Rohilla):</div>
+          <div class="notes-content">
+            "Slide 14 explains our Agentic RAG implementation. Rather than blind line-window chunking which shatters syntax, KAVACH uses AST-aware chunking preserving function and class boundaries. Chunks are scrubbed for secrets and indexed into Qdrant vector storage. The agent dynamically decides if codebase context is needed, retrieving grounded evidence in under 45 milliseconds."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 15: DEEP DIVE 4 - AST BLAST RADIUS -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-15" data-title="Deep-Dive 4: Static AST Blast Radius">
+        <div class="slide-header">
+          <div class="slide-badge">Code Intelligence: Abstract Syntax Tree Dependency Analysis</div>
+          <div class="slide-number-tag">SLIDE 15 / 24</div>
+          <h2 class="slide-title">Technical Deep-Dive 4: Static AST Blast Radius & Change-Impact Engine</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🔍 The Necessity of Blast-Radius Quantification</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>The Unbounded Patch Problem:</strong> Autonomous agents frequently refactor a utility function without realizing it is imported by authentication, billing, or database modules, breaking production services.</li>
+              <li class="bullet-item"><strong>AST Symbol Extraction:</strong> KAVACH's 'analyzer.py' inspects repository files to extract all 'Import', 'ImportFrom', 'FunctionDef', 'ClassDef', and 'Call' AST nodes.</li>
+              <li class="bullet-item"><strong>Bidirectional Call Graph:</strong> Constructs a directed graph G = (V, E) mapping caller-to-callee and callee-to-caller dependencies across all Python files.</li>
+              <li class="bullet-item"><strong>Transitive Reachability Matrix:</strong> Computes reachability matrix R = (I | A)^k over adjacency matrix A, tracing cascading impacts up to k hops across the entire repository.</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">📈 Blast-Radius Metric & Prompt Grounding</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Mathematical Formulation:</strong> Blast Radius % = (Count of Transitive Dependent Files / Total Repo Files) * 100%.</li>
+              <li class="bullet-item"><strong>Risk Threshold Classification:</strong> Blast Radius < 15%: LOW impact (automatic patch); 15% - 40%: MEDIUM impact (flagged); > 40%: HIGH impact (escalates to NEEDS_REVIEW).</li>
+              <li class="bullet-item"><strong>Prompt Grounding:</strong> The list of affected dependent files and caller functions is injected directly into the LLM prompt context: 'Warning: Modifying auth.py affects api.py and billing.py. Preserve signature compatibility.'</li>
+              <li class="bullet-item"><strong>Empirical Accuracy:</strong> 100% accuracy on caller-callee regression boundaries validated across our 5 standardized impact test cases.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-15">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Rohilla):</div>
+          <div class="notes-content">
+            "Slide 15 covers AST Blast Radius and Change Impact Analysis. By constructing bidirectional caller-callee graphs and calculating matrix reachability, KAVACH calculates the percentage of the repository affected before a single line of code is written. If blast radius exceeds 40%, the system flags high regression risk and alerts the developer."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 16: DEEP DIVE 5 - AST PACKAGE FIREWALL -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-16" data-title="Deep-Dive 5: AST Package Firewall (Flowchart 3)">
+        <div class="slide-header">
+          <div class="slide-badge">Technical Deep-Dive: Supply-Chain Package Firewall</div>
+          <div class="slide-number-tag">SLIDE 16 / 24</div>
+          <h2 class="slide-title">Flowchart 3: AST Supply-Chain Package Firewall & Slopsquatting Defense</h2>
+        </div>
+
+        <div class="mermaid-container" style="margin-bottom: 16px;">
+          <pre class="mermaid">
+flowchart LR
+    Code[Generated Candidate Code] --> Parse[AST Parse: ast.parse]
+    Parse --> Extract[Extract Import & ImportFrom Nodes]
+    Extract --> Loop[For Each Imported Module M]
+    Loop --> Stdlib{In Python STDLIB?}
+    Stdlib -->|Yes| Allow1[ALLOW stdlib e.g. os, json]
+    Stdlib -->|No| Local{In Local Repo?}
+    Local -->|Yes| Allow2[ALLOW local e.g. auth, db]
+    Local -->|No| Cache{In LRU Cache?}
+    Cache -->|Hit Valid| Allow3[ALLOW cached <0.05ms]
+    Cache -->|Hit Bad| Quarantine[QUARANTINE slopsquat]
+    Cache -->|Miss| Query[Query live PyPI JSON API <5ms]
+    Query --> Check{HTTP 200?}
+    Check -->|Yes| CacheOk[Cache Safe in LRU] --> Pass[Safe to Sandbox]
+    Check -->|No / 404| Block[🛑 BLOCKED: Intercept Slopsquat]
+          </pre>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🛡️ Slopsquatting Interception Architecture</div>
+            <div class="bullet-item">Traverses AST Import nodes, verifies standard library and internal modules, and queries live PyPI registry (<5ms) with an in-memory LRU cache (84% hit rate). If PyPI returns HTTP 404, the package is flagged as an AI hallucination and execution halts immediately.</div>
+          </div>
+          <div class="card green-border">
+            <div class="card-title green">🏆 Empirical Benchmarking & Snyk Superiority</div>
+            <div class="bullet-item">Tested against 100 packages (50 legitimate + 50 documented LLM hallucinations); achieved 100.0% precision and recall with zero false negatives. Unlike Snyk or Dependabot, KAVACH intercepts dynamic imports in agent memory BEFORE code touches the disk.</div>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-16">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Adhikari):</div>
+          <div class="notes-content">
+            "Slide 16 details our AST Package Firewall. When models hallucinate imports, attackers register them on PyPI for slopsquatting attacks. KAVACH inspects candidate code AST, extracts all imports, checks Python stdlib and local modules, and verifies external packages against live PyPI JSON endpoints in under 5 milliseconds. If PyPI returns 404, the pipeline halts immediately. We scored 100% precision and recall on our 100-package hallucination corpus."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 17: DEEP DIVE 6 - REACT SELF-HEALING SANDBOX -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-17" data-title="Deep-Dive 6: ReAct Self-Healing Sandbox (Flowchart 5)">
+        <div class="slide-header">
+          <div class="slide-badge">Technical Deep-Dive: Self-Healing Sandbox & ReAct Reflection</div>
+          <div class="slide-number-tag">SLIDE 17 / 24</div>
+          <h2 class="slide-title">Flowchart 5: Closed-Loop ReAct Self-Healing Reflection Engine</h2>
+        </div>
+
+        <div class="mermaid-container" style="margin-bottom: 16px;">
+          <pre class="mermaid">
+flowchart LR
+    Candidate[Candidate Code Patch] --> AST{AST Syntax Valid?}
+    AST -->|No| CaptureSyntax[Capture SyntaxError] --> Reflect
+    AST -->|Yes| Exec[Execute Ephemeral Subprocess pytest]
+    Exec --> Result{Exit Code == 0?}
+    Result -->|Yes| Sealed[🟢 PASS: Candidate Sealed]
+    Result -->|No| CaptureStderr[Capture stderr Traceback] --> Reflect
+    Reflect[ReAct Reflection: Prompt_k+1 = Prompt_k + Traceback_k] --> Max{Counter k >= 3?}
+    Max -->|Yes| Escalate[🛑 Escalate to Human Gatekeeper]
+    Max -->|No| AutoRepair[Auto-Repair Imports / Off-by-one] --> Exec
+          </pre>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🔄 Closed-Loop ReAct Reflection Engine</div>
+            <div class="bullet-item">Isolates candidate code in an ephemeral subprocess sandbox with strict limits: 3.0s CPU timeout, stripped environment variables (no credential inheritance), and disabled network access. Captures runtime tracebacks and synthesizes targeted repair prompts.</div>
+          </div>
+          <div class="card green-border">
+            <div class="card-title green">⚡ 90.0% Autonomous Recovery & Loop Immunity</div>
+            <div class="bullet-item">Achieves 90.0% autonomous recovery rate across 42 evaluated workflow runs (78% repaired on cycle 1, 12% on cycle 2). Hard mathematical cap of N = 3 iterations completely eliminates infinite token-burning loops and developer debugging fatigue.</div>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-17">
+          <div class="notes-header">🎙️ Speaker Script (Ansh Adhikari):</div>
+          <div class="notes-content">
+            "Slide 17 covers our Closed-Loop ReAct Self-Healing Sandbox. When candidate code fails unit assertions, KAVACH captures the stderr traceback inside an isolated ephemeral subprocess (3.0s timeout) and reflects it back to the repair engine. With a strict upper bound of 3 iterations, KAVACH achieves a 90% autonomous recovery rate, eliminating infinite loops and debugging token exhaustion."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 18: DEEP DIVE 7 - DUAL-ENGINE LLM ROUTER -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-18" data-title="Deep-Dive 7: Dual-Engine LLM Router">
+        <div class="slide-header">
+          <div class="slide-badge">Inference Architecture: Privacy-Preserving AI Routing</div>
+          <div class="slide-number-tag">SLIDE 18 / 24</div>
+          <h2 class="slide-title">Dual-Engine LLM Router: Cloud Inference vs. Air-Gapped Local Ollama</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🌐 Air-Gapped Privacy Routing Architecture</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>The Enterprise Dilemma:</strong> Commercial cloud LLMs (Gemini, Claude) offer high reasoning capability but require transmitting code over the public internet, violating strict corporate intellectual property (IP) policies.</li>
+              <li class="bullet-item"><strong>Sensitivity Classifier:</strong> KAVACH's orchestrator analyzes incoming developer prompts and indexed file paths for proprietary signatures (e.g. database schemas, proprietary algorithms, internal tokens).</li>
+              <li class="bullet-item"><strong>Public / Cloud Route:</strong> Sanitized, public requests are dispatched via high-speed API to Google Gemini 2.5 Flash or Groq Cloud (`llama-3.3-70b-versatile`).</li>
+              <li class="bullet-item"><strong>Air-Gapped Local Route:</strong> Confidential enterprise code is automatically routed to local Ollama runtime (`localhost:11434`) running `qwen2.5-coder:7b` or `llama3.2`, ensuring zero external network egress.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">💰 Zero-Failure Deterministic Fallback & Cost</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Zero-Failure Fallback Engine:</strong> If both external cloud APIs and local Ollama daemons are offline, KAVACH engages its built-in deterministic synthesizer, ensuring uninterrupted CI/CD operation.</li>
+              <li class="bullet-item"><strong>Inference Cost Optimization:</strong> By routing repetitive or local tasks to Ollama and using Gemini 2.5 Flash for complex reasoning, average execution cost is kept below $0.0005 USD per run.</li>
+              <li class="bullet-item"><strong>Universal Multi-Provider Abstraction:</strong> Unified `llm_client.py` interface abstracts Gemini, Groq, Ollama, and Fallback behind a standard polymorphic API.</li>
+              <li class="bullet-item"><strong>Air-Gapped Deployment Ready:</strong> Entire KAVACH platform can run completely disconnected from the public internet in defense and financial environments.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-18">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Slide 18 details our Dual-Engine LLM Router. Confidential intellectual property is routed to a local, air-gapped Ollama instance running Qwen2.5-Coder on localhost, while sanitized public tasks are routed to Google Gemini 2.5 Flash. If completely offline, a deterministic synthesizer guarantees zero-failure delivery."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 19: DEEP DIVE 8 - MODEL CONTEXT PROTOCOL (MCP) -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-19" data-title="Deep-Dive 8: Model Context Protocol (MCP)">
+        <div class="slide-header">
+          <div class="slide-badge">Tool Interoperability: Open Protocol Architecture</div>
+          <div class="slide-number-tag">SLIDE 19 / 24</div>
+          <h2 class="slide-title">Interoperability: Anthropic Model Context Protocol (MCP) Server</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card purple-border">
+            <div class="card-title purple">🔌 The Model Context Protocol (MCP) Standard</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>The Proprietary Silo Problem:</strong> Security tools fail when they force developers to leave their daily IDE to copy-paste code into clunky third-party web portals.</li>
+              <li class="bullet-item"><strong>Open Protocol Adoption:</strong> KAVACH implements Anthropic's open Model Context Protocol (Protocol Version 2024-11-05), exposing its governance engine as standardized JSON-RPC 2.0 tools.</li>
+              <li class="bullet-item"><strong>Native IDE Support:</strong> Connects natively into Cursor IDE, Claude Desktop, and VS Code MCP clients via standard `stdio` or SSE transports.</li>
+              <li class="bullet-item"><strong>Direct In-Editor Governance:</strong> Developers get instant security checks, blast-radius graphs, and PyPI verification directly inside their Cursor AI chat window without switching context.</li>
+            </ul>
+          </div>
+
+          <div class="card cyan-border">
+            <div class="card-title cyan">🛠️ Exposed MCP Tool Suite & JSON-RPC</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>inspect_code_security:</strong> Scans code for Shannon entropy secrets, PII, and destructive patterns; returns structured verdict (ALLOW/REVIEW/BLOCK).</li>
+              <li class="bullet-item"><strong>calculate_blast_radius:</strong> Computes AST call graph and returns affected downstream files and regression percentages.</li>
+              <li class="bullet-item"><strong>verify_package_imports:</strong> Extracts AST imports and queries PyPI live registry to flag package hallucinations and slopsquats.</li>
+              <li class="bullet-item"><strong>query_code_rag:</strong> Queries Qdrant vector database for AST-aware code chunks matching natural language intent.</li>
+              <li class="bullet-item"><strong>Seamless Extensibility:</strong> Any external agent or CI pipeline can invoke KAVACH tools over standardized JSON-RPC 2.0.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-19">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Slide 19 highlights our Model Context Protocol (MCP) server. By adopting Anthropic's open standard, KAVACH exposes its security tools over JSON-RPC 2.0. Developers using Cursor IDE or Claude Desktop can inspect code security, calculate blast radius, and check PyPI package validity directly inside their editor."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 20: MISSION CONTROL DASHBOARD & VOICE -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-20" data-title="Mission Control Dashboard & Voice">
+        <div class="slide-header">
+          <div class="slide-badge">Frontend Architecture & Telemetry</div>
+          <div class="slide-number-tag">SLIDE 20 / 24</div>
+          <h2 class="slide-title">Mission Control Dashboard & Multimodal Voice Observability</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🖥️ Dark-Mode SaaS Observability System</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Design Aesthetics:</strong> Built with Datadog/Grafana cyber-observability aesthetics: `#08090D` canvas, `#12151D` glass cards, and `#00D2FF` electric cyan accents.</li>
+              <li class="bullet-item"><strong>Real-Time Telemetry Counters:</strong> Animated cubic counters tracking live operational metrics: total runs, reviews held, and security blocks enforced.</li>
+              <li class="bullet-item"><strong>Visual Execution Stage Graph:</strong> Dynamic multi-stage node graph visualizing transitions across Planning, Security, Context Retrieval, Impact, and Sandbox.</li>
+              <li class="bullet-item"><strong>Interactive Code Review Surface:</strong> Dedicated `/review` tab allowing ad-hoc security scanning of arbitrary code snippets with instant AST feedback.</li>
+              <li class="bullet-item"><strong>GitHub Repository Ingestion:</strong> One-click cloning and AST indexing of any public GitHub repository directly into Qdrant vector storage.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">🎙️ Multimodal Speech-to-Text via Groq Whisper</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Voice-Driven DevOps:</strong> Developers can dictate complex engineering instructions hands-free: 'Refactor database connection pool and check for credential leaks.'</li>
+              <li class="bullet-item"><strong>Dual-Engine Audio Pipeline:</strong> Captures audio via browser `MediaRecorder`, dispatches to Groq Cloud `whisper-large-v3-turbo` multipart endpoint for near-instant transcription (<800ms).</li>
+              <li class="bullet-item"><strong>Graceful Offline Fallback:</strong> Automatically falls back to browser Web Speech API if cloud network is unavailable.</li>
+              <li class="bullet-item"><strong>Live SSE Telemetry Streaming:</strong> Server-Sent Events stream step-by-step agent execution logs and reasoning traces directly to the dashboard terminal.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-20">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Slide 20 showcases our Mission Control Dashboard and Multimodal Voice capabilities. The dark-mode dashboard provides real-time telemetry, stage progression graphs, and standalone live code review. Our voice engine uses Groq Whisper v3 for sub-800ms speech transcription with graceful Web Speech API fallback."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 21: EMPIRICAL BENCHMARKS -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-21" data-title="Empirical Benchmarks: 4 Datasets">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric 4: Proposed Methodology & Empirical Evaluation (5 Marks)</div>
+          <div class="slide-number-tag">SLIDE 21 / 24</div>
+          <h2 class="slide-title">Empirical Evaluation: 4 Benchmark Datasets & Quantitative Findings</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">📦 Benchmark 1: Package Hallucination Corpus</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Dataset Composition:</strong> 100 packages (50 legitimate PyPI packages + 50 documented LLM hallucinations/slopsquats).</li>
+              <li class="bullet-item"><strong>Precision:</strong> 100.0% (Zero false positives on real packages).</li>
+              <li class="bullet-item"><strong>Recall:</strong> 100.0% (Zero false negatives; 100% of hallucinations caught).</li>
+              <li class="bullet-item"><strong>F1-Score:</strong> 1.000 across all package evaluation runs.</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">🇮🇳 Benchmark 2: Multilingual PII & Secret Corpus</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Dataset Composition:</strong> 100 developer chat prompts containing code-mixed Hinglish, Indian Aadhaar/PAN, and AWS keys.</li>
+              <li class="bullet-item"><strong>Indian PII F1-Score:</strong> 0.990 (Outperforms Microsoft Presidio baseline by 139%).</li>
+              <li class="bullet-item"><strong>Secret Interception:</strong> 100.0% catch rate on AWS AKIA, GitHub PAT, Stripe tokens.</li>
+              <li class="bullet-item"><strong>Latency Overhead:</strong> Security scanner execution time < 2.0 ms.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">⏱️ Benchmark 3: Operational 42-Run Benchmark</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Dataset Composition:</strong> 42 full-lifecycle execution runs across 4 developer personas logged in workflow_runs.json.</li>
+              <li class="bullet-item"><strong>Average Pipeline Latency:</strong> 1,370 milliseconds total end-to-end execution time.</li>
+              <li class="bullet-item"><strong>Security Tax / Overhead:</strong> 18.4 ms (<2% of total pipeline latency).</li>
+              <li class="bullet-item"><strong>LLM-as-a-Judge Score:</strong> Average 4.90 / 5.0 quality rating across generated patches.</li>
+            </ul>
+          </div>
+
+          <div class="card purple-border">
+            <div class="card-title purple">🧪 Benchmark 4: Software Engineering Test Rigor</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Automated Test Suite:</strong> 220 automated unit & integration tests passing 100%.</li>
+              <li class="bullet-item"><strong>Security Detector Tests:</strong> 58 automated unit tests passing.</li>
+              <li class="bullet-item"><strong>AST Package Firewall Tests:</strong> 46 automated integration tests passing.</li>
+              <li class="bullet-item"><strong>AST Blast Radius & ReAct:</strong> 80 automated tests passing across graphs & sandbox.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-21">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "Slide 21 presents our quantitative empirical benchmarks across four specialized corpora: 100% precision and recall on our 100-package hallucination corpus; 0.990 F1 on multilingual Hinglish PII; average latency of 1,370 ms with security overhead under 20 ms in our 42-run operational benchmark; and 220 automated unit and integration tests passing with 100% CI coverage."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 22: VIVA DEFENSE GUIDE -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-22" data-title="Viva Defense Guide: Top 4 Questions">
+        <div class="slide-header">
+          <div class="slide-badge">Rubric Alignment: Comprehensive Defense Preparation</div>
+          <div class="slide-number-tag">SLIDE 22 / 24</div>
+          <h2 class="slide-title">Viva Defense Master Guide: Top 4 Examiner Questions & Proofs</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="card cyan-border">
+            <div class="card-title cyan">Q1: Why not rely on system prompt engineering for security?</div>
+            <div class="bullet-item"><strong>Defense:</strong> System prompts offer stochastic, probabilistic safety easily bypassed by direct jailbreaks and indirect prompt injections in repository code comments. In enterprise DevSecOps, safety must be deterministic. KAVACH intercepts threats BEFORE tokenization using compiled regex automata, Shannon entropy, and AST parsers.</div>
+          </div>
+          <div class="card green-border">
+            <div class="card-title green">Q2: How does KAVACH differ from standard RAG pipelines?</div>
+            <div class="bullet-item"><strong>Defense:</strong> Vanilla RAG is a static one-shot pipeline (query -> embed -> retrieve). KAVACH is Agentic RAG: the agent dynamically determines if retrieval is needed, preserves AST syntax boundaries, scrubs retrieved chunks for credentials, and grounds patches with static blast-radius call graphs.</div>
+          </div>
+          <div class="card gold-border">
+            <div class="card-title gold">Q3: How do you defeat package slopsquatting before install?</div>
+            <div class="bullet-item"><strong>Defense:</strong> Static SCA tools (Snyk/Dependabot) only check lockfiles post-commit. KAVACH's AST Package Firewall inspects Python Import nodes in agent memory, checks local files and stdlib (<0.1ms), and queries live PyPI JSON endpoints (<5ms). Non-existent packages are quarantined before code is written to disk.</div>
+          </div>
+          <div class="card purple-border">
+            <div class="card-title purple">Q4: How does your self-healing sandbox avoid infinite loops?</div>
+            <div class="bullet-item"><strong>Defense:</strong> We enforce a formal finite state machine with a hard mathematical upper bound of N = 3 iterations, strict 3.0s subprocess timeouts, and automatic escalation to a human gatekeeper via NEEDS_REVIEW state upon the 3rd failure.</div>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-22">
+          <div class="notes-header">🎙️ Speaker Script (All Members):</div>
+          <div class="notes-content">
+            "Slide 22 equips our team for the viva defense with bulletproof answers to the top 4 examiner questions: why prompt engineering fails for security, how Agentic RAG surpasses static RAG, how our AST firewall halts slopsquatting before install, and how our ReAct sandbox guarantees infinite loop immunity through bounded mathematical state limits."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 23: PRODUCTION ROADMAP -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-23" data-title="Production Roadmap: Phases 2 & 3">
+        <div class="slide-header">
+          <div class="slide-badge">Project Evolution: Next Sprints & Enterprise Horizon</div>
+          <div class="slide-number-tag">SLIDE 23 / 24</div>
+          <h2 class="slide-title">Production Roadmap & Future Expansion: Phases 2 & 3</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">🚀 Phase 2: Immediate Implementation Milestone</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>GitHub App PR Guardian:</strong> Event-driven GitHub webhook listener analyzing incoming PR diffs in real time; blocks merging if slopsquatted packages or unmasked credentials are found.</li>
+              <li class="bullet-item"><strong>Production PostgreSQL Persistence:</strong> Migrating from local SQLite to enterprise PostgreSQL with `pgvector` extension for scalable enterprise vector storage.</li>
+              <li class="bullet-item"><strong>eBPF Kernel Runtime Sandbox:</strong> Deploying Linux eBPF tracepoints (`sys_enter_execve`, `sys_enter_connect`) to intercept rogue network calls and neutralize reverse shells at the OS kernel layer.</li>
+              <li class="bullet-item"><strong>Active CI/CD Integration:</strong> Pre-built GitHub Actions and GitLab CI reusable workflows enforcing KAVACH security gates on every commit.</li>
+            </ul>
+          </div>
+
+          <div class="card gold-border">
+            <div class="card-title gold">🌐 Phase 3: Enterprise & Research Horizon</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Tree-sitter Polyglot AST Engine:</strong> Extending static AST blast-radius and package verification from Python to JavaScript/TypeScript (npm), Go (pkg.go.dev), and Rust (crates.io).</li>
+              <li class="bullet-item"><strong>Merkle Tree Cryptographic Audit Ledger:</strong> Immutable binary SHA-256 Merkle tree ledger ensuring tamper-proof non-repudiation and statutory compliance auditing under DPDP Act 2023.</li>
+              <li class="bullet-item"><strong>SLSA Level 3 SBOM Provenance:</strong> Automated issuance of signed CycloneDX v1.5 Software Bill of Materials tracking code patches, test logs, and dependency provenance.</li>
+              <li class="bullet-item"><strong>Collaborative Hierarchical Crews:</strong> Full integration of multi-agent crews (Supervisor, Sentinel, Analyst, Coder) via LangGraph and CrewAI.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-23">
+          <div class="notes-header">🎙️ Speaker Script (All Members):</div>
+          <div class="notes-content">
+            "Slide 23 presents our production roadmap. Phase 2 introduces our GitHub PR Guardian webhook, PostgreSQL persistence, and eBPF kernel security. Phase 3 scales KAVACH to polyglot codebases via Tree-sitter, Merkle tree cryptographic audit ledgers, and automated SLSA Level 3 SBOM generation."
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SLIDE 24: CONCLUSION & LIVE DEMO -->
+      <!-- ========================================== -->
+      <section class="slide" id="slide-24" data-title="Conclusion & Live Demonstration">
+        <div class="slide-header">
+          <div class="slide-badge">Summary & Acknowledgments</div>
+          <div class="slide-number-tag">SLIDE 24 / 24</div>
+          <h2 class="slide-title">Conclusion, Academic Deliverables & System Demonstration</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card cyan-border">
+            <div class="card-title cyan">✨ Summary of Research Contributions</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Paradigm Shift Validated:</strong> Demonstrated that deterministic pre-execution guardrails and AST verification solve the security and supply-chain vulnerabilities of autonomous coding agents.</li>
+              <li class="bullet-item"><strong>Zero Security Tax:</strong> Achieved 100% precision and recall on package hallucinations and cloud secrets while adding under 20 milliseconds (<2%) to overall pipeline latency.</li>
+              <li class="bullet-item"><strong>Statutory Privacy Compliance:</strong> Engineered the first multilingual Zero-Knowledge Token Vault fully compliant with the Indian DPDP Act 2023 for developer environments.</li>
+              <li class="bullet-item"><strong>Autonomous Self-Repair:</strong> Proved that bounded ReAct reflection loops achieve a 90% autonomous recovery rate on runtime test assertion failures.</li>
+            </ul>
+          </div>
+
+          <div class="card green-border">
+            <div class="card-title green">📦 Academic Deliverables & Live Demonstration</div>
+            <ul class="bullet-list">
+              <li class="bullet-item"><strong>Complete Source Codebase:</strong> Over 3,500 lines of verified Python backend and dark-mode frontend code packaged with Docker.</li>
+              <li class="bullet-item"><strong>Test Verification Suite:</strong> 220 passing automated unit, integration, and security gate tests.</li>
+              <li class="bullet-item"><strong>Protocols & API Exposure:</strong> 18 live FastAPI REST endpoints and Anthropic Model Context Protocol (MCP) tool server.</li>
+              <li class="bullet-item"><strong>Interactive Demonstration:</strong> Ready to demonstrate live prompt interception, blast-radius analysis, and self-healing patch generation.</li>
+              <li class="bullet-item"><strong>Special Thanks:</strong> Heartfelt gratitude to our faculty mentors Prof. Anusha Chhabra and Dr. Soharab Hossain Shaikh for their invaluable guidance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="speaker-notes-panel" id="notes-24">
+          <div class="notes-header">🎙️ Speaker Script (Dhruv Jain):</div>
+          <div class="notes-content">
+            "In conclusion, KAVACH proves that enterprises can harness the transformative productivity of autonomous coding agents without sacrificing supply chain integrity, credential privacy, or regression stability. All 220 automated tests are passing with 100% coverage. We thank our mentors Prof. Anusha Chhabra and Dr. Soharab Hossain Shaikh, and we are now delighted to conduct our live demonstration and take your questions."
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation & Keyboard Shortcuts -->
+  <footer>
+    <div class="key-hints">
+      <span><span class="key-badge">←</span> / <span class="key-badge">→</span> Navigate Slides</span>
+      <span><span class="key-badge">P</span> Toggle Presenter Notes</span>
+      <span><span class="key-badge">F</span> Fullscreen</span>
+    </div>
+    <div style="font-size: 12px; color: var(--muted);">
+      KAVACH © 2026 | BML Munjal University Capstone Project
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 24;
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#08090D',
+        primaryColor: '#12151D',
+        primaryTextColor: '#FFFFFF',
+        primaryBorderColor: '#00D2FF',
+        lineColor: '#00D2FF',
+        secondaryColor: '#181C28',
+        tertiaryColor: '#12151D'
+      }
+    });
+
+    // Populate Slide Selector
+    const select = document.getElementById('slideSelect');
+    for (let i = 1; i <= totalSlides; i++) {
+      const slideElem = document.getElementById(`slide-${i}`);
+      const title = slideElem ? slideElem.getAttribute('data-title') : `Slide ${i}`;
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${i.toString().padStart(2, '0')}. ${title}`;
+      select.appendChild(opt);
+    }
+
+    function showSlide(n) {
+      if (n < 1) n = 1;
+      if (n > totalSlides) n = totalSlides;
+
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(`slide-${n}`);
+      if (target) {
+        target.classList.add('active');
+        currentSlide = n;
+        select.value = n;
+        document.getElementById('progressBar').style.width = `${(n / totalSlides) * 100}%`;
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function jumpToSlide(n) {
+      showSlide(n);
+    }
+
+    function toggleNotes() {
+      const notes = document.getElementById(`notes-${currentSlide}`);
+      if (notes) {
+        notes.classList.toggle('active');
+      }
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'p' || e.key === 'P') {
+        toggleNotes();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      }
+    });
+  </script>
+</body>
+</html>

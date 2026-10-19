@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: results-cockpit
+  namespace: kavach-mesh
+  labels:
+    app: results-cockpit
+    tier: observability-hub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: results-cockpit
+  template:
+    metadata:
+      labels:
+        app: results-cockpit
+    spec:
+      containers:
+        - name: results-hub
+          image: ghcr.io/jaindhruv1923/kavach-results:v3.2.0
+          imagePullPolicy: IfNotPresent
+          command: ["python", "-m", "uvicorn", "results_hub:app", "--app-dir", "results", "--host", "0.0.0.0", "--port", "8090"]
+          ports:
+            - containerPort: 8090
+              name: http
+          env:
+            - name: PORT
+              value: "8090"
+            - name: PYTHONUNBUFFERED
+              value: "1"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /api/results/summary
+              port: 8090
+            initialDelaySeconds: 10
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: results-service
+  namespace: kavach-mesh
+  labels:
+    app: results-cockpit
+spec:
+  type: ClusterIP
+  selector:
+    app: results-cockpit
+  ports:
+    - name: http
+      port: 8090
+      targetPort: 8090

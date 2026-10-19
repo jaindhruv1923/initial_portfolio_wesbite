@@ -1,0 +1,129 @@
+{
+  "timestamp": "2026-09-25 22:50:19",
+  "experiment_1_package_firewall": {
+    "raw_llm": {
+      "TP": 0,
+      "FP": 0,
+      "TN": 50,
+      "FN": 50,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "CatchRate": 0.0
+    },
+    "stdlib_only": {
+      "TP": 50,
+      "FP": 50,
+      "TN": 0,
+      "FN": 0,
+      "Precision": 0.5,
+      "Recall": 1.0,
+      "F1": 0.6667,
+      "CatchRate": 100.0
+    },
+    "kavach_firewall": {
+      "TP": 50,
+      "FP": 0,
+      "TN": 50,
+      "FN": 0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "CatchRate": 100.0
+    }
+  },
+  "experiment_2_multilingual_pii": {
+    "naive_regex": {
+      "TP": 13,
+      "FP": 0,
+      "TN": 50,
+      "FN": 37,
+      "Precision": 1.0,
+      "Recall": 0.26,
+      "F1": 0.4127
+    },
+    "kavach_engine": {
+      "TP": 49,
+      "FP": 0,
+      "TN": 50,
+      "FN": 1,
+      "Precision": 1.0,
+      "Recall": 0.98,
+      "F1": 0.9899
+    }
+  },
+  "experiment_3_ablation": [
+    {
+      "config": "A: Full KAVACH Architecture",
+      "pii_f1": 0.962,
+      "supply_chain_catch": 100.0,
+      "patch_validity": 93.4,
+      "overhead_ms": 46.2
+    },
+    {
+      "config": "B: w/o AST Package Firewall",
+      "pii_f1": 0.962,
+      "supply_chain_catch": 0.0,
+      "patch_validity": 81.2,
+      "overhead_ms": 31.4
+    },
+    {
+      "config": "C: w/o Zero-Knowledge Vault",
+      "pii_f1": 0.895,
+      "supply_chain_catch": 100.0,
+      "patch_validity": 93.4,
+      "overhead_ms": 42.1
+    },
+    {
+      "config": "D: w/o AST Dependency Graph",
+      "pii_f1": 0.962,
+      "supply_chain_catch": 100.0,
+      "patch_validity": 72.8,
+      "overhead_ms": 27.6
+    },
+    {
+      "config": "E: w/o Reflexion Self-Healer",
+      "pii_f1": 0.962,
+      "supply_chain_catch": 100.0,
+      "patch_validity": 74.5,
+      "overhead_ms": 19.8
+    }
+  ],
+  "experiment_4_latency": {
+    "Prompt Injection & Delimiter Neutralization": {
+      "Mean": 0.08,
+      "StdDev": 0.3,
+      "P50": 0.03,
+      "P90": 0.03,
+      "P99": 1.67
+    },
+    "PII & Multilingual Detector": {
+      "Mean": 0.03,
+      "StdDev": 0.01,
+      "P50": 0.03,
+      "P90": 0.04,
+      "P99": 0.06
+    },
+    "Zero-Knowledge Token Vault": {
+      "Mean": 0.03,
+      "StdDev": 0.01,
+      "P50": 0.03,
+      "P90": 0.04,
+      "P99": 0.06
+    },
+    "AST Package Hallucination Firewall": {
+      "Mean": 0.07,
+      "StdDev": 0.01,
+      "P50": 0.06,
+      "P90": 0.09,
+      "P99": 0.13
+    },
+    "CycloneDX SBOM & SLSA Ledger": {
+      "Mean": 0.02,
+      "StdDev": 0.01,
+      "P50": 0.01,
+      "P90": 0.02,
+      "P99": 0.08
+    }
+  }
+}

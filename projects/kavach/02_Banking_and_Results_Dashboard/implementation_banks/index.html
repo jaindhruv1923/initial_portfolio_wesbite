@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bharat Core Bank &times; KAVACH Enterprise Banking Platform</title>
+  <meta name="description" content="Tier-1 Commercial Banking System governed by KAVACH AI Security Shield, featuring Autonomous Highway Car Simulation, Transaction History, Fixed Deposits, Virtual Cards, and NIST SHA3-512 Merkle HSM Audits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="top-nav">
+    <div class="brand-group">
+      <div class="bank-emblem">
+        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 3l9 7H3l9-7z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-title">BHARAT CORE BANK <span class="shield-badge">&times; KAVACH AI SHIELD</span></div>
+        <div class="brand-sub">Tier-1 Commercial Banking Engine &bull; RBI Master Direction &amp; DPDP Act 2023 Compliant</div>
+      </div>
+    </div>
+
+    <!-- Quick Stats & Actions -->
+    <div class="nav-actions">
+      <a href="/" target="_blank" class="btn-secondary btn-sm" style="text-decoration: none; font-weight: 600;" title="Open KAVACH DevSecOps Platform">
+        🛡️ KAVACH Platform
+      </a>
+      <a href="/results/" target="_blank" class="btn-primary btn-sm" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); text-decoration: none; color: #fff; font-weight: 700;" title="Open Unified Results Dashboard">
+        📊 Unified Results
+      </a>
+
+      <button id="btn-quick-highway" class="btn-primary btn-sm" title="Launch Autonomous Car on Highway">
+        <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15h.01M18 15h.01M10 15h4"/>
+        </svg>
+        Autonomous Highway
+      </button>
+
+      <button id="btn-open-guide" class="btn-secondary btn-sm" title="How does a bank use KAVACH?">
+        <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        Beginner Guide
+      </button>
+
+      <button id="btn-toggle-theme" class="btn-secondary btn-sm" title="Toggle Light/Dark Theme">
+        <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <span id="theme-btn-text">Dark Mode</span>
+      </button>
+
+      <button id="btn-reset-demo" class="btn-secondary btn-sm" title="Re-seed balances for demo">
+        <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M21 3v5h-5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16M3 21v-5h5"/>
+        </svg>
+        Reset State
+      </button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- Top Hero KPI Bar -->
+    <section class="kpi-banner">
+      <div class="kpi-card">
+        <div class="kpi-label">TOTAL PACKETS SCREENED</div>
+        <div class="kpi-val text-blue" id="metric-screened">0</div>
+        <div class="kpi-desc">Deep Packet Inspection</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">SETTLED TRANSFERS</div>
+        <div class="kpi-val text-emerald" id="metric-settled">0</div>
+        <div class="kpi-desc">Clean Core Banking Debits</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">ATTACKS INTERCEPTED</div>
+        <div class="kpi-val text-rose" id="metric-attacks">0</div>
+        <div class="kpi-desc">OWASP LLM01 Gate 02</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">PII ENTITIES MASKED</div>
+        <div class="kpi-val text-purple" id="metric-pii">0</div>
+        <div class="kpi-desc">DPDP Zero-Knowledge Vault</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">PENDING HITL ESCROW</div>
+        <div class="kpi-val text-amber" id="metric-hitl">0</div>
+        <div class="kpi-desc">&gt; ₹50,000 High-Value Reviews</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">MERKLE TREE HEIGHT</div>
+        <div class="kpi-val text-slate" id="metric-merkle">0</div>
+        <div class="kpi-desc">SHA3-512 Ledger Blocks</div>
+      </div>
+    </section>
+
+    <!-- Real-Time Interbank Settlement Ticker -->
+    <div class="interbank-ticker-banner" id="interbank-ticker">
+      <div class="ticker-badge">
+        <span class="ticker-pulse-dot"></span>
+        <span>NPCI / RBI NEFT-RTGS FEED</span>
+      </div>
+      <div class="ticker-content" id="ticker-content">
+        <span class="ticker-item">NPCI UPI 2.0: 18,420 TPS [HEALTHY]</span>
+        <span class="ticker-item">&bull;</span>
+        <span class="ticker-item">RBI RTGS Window: OPEN [SETTLED: INR 4,82,109 CR]</span>
+        <span class="ticker-item">&bull;</span>
+        <span class="ticker-item">NEFT Batch 17:00: CLEARED (99.998% SLA)</span>
+        <span class="ticker-item">&bull;</span>
+        <span class="ticker-item">KAVACH Threat Grid: ZERO INJECTIONS PASSED</span>
+        <span class="ticker-item">&bull;</span>
+        <span class="ticker-item">RBI CBDC e-INR Retail Interoperability: SYNCHRONIZED</span>
+        <span class="ticker-item">&bull;</span>
+        <span class="ticker-item">DPDP PII Zero-Knowledge Hashes: VERIFIED</span>
+      </div>
+    </div>
+
+    <!-- Taskbar Controls: Domain Switcher & Jump Selector -->
+    <div class="taskbar-header-row">
+      <div class="tabs-category-nav" id="tabs-category-nav">
+        <button class="cat-pill active" data-cat="all">All Modules (14)</button>
+        <button class="cat-pill" data-cat="core">Core Banking (4)</button>
+        <button class="cat-pill" data-cat="governance">AI Shield &amp; Saga (3)</button>
+        <button class="cat-pill" data-cat="products">CBDC &amp; Escrow (3)</button>
+        <button class="cat-pill" data-cat="audit">Stress &amp; Audits (4)</button>
+      </div>
+
+      <div class="taskbar-tools">
+        <select id="quick-jump-select" class="form-select form-select-sm" style="font-size: 11px; padding: 5px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-card); background: var(--bg-card); color: var(--text-body); font-weight: 600; cursor: pointer;">
+          <option value="" disabled selected>Jump to Module...</option>
+          <option value="tab-transfer">1. Transfer &amp; Shield</option>
+          <option value="tab-highway">2. Autonomous Highway</option>
+          <option value="tab-saga">3. Saga 2PC Orchestrator</option>
+          <option value="tab-maker-checker">4. Four-Eyes Dual Control</option>
+          <option value="tab-cbdc">5. RBI CBDC (e-INR) Vault</option>
+          <option value="tab-chaos">6. Chaos &amp; Concurrency</option>
+          <option value="tab-escrow">7. Time-Lock Escrow</option>
+          <option value="tab-basel-dossier">8. Basel III &amp; Dossier</option>
+          <option value="tab-history">9. Transaction History</option>
+          <option value="tab-cards">10. Cards &amp; Overdraft</option>
+          <option value="tab-deposits">11. Term Deposits (FD)</option>
+          <option value="tab-forex">12. Mandates &amp; Forex</option>
+          <option value="tab-hitl">13. Compliance &amp; AML</option>
+          <option value="tab-guide">14. Architecture Guide</option>
+        </select>
+        <button class="btn-tab-scroll" id="btn-scroll-tab-left" title="Scroll tabs left">&lt;</button>
+        <button class="btn-tab-scroll" id="btn-scroll-tab-right" title="Scroll tabs right">&gt;</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tab Bar -->
+    <nav class="dashboard-tabs" id="dashboard-tabs">
+      <button class="tab-btn active" data-tab="tab-transfer" data-category="core">
+        <span>1. Transfer &amp; Shield</span>
+      </button>
+
+      <button class="tab-btn highlight-tab" data-tab="tab-highway" id="tab-btn-highway" data-category="governance">
+        <span class="tab-pulse-dot"></span>
+        <span>2. Autonomous Highway</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-saga" data-category="governance">
+        <span>3. Saga 2PC Orchestrator</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-maker-checker" data-category="governance">
+        <span>4. Four-Eyes Dual Control</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-cbdc" data-category="products">
+        <span>5. RBI CBDC (e-INR) Vault</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-chaos" data-category="audit">
+        <span>6. Chaos &amp; Concurrency</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-escrow" data-category="products">
+        <span>7. Time-Lock Escrow</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-basel-dossier" data-category="audit">
+        <span>8. Basel III &amp; Dossier</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-history" id="tab-btn-history" data-category="core">
+        <span>9. Transaction History</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-cards" data-category="core">
+        <span>10. Cards &amp; Overdraft</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-deposits" data-category="core">
+        <span>11. Term Deposits (FD)</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-forex" data-category="products">
+        <span>12. Mandates &amp; Forex</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-hitl" data-category="audit">
+        <span>13. Compliance &amp; AML</span>
+        <span class="tab-badge" id="tab-hitl-badge">0</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-guide" data-category="audit">
+        <span>14. Architecture Guide</span>
+      </button>
+    </nav>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 1: Transfer & AI Shield -->
+    <!-- ==================================================================== -->
+    <section class="tab-content active" id="tab-transfer">
+      <div class="content-split-layout">
+        
+        <!-- Left: Form & Presets -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Governed Payment Console</h3>
+              <p class="card-box-sub">Enter a transfer or test adversarial vectors against KAVACH 5 Gates</p>
+            </div>
+            <span class="badge-outline">UPI / IMPS / NEFT / RTGS</span>
+          </div>
+
+          <!-- Presets -->
+          <div class="presets-wrapper">
+            <div class="presets-title">ONE-CLICK TEST VECTORS (Click to populate):</div>
+            <div class="presets-row">
+              <button class="preset-btn safe" data-type="normal" id="preset-normal">
+                <span class="status-indicator dot-green"></span>
+                <span class="preset-name">Normal Payment</span>
+                <span class="preset-hint">₹5,000 &bull; Clean memo</span>
+              </button>
+              <button class="preset-btn attack" data-type="injection" id="preset-injection">
+                <span class="status-indicator dot-red"></span>
+                <span class="preset-name">Prompt Injection</span>
+                <span class="preset-hint">Jailbreak attempt</span>
+              </button>
+              <button class="preset-btn hitl" data-type="hitl" id="preset-hitl">
+                <span class="status-indicator dot-amber"></span>
+                <span class="preset-name">High-Value (&gt;₹50k)</span>
+                <span class="preset-hint">₹75,000 &bull; Triggers hold</span>
+              </button>
+              <button class="preset-btn pii" data-type="pii" id="preset-pii">
+                <span class="status-indicator dot-purple"></span>
+                <span class="preset-name">PII Data Vector</span>
+                <span class="preset-hint">PAN + Aadhaar in memo</span>
+              </button>
+              <button class="preset-btn bypass" data-type="bypass" id="preset-bypass">
+                <span class="status-indicator dot-crimson"></span>
+                <span class="preset-name">Limit Override</span>
+                <span class="preset-hint">Adversarial bypass</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form id="transfer-form" class="transfer-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sender-select">SENDER ACCOUNT (DEBIT)</label>
+                <select id="sender-select" class="form-control" required></select>
+              </div>
+              <div class="form-group">
+                <label for="receiver-select">BENEFICIARY ACCOUNT (CREDIT)</label>
+                <select id="receiver-select" class="form-control" required></select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="amount-input">TRANSFER AMOUNT (₹)</label>
+                <div class="input-prefix-wrapper">
+                  <span class="prefix">₹</span>
+                  <input type="number" id="amount-input" class="form-control" value="5000" min="1" step="any" required>
+                </div>
+                <div class="quick-amounts">
+                  <span class="amount-tag" data-val="1000">₹1,000</span>
+                  <span class="amount-tag" data-val="15000">₹15,000</span>
+                  <span class="amount-tag highlight-hitl" data-val="75000">₹75,000 (HITL Review)</span>
+                  <span class="amount-tag highlight-hitl" data-val="250000">₹2,50,000 (HITL Review)</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="payment-mode">SETTLEMENT PROTOCOL</label>
+                <select id="payment-mode" class="form-control">
+                  <option value="UPI">UPI 2.0 (Real-Time Retail)</option>
+                  <option value="IMPS">IMPS (Immediate Payment)</option>
+                  <option value="NEFT">NEFT (Batch Settlement)</option>
+                  <option value="RTGS">RTGS (High-Value Gross)</option>
+                </select>
+                <div class="hitl-indicator" id="hitl-threshold-notice">
+                  Transfers exceeding ₹50,000 automatically hold funds for Senior Officer authorization under RBI rules.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="memo-header">
+                <label for="memo-input">PAYMENT REMARKS / AI PROMPT MEMO</label>
+                <div id="live-scan-badge" class="badge-scan clean">Clean Memo</div>
+              </div>
+              <textarea id="memo-input" class="form-control memo-textarea" rows="3" placeholder="Enter transaction purpose, remarks, or test an LLM injection payload..."></textarea>
+              <div class="live-token-preview" id="live-token-preview" style="display: none;">
+                <span class="preview-label">KAVACH VAULT TOKENIZED VIEW (WHAT THE CLOUD AI SEES):</span>
+                <code id="tokenized-memo-text"></code>
+              </div>
+            </div>
+
+            <button type="submit" id="btn-submit-transfer" class="btn-primary btn-block">
+              <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>EXECUTE GOVERNED TRANSFER</span>
+            </button>
+          </form>
+
+          <!-- Execution Result Card -->
+          <div id="execution-result-card" class="result-card" style="display: none;">
+            <div class="result-header">
+              <div class="result-title" id="result-title">Transaction Result</div>
+              <div class="result-badge" id="result-badge">STATUS</div>
+            </div>
+            <div class="result-body" id="result-body"></div>
+          </div>
+        </div>
+
+        <!-- Right: 5-Gate Visualizer & Packet Trace -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">KAVACH 5-Gate Inspection Pipeline</h3>
+              <p class="card-box-sub">Live packet inspection across privacy, safety, and audit layers</p>
+            </div>
+            <span class="live-status-pill"><span class="dot-live"></span> ACTIVE</span>
+          </div>
+
+          <!-- 5-Gate Interactive Pipeline Graphic -->
+          <div class="pipeline-track">
+            <!-- Gate 1 -->
+            <div class="gate-node" id="gate-1">
+              <div class="gate-icon-circle">
+                <svg class="svg-gate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <div class="gate-label">GATE 01</div>
+              <div class="gate-name">PII Vault</div>
+              <div class="gate-status">IDLE</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+
+            <!-- Gate 2 -->
+            <div class="gate-node" id="gate-2">
+              <div class="gate-icon-circle">
+                <svg class="svg-gate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div class="gate-label">GATE 02</div>
+              <div class="gate-name">Injection Shield</div>
+              <div class="gate-status">IDLE</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+
+            <!-- Gate 3 -->
+            <div class="gate-node" id="gate-3">
+              <div class="gate-icon-circle">
+                <svg class="svg-gate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div class="gate-label">GATE 03</div>
+              <div class="gate-name">ADK HITL Gate</div>
+              <div class="gate-status">IDLE</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+
+            <!-- Gate 4 -->
+            <div class="gate-node" id="gate-4">
+              <div class="gate-icon-circle">
+                <svg class="svg-gate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 3l9 7H3l9-7z"/>
+                </svg>
+              </div>
+              <div class="gate-label">GATE 04</div>
+              <div class="gate-name">Core Ledger</div>
+              <div class="gate-status">IDLE</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+
+            <!-- Gate 5 -->
+            <div class="gate-node" id="gate-5">
+              <div class="gate-icon-circle">
+                <svg class="svg-gate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <div class="gate-label">GATE 05</div>
+              <div class="gate-name">SHA3-512 Merkle</div>
+              <div class="gate-status">IDLE</div>
+            </div>
+          </div>
+
+          <!-- Trace output -->
+          <div class="packet-trace-box" id="packet-trace-box">
+            <span class="trace-label">PACKET TRACE:</span> Ready for transaction ingestion...
+          </div>
+
+          <!-- Banner to highway -->
+          <div class="highway-cta-card">
+            <div class="cta-left">
+              <div class="cta-title">Autonomous Highway Car Simulator</div>
+              <div class="cta-desc">Watch an armored courier car autonomously navigate through each security tollgate, stop at checkpoints, and deliver funds!</div>
+            </div>
+            <button id="btn-jump-highway" class="btn-primary btn-sm">Open Highway</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 2: AUTONOMOUS HIGHWAY CAR JOURNEY (THE SHOW-STOPPING SIMULATION) -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-highway">
+      <div class="card-box">
+        <div class="highway-control-panel">
+          <div>
+            <h3 class="card-box-title">Autonomous Transaction Highway (Packet Journey Simulation)</h3>
+            <p class="card-box-sub">Real-time vector road simulation: Car drives autonomously, stops at each security checkpoint, scans payload, lifts toll barrier, and delivers verified funds.</p>
+          </div>
+          <div class="highway-actions">
+            <select id="highway-scenario-select" class="form-control" style="width: 280px;">
+              <option value="normal">Scenario 1: Clean UPI Transfer (All 7 Stations Cleared)</option>
+              <option value="hitl">Scenario 2: High-Value Transfer (&gt; ₹50,000 Escrow Hold)</option>
+              <option value="attack">Scenario 3: Prompt Injection Attack (Quarantined at Radar)</option>
+              <option value="overdraft">Scenario 4: Insufficient Balance (Halted at Vault)</option>
+            </select>
+            <button id="btn-start-highway" class="btn-primary">
+              <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Launch Autonomous Car</span>
+            </button>
+            <button id="btn-pause-highway" class="btn-secondary">Pause / Resume</button>
+            <button id="btn-reset-highway" class="btn-secondary">Reset Track</button>
+          </div>
+        </div>
+
+        <!-- Highway Road Track Container -->
+        <div class="highway-track-viewport">
+          <div class="highway-road" id="highway-road">
+            <!-- Road Edge Curb Rails -->
+            <div class="curb curb-top"></div>
+            <div class="curb curb-bottom"></div>
+
+            <!-- Scrolling Lane Dividers -->
+            <div class="road-markings" id="road-markings"></div>
+
+            <!-- The Moving Armored Courier Car -->
+            <div class="highway-car" id="highway-car">
+              <div class="car-badge" id="car-speed-badge">65 KM/H</div>
+              <div class="car-light-cone" id="car-light-cone"></div>
+              <div class="car-body">
+                <div class="car-windshield"></div>
+                <div class="car-roof-scanner"></div>
+                <div class="car-wheels front"></div>
+                <div class="car-wheels rear"></div>
+              </div>
+            </div>
+
+            <!-- 7 Checkpoint Toll Stations -->
+            <div class="highway-stations-layer">
+              <!-- S1: Origin -->
+              <div class="highway-station" id="station-1" style="left: 2%;">
+                <div class="station-icon">S1</div>
+                <div class="station-name">Customer Origin</div>
+                <div class="station-barrier open" id="barrier-1"></div>
+                <div class="station-tag">PACKET_START</div>
+              </div>
+
+              <!-- S2: Gate 01 PII Vault -->
+              <div class="highway-station" id="station-2" style="left: 17%;">
+                <div class="station-icon">S2</div>
+                <div class="station-name">Gate 01: PII Vault</div>
+                <div class="station-barrier closed" id="barrier-2"></div>
+                <div class="station-tag">DE_IDENTIFY</div>
+              </div>
+
+              <!-- S3: Gate 02 Injection Radar -->
+              <div class="highway-station" id="station-3" style="left: 33%;">
+                <div class="station-icon">S3</div>
+                <div class="station-name">Gate 02: Radar Shield</div>
+                <div class="station-barrier closed" id="barrier-3"></div>
+                <div class="station-tag">ADVERSARIAL_SCAN</div>
+              </div>
+
+              <!-- S4: Gate 03 HITL Escrow -->
+              <div class="highway-station" id="station-4" style="left: 50%;">
+                <div class="station-icon">S4</div>
+                <div class="station-name">Gate 03: HITL Escrow</div>
+                <div class="station-barrier closed" id="barrier-4"></div>
+                <div class="station-tag">OFFICER_REVIEW</div>
+              </div>
+
+              <!-- S5: Gate 04 Core Ledger -->
+              <div class="highway-station" id="station-5" style="left: 67%;">
+                <div class="station-icon">S5</div>
+                <div class="station-name">Gate 04: Ledger Vault</div>
+                <div class="station-barrier closed" id="barrier-5"></div>
+                <div class="station-tag">OCC_SETTLE</div>
+              </div>
+
+              <!-- S6: Gate 05 SHA3-512 Merkle & HSM -->
+              <div class="highway-station" id="station-6" style="left: 83%;">
+                <div class="station-icon">S6</div>
+                <div class="station-name">Gate 05: HSM Anchor</div>
+                <div class="station-barrier closed" id="barrier-6"></div>
+                <div class="station-tag">FIPS_140_3_SEAL</div>
+              </div>
+
+              <!-- S7: Beneficiary Destination -->
+              <div class="highway-station" id="station-7" style="left: 96%;">
+                <div class="station-icon">S7</div>
+                <div class="station-name">Beneficiary Bay</div>
+                <div class="station-barrier open" id="barrier-7"></div>
+                <div class="station-tag">DELIVERED</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Telemetry HUD Bar below the Road -->
+        <div class="highway-telemetry-hud">
+          <div class="telemetry-card">
+            <div class="hud-label">VEHICLE SPEED</div>
+            <div class="hud-val text-blue" id="hud-speed">0 KM/H</div>
+            <div class="hud-sub" id="hud-car-state">PARKED AT ORIGIN</div>
+          </div>
+          <div class="telemetry-card">
+            <div class="hud-label">CURRENT CHECKPOINT</div>
+            <div class="hud-val text-emerald" id="hud-station">Station 1: Customer Origin</div>
+            <div class="hud-sub" id="hud-station-sub">Awaiting driver ignition</div>
+          </div>
+          <div class="telemetry-card">
+            <div class="hud-label">INSPECTION TELEMETRY</div>
+            <div class="hud-val text-purple" id="hud-inspection">PACKET_READY</div>
+            <div class="hud-sub" id="hud-latency">Latency: 0.0 ms</div>
+          </div>
+          <div class="telemetry-card">
+            <div class="hud-label">SECURITY VERDICT</div>
+            <div class="hud-val text-slate" id="hud-verdict">STANDBY</div>
+            <div class="hud-sub" id="hud-verdict-sub">Zero deviations detected</div>
+          </div>
+        </div>
+
+        <!-- Terminal Logs Box -->
+        <div class="highway-log-terminal" id="highway-log-terminal">
+          <div class="terminal-line">[HIGHWAY SYSTEM READY] Select a scenario route and click "Launch Autonomous Car" to begin autonomous transaction driving simulation.</div>
+        </div>
+
+        <!-- OpenTelemetry Trace Spans Waterfall View -->
+        <div class="otel-trace-container" id="highway-otel-waterfall">
+          <div class="otel-header">
+            <div>
+              <span style="font-weight: 800; color: #38bdf8;">OPENTELEMETRY DISTRIBUTED TRACE</span>
+              <span style="color: #94a3b8; font-size: 10px; margin-left: 8px;">W3C TRACE CONTEXT PROPAGATION</span>
+            </div>
+            <div class="otel-traceparent" id="otel-traceparent-val">00-7f9a8b1c4e20d918-a421fb90c128-01</div>
+          </div>
+          <div class="otel-spans-list" id="otel-spans-list">
+            <div class="otel-span-row">
+              <span class="otel-span-name">client_gateway_ingress</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 15%;"></div></div>
+              <span class="otel-span-meta">0.42 ms [OK]</span>
+            </div>
+            <div class="otel-span-row">
+              <span class="otel-span-name">pii_token_vault_masking</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 32%;"></div></div>
+              <span class="otel-span-meta">1.15 ms [OK]</span>
+            </div>
+            <div class="otel-span-row">
+              <span class="otel-span-name">polyglot_injection_detector</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 58%;"></div></div>
+              <span class="otel-span-meta">2.34 ms [OK]</span>
+            </div>
+            <div class="otel-span-row">
+              <span class="otel-span-name">statutory_hitl_escrow</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 24%;"></div></div>
+              <span class="otel-span-meta">0.80 ms [OK]</span>
+            </div>
+            <div class="otel-span-row">
+              <span class="otel-span-name">core_banking_occ_ledger</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 78%;"></div></div>
+              <span class="otel-span-meta">3.20 ms [OK]</span>
+            </div>
+            <div class="otel-span-row">
+              <span class="otel-span-name">merkle_sha3_anchor</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 38%;"></div></div>
+              <span class="otel-span-meta">1.45 ms [OK]</span>
+            </div>
+            <div class="otel-span-row">
+              <span class="otel-span-name">hsm_fips140_level3_seal</span>
+              <div class="otel-span-bar-wrapper"><div class="otel-span-bar" style="width: 28%;"></div></div>
+              <span class="otel-span-meta">0.95 ms [OK]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 3: DISTRIBUTED SAGA 2PC ORCHESTRATOR -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-saga">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Distributed Saga Orchestrator (ACID Compensating 2PC Pipeline)</h3>
+            <p class="card-box-sub">Eliminates distributed locking bottlenecks across banking microservices. Automatically coordinates escrow reservations and executes mathematical compensating reversals upon any mid-flight security or ledger fault.</p>
+          </div>
+          <div class="history-actions">
+            <span style="font-size: 11px; font-weight: 800; background: #eff6ff; color: #1d4ed8; padding: 4px 10px; border-radius: 9999px; border: 1px solid #bfdbfe;">
+              Zero Balance Leakage Guarantee
+            </span>
+          </div>
+        </div>
+
+        <div class="governed-transfer-grid" style="margin-top: 14px;">
+          <div class="form-panel">
+            <div class="form-group">
+              <label class="form-label">SENDER ACCOUNT (DEBIT)</label>
+              <select id="saga-sender-select" class="form-control">
+                <option value="SBIN00012345678">Dhruv Jain (SBIN00012345678) — Retail Savings</option>
+                <option value="HDFC00098765432">CyberTech Corp (HDFC00098765432) — Corporate</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">BENEFICIARY ACCOUNT (CREDIT)</label>
+              <select id="saga-receiver-select" class="form-control">
+                <option value="ICIC00045678901">Ananya Sharma (ICIC00045678901) — Student</option>
+                <option value="UTIB00011223344">Apex Merchant (UTIB00011223344) — Settlement</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">TRANSFER AMOUNT (INR)</label>
+              <input type="number" id="saga-amount-input" class="form-control" value="5000" min="100">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">PAYMENT MEMO</label>
+              <input type="text" id="saga-memo-input" class="form-control" value="Saga Distributed Milestone Settlement">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 14px;">
+              <button id="btn-run-clean-saga" class="btn-primary" style="flex: 1;">
+                Execute Clean Saga (All 4 Steps Commit)
+              </button>
+              <button id="btn-run-chaos-saga" class="btn-secondary" style="flex: 1; border-color: #fca5a5; color: #b91c1c; background: #fef2f2;">
+                Simulate Chaos Failure (Step 2) -> Trigger Compensating Reversal
+              </button>
+            </div>
+          </div>
+
+          <div class="status-panel">
+            <div class="status-panel-title">LIVE SAGA 4-PHASE STATE MACHINE</div>
+            <div class="saga-stepper" id="saga-stepper-container">
+              <div class="saga-step-card" id="saga-step-1">
+                <div class="saga-step-num">STEP 01</div>
+                <div class="saga-step-name">Escrow Reserve</div>
+                <div class="saga-step-status saga-status-pending" id="saga-status-1">IDLE</div>
+              </div>
+              <div class="saga-step-card" id="saga-step-2">
+                <div class="saga-step-num">STEP 02</div>
+                <div class="saga-step-name">Security &amp; AML</div>
+                <div class="saga-step-status saga-status-pending" id="saga-status-2">IDLE</div>
+              </div>
+              <div class="saga-step-card" id="saga-step-3">
+                <div class="saga-step-num">STEP 03</div>
+                <div class="saga-step-name">Beneficiary Credit</div>
+                <div class="saga-step-status saga-status-pending" id="saga-status-3">IDLE</div>
+              </div>
+              <div class="saga-step-card" id="saga-step-4">
+                <div class="saga-step-num">STEP 04</div>
+                <div class="saga-step-name">Merkle HSM Seal</div>
+                <div class="saga-step-status saga-status-pending" id="saga-status-4">IDLE</div>
+              </div>
+            </div>
+
+            <div id="saga-telemetry-box" class="packet-trace-box" style="margin-top: 10px; min-height: 100px;">
+              Ready for Saga execution... Select an action on the left to observe atomic multi-phase orchestration.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 4: RBI FOUR-EYES DUAL CONTROL (MAKER-CHECKER) -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-maker-checker">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">RBI Statutory Four-Eyes Dual-Control Workflow (Maker-Checker)</h3>
+            <p class="card-box-sub">Mandatory regulatory governance for institutional transactions exceeding ₹5,00,000 and critical bank parameter changes. Strictly enforces cryptographic segregation of duties.</p>
+          </div>
+          <span style="font-size: 11px; font-weight: 800; background: #ecfdf5; color: #047857; padding: 4px 10px; border-radius: 9999px; border: 1px solid #a7f3d0;">
+            100% Segregation of Duties Enforced
+          </span>
+        </div>
+
+        <div class="mc-grid">
+          <div class="form-panel">
+            <div class="status-panel-title">1. MAKER INITIATION CONSOLE</div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label">MAKER OFFICER IDENTITY</label>
+              <input type="text" id="mc-maker-id" class="form-control" value="MAKER-OFFICER-PRIYA" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ACTION PROPOSAL TYPE</label>
+              <select id="mc-action-type" class="form-control">
+                <option value="HIGH_VALUE_TRANSFER">Institutional RTGS Transfer (&gt; ₹5,00,000)</option>
+                <option value="OVERDRAFT_OVERRIDE">Executive Credit Limit Override</option>
+                <option value="GLOBAL_KILLSWITCH">Platform Circuit Breaker Toggle</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">PROPOSED AMOUNT (INR)</label>
+              <input type="number" id="mc-amount" class="form-control" value="1500000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">STATUTORY BUSINESS JUSTIFICATION</label>
+              <input type="text" id="mc-justification" class="form-control" value="Corporate vendor quarterly cloud infrastructure deployment invoice">
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 14px;">
+              <button id="btn-submit-maker" class="btn-primary" style="flex: 1;">
+                Sign &amp; Submit Maker Proposal
+              </button>
+            </div>
+          </div>
+
+          <div class="status-panel">
+            <div class="status-panel-title">2. CHECKER SUPERVISORY AUDIT QUEUE</div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label">CHECKER AUDITOR IDENTITY</label>
+              <input type="text" id="mc-checker-id" class="form-control" value="CHECKER-OFFICER-ARUN">
+            </div>
+            <div id="mc-requests-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto; margin-top: 10px;">
+              <!-- Dynamic Request Cards -->
+            </div>
+            <div style="margin-top: 14px; border-top: 1px dashed #cbd5e1; padding-top: 10px;">
+              <button id="btn-test-four-eyes-violation" class="btn-secondary btn-sm" style="width: 100%; border-color: #fca5a5; color: #b91c1c;">
+                Test Four-Eyes Violation: Attempt Self-Approval by Same Officer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 5: RBI CBDC (DIGITAL RUPEE / e-INR) VAULT -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-cbdc">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">RBI CBDC (Digital Rupee / e-INR) Tokenized Bearer Vault</h3>
+            <p class="card-box-sub">Central Bank Digital Currency bearer tokens with cryptographic serial numbers, discrete currency denominations, atomic P2P transfers, and double-spend validation.</p>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 10px; font-weight: 700; color: #64748b;">ACTIVE CBDC WALLET BALANCE</div>
+            <div id="cbdc-wallet-balance-header" style="font-size: 22px; font-weight: 900; color: #0284c7; font-family: var(--font-mono);">e₹ 0.00</div>
+          </div>
+        </div>
+
+        <div class="cbdc-container">
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+            <div class="form-panel">
+              <label class="form-label">MINT e-INR FROM BANK ACCOUNT</label>
+              <div style="display: flex; gap: 8px; margin-top: 6px;">
+                <input type="number" id="cbdc-mint-amount" class="form-control" value="2700" step="50" min="50">
+                <button id="btn-cbdc-mint" class="btn-primary btn-sm" style="white-space: nowrap;">Mint e₹ Notes</button>
+              </div>
+              <div style="font-size: 10px; color: #64748b; margin-top: 4px;">Debits SBI account and issues official bearer tokens</div>
+            </div>
+
+            <div class="form-panel">
+              <label class="form-label">P2P TRANSFER TO MERCHANT</label>
+              <div style="display: flex; gap: 8px; margin-top: 6px;">
+                <input type="number" id="cbdc-transfer-amount" class="form-control" value="500" step="50" min="50">
+                <button id="btn-cbdc-transfer" class="btn-secondary btn-sm" style="white-space: nowrap;">Transfer Notes</button>
+              </div>
+              <div style="font-size: 10px; color: #64748b; margin-top: 4px;">Transfers to WALLET-MERCHANT-CBDC with double-spend proof</div>
+            </div>
+
+            <div class="form-panel">
+              <label class="form-label">REDEEM e-INR BACK TO BANK</label>
+              <div style="display: flex; gap: 8px; margin-top: 6px;">
+                <input type="number" id="cbdc-redeem-amount" class="form-control" value="2000" step="50" min="50">
+                <button id="btn-cbdc-redeem" class="btn-secondary btn-sm" style="white-space: nowrap;">Redeem to Account</button>
+              </div>
+              <div style="font-size: 10px; color: #64748b; margin-top: 4px;">Burns tokens and restores core bank balance</div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="font-size: 12px; font-weight: 800; color: #0f172a;">WALLET BEARER TOKENS (DISCRETE DENOMINATIONS)</div>
+              <div id="cbdc-notes-count-badge" style="font-size: 10px; font-weight: 700; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 9999px;">0 Tokens Held</div>
+            </div>
+            <div class="cbdc-notes-grid" id="cbdc-notes-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 6: CHAOS ENGINEERING & OCC CONCURRENCY WORKBENCH -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-chaos">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Chaos Engineering &amp; OCC Concurrency Stress Workbench</h3>
+            <p class="card-box-sub">Demonstrates system resilience under concurrent load. Spawns 15-20 simultaneous worker threads competing to debit the exact same account version to verify Optimistic Concurrency Control (OCC) prevents race conditions and balance corruption.</p>
+          </div>
+          <span style="font-size: 11px; font-weight: 800; background: #fef2f2; color: #991b1b; padding: 4px 10px; border-radius: 9999px; border: 1px solid #fecaca;">
+            ACID Invariant Validation
+          </span>
+        </div>
+
+        <div class="chaos-benchmark-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 10px;">
+            <div>
+              <span style="font-weight: 800; color: #38bdf8; font-size: 13px;">OCC CONCURRENCY RACE INJECTOR</span>
+              <span style="font-size: 11px; color: #94a3b8; margin-left: 10px;">Thread-Safety &amp; Reentrant Lock Stress Test</span>
+            </div>
+            <button id="btn-run-chaos-race" class="btn-primary" style="background: #2563eb;">
+              Launch 15-Thread Concurrent Race
+            </button>
+          </div>
+
+          <div class="chaos-metrics-grid">
+            <div class="chaos-stat-box">
+              <div class="chaos-stat-num text-blue" id="chaos-workers-num">0</div>
+              <div class="chaos-stat-label">WORKERS DISPATCHED</div>
+            </div>
+            <div class="chaos-stat-box">
+              <div class="chaos-stat-num text-emerald" id="chaos-succeeded-num">0</div>
+              <div class="chaos-stat-label">DEBITS COMMITTED</div>
+            </div>
+            <div class="chaos-stat-box">
+              <div class="chaos-stat-num text-amber" id="chaos-conflicts-num">0</div>
+              <div class="chaos-stat-label">OCC CONFLICTS PREVENTED</div>
+            </div>
+            <div class="chaos-stat-box">
+              <div class="chaos-stat-num text-purple" id="chaos-latency-num">0 ms</div>
+              <div class="chaos-stat-label">P95 EXECUTION LATENCY</div>
+            </div>
+          </div>
+
+          <div id="chaos-proof-box" style="background: #1e293b; border-radius: var(--radius-sm); padding: 12px; font-family: var(--font-mono); font-size: 11px; color: #e2e8f0; line-height: 1.6;">
+            [BENCHMARK STANDBY] Click "Launch 15-Thread Concurrent Race" to initiate stress injection. The system will dispatch 15 real Python worker threads competing on account version 1.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 7: TIME-LOCK SMART ESCROW & EMERGENCY CLAWBACK -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-escrow">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Time-Lock Smart Escrow with Real-Time Emergency Clawback</h3>
+            <p class="card-box-sub">Consumer protection protocol. Outbound transfers to unverified accounts enter a revocable 60-second time-lock escrow window. If the sender discovers a phishing trap, clicking Emergency Clawback immediately cancels the transfer and refunds 100% of funds.</p>
+          </div>
+          <span style="font-size: 11px; font-weight: 800; background: #fffbeb; color: #b45309; padding: 4px 10px; border-radius: 9999px; border: 1px solid #fde68a;">
+            Phishing Loss Prevention
+          </span>
+        </div>
+
+        <div class="governed-transfer-grid" style="margin-top: 14px;">
+          <div class="form-panel">
+            <div class="status-panel-title">1. INITIATE TIME-LOCK ESCROW</div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label">SENDER ACCOUNT</label>
+              <select id="escrow-sender-select" class="form-control">
+                <option value="SBIN00012345678">Dhruv Jain (SBIN00012345678)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">BENEFICIARY ACCOUNT</label>
+              <select id="escrow-receiver-select" class="form-control">
+                <option value="ICIC00045678901">Ananya Sharma (ICIC00045678901)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">AMOUNT (INR)</label>
+              <input type="number" id="escrow-amount-input" class="form-control" value="10000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">REVOCABLE WINDOW DURATION</label>
+              <select id="escrow-duration-select" class="form-control">
+                <option value="60">60 Seconds Protection Window</option>
+                <option value="120">120 Seconds Protection Window</option>
+                <option value="300">300 Seconds Protection Window</option>
+              </select>
+            </div>
+            <button id="btn-create-escrow" class="btn-primary" style="margin-top: 10px; width: 100%;">
+              Deposit Funds into Revocable Time-Lock Escrow
+            </button>
+          </div>
+
+          <div class="status-panel">
+            <div class="status-panel-title">2. ACTIVE PROTECTED ESCROWS</div>
+            <div id="escrows-list-container" style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+              <!-- Dynamic Escrows -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 8: BASEL III PRUDENTIAL & REGULATORY COMPLIANCE DOSSIER -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-basel-dossier">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Basel III Prudential Solvency &amp; Statutory Regulatory Dossier</h3>
+            <p class="card-box-sub">Supervisory compliance metrics under the Reserve Bank of India Basel III guidelines and automated institutional audit certificate generation for banking evaluators.</p>
+          </div>
+          <button id="btn-print-dossier" class="btn-primary btn-sm">Print Audit Dossier</button>
+        </div>
+
+        <div class="basel-grid" style="margin-top: 14px;">
+          <div class="basel-card">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b;">CAPITAL ADEQUACY (CRAR)</div>
+            <div class="basel-value" id="basel-crar-val">16.4%</div>
+            <div class="basel-badge-ok">RBI Minimum: 11.5% — FULLY COMPLIANT</div>
+          </div>
+
+          <div class="basel-card">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b;">LIQUIDITY COVERAGE RATIO (LCR)</div>
+            <div class="basel-value" id="basel-lcr-val" style="color: #10b981;">142.8%</div>
+            <div class="basel-badge-ok">RBI Minimum: 100% — SUPERIOR LIQUIDITY</div>
+          </div>
+
+          <div class="basel-card">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b;">STATUTORY RESERVING (SLR &amp; CRR)</div>
+            <div class="basel-value" style="font-size: 20px; color: #8b5cf6;">18.0% / 4.5%</div>
+            <div class="basel-badge-ok">Held in G-Secs &amp; RBI Cash Vault</div>
+          </div>
+        </div>
+
+        <div class="dossier-paper" style="margin-top: 20px;" id="dossier-paper-content">
+          <div class="dossier-banner">
+            <div>
+              <div style="font-size: 16px; font-weight: 900; letter-spacing: 0.5px;">RESERVE BANK OF INDIA STATUTORY COMPLIANCE DOSSIER</div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Framework: RBI Master Direction on IT Governance, Risk &amp; Controls (2024)</div>
+            </div>
+            <div class="dossier-seal-box">
+              OFFICIALLY AUDITED<br>FIPS 140-2 LEVEL 3
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; font-size: 12px;">
+            <div>
+              <div style="font-weight: 700; color: #64748b;">SUPERVISORY AUDIT DOSSIER ID</div>
+              <div id="dossier-id-display" style="font-family: var(--font-mono); font-weight: 800;">RBI-AUDIT-2026-F401A</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; color: #64748b;">STATUTORY PRIVACY MANDATE</div>
+              <div>Indian DPDP Act 2023 Section 8 (Token Vault Enforced)</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; color: #64748b;">POST-QUANTUM CRYPTOGRAPHIC HASH</div>
+              <div id="dossier-merkle-display" style="font-family: var(--font-mono); font-size: 10px; word-break: break-all;">NIST FIPS 202 SHA3-512 KECCAK</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; color: #64748b;">HSM ENCLAVE ATTESTATION SEAL</div>
+              <div id="dossier-hsm-display" style="font-family: var(--font-mono); font-size: 10px; word-break: break-all;">HMAC-SHA3-512 Level 3 Root Signature Verified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 3: TRANSACTION HISTORY & E-RECEIPTS -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-history">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Universal Transaction Ledger &amp; e-Receipts</h3>
+            <p class="card-box-sub">Search, filter, inspect cryptographic e-Receipts, and export audited statements</p>
+          </div>
+          <div class="history-actions">
+            <button id="btn-export-csv" class="btn-secondary btn-sm">Export CSV</button>
+            <button id="btn-export-json" class="btn-secondary btn-sm">Export JSON</button>
+            <button id="btn-refresh-history" class="btn-secondary btn-sm">Refresh Ledger</button>
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="history-filter-bar">
+          <input type="text" id="history-search-input" class="form-control" placeholder="Search by Txn ID, Account, or Memo keyword...">
+          <select id="history-account-filter" class="form-control" style="width: 220px;">
+            <option value="ALL">All Accounts</option>
+            <option value="SBIN00012345678">Dhruv Jain (SBIN)</option>
+            <option value="HDFC00098765432">CyberTech Corp (HDFC)</option>
+            <option value="ICIC00045678901">Ananya Sharma (ICIC)</option>
+            <option value="UTIB00011223344">Apex Merchant (UTIB)</option>
+          </select>
+          <select id="history-type-filter" class="form-control" style="width: 140px;">
+            <option value="ALL">All Types</option>
+            <option value="UPI">UPI</option>
+            <option value="IMPS">IMPS</option>
+            <option value="NEFT">NEFT</option>
+            <option value="RTGS">RTGS</option>
+          </select>
+          <select id="history-status-filter" class="form-control" style="width: 160px;">
+            <option value="ALL">All Statuses</option>
+            <option value="SUCCESS">SUCCESS</option>
+            <option value="BLOCKED_BY_KAVACH">BLOCKED</option>
+            <option value="FAILED">FAILED</option>
+          </select>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>TXN ID</th>
+                <th>TIMESTAMP</th>
+                <th>SENDER (DEBIT)</th>
+                <th>BENEFICIARY (CREDIT)</th>
+                <th>AMOUNT</th>
+                <th>TYPE</th>
+                <th>PURPOSE / MEMO</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="history-table-body">
+              <tr><td colspan="9" style="text-align: center; color: #64748b;">Loading transaction ledger...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 4: VIRTUAL DEBIT CARDS & OVERDRAFT CREDIT -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-cards">
+      <div class="content-split-layout">
+        
+        <!-- Left: Virtual Card Preview & Controls -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Tokenized Virtual Debit Cards</h3>
+              <p class="card-box-sub">Instant lock/freeze, dynamic CVV masking, and daily transaction caps</p>
+            </div>
+            <span class="badge-outline">RuPay &bull; Visa Platinum</span>
+          </div>
+
+          <div class="card-selector-row">
+            <label for="card-select">SELECT CARD:</label>
+            <select id="card-select" class="form-control" style="width: 280px;"></select>
+          </div>
+
+          <!-- 3D Glass Virtual Card -->
+          <div class="virtual-card-wrapper">
+            <div class="virtual-card-surface" id="virtual-card-surface">
+              <div class="card-top-row">
+                <span class="card-chip"></span>
+                <span class="card-network" id="card-network-badge">RUPAY PLATINUM</span>
+              </div>
+              <div class="card-number-display" id="card-number-display">4532 8912 4410 7890</div>
+              <div class="card-details-row">
+                <div>
+                  <div class="card-field-label">CARDHOLDER</div>
+                  <div class="card-field-val" id="card-holder-display">DHRUV JAIN</div>
+                </div>
+                <div>
+                  <div class="card-field-label">EXPIRES</div>
+                  <div class="card-field-val" id="card-expiry-display">10/29</div>
+                </div>
+                <div>
+                  <div class="card-field-label">CVV</div>
+                  <div class="card-field-val" id="card-cvv-display">***</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Controls -->
+          <div class="card-controls-panel">
+            <button id="btn-toggle-card-freeze" class="btn-secondary btn-block">
+              <span id="card-freeze-status-text">Freeze / Lock Card</span>
+            </button>
+            <button id="btn-toggle-cvv" class="btn-secondary btn-block">
+              <span id="cvv-btn-text">Reveal CVV (Vault Tokenized)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Overdraft & CIBIL Bureau Credit Facility -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Instant Overdraft Credit Line</h3>
+              <p class="card-box-sub">Overdraft buffer linked to account balance &amp; CIBIL Bureau assessment</p>
+            </div>
+            <span class="badge-outline">Bureau Score: 780</span>
+          </div>
+
+          <div class="overdraft-widget">
+            <div class="od-metric-row">
+              <div class="od-card">
+                <div class="od-label">APPROVED OD LIMIT</div>
+                <div class="od-val text-blue" id="od-approved-limit">₹50,000.00</div>
+              </div>
+              <div class="od-card">
+                <div class="od-label">OD CURRENTLY USED</div>
+                <div class="od-val text-amber" id="od-used-amount">₹0.00</div>
+              </div>
+              <div class="od-card">
+                <div class="od-label">AVAILABLE BUFFER</div>
+                <div class="od-val text-emerald" id="od-available-buffer">₹50,000.00</div>
+              </div>
+            </div>
+
+            <div class="od-form">
+              <label for="od-request-input">REQUEST ENHANCED OVERDRAFT LIMIT (₹):</label>
+              <div class="input-prefix-wrapper">
+                <span class="prefix">₹</span>
+                <input type="number" id="od-request-input" class="form-control" value="75000" min="5000" step="1000">
+              </div>
+              <button id="btn-apply-overdraft" class="btn-primary btn-block" style="margin-top: 10px;">
+                Instant CIBIL Assessment &amp; Apply
+              </button>
+            </div>
+
+            <div class="info-card" style="margin-top: 14px;">
+              <div class="info-card-title">How Overdraft Protects Transfers:</div>
+              <div class="info-card-text">
+                When your savings balance hits ₹0, approved transactions seamlessly draw from your Overdraft line without bouncing or failing, preventing disrupted business operations.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 5: TERM DEPOSITS (FD) & BENEFICIARIES -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-deposits">
+      <div class="content-split-layout">
+        
+        <!-- Left: Fixed Deposit Studio -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Book a Term Deposit (Fixed Deposit)</h3>
+              <p class="card-box-sub">Compound quarterly interest with statutory liquidity guarantees</p>
+            </div>
+            <span class="badge-outline">Up to 7.85% p.a.</span>
+          </div>
+
+          <form id="fd-booking-form" class="fd-form">
+            <div class="form-group">
+              <label for="fd-account-select">DEBIT ACCOUNT</label>
+              <select id="fd-account-select" class="form-control" required></select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fd-principal-input">PRINCIPAL AMOUNT (₹)</label>
+                <div class="input-prefix-wrapper">
+                  <span class="prefix">₹</span>
+                  <input type="number" id="fd-principal-input" class="form-control" value="50000" min="1000" step="1000" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="fd-tenure-select">TENURE</label>
+                <select id="fd-tenure-select" class="form-control">
+                  <option value="6">6 Months @ 6.80% p.a.</option>
+                  <option value="12" selected>12 Months @ 7.10% p.a.</option>
+                  <option value="24">24 Months @ 7.35% p.a.</option>
+                  <option value="36">36 Months @ 7.50% p.a.</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="fd-senior-citizen">
+              <label for="fd-senior-citizen">Senior Citizen (+0.50% bonus interest rate)</label>
+            </div>
+
+            <div class="fd-yield-box">
+              <div class="yield-label">ESTIMATED MATURITY PAYOUT:</div>
+              <div class="yield-val" id="fd-yield-display">₹53,645.00</div>
+              <div class="yield-sub" id="fd-yield-sub">Interest Earned: ₹3,645.00 (Quarterly Compounding)</div>
+            </div>
+
+            <button type="submit" id="btn-create-fd" class="btn-primary btn-block">Book Fixed Deposit</button>
+          </form>
+
+          <!-- Active FDs Table -->
+          <div style="margin-top: 20px;">
+            <div class="stream-header-title">Active Fixed Deposits:</div>
+            <div id="fd-list-container" class="fd-items-list">
+              <div class="loading-state">Loading term deposits...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Beneficiary Management -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Registered Beneficiaries &amp; Cooling-Off Guardrail</h3>
+              <p class="card-box-sub">RBI-mandated 4-hour cooling limit (max ₹50,000) on newly registered payees</p>
+            </div>
+            <span class="badge-outline">RBI Mandated</span>
+          </div>
+
+          <form id="add-beneficiary-form" class="beneficiary-form">
+            <div class="form-group">
+              <label for="benef-owner-select">LINKED TO MY ACCOUNT</label>
+              <select id="benef-owner-select" class="form-control" required></select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="benef-name-input">BENEFICIARY NAME</label>
+                <input type="text" id="benef-name-input" class="form-control" placeholder="e.g. Vikramaditya Singh" required>
+              </div>
+              <div class="form-group">
+                <label for="benef-account-input">BENEFICIARY ACCOUNT NUMBER</label>
+                <input type="text" id="benef-account-input" class="form-control" placeholder="e.g. HDFC00012345678" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="benef-ifsc-input">IFSC CODE</label>
+                <input type="text" id="benef-ifsc-input" class="form-control" placeholder="e.g. HDFC0000042" required>
+              </div>
+              <div class="form-group">
+                <label for="benef-nick-input">NICKNAME (OPTIONAL)</label>
+                <input type="text" id="benef-nick-input" class="form-control" placeholder="e.g. Office Landlord">
+              </div>
+            </div>
+            <button type="submit" class="btn-primary btn-block">Add Beneficiary</button>
+          </form>
+
+          <!-- Beneficiaries List -->
+          <div style="margin-top: 16px;">
+            <div class="stream-header-title">Approved Beneficiaries:</div>
+            <div id="beneficiaries-list-container" class="benef-items-list">
+              <div class="loading-state">Loading beneficiaries...</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 6: STANDING INSTRUCTIONS & FOREX REMITTANCE -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-forex">
+      <div class="content-split-layout">
+        
+        <!-- Left: Standing Instructions (SIP & Utility Bills) -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Standing Instructions (Auto-Debit Mandates)</h3>
+              <p class="card-box-sub">Automated recurring debits for Mutual Fund SIPs and utility bills</p>
+            </div>
+            <span class="badge-outline">Recurring e-Mandate</span>
+          </div>
+
+          <form id="mandate-form" class="mandate-form">
+            <div class="form-group">
+              <label for="mandate-account-select">DEBIT FROM ACCOUNT</label>
+              <select id="mandate-account-select" class="form-control" required></select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="mandate-category-select">MANDATE CATEGORY</label>
+                <select id="mandate-category-select" class="form-control">
+                  <option value="SIP_MUTUAL_FUND">Mutual Fund SIP</option>
+                  <option value="UTILITY_ELECTRICITY">Electricity Bill Auto-Pay</option>
+                  <option value="INSURANCE_PREMIUM">Life/Health Insurance</option>
+                  <option value="LOAN_EMI">Housing Loan EMI</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mandate-amount-input">AMOUNT (₹)</label>
+                <div class="input-prefix-wrapper">
+                  <span class="prefix">₹</span>
+                  <input type="number" id="mandate-amount-input" class="form-control" value="5000" min="100" step="100" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mandate-desc-input">DESCRIPTION / REFERENCE</label>
+              <input type="text" id="mandate-desc-input" class="form-control" placeholder="e.g. Nifty 50 Index Fund Monthly SIP" required>
+            </div>
+            <button type="submit" class="btn-primary btn-block">Register Auto-Debit Mandate</button>
+          </form>
+
+          <div style="margin-top: 18px;">
+            <div class="stream-header-title">Active Recurring Mandates:</div>
+            <div id="mandates-list-container" class="mandates-list">
+              <div class="loading-state">Loading mandates...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Multi-Currency Forex Remittance -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Multi-Currency Forex &amp; LRS Remittance</h3>
+              <p class="card-box-sub">Live conversion rates, SWIFT routing, and 20% LRS TCS tax calculator</p>
+            </div>
+            <span class="badge-outline">RBI LRS: $250k Cap</span>
+          </div>
+
+          <div class="forex-calculator">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="forex-inr-input">REMITTANCE AMOUNT (INR ₹)</label>
+                <div class="input-prefix-wrapper">
+                  <span class="prefix">₹</span>
+                  <input type="number" id="forex-inr-input" class="form-control" value="100000" min="1000" step="5000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="forex-curr-select">TARGET CURRENCY</label>
+                <select id="forex-curr-select" class="form-control">
+                  <option value="USD">USD ($) - US Dollar</option>
+                  <option value="EUR">EUR (€) - Euro</option>
+                  <option value="GBP">GBP (£) - British Pound</option>
+                  <option value="AED">AED - UAE Dirham</option>
+                  <option value="SGD">SGD (S$) - Singapore Dollar</option>
+                  <option value="JPY">JPY (¥) - Japanese Yen</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Conversion Display -->
+            <div class="forex-result-box">
+              <div class="forex-label">ESTIMATED BENEFICIARY RECEIVES:</div>
+              <div class="forex-val" id="forex-converted-val">$1,151.41 USD</div>
+              <div class="forex-rate-note" id="forex-rate-note">Exchange Rate: 1 USD = ₹86.85 INR (Bank FX Spread: 1.25%)</div>
+              <div class="forex-tcs-note" id="forex-tcs-note">RBI LRS TCS Tax: ₹0.00 (TCS 20% applies above ₹7,00,000 threshold)</div>
+            </div>
+
+            <!-- Live Rates Table -->
+            <div style="margin-top: 14px;">
+              <div class="stream-header-title">Live Treasury Exchange Rates:</div>
+              <div class="rates-grid" id="forex-rates-grid">
+                <!-- Injected via app.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 7: CORE ACCOUNTS & KYC LEDGER -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-accounts">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Core Banking Account Ledgers</h3>
+            <p class="card-box-sub">Real-time balances, statutory KYC records, and regulatory limits</p>
+          </div>
+          <button id="btn-toggle-unmask" class="btn-secondary btn-sm" title="Toggle Compliance Officer unmasked view">
+            <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="3" r="3"/>
+            </svg>
+            <span id="unmask-text">Unmask PII</span>
+          </button>
+        </div>
+
+        <div class="accounts-grid" id="accounts-container">
+          <!-- Rendered via app.js -->
+        </div>
+
+        <div class="statutory-note-box">
+          <strong>Indian DPDP Act 2023 Section 8 Compliance:</strong>
+          Customer PAN cards, Aadhaar numbers, and bank accounts are de-identified before entering any agentic prompt workflow. Unmasking is restricted strictly to authorized Compliance Officers under legal statutory audits.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 8: COMPLIANCE, AML SURVEILLANCE & CISO DESK -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-hitl">
+      <div class="content-split-layout">
+        
+        <!-- Left: High-Value HITL Desk -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">Senior Compliance Officer &bull; HITL Desk</h3>
+              <p class="card-box-sub">Mandatory Human-in-the-Loop review for transfers exceeding ₹50,000 threshold under RBI Master Directions</p>
+            </div>
+            <span class="badge-outline">Role: Senior Officer</span>
+          </div>
+
+          <div class="hitl-queue-container">
+            <div class="hitl-queue-header">
+              <span>Pending Authorization Queue (<span id="hitl-count-badge">0</span> transfers)</span>
+              <span class="text-muted-sm">Automated Escrow Hold Active</span>
+            </div>
+            <div class="queue-list" id="hitl-items-list">
+              <div class="queue-empty">No high-value transactions awaiting officer authorization.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: AML Structuring Radar & CISO Emergency Killswitch -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <div>
+              <h3 class="card-box-title">AML Radar &amp; CISO Emergency Killswitch</h3>
+              <p class="card-box-sub">FinCEN / RBI Suspicious Activity Reports (SAR) &amp; Platform Panic Button</p>
+            </div>
+            <span class="badge-outline">Surveillance HUD</span>
+          </div>
+
+          <!-- CISO Killswitch Panel -->
+          <div class="killswitch-panel" id="killswitch-panel">
+            <div class="killswitch-status-row">
+              <span class="status-indicator dot-green" id="killswitch-indicator"></span>
+              <span class="killswitch-status-text" id="killswitch-status-text">PLATFORM OPERATIONAL: Automated Transfers Active</span>
+            </div>
+            <button id="btn-toggle-killswitch" class="btn-danger btn-block" style="margin-top: 10px;">
+              HALT ALL OUTBOUND OPERATIONS (CISO KILLSWITCH)
+            </button>
+          </div>
+
+          <!-- AML SAR Reports List -->
+          <div style="margin-top: 20px;">
+            <div class="stream-header-title">FinCEN &amp; RBI Suspicious Activity Reports (SAR):</div>
+            <div id="sar-reports-container" class="sar-reports-list">
+              <div class="queue-empty">Zero suspicious structuring anomalies flagged in current session.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 9: MERKLE AUDIT & HSM ENCLAVE PROOFS -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-merkle">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">NIST FIPS 202 SHA3-512 Merkle Audit Ledger</h3>
+            <p class="card-box-sub">Append-only cryptographic tree with FIPS 140-2 Level 3 HSM digital signatures for statutory RBI audits</p>
+          </div>
+          <button id="btn-verify-merkle" class="btn-primary btn-sm">Verify Entire Ledger Integrity</button>
+        </div>
+
+        <div class="merkle-root-banner">
+          <div class="root-banner-label">CURRENT CRYPTOGRAPHIC ROOT (NIST KECCAK-512 SPONGE):</div>
+          <div class="root-banner-hash" id="merkle-root-hash">GENESIS_KECCAK_512</div>
+        </div>
+
+        <div class="merkle-stream-section">
+          <div class="stream-header-title">Recent Committed Audit Entries:</div>
+          <div class="merkle-stream" id="merkle-stream-container">
+            <div class="loading-state">Syncing Merkle ledger feed...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 10: MULTI-PERSPECTIVE ARCHITECTURAL GUIDE -->
+    <!-- ==================================================================== -->
+    <section class="tab-content" id="tab-guide">
+      <div class="card-box">
+        <div class="card-box-header">
+          <div>
+            <h3 class="card-box-title">Interactive Multi-Perspective Architectural Guide</h3>
+            <p class="card-box-sub">Understand the system from the view of all 5 key banking stakeholders</p>
+          </div>
+          <button class="btn-mode-toggle" id="btn-toggle-explain-mode-tab">Mode: Beginner Explainer</button>
+        </div>
+
+        <!-- Role Selectors -->
+        <div class="role-switcher" id="role-switcher-tab">
+          <button class="role-tab active customer" data-role="customer">
+            <div class="role-name">1. Bank Customer</div>
+            <div class="role-desc">Zero friction &amp; PII Privacy</div>
+          </button>
+          <button class="role-tab devops" data-role="devops">
+            <div class="role-name">2. AI DevOps</div>
+            <div class="role-desc">ADK Hooks &amp; Latency</div>
+          </button>
+          <button class="role-tab hacker" data-role="hacker">
+            <div class="role-name">3. Adversary</div>
+            <div class="role-desc">OWASP LLM01 Injections</div>
+          </button>
+          <button class="role-tab auditor" data-role="auditor">
+            <div class="role-name">4. RBI Auditor</div>
+            <div class="role-desc">SHA3-512 Merkle Proofs</div>
+          </button>
+          <button class="role-tab ciso" data-role="ciso">
+            <div class="role-name">5. Bank CISO</div>
+            <div class="role-desc">Boardroom Risk &amp; HITL</div>
+          </button>
+        </div>
+
+        <!-- Perspective Details Card -->
+        <div class="perspective-viewer-card">
+          <div id="persona-narrative-tab" class="persona-narrative-body">
+            <!-- Injected via app.js -->
+          </div>
+
+          <!-- Interactive Terminal Simulator -->
+          <div class="persona-terminal-box">
+            <div class="terminal-bar">
+              <span id="terminal-title-tab">STAKEHOLDER TERMINAL FEED:</span>
+              <span class="live-pill">LIVE MONITOR</span>
+            </div>
+            <div class="terminal-feed" id="terminal-logs-tab"></div>
+            <div class="terminal-actions" id="terminal-actions-tab"></div>
+          </div>
+        </div>
+
+        <!-- Tamper Simulator Tool -->
+        <div class="tamper-sim-card">
+          <div class="card-box-header">
+            <div>
+              <h4 class="card-box-title" style="font-size: 14px;">Academic Evaluator Tamper Demonstration</h4>
+              <p class="card-box-sub" style="font-size: 11px;">Simulate an insider directly altering database balances and watch the Merkle Root shatter</p>
+            </div>
+            <div class="tamper-btn-row">
+              <button id="btn-sim-tamper" class="btn-danger btn-sm">Simulate Ledger Tamper</button>
+              <button id="btn-sim-restore" class="btn-secondary btn-sm">Restore Integrity</button>
+            </div>
+          </div>
+          <div class="tamper-box">
+            <div class="tamper-line">
+              <span>Target Record:</span> <code id="tamper-record-text">Dhruv Jain -> Ananya Sharma (₹5,000.00 UPI)</code>
+            </div>
+            <div class="tamper-line">
+              <span>Preimage SHA3-512 Hash:</span> <code id="tamper-record-hash" class="text-blue">c4a89d71e2b580fa94bc328901ef...</code>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- MODALS -->
+  <!-- ==================================================================== -->
+
+  <!-- Cryptographic e-Receipt Modal -->
+  <div id="receipt-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card receipt-card">
+      <div class="modal-header">
+        <div class="modal-title">STATUTORY ELECTRONIC PAYMENT RECEIPT</div>
+        <button id="btn-close-receipt" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="receipt-modal-body">
+        <!-- Injected via app.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" onclick="window.print()">Print Official e-Receipt</button>
+        <button class="btn-secondary" id="btn-dismiss-receipt">Dismiss</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Merkle Inclusion Proof Modal -->
+  <div id="proof-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">CRYPTOGRAPHIC INCLUSION PROOF &amp; HSM ENCLAVE SEAL</div>
+        <button id="btn-close-modal" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="proof-modal-body">
+        <!-- Injected via app.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-modal-dismiss">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beginner Guide Modal -->
+  <div id="guide-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card guide-modal-card">
+      <div class="modal-header">
+        <div class="modal-title">HOW DOES A BANK ACTUALLY USE KAVACH?</div>
+        <button id="btn-close-guide" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body guide-modal-body">
+        <div class="guide-intro-banner">
+          <div class="guide-intro-title">Plain-Language Walkthrough for Professors, Evaluators, and Customers</div>
+          <p class="guide-intro-text">
+            Think of KAVACH as an elite <strong>airport security checkpoint for money and banking AI</strong>. Every transfer request must pass through 5 automated security stations before a single rupee moves.
+          </p>
+        </div>
+
+        <div class="analogy-section">
+          <div class="analogy-grid">
+            <div class="analogy-card">
+              <div class="analogy-num">STATION 1</div>
+              <div class="analogy-name">PII Vault</div>
+              <div class="analogy-metaphor">"Passport Masking"</div>
+              <div class="analogy-desc">Covers your PAN &amp; Aadhaar with a temporary token so hackers and cloud AI never see your real identity.</div>
+            </div>
+            <div class="analogy-card">
+              <div class="analogy-num">STATION 2</div>
+              <div class="analogy-name">Injection Shield</div>
+              <div class="analogy-metaphor">"Baggage X-Ray"</div>
+              <div class="analogy-desc">Scans the payment memo for trick messages like "ignore rules and steal money", dropping hack attempts instantly.</div>
+            </div>
+            <div class="analogy-card">
+              <div class="analogy-num">STATION 3</div>
+              <div class="analogy-name">ADK HITL Gate</div>
+              <div class="analogy-metaphor">"Customs Officer"</div>
+              <div class="analogy-desc">If you send more than ₹50,000, money is held in escrow until a senior officer reviews and biometrically approves it.</div>
+            </div>
+            <div class="analogy-card">
+              <div class="analogy-num">STATION 4</div>
+              <div class="analogy-name">Core Ledger</div>
+              <div class="analogy-metaphor">"Bank Vault"</div>
+              <div class="analogy-desc">Verifies you actually have enough money and double-checks you didn't exceed your daily limit.</div>
+            </div>
+            <div class="analogy-card">
+              <div class="analogy-num">STATION 5</div>
+              <div class="analogy-name">SHA3-512 Merkle</div>
+              <div class="analogy-metaphor">"Wax Seal"</div>
+              <div class="analogy-desc">Stamps the record with a mathematical cryptographic seal that cannot be forged or tampered with.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btn-guide-start-trying">Try an Example Transfer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
