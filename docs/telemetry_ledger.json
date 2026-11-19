@@ -1,0 +1,10 @@
+[
+  {
+    "timestamp": "2026-11-19T06:30:15Z",
+    "date": "2026-11-19",
+    "assets_verified": "6/6",
+    "live_http_status": 200,
+    "live_latency_ms": 201.57,
+    "digest": "cfcf7cd0ec057eb1"
+  }
+]
