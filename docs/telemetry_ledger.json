@@ -1,5 +1,13 @@
 [
   {
+    "timestamp": "2026-11-24T15:03:34Z",
+    "date": "2026-11-24",
+    "assets_verified": "6/6",
+    "live_http_status": 200,
+    "live_latency_ms": 133.46,
+    "digest": "77cddb95b750bf3a"
+  },
+  {
     "timestamp": "2026-11-23T15:04:43Z",
     "date": "2026-11-23",
     "assets_verified": "6/6",
